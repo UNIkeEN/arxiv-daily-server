@@ -1,0 +1,76 @@
+name: Daily arXiv JSON
+
+on:
+  schedule:
+    - cron: "30 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-arxiv-json
+  cancel-in-progress: false
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pipeline
+        uses: actions/checkout@v4
+        with:
+          path: repo
+          fetch-depth: 0
+
+      - name: Check out data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data-worktree
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch arXiv metadata
+        working-directory: repo
+        env:
+          ARXIV_CATEGORIES: ${{ vars.ARXIV_CATEGORIES }}
+          FETCH_DAYS: ${{ vars.FETCH_DAYS }}
+          MAX_RESULTS_PER_CATEGORY: ${{ vars.MAX_RESULTS_PER_CATEGORY }}
+        run: |
+          python scripts/fetch_arxiv.py \
+            --data-root ../data-worktree/data \
+            --fetch-days "${FETCH_DAYS:-3}" \
+            --max-results-per-category "${MAX_RESULTS_PER_CATEGORY:-100}"
+
+      - name: Generate AI summaries
+        working-directory: repo
+        env:
+          ARXIV_CATEGORIES: ${{ vars.ARXIV_CATEGORIES }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+        run: |
+          python scripts/enhance_ai.py \
+            --data-root ../data-worktree/data \
+            --prompt-dir prompts/paper-ai-summary
+
+      - name: Validate data
+        working-directory: repo
+        run: python scripts/validate_data.py --root ../data-worktree/data
+
+      - name: Commit data branch
+        working-directory: data-worktree
+        run: |
+          git config user.name "Codex"
+          git config user.email "codex@openai.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Update arXiv data"
+            git push origin data
+          fi
