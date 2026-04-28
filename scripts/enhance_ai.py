@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import time
 from pathlib import Path
 
 from arxiv_daily.arxiv import sort_papers
@@ -25,6 +26,10 @@ from arxiv_daily.prompts import PromptBundle, load_prompt_bundle, render_user_pr
 REQUIRED_AI_SUMMARY_FIELDS = ("tldr", "motivation", "method", "result", "conclusion", "markdown")
 
 
+def log(message: str) -> None:
+    print(message, flush=True)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate missing AI sidecar JSON for arXiv papers.")
     parser.add_argument("--config", default="config/categories.json", type=Path)
@@ -41,17 +46,30 @@ def main() -> int:
     categories = load_primary_categories(args.config, os.getenv("ARXIV_CATEGORIES"))
     prompt_bundle = load_prompt_bundle(args.prompt_dir)
     client_config = OpenAIClientConfig(api_key=api_key, base_url=base_url, model=model)
+    log(
+        "Starting AI enhancement: "
+        f"categories={','.join(categories)} model={model} promptVersion={prompt_bundle.version}"
+    )
 
     generated = 0
     failed = 0
+    skipped = 0
+    month_count = 0
     for category in categories:
-        for raw_path in find_monthly_paper_files(args.data_root, category):
+        raw_paths = find_monthly_paper_files(args.data_root, category)
+        log(f"[{category}] Found {len(raw_paths)} monthly metadata files.")
+        for raw_path in raw_paths:
+            month_count += 1
             result = enhance_month(raw_path, args.data_root, prompt_bundle, client_config)
             generated += result["generated"]
             failed += result["failed"]
+            skipped += result["skipped"]
 
     rebuild_latest_and_index(args.data_root, categories)
-    print(f"Generated {generated} AI summaries. Failed {failed}.")
+    log(
+        "Finished AI enhancement: "
+        f"months={month_count} generated={generated} skipped={skipped} failed={failed}."
+    )
     return 0
 
 
@@ -72,19 +90,34 @@ def enhance_month(
         for entry in sidecar_payload.get("papers", [])
         if entry.get("arxivId")
     }
+    log(
+        f"[{category} {year_month}] Loaded {len(papers)} papers; "
+        f"{len(existing_entries)} existing AI summaries."
+    )
 
     generated = 0
     failed = 0
-    for paper in papers:
+    skipped = 0
+    missing_papers = [paper for paper in papers if paper["arxivId"] not in existing_entries]
+    skipped = len(papers) - len(missing_papers)
+    if not missing_papers:
+        log(f"[{category} {year_month}] Nothing to generate; all papers already have AI summaries.")
+    for index, paper in enumerate(missing_papers, start=1):
         arxiv_id = paper["arxivId"]
-        if arxiv_id in existing_entries:
-            continue
+        log(f"[{category} {year_month}] ({index}/{len(missing_papers)}) Generating {arxiv_id}.")
+        started_at = time.monotonic()
         try:
             existing_entries[arxiv_id] = generate_ai_entry(paper, prompt_bundle, client_config)
             generated += 1
+            elapsed = time.monotonic() - started_at
+            log(f"[{category} {year_month}] ({index}/{len(missing_papers)}) Done {arxiv_id} in {elapsed:.1f}s.")
         except Exception as error:  # noqa: BLE001 - keep raw data useful even if one AI call fails.
             failed += 1
-            print(f"Warning: failed to generate AI summary for {arxiv_id}: {error}")
+            elapsed = time.monotonic() - started_at
+            log(
+                f"[{category} {year_month}] ({index}/{len(missing_papers)}) "
+                f"Failed {arxiv_id} in {elapsed:.1f}s: {error}"
+            )
 
     ordered_entries = [
         existing_entries[paper["arxivId"]]
@@ -104,7 +137,11 @@ def enhance_month(
             "papers": ordered_entries,
         },
     )
-    return {"generated": generated, "failed": failed}
+    log(
+        f"[{category} {year_month}] Wrote {len(ordered_entries)} AI summaries "
+        f"to {sidecar_path}; generated={generated} skipped={skipped} failed={failed}."
+    )
+    return {"generated": generated, "skipped": skipped, "failed": failed}
 
 
 def generate_ai_entry(

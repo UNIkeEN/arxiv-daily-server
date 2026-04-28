@@ -56,9 +56,64 @@ class EnhanceAiTests(unittest.TestCase):
 
             raw_payload = read_json(raw_path, {})
             sidecar_payload = read_json(data_root / "cs.AI" / "2026" / "2026-04-ai-summary.json", {})
-            self.assertEqual(result, {"generated": 0, "failed": 1})
+            self.assertEqual(result, {"generated": 0, "skipped": 0, "failed": 1})
             self.assertEqual(raw_payload["paperCount"], 1)
             self.assertEqual(sidecar_payload["paperCount"], 0)
+
+    def test_existing_ai_summary_is_logged_as_skipped(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            data_root = Path(tmp)
+            merge_monthly_papers(data_root, [paper()])
+            sidecar_path = data_root / "cs.AI" / "2026" / "2026-04-ai-summary.json"
+            sidecar_path.parent.mkdir(parents=True, exist_ok=True)
+            sidecar_path.write_text(
+                """{
+  "schemaVersion": 1,
+  "generatedAt": "2026-04-28T00:00:00Z",
+  "category": "cs.AI",
+  "yearMonth": "2026-04",
+  "promptVersion": "paper-ai-summary/v1",
+  "model": "model",
+  "paperCount": 1,
+  "papers": [
+    {
+      "arxivId": "2604.00001",
+      "aiSummary": {
+        "tldr": "摘要",
+        "motivation": "动机",
+        "method": "方法",
+        "result": "效果",
+        "conclusion": "结论",
+        "markdown": "## TL;DR\\n摘要"
+      },
+      "keywordsZh": ["关键词"],
+      "keywordsEn": ["keyword"],
+      "semanticQueryZh": "查询",
+      "generatedAt": "2026-04-28T00:00:00Z",
+      "model": "model",
+      "promptVersion": "paper-ai-summary/v1"
+    }
+  ]
+}
+""",
+                encoding="utf-8",
+            )
+            prompt = PromptBundle(
+                version="paper-ai-summary/v1",
+                system="system",
+                user_template="{paper_json}\n{output_schema}",
+                schema={},
+            )
+            config = OpenAIClientConfig(api_key="key", base_url="https://example.com/v1", model="model")
+
+            result = enhance_ai.enhance_month(
+                data_root / "cs.AI" / "2026" / "2026-04.json",
+                data_root,
+                prompt,
+                config,
+            )
+
+            self.assertEqual(result, {"generated": 0, "skipped": 1, "failed": 0})
 
 
 if __name__ == "__main__":
