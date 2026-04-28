@@ -37,6 +37,19 @@ Monthly paper files contain arXiv metadata aligned with the app's `Paper`
 model. Monthly AI sidecar files contain summaries and search keywords keyed by
 `arxivId`.
 
+## GitHub Actions
+
+Two workflows keep the raw metadata path independent from the AI path:
+
+- `Fetch arXiv Metadata`: runs daily at UTC `02:30` and can be triggered
+  manually. It updates raw monthly JSON, `latest.json`, and `index.json`.
+- `Enhance arXiv AI Summaries`: runs automatically after a successful metadata
+  fetch and can also be triggered manually. It only fills missing AI sidecar
+  entries.
+
+If AI credentials or model calls fail, raw arXiv metadata can still be updated
+by the fetch workflow.
+
 ## GitHub Configuration
 
 Repository secrets:

@@ -1,4 +1,4 @@
-name: Daily arXiv JSON
+name: Fetch arXiv Metadata
 
 on:
   schedule:
@@ -9,11 +9,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: daily-arxiv-json
+  group: fetch-arxiv-metadata
   cancel-in-progress: false
 
 jobs:
-  daily:
+  fetch:
     runs-on: ubuntu-latest
     steps:
       - name: Check out pipeline
@@ -46,18 +46,6 @@ jobs:
             --fetch-days "${FETCH_DAYS:-3}" \
             --max-results-per-category "${MAX_RESULTS_PER_CATEGORY:-100}"
 
-      - name: Generate AI summaries
-        working-directory: repo
-        env:
-          ARXIV_CATEGORIES: ${{ vars.ARXIV_CATEGORIES }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
-          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
-        run: |
-          python scripts/enhance_ai.py \
-            --data-root ../data-worktree/data \
-            --prompt-dir prompts/paper-ai-summary
-
       - name: Validate data
         working-directory: repo
         run: python scripts/validate_data.py --root ../data-worktree/data
@@ -69,8 +57,8 @@ jobs:
           git config user.email "codex@openai.com"
           git add data
           if git diff --cached --quiet; then
-            echo "No data changes to commit."
+            echo "No metadata changes to commit."
           else
-            git commit -m "Update arXiv data"
+            git commit -m "Update arXiv metadata"
             git push origin data
           fi

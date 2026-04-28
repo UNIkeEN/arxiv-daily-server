@@ -1,0 +1,66 @@
+name: Enhance arXiv AI Summaries
+
+on:
+  workflow_run:
+    workflows: ["Fetch arXiv Metadata"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: enhance-arxiv-ai-summaries
+  cancel-in-progress: false
+
+jobs:
+  enhance:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pipeline
+        uses: actions/checkout@v4
+        with:
+          path: repo
+          fetch-depth: 0
+
+      - name: Check out data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data-worktree
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate AI summaries
+        working-directory: repo
+        env:
+          ARXIV_CATEGORIES: ${{ vars.ARXIV_CATEGORIES }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+        run: |
+          python scripts/enhance_ai.py \
+            --data-root ../data-worktree/data \
+            --prompt-dir prompts/paper-ai-summary
+
+      - name: Validate data
+        working-directory: repo
+        run: python scripts/validate_data.py --root ../data-worktree/data
+
+      - name: Commit data branch
+        working-directory: data-worktree
+        run: |
+          git config user.name "Codex"
+          git config user.email "codex@openai.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "No AI summary changes to commit."
+          else
+            git commit -m "Update arXiv AI summaries"
+            git push origin data
+          fi
