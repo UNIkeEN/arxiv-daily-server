@@ -64,6 +64,9 @@ Repository variables:
 - `MAX_RESULTS_PER_CATEGORY`: arXiv API max results per category, default `100`.
 - `ARXIV_CATEGORIES`: optional comma-separated override for primary-category
   whitelist.
+- `ARXIV_REQUEST_DELAY_SECONDS`: delay between category requests, default `8`.
+- `ARXIV_MAX_RETRIES`: retry count for arXiv 429/5xx responses, default `5`.
+- `ARXIV_RETRY_BASE_DELAY_SECONDS`: exponential retry base delay, default `30`.
 
 ## Local Commands
 

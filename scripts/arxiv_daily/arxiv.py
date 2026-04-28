@@ -3,6 +3,7 @@ from __future__ import annotations
 import datetime as dt
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -13,7 +14,11 @@ ATOM_NS = "http://www.w3.org/2005/Atom"
 ARXIV_NS = "http://arxiv.org/schemas/atom"
 NAMESPACES = {"atom": ATOM_NS, "arxiv": ARXIV_NS}
 ARXIV_API_URL = "https://export.arxiv.org/api/query"
-ARXIV_REQUEST_DELAY_SECONDS = 3.2
+DEFAULT_ARXIV_REQUEST_DELAY_SECONDS = 8.0
+DEFAULT_ARXIV_MAX_RETRIES = 5
+DEFAULT_ARXIV_RETRY_BASE_DELAY_SECONDS = 30.0
+MAX_RETRY_DELAY_SECONDS = 180.0
+RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
 
 
 @dataclass(frozen=True)
@@ -22,7 +27,16 @@ class ArxivQuery:
     max_results: int
 
 
-def fetch_category(query: ArxivQuery) -> str:
+@dataclass(frozen=True)
+class ArxivFetchOptions:
+    max_retries: int = DEFAULT_ARXIV_MAX_RETRIES
+    request_delay_seconds: float = DEFAULT_ARXIV_REQUEST_DELAY_SECONDS
+    retry_base_delay_seconds: float = DEFAULT_ARXIV_RETRY_BASE_DELAY_SECONDS
+    timeout_seconds: int = 60
+
+
+def fetch_category(query: ArxivQuery, options: ArxivFetchOptions | None = None) -> str:
+    options = options or ArxivFetchOptions()
     params = {
         "search_query": f"cat:{query.category}",
         "sortBy": "submittedDate",
@@ -37,19 +51,66 @@ def fetch_category(query: ArxivQuery) -> str:
             "User-Agent": "arxiv-daily-server/0.1 (+https://github.com/UNIkeEN/arxiv-daily-server)"
         },
     )
-    with urllib.request.urlopen(request, timeout=45) as response:
-        return response.read().decode("utf-8")
+    last_error: Exception | None = None
+    for attempt in range(options.max_retries + 1):
+        try:
+            with urllib.request.urlopen(request, timeout=options.timeout_seconds) as response:
+                return response.read().decode("utf-8")
+        except urllib.error.HTTPError as error:
+            last_error = error
+            if error.code not in RETRYABLE_STATUS_CODES or attempt >= options.max_retries:
+                break
+            delay = retry_delay_seconds(error, attempt, options.retry_base_delay_seconds)
+            print(
+                f"arXiv API returned HTTP {error.code} for {query.category}; "
+                f"retrying in {delay:.0f}s ({attempt + 1}/{options.max_retries})."
+            )
+            time.sleep(delay)
+        except (urllib.error.URLError, TimeoutError) as error:
+            last_error = error
+            if attempt >= options.max_retries:
+                break
+            delay = exponential_delay_seconds(attempt, options.retry_base_delay_seconds)
+            print(
+                f"arXiv API request failed for {query.category}: {error}; "
+                f"retrying in {delay:.0f}s ({attempt + 1}/{options.max_retries})."
+            )
+            time.sleep(delay)
+    raise RuntimeError(f"Failed to fetch arXiv category {query.category}: {last_error}") from last_error
 
 
-def fetch_categories(categories: Iterable[str], max_results: int) -> list[dict]:
+def fetch_categories(
+    categories: Iterable[str],
+    max_results: int,
+    options: ArxivFetchOptions | None = None,
+) -> list[dict]:
+    options = options or ArxivFetchOptions()
     papers: dict[str, dict] = {}
     for index, category in enumerate(categories):
         if index > 0:
-            time.sleep(ARXIV_REQUEST_DELAY_SECONDS)
-        xml_text = fetch_category(ArxivQuery(category=category, max_results=max_results))
+            time.sleep(options.request_delay_seconds)
+        xml_text = fetch_category(ArxivQuery(category=category, max_results=max_results), options)
         for paper in parse_arxiv_atom(xml_text):
             papers[paper["arxivId"]] = paper
     return sort_papers(papers.values())
+
+
+def retry_delay_seconds(
+    error: urllib.error.HTTPError,
+    attempt: int,
+    retry_base_delay_seconds: float,
+) -> float:
+    retry_after = error.headers.get("Retry-After")
+    if retry_after:
+        try:
+            return min(float(retry_after), MAX_RETRY_DELAY_SECONDS)
+        except ValueError:
+            pass
+    return exponential_delay_seconds(attempt, retry_base_delay_seconds)
+
+
+def exponential_delay_seconds(attempt: int, retry_base_delay_seconds: float) -> float:
+    return min(retry_base_delay_seconds * (2**attempt), MAX_RETRY_DELAY_SECONDS)
 
 
 def parse_arxiv_atom(xml_text: str) -> list[dict]:

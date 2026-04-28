@@ -38,13 +38,19 @@ jobs:
         working-directory: repo
         env:
           ARXIV_CATEGORIES: ${{ vars.ARXIV_CATEGORIES }}
+          ARXIV_MAX_RETRIES: ${{ vars.ARXIV_MAX_RETRIES }}
+          ARXIV_REQUEST_DELAY_SECONDS: ${{ vars.ARXIV_REQUEST_DELAY_SECONDS }}
+          ARXIV_RETRY_BASE_DELAY_SECONDS: ${{ vars.ARXIV_RETRY_BASE_DELAY_SECONDS }}
           FETCH_DAYS: ${{ vars.FETCH_DAYS }}
           MAX_RESULTS_PER_CATEGORY: ${{ vars.MAX_RESULTS_PER_CATEGORY }}
         run: |
           python scripts/fetch_arxiv.py \
             --data-root ../data-worktree/data \
             --fetch-days "${FETCH_DAYS:-3}" \
-            --max-results-per-category "${MAX_RESULTS_PER_CATEGORY:-100}"
+            --max-results-per-category "${MAX_RESULTS_PER_CATEGORY:-100}" \
+            --request-delay-seconds "${ARXIV_REQUEST_DELAY_SECONDS:-8}" \
+            --max-retries "${ARXIV_MAX_RETRIES:-5}" \
+            --retry-base-delay-seconds "${ARXIV_RETRY_BASE_DELAY_SECONDS:-30}"
 
       - name: Validate data
         working-directory: repo
