@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import os
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 from arxiv_daily.arxiv import sort_papers
@@ -34,7 +35,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Generate missing AI sidecar JSON for arXiv papers.")
     parser.add_argument("--config", default="config/categories.json", type=Path)
     parser.add_argument("--data-root", default="data", type=Path)
+    parser.add_argument("--max-papers", default=env_int_optional("AI_MAX_PAPERS_PER_RUN"), type=int)
     parser.add_argument("--prompt-dir", default="prompts/paper-ai-summary", type=Path)
+    parser.add_argument("--concurrency", default=env_int("AI_CONCURRENCY", 4), type=int)
     args = parser.parse_args()
 
     api_key = os.getenv("OPENAI_API_KEY", "").strip()
@@ -44,31 +47,51 @@ def main() -> int:
         raise SystemExit("OPENAI_API_KEY, OPENAI_BASE_URL, and OPENAI_MODEL are required")
 
     categories = load_primary_categories(args.config, os.getenv("ARXIV_CATEGORIES"))
+    max_papers = args.max_papers
+    if max_papers is None:
+        max_papers = env_int("MAX_RESULTS_PER_CATEGORY", 100) * len(categories)
+    if max_papers < 0:
+        raise SystemExit("--max-papers must be >= 0")
+    concurrency = max(args.concurrency, 1)
+
     prompt_bundle = load_prompt_bundle(args.prompt_dir)
     client_config = OpenAIClientConfig(api_key=api_key, base_url=base_url, model=model)
     log(
         "Starting AI enhancement: "
-        f"categories={','.join(categories)} model={model} promptVersion={prompt_bundle.version}"
+        f"categories={','.join(categories)} model={model} promptVersion={prompt_bundle.version} "
+        f"maxPapers={max_papers} concurrency={concurrency}"
     )
 
     generated = 0
     failed = 0
     skipped = 0
+    deferred = 0
     month_count = 0
+    remaining_budget = max_papers
     for category in categories:
         raw_paths = find_monthly_paper_files(args.data_root, category)
         log(f"[{category}] Found {len(raw_paths)} monthly metadata files.")
         for raw_path in raw_paths:
             month_count += 1
-            result = enhance_month(raw_path, args.data_root, prompt_bundle, client_config)
+            result = enhance_month(
+                raw_path,
+                args.data_root,
+                prompt_bundle,
+                client_config,
+                max_generate=remaining_budget,
+                concurrency=concurrency,
+            )
             generated += result["generated"]
             failed += result["failed"]
             skipped += result["skipped"]
+            deferred += result["deferred"]
+            remaining_budget = max(remaining_budget - result["generated"] - result["failed"], 0)
 
     rebuild_latest_and_index(args.data_root, categories)
     log(
         "Finished AI enhancement: "
-        f"months={month_count} generated={generated} skipped={skipped} failed={failed}."
+        f"months={month_count} generated={generated} skipped={skipped} "
+        f"failed={failed} deferred={deferred} remainingBudget={remaining_budget}."
     )
     return 0
 
@@ -78,6 +101,8 @@ def enhance_month(
     data_root: Path,
     prompt_bundle: PromptBundle,
     client_config: OpenAIClientConfig,
+    max_generate: int | None = None,
+    concurrency: int = 1,
 ) -> dict[str, int]:
     raw_payload = read_json(raw_path, {})
     category = raw_payload["category"]
@@ -100,23 +125,56 @@ def enhance_month(
     skipped = 0
     missing_papers = [paper for paper in papers if paper["arxivId"] not in existing_entries]
     skipped = len(papers) - len(missing_papers)
+    generate_limit = len(missing_papers) if max_generate is None else min(max_generate, len(missing_papers))
+    selected_papers = missing_papers[:generate_limit]
+    deferred = len(missing_papers) - len(selected_papers)
     if not missing_papers:
         log(f"[{category} {year_month}] Nothing to generate; all papers already have AI summaries.")
-    for index, paper in enumerate(missing_papers, start=1):
-        arxiv_id = paper["arxivId"]
-        log(f"[{category} {year_month}] ({index}/{len(missing_papers)}) Generating {arxiv_id}.")
-        started_at = time.monotonic()
-        try:
-            existing_entries[arxiv_id] = generate_ai_entry(paper, prompt_bundle, client_config)
-            generated += 1
-            elapsed = time.monotonic() - started_at
-            log(f"[{category} {year_month}] ({index}/{len(missing_papers)}) Done {arxiv_id} in {elapsed:.1f}s.")
-        except Exception as error:  # noqa: BLE001 - keep raw data useful even if one AI call fails.
-            failed += 1
-            elapsed = time.monotonic() - started_at
+    elif not selected_papers:
+        log(
+            f"[{category} {year_month}] Generation budget is exhausted; "
+            f"deferring {deferred} missing AI summaries."
+        )
+    elif deferred:
+        log(
+            f"[{category} {year_month}] Generation budget allows {len(selected_papers)} "
+            f"of {len(missing_papers)} missing AI summaries; deferring {deferred}."
+        )
+
+    workers = min(max(concurrency, 1), len(selected_papers))
+    if selected_papers:
+        log(f"[{category} {year_month}] Generating with concurrency={workers}.")
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            future_to_task = {}
+            for index, paper in enumerate(selected_papers, start=1):
+                arxiv_id = paper["arxivId"]
+                log(f"[{category} {year_month}] ({index}/{len(selected_papers)}) Queued {arxiv_id}.")
+                future = executor.submit(generate_ai_entry, paper, prompt_bundle, client_config)
+                future_to_task[future] = (index, paper, time.monotonic())
+
+            for future in as_completed(future_to_task):
+                index, paper, started_at = future_to_task[future]
+                arxiv_id = paper["arxivId"]
+                try:
+                    existing_entries[arxiv_id] = future.result()
+                    generated += 1
+                    elapsed = time.monotonic() - started_at
+                    log(
+                        f"[{category} {year_month}] ({index}/{len(selected_papers)}) "
+                        f"Done {arxiv_id} in {elapsed:.1f}s."
+                    )
+                except Exception as error:  # noqa: BLE001 - keep raw data useful even if one AI call fails.
+                    failed += 1
+                    elapsed = time.monotonic() - started_at
+                    log(
+                        f"[{category} {year_month}] ({index}/{len(selected_papers)}) "
+                        f"Failed {arxiv_id} in {elapsed:.1f}s: {error}"
+                    )
+
+        if failed:
             log(
-                f"[{category} {year_month}] ({index}/{len(missing_papers)}) "
-                f"Failed {arxiv_id} in {elapsed:.1f}s: {error}"
+                f"[{category} {year_month}] {failed} requests failed and still count toward "
+                "this run's generation budget."
             )
 
     ordered_entries = [
@@ -139,9 +197,10 @@ def enhance_month(
     )
     log(
         f"[{category} {year_month}] Wrote {len(ordered_entries)} AI summaries "
-        f"to {sidecar_path}; generated={generated} skipped={skipped} failed={failed}."
+        f"to {sidecar_path}; generated={generated} skipped={skipped} "
+        f"failed={failed} deferred={deferred}."
     )
-    return {"generated": generated, "skipped": skipped, "failed": failed}
+    return {"generated": generated, "skipped": skipped, "failed": failed, "deferred": deferred}
 
 
 def generate_ai_entry(
@@ -190,6 +249,16 @@ def normalize_ai_payload(payload: dict) -> dict:
         "keywordsEn": [item.strip() for item in keywords_en if item.strip()],
         "semanticQueryZh": semantic_query.strip(),
     }
+
+
+def env_int(name: str, default: int) -> int:
+    value = os.getenv(name, "").strip()
+    return int(value) if value else default
+
+
+def env_int_optional(name: str) -> int | None:
+    value = os.getenv(name, "").strip()
+    return int(value) if value else None
 
 
 if __name__ == "__main__":

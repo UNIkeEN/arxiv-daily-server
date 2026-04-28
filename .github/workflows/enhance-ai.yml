@@ -39,14 +39,18 @@ jobs:
       - name: Generate AI summaries
         working-directory: repo
         env:
+          AI_CONCURRENCY: ${{ vars.AI_CONCURRENCY }}
+          AI_MAX_PAPERS_PER_RUN: ${{ vars.AI_MAX_PAPERS_PER_RUN }}
           ARXIV_CATEGORIES: ${{ vars.ARXIV_CATEGORIES }}
+          MAX_RESULTS_PER_CATEGORY: ${{ vars.MAX_RESULTS_PER_CATEGORY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
           OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
         run: |
           python scripts/enhance_ai.py \
             --data-root ../data-worktree/data \
-            --prompt-dir prompts/paper-ai-summary
+            --prompt-dir prompts/paper-ai-summary \
+            --concurrency "${AI_CONCURRENCY:-4}"
 
       - name: Validate data
         working-directory: repo

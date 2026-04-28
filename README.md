@@ -60,6 +60,9 @@ Repository secrets:
 Repository variables:
 
 - `OPENAI_MODEL`: OpenAI-compatible chat model name.
+- `AI_CONCURRENCY`: parallel AI requests, default `4`.
+- `AI_MAX_PAPERS_PER_RUN`: max AI generations per workflow run. If unset,
+  defaults to `MAX_RESULTS_PER_CATEGORY * category count`.
 - `FETCH_DAYS`: number of recent days to refresh, default `3`.
 - `MAX_RESULTS_PER_CATEGORY`: arXiv API max results per category, default `100`.
 - `ARXIV_CATEGORIES`: optional comma-separated override for primary-category
