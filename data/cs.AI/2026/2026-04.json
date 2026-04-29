@@ -1,10 +1,751 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-04-28T13:17:05Z",
+  "generatedAt": "2026-04-29T03:54:46Z",
   "category": "cs.AI",
   "yearMonth": "2026-04",
-  "paperCount": 34,
+  "paperCount": 63,
   "papers": [
+    {
+      "id": "2604.25917",
+      "arxivId": "2604.25917",
+      "title": "Recursive Multi-Agent Systems",
+      "briefSummary": "Recursive or looped language models have recently emerged as a new scaling axis by iteratively refining the same model computation over latent states to deepen reasoning.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Recursive or looped language models have recently emerged as a new scaling axis by iteratively refining the same model computation over latent states to deepen reasoning. We extend such scaling principle from a single model to multi-agent systems, and ask: Can agent collaboration itself be scaled through recursion? To this end, we introduce RecursiveMAS, a recursive multi-agent framework that casts the entire system as a unified latent-space recursive computation. RecursiveMAS connects heterogeneous agents as a collaboration loop through the lightweight RecursiveLink module, enabling in-distribution latent thoughts generation and cross-agent latent state transfer. To optimize our framework, we develop an inner-outer loop learning algorithm for iterative whole-system co-optimization through shared gradient-based credit assignment across recursion rounds. Theoretical analyses of runtime complexity and learning dynamics establish that RecursiveMAS is more efficient than standard text-based MAS and maintains stable gradients during recursive training. Empirically, we instantiate RecursiveMAS under 4 representative agent collaboration patterns and evaluate across 9 benchmarks spanning mathematics, science, medicine, search, and code generation. In comparison with advanced single/multi-agent and recursive computation baselines, RecursiveMAS consistently delivers an average accuracy improvement of 8.3%, together with 1.2$\\times$-2.4$\\times$ end-to-end inference speedup, and 34.6%-75.6% token usage reduction. Code and Data are provided in https://recursivemas.github.io.",
+      "authors": [
+        "Xiyuan Yang",
+        "Jiaru Zou",
+        "Rui Pan",
+        "Ruizhong Qiu",
+        "Pan Lu",
+        "Shizhe Diao",
+        "Jindong Jiang",
+        "Hanghang Tong",
+        "Tong Zhang",
+        "Markus J. Buehler",
+        "Jingrui He",
+        "James Zou"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25917",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25917v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25917",
+      "comment": "36 Pages. Project Website: https://recursivemas.github.io"
+    },
+    {
+      "id": "2604.25849",
+      "arxivId": "2604.25849",
+      "title": "ADEMA: A Knowledge-State Orchestration Architecture for Long-Horizon Knowledge Synthesis with LLMAgents",
+      "briefSummary": "Long-horizon LLM tasks often fail not because a single answer is unattainable, but because knowledge states drift across rounds, intermediate commitments remain implicit, and interruption fractures the evolving evidence...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Long-horizon LLM tasks often fail not because a single answer is unattainable, but because knowledge states drift across rounds, intermediate commitments remain implicit, and interruption fractures the evolving evidence chain. This paper presents ADEMA as a knowledge-state orchestration architecture for long-horizon knowledge synthesis rather than as a generic multi-agent runtime. The architecture combines explicit epistemic bookkeeping, heterogeneous dual-evaluator governance, adaptive task-mode switching, reputation-shaped resource allocation, checkpoint-resumable persistence, segment-level memory condensation, artifact-first assembly, and final-validity checking with safe fallback. Evidence is drawn entirely from existing materials: a four-scenario showcase package, a fixed 60-run mechanism matrix, targeted micro-ablation and artifact-chain supplements, and a repaired protocol-level benchmark in which code-oriented evaluation is the clearest quality-sensitive mechanism block. Across the fixed matrix, removing checkpoint/resume produced the only invalid run, and it did so in the interruption-sensitive resume condition. By contrast, dual evaluation, segment synthesis, and dynamic governance are best interpreted as supporting control mechanisms that shape trajectory discipline, explicit artifact progression, and cost-quality behavior rather than as universal binary prerequisites for completion. The contribution is therefore a knowledge-state orchestration architecture in which explicit epistemic state transition, evidence-bearing artifact progression, and recoverable continuity are the primary design commitments.",
+      "authors": [
+        "Zhou Hanlin",
+        "Chan Huah Yong"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25849",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25849v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25849"
+    },
+    {
+      "id": "2604.25848",
+      "arxivId": "2604.25848",
+      "title": "Semi-Markov Reinforcement Learning for City-Scale EV Ride-Hailing with Feasibility-Guaranteed Actions",
+      "briefSummary": "We study city-scale control of electric-vehicle (EV) ride-hailing fleets where dispatch, repositioning, and charging decisions must respect charger and feeder limits under uncertain, spatially correlated demand and trav...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "We study city-scale control of electric-vehicle (EV) ride-hailing fleets where dispatch, repositioning, and charging decisions must respect charger and feeder limits under uncertain, spatially correlated demand and travel times. We formulate the problem as a hex-grid semi-Markov decision process (semi-MDP) with mixed actions -- discrete actions for serving, repositioning, and charging, together with continuous charging power -- and variable action durations. To guarantee physical feasibility during both training and deployment, the policy learns over high-level intentions produced by a masked, temperature-annealed actor. These intentions are projected at every decision step through a time-limited rolling mixed-integer linear program (MILP) that strictly enforces state-of-charge, port, and feeder constraints. To mitigate distributional shifts, we optimize a Soft Actor--Critic (SAC) agent against a Wasserstein-1 ambiguity set with a graph-aligned Mahalanobis ground metric that captures spatial correlations. The robust backup uses the Kantorovich--Rubinstein dual, a projected subgradient inner loop, and a primal--dual risk-budget update. Our architecture combines a two-layer Graph Convolutional Network (GCN) encoder, twin critics, and a value network that drives the adversary. Experiments on a large-scale EV fleet simulator built from NYC taxi data show that PD--RSAC achieves the highest net profit, reaching \\$1.22M, compared with \\$0.58M--\\$0.70M for strong heuristic, single-agent RL, and multi-agent RL baselines, including Greedy, SAC, MAPPO, and MADDPG, while maintaining zero feeder-limit violations.",
+      "authors": [
+        "An Nguyen",
+        "Hoang Nguyen",
+        "Phuong Le",
+        "Hung Pham",
+        "Cuong Do",
+        "Laurent El Ghaoui"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25848",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25848v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25848",
+      "comment": "13 pages, 9 figures. Submitted to Neurocomputing"
+    },
+    {
+      "id": "2604.25834",
+      "arxivId": "2604.25834",
+      "title": "Action-Aware Generative Sequence Modeling for Short Video Recommendation",
+      "briefSummary": "With the rapid development of the Internet, users have increasingly higher expectations for the recommendation accuracy of online content consumption platforms.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "With the rapid development of the Internet, users have increasingly higher expectations for the recommendation accuracy of online content consumption platforms. However, short videos often contain diverse segments, and users may not hold the same attitude toward all of them. Traditional binary-classification recommendation models, which treat a video as a single holistic entity, face limitations in accurately capturing such nuanced preferences. Considering that user consumption is a temporal process, this paper demonstrates that the timing of user actions can represent diverse intentions through statistical analysis and examination of action patterns. Based on this insight, we propose a novel modeling paradigm: Action-Aware Generative Sequence Network (A2Gen), which refines user actions along the temporal dimension and chains them into sequences for unified processing and prediction. First, we introduce the Context-aware Attention Module (CAM) to model action sequences enriched with item-specific contextual features. Building upon this, we develop the Hierarchical Sequence Encoder (HSE) to learn temporal action patterns from users' historical actions. Finally, through leveraging CAM, we design a module for action sequence generation: the Action-seq Autoregressive Generator (AAG). Extensive offline experiments on the Kuaishou's dataset and the Tmall public dataset demonstrate the superiority of our proposed model. Furthermore, through large-scale online A/B testing deployed on Kuaishou's platform, our model achieves significant improvements over baseline methods in multi-task prediction by leveraging sequential information. Specifically, it yields increases of 0.34% in user watch time, 8.1% in interaction rate, and 0.162% in overall user retention (LifeTime-7), leading to successful deployment across all traffic, serving over 400 million users every day.",
+      "authors": [
+        "Wenhao Li",
+        "Zihan Lin",
+        "Zhengxiao Guo",
+        "Jie Zhou",
+        "Shukai Liu",
+        "Yongqi Liu",
+        "Chuan Luo",
+        "Chaoyi Ma",
+        "Ruiming Tang",
+        "Han Li"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.IR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25834",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25834v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25834",
+      "doi": "10.1145/3805712.3809728",
+      "comment": "11 pages, 8 figures, SIGIR 2026"
+    },
+    {
+      "id": "2604.25832",
+      "arxivId": "2604.25832",
+      "title": "TrialCalibre: A Fully Automated Causal Engine for RCT Benchmarking and Observational Trial Calibration",
+      "briefSummary": "Real-world evidence (RWE) studies that emulate target trials increasingly inform regulatory and clinical decisions, yet residual, hard-to-quantify biases still limit their credibility.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Real-world evidence (RWE) studies that emulate target trials increasingly inform regulatory and clinical decisions, yet residual, hard-to-quantify biases still limit their credibility. The recently proposed BenchExCal framework addresses this challenge via a two-stage Benchmark, Expand, Calibrate process, which first compares an observational emulation against an existing randomized controlled trial (RCT), then uses observed divergence to calibrate a second emulation for a new indication causal effect estimation. While methodologically powerful, BenchExCal is resource intensive and difficult to scale. We introduce TrialCalibre, a conceptualized multiagent system designed to automate and scale the BenchExCal workflow. Our framework features specialized agents such as the Orchestrator, Protocol Design, Data Synthesis, Clinical Validation, and Quantitative Calibration Agents that coordi-nate the the overall process. TrialCalibre incorpo-rates agent learning (e.g., RLHF) and knowledge blackboards to support adaptive, auditable, and transparent causal effect estimation.",
+      "authors": [
+        "Amir Habibdoust",
+        "Xing Song"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25832",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25832v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25832",
+      "journalRef": "Proceedings of the 42nd International Conference on Machine Learning, Vancouver, Canada. PMLR 267, 2025. Copyright 2025 by the author(s)",
+      "comment": "5 pages , 2 figures"
+    },
+    {
+      "id": "2604.25796",
+      "arxivId": "2604.25796",
+      "title": "StratFormer: Adaptive Opponent Modeling and Exploitation in Imperfect-Information Games",
+      "briefSummary": "We present StratFormer, a transformer-based meta-agent that learns to simultaneously model and exploit opponents in imperfect-information games through a two-phase curriculum.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "We present StratFormer, a transformer-based meta-agent that learns to simultaneously model and exploit opponents in imperfect-information games through a two-phase curriculum. The first phase trains an opponent modeling head to identify behavioral patterns from action histories while the agent plays a game-theoretic optimal (GTO) policy. The second phase progressively shifts the policy toward best-response (BR) exploitation, guided by a per-opponent regularization schedule tied to exploitability. Our architecture introduces dual-turn tokens -- feature vectors constructed at both agent and opponent decision points -- coupled with bucket-rate features that encode opponent tendencies across five strategic contexts. On Leduc Hold'em, a small poker variant with six cards and two betting rounds, we test against six opponent archetypes at two strength levels each, with exploitability ranging from 0.15 to 1.26 Big Blinds (BB) per hand. StratFormer achieves an average exploitation gain of +0.106 BB per hand over GTO, with peak gains of +0.821 against highly exploitable opponents, while maintaining near-equilibrium safety.",
+      "authors": [
+        "Andy Caen",
+        "Mark H. M. Winands",
+        "Dennis J. N. J. Soemers"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25796",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25796v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25796",
+      "comment": "Accepted at Computers and Games 2026"
+    },
+    {
+      "id": "2604.25740",
+      "arxivId": "2604.25740",
+      "title": "QAROO: AI-Driven Online Task Offloading for Energy-Efficient and Sustainable MEC Networks",
+      "briefSummary": "With the rapid advancement of artificial intelligence (AI) and intelligent science, intelligent edge computing has been widely adopted.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "With the rapid advancement of artificial intelligence (AI) and intelligent science, intelligent edge computing has been widely adopted. However, the limitations of traditional methods, such as poor adaptability and the slow convergence of heuristic algorithms, are becoming increasingly evident. To enable sustainable and resource-efficient edge applications, this paper proposes an online task offloading framework for wireless powered mobile edge computing (MEC) networks, called Quantum Attention-based Reinforcement learning for Online Offloading (QAROO). The system employs a binary offloading strategy with the aim of co-optimizing computing and energy resources in dynamic channel environments. In response to the issues of poor adaptability in traditional approaches and the slow convergence of heuristic algorithms, the framework integrates quantum neural networks and attention mechanisms, introducing three key improvements: using recurrent neural networks to enhance temporal modeling capability, proposing an uncertainty-guided quantization method to improve exploration efficiency, and incorporating attention mechanisms into quantum networks to strengthen feature representation. Experiments demonstrate that the proposed method outperforms comparative schemes in terms of normalized computation speed and processing time, offering an efficient and stable solution for online task offloading in large-scale Internet of Things (IoT) dynamic environments.",
+      "authors": [
+        "Yongtao Yao",
+        "Yao Yang",
+        "Haorui Shi",
+        "Canglu Zhu",
+        "Miaojiang Chen",
+        "Ahmed Farouk"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25740",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25740v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25740"
+    },
+    {
+      "id": "2604.25727",
+      "arxivId": "2604.25727",
+      "title": "Toward Scalable Terminal Task Synthesis via Skill Graphs",
+      "briefSummary": "Terminal agents have demonstrated strong potential for autonomous command-line execution, yet their training remains constrained by the scarcity of high-quality and diverse execution trajectories.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Terminal agents have demonstrated strong potential for autonomous command-line execution, yet their training remains constrained by the scarcity of high-quality and diverse execution trajectories. Existing approaches mitigate this bottleneck by synthesizing large-scale terminal task instances for trajectory sampling. However, they primarily focus on scaling the number of tasks while providing limited control over the diversity of execution trajectories that agents actually experience during training. In this paper, we present SkillSynth, an automated framework for terminal task synthesis built on a scenario-mediated skill graph. SkillSynth first constructs a large-scale skill graph, where scenarios serve as intermediate transition nodes that connect diverse command-line skills. It then samples paths from this graph as abstractions of real-world workflows, and uses a multi-agent harness to instantiate them into executable task instances. By grounding task synthesis in graph-sampled workflow paths, SkillSynth explicitly controls the diversity of minimal execution trajectories required to solve the synthesized tasks. Experiments on Terminal-Bench demonstrate the effectiveness of SkillSynth. Moreover, task instances synthesized by SkillSynth have been adopted to train Hy3 Preview, contributing to its enhanced agentic capabilities in terminal-based settings.",
+      "authors": [
+        "Zhiyuan Fan",
+        "Tinghao Yu",
+        "Yuanjun Cai",
+        "Jiangtao Guan",
+        "Yun Yang",
+        "Dingxin Hu",
+        "Jiang Zhou",
+        "Xing Wu",
+        "Zhuo Han",
+        "Feng Zhang",
+        "Lilin Wang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25727",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25727v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25727"
+    },
+    {
+      "id": "2604.25724",
+      "arxivId": "2604.25724",
+      "title": "Scalable Inference Architectures for Compound AI Systems: A Production Deployment Study",
+      "briefSummary": "Modern enterprise AI applications increasingly rely on compound AI systems - architectures that compose multiple models, retrievers, and tools to accomplish complex tasks.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Modern enterprise AI applications increasingly rely on compound AI systems - architectures that compose multiple models, retrievers, and tools to accomplish complex tasks. Deploying such systems in production demands inference infrastructure that can efficiently serve concurrent, heterogeneous model invocations while maintaining cost-effectiveness and low latency. This paper presents a production deployment study of a modular, platform-agnostic inference architecture developed at Salesforce to support compound AI use cases including Agentforce (autonomous AI agents) and ApexGuru (AI-powered code analysis). The system integrates serverless execution, dynamic autoscaling, and MLOps pipelines to deliver consistent low-latency inference across multi-component agent workflows. We report production results demonstrating over 50% reduction in tail latency (P95), up to 3.9x throughput improvement, and 30 to 40% cost savings compared to prior static deployments. We further present a novel analysis of compound-system-specific challenges including multi-model fan-out overhead, cascading cold-start propagation, and heterogeneous scaling dynamics that emerge uniquely when serving agentic workloads. Through detailed case studies and operational lessons, we illustrate how the architecture enables compound AI systems to scale model invocations in parallel, handle bursty multi-agent workloads, and support rapid model iteration - capabilities essential for operationalizing agentic AI at enterprise scale.",
+      "authors": [
+        "Srikanta Prasad S",
+        "Utkarsh Arora"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25724",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25724v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25724",
+      "comment": "Accepted to the ACM Conference on AI and Agentic Systems (ACM CAIS 2026)"
+    },
+    {
+      "id": "2604.25693",
+      "arxivId": "2604.25693",
+      "title": "RADD: Retrieval-Augmented Discrete Diffusion for Multi-Modal Knowledge Graph Completion",
+      "briefSummary": "Most multi-modal knowledge graph completion (MMKGC) models use one embedding scorer to do both retrieval over the full entity set and final decision making.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Most multi-modal knowledge graph completion (MMKGC) models use one embedding scorer to do both retrieval over the full entity set and final decision making. We argue that this coupling is a core bottleneck: global high-recall search and local fine-grained disambiguation require different inductive biases. Therefore, we propose a Retrieval-Augmented Discrete Diffusion (RADD) framework to decouple retrieve and reranking for MMKGC. A relation-aware multimodal KGE retriever serves as both global retriever and distillation teacher, while a conditional discrete denoiser performs shortlist-level entity-identity generation for reranking. Training combines KGE supervision, denoising cross-entropy, and temperature-scaled distillation from the retriever to the denoiser. At inference, the designed Diff-Rerank first forms a top-$K$ shortlist with the retriever and then reranks it with the denoiser, ensuring that recall is a strict prerequisite for precision. Experiments on three MMKGC benchmarks show that RADD achieves the best performance and consistent gains over strong unimodal, multimodal, and LLM-based baselines, while ablations further verify the contribution of each component.",
+      "authors": [
+        "Guanglin Niu",
+        "Bo Li"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25693",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25693v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25693",
+      "comment": "12 pages, 3 figures, 6 tables"
+    },
+    {
+      "id": "2604.25684",
+      "arxivId": "2604.25684",
+      "title": "Think Before You Act -- A Neurocognitive Governance Model for Autonomous AI Agents",
+      "briefSummary": "The rapid deployment of autonomous AI agents across enterprise, healthcare, and safety-critical environments has created a fundamental governance gap.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "The rapid deployment of autonomous AI agents across enterprise, healthcare, and safety-critical environments has created a fundamental governance gap. Existing approaches, runtime guardrails, training-time alignment, and post-hoc auditing treat governance as an external constraint rather than an internalized behavioral principle, leaving agents vulnerable to unsafe and irreversible actions. We address this gap by drawing on how humans self-govern naturally: before acting, humans engage deliberate cognitive processes grounded in executive function, inhibitory control, and internalized organizational rules to evaluate whether an intended action is permissible, requires modification, or demands escalation. This paper proposes a neurocognitive governance framework that formally maps this human self-governance process to LLM-driven agent reasoning, establishing a structural parallel between the human brain and the large language model as the cognitive core of an agent. We formalize a Pre-Action Governance Reasoning Loop (PAGRL) in which agents consult a four-layer governance rule set: global, workflow-specific, agent-specific, and situational before every consequential action, mirroring how human organizations structure compliance hierarchies across enterprise, department, and role levels. Implemented on a production-grade retail supply chain workflow, the framework achieves 95% compliance accuracy and zero false escalations to human oversight, demonstrating that embedding governance into agent reasoning produces more consistent, explainable, and auditable compliance than external enforcement. This work offers a principled foundation for autonomous AI agents that govern themselves the way humans do: not because rules are imposed upon them, but because deliberation is embedded in how they think.",
+      "authors": [
+        "Eranga Bandara",
+        "Ross Gore",
+        "Asanga Gunaratna",
+        "Sachini Rajapakse",
+        "Isurunima Kularathna",
+        "Ravi Mukkamala",
+        "Sachin Shetty",
+        "Xueping Liang",
+        "Amin Hass",
+        "Tharaka Hewa",
+        "Abdul Rahman",
+        "Christopher K. Rhea",
+        "Anita H. Clayton",
+        "Preston Samuel",
+        "Atmaram Yarlagadda"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25684",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25684v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25684"
+    },
+    {
+      "id": "2604.25614",
+      "arxivId": "2604.25614",
+      "title": "HotComment: A Benchmark for Evaluating Popularity of Online Comments",
+      "briefSummary": "Online comments play a crucial role in shaping public sentiment and opinion dynamics on social media.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Online comments play a crucial role in shaping public sentiment and opinion dynamics on social media. However, evaluating their popularity remains challenging, not only because it depends on linguistic quality, originality, and emotional resonance, but also because stylistic preferences vary widely across platforms and user groups, causing the same comment to resonate differently in different communities. In this work, we present HotComment, a multimodal benchmark integrating video and text modalities that comprehensively quantifies popularity from three enhanced aspects: (1) Content Quality, which evaluates semantic similarity with ground-truth human comments and extends quality assessment through four interpretable dimensions; (2) Popularity Prediction, based on trends from models trained on real-world interaction data; and (3) User Behavior Simulation, which models the distribution of platform users and approximates \\textbf{engagement scores} through an agent-based framework. Furthermore, we propose StyleCmt, inspired by social ripple effects, where multiple stylistic dimensions align to amplify socially resonant expressions and suppress incongruent ones.",
+      "authors": [
+        "Yafeng Wu",
+        "Yunyao Zhang",
+        "Liliang Ye",
+        "Guiyi Zeng",
+        "Junqing Yu",
+        "Chen Xu",
+        "Zikai Song"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25614",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25614v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25614"
+    },
+    {
+      "id": "2604.25612",
+      "arxivId": "2604.25612",
+      "title": "The Nonverbal Syntax Framework: An Evidence-Based Tiered System for Inferring Learner States from Observable Behavioral Cues",
+      "briefSummary": "Understanding learners' cognitive and affective states underpins adaptive educational systems and effective teaching.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Understanding learners' cognitive and affective states underpins adaptive educational systems and effective teaching. Although research links nonverbal cues to internal states, no framework calibrates them to evidence. We present the Nonverbal Syntax Framework, drawn from a systematic review of 908 studies and 17,043 cue-state mappings (Turaev et al., 2026). The framework addresses three challenges: terminological fragmentation (behaviors described inconsistently), evidence heterogeneity (single observations to replicated findings), and state ambiguity (similar patterns indicating multiple states). Normalization consolidated 5,537 state labels into 2,010 canonical states (63.7%) and 11,521 cues into 6,434 normalized cues (44.2%) across nine behavioral channels. Dual-evidence assessment separately evaluates Component Evidence (coverage of cues and states) and Relationship Evidence (independent studies per cue-state link). 52% of \"Very High\" relationships rest on one paper, so separation enables calibrated rather than overconfident inference from preliminary findings. The framework's four levels comprise a Cue Vocabulary of 6,434 indicators classified as observable/instrumental; State Clusters linking 2,010 states to indicative cues; State Profiles with multimodal behavioral signatures and actionable specifications; and Discriminative Analysis distinguishing 1,215 confusable state pairs. We identify 480 actionable R1-R4 relationships (three or more independent papers), the replicated core of six decades of research, covering 35.5% of mappings across 47 key learning states and 111 distinct indicators. The remaining 91.5% (9,653 single-paper findings) form exploratory hypotheses for replication. The framework gives researchers an empirical foundation for identifying gaps, practitioners evidence-based tools for state inference, and technologists validated features for multimodal detection.",
+      "authors": [
+        "Sherzod Turaev",
+        "Mary John",
+        "Jaloliddin Rustamov",
+        "Zahiriddin Rustamov",
+        "Saja Aldabet",
+        "Nazar Zaki",
+        "Khaled Shuaib"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25612",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25612v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25612",
+      "comment": "40 pages"
+    },
+    {
+      "id": "2604.25602",
+      "arxivId": "2604.25602",
+      "title": "OxyGent: Making Multi-Agent Systems Modular, Observable, and Evolvable via Oxy Abstraction",
+      "briefSummary": "Deploying production-ready multi-agent systems (MAS) in complex industrial environments remains challenging due to limitations in scalability, observability, and autonomous evolution.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Deploying production-ready multi-agent systems (MAS) in complex industrial environments remains challenging due to limitations in scalability, observability, and autonomous evolution. We present OxyGent, an open-source framework that enables modular, observable, and evolvable MAS via a unified Oxy abstraction, in which agents, tools, LLMs, and reasoning flows are encapsulated as pluggable atomic components. This Lego-like assembly paradigm supports scalable system composition and non-intrusive monitoring. To enhance observability, OxyGent introduces permission-driven dynamic planning that replaces rigid workflows with execution graphs generated at runtime, which provide adaptive visualizations. To support continuous evolution, the framework integrates OxyBank, an AI asset management platform that supports automated data backflow, annotation, and joint evolution. Empirical evaluations and real-world case studies show that OxyGent provides a robust and scalable foundation for MAS. OxyGent is publicly available at https://oxygent.jd.com/.",
+      "authors": [
+        "Junxing Hu",
+        "Tianlong Li",
+        "Lei Yu",
+        "Ai Han"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25602",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25602v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25602",
+      "comment": "10 pages, 10 figures, ACL 2026 System Demonstration track"
+    },
+    {
+      "id": "2604.25584",
+      "arxivId": "2604.25584",
+      "title": "DualFact+: A Multimodal Fact Verification Framework for Procedural Video Understanding",
+      "briefSummary": "We introduce DualFact, a dual-layer, multimodal factuality evaluation framework for procedural video captioning.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "We introduce DualFact, a dual-layer, multimodal factuality evaluation framework for procedural video captioning. DualFact separates factual correctness into conceptual facts, capturing abstract semantic roles (e.g., Action, Ingredient, Tool, Location), and contextual facts, capturing their grounded predicate-argument realizations in video. To support complete and role-consistent evaluation, DualFact incorporates implicit argument augmentation (VIA) and contrastive fact sets. We instantiate DualFact in two modes: DualFact-T, which verifies facts against textual evidence, and DualFact-V, which verifies facts against video-grounded visual evidence. Experiments on YouCook3-Fact and CraftBench-Fact show that state-of-the-art multimodal language models produce fluent but often factually incomplete captions, with systematic omissions and role-level inconsistencies. DualFact correlates more strongly with human factuality judgments than standard metrics, particularly for contextual facts, and reveals that caption-only evaluation overestimates hallucinations compared to video-grounded verification. Overall, DualFact offers an interpretable and human-aligned evaluation protocol that highlights persistent challenges in multimodal factual grounding, extending beyond surface-level fluency.",
+      "authors": [
+        "Cennet Oguz",
+        "Yasser Hamidullah",
+        "Josef van Genabith",
+        "Simon Ostermann"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25584",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25584v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25584",
+      "comment": "ACL 2026 Findings"
+    },
+    {
+      "id": "2604.25534",
+      "arxivId": "2604.25534",
+      "title": "Sample-efficient Neuro-symbolic Proximal Policy Optimization",
+      "briefSummary": "Deep Reinforcement Learning (DRL) algorithms often require a large amount of data and struggle in sparse-reward domains with long planning horizons and multiple sub-goals.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Deep Reinforcement Learning (DRL) algorithms often require a large amount of data and struggle in sparse-reward domains with long planning horizons and multiple sub-goals. In this paper, we propose a neuro-symbolic extension of Proximal Policy Optimization (PPO) that transfers partial logical policy specifications learned in easier instances to guide learning in more challenging settings. We introduce two integrations of symbolic guidance: (i) H-PPO-Product, which biases the action distribution at sampling time, and (ii) H-PPO-SymLoss, which augments the PPO loss with a symbolic regularization term. We evaluate our methods on three benchmarks (OfficeWorld, WaterWorld, and DoorKey), showing consistently faster learning and higher return at convergence than PPO and a Reward Machine baseline, also under imperfect symbolic knowledge.",
+      "authors": [
+        "Simone Murari",
+        "Celeste Veronese",
+        "Daniele Meli"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25534",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25534v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25534"
+    },
+    {
+      "id": "2604.25521",
+      "arxivId": "2604.25521",
+      "title": "Automated Adversarial Collaboration for Advancing Theory Building in the Cognitive Sciences",
+      "briefSummary": "Cognitive science often evaluates theories through narrow paradigms and local model comparisons, limiting the integration of evidence across tasks and realizations.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Cognitive science often evaluates theories through narrow paradigms and local model comparisons, limiting the integration of evidence across tasks and realizations. We introduce an automated adversarial collaboration framework for adjudicating among competing theories even when the candidate models and experiments must be discovered during the adjudication process. The system combines LLM-based theory agents, program synthesis, and information-theoretic experimental design in a closed loop. In a simulation study spanning three classic categorization theories, the framework recovered the ground-truth theory across noise settings with weaker reliability in the hardest settings. Together, the framework and findings provide a concrete proof of concept for closed-loop, in-silico theory adjudication in cognitive science.",
+      "authors": [
+        "Suyog Chandramouli",
+        "George Kachergis",
+        "Akshay Jagadish"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25521",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25521v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25521",
+      "comment": "2 pages"
+    },
+    {
+      "id": "2604.25512",
+      "arxivId": "2604.25512",
+      "title": "PHISHREV: A Hybrid Machine Learning and Post-Hoc Non-monotonic Reasoning Framework for Context-Aware Phishing Website Classification",
+      "briefSummary": "Phishing detection systems are predominantly rely on statistical machine learning models, which often lack contextual reasoning and are vulnerable to adversarial manipulation.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Phishing detection systems are predominantly rely on statistical machine learning models, which often lack contextual reasoning and are vulnerable to adversarial manipulation. In this work, we propose a hybrid framework that integrates machine learning classifiers with non-monotonic reasoning using Answer Set Programming (ASP) to enable context-aware decision refinement. The proposed post-hoc reasoning layer incorporates expert knowledge to revise classifier predictions through formal belief revisions. Experimental results indicate that the reasoning module modifies 5.08\\% of classifier outputs, leading to improved decision consistency. A key advantage is that new domain knowledge can be incorporated into the reasoning layer in $\\mathcal{O}(n)$ time, eliminating the need for model retraining.",
+      "authors": [
+        "Mainak Sen",
+        "Kumar Sankar Ray",
+        "Amlan Chakrabarti"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25512",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25512v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25512"
+    },
+    {
+      "id": "2604.25496",
+      "arxivId": "2604.25496",
+      "title": "Improving Zero-Shot Offline RL via Behavioral Task Sampling",
+      "briefSummary": "Offline zero-shot reinforcement learning (RL) aims to learn agents that optimize unseen reward functions without additional environment interaction.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Offline zero-shot reinforcement learning (RL) aims to learn agents that optimize unseen reward functions without additional environment interaction. The standard approach to this problem trains task-conditioned policies by sampling task vectors that define linear reward functions over learned state representations. In most existing algorithms, these task vectors are randomly sampled, implicitly assuming this adequately captures the structure of the task space. We argue that doing so leads to suboptimal zero-shot generalization. To address this limitation, we propose extracting task vectors directly from the offline dataset and using them to define the task distribution used for policy training. We introduce a simple and general reward function extraction procedure that integrates into existing offline zero-shot RL algorithms. Across multiple benchmark environments and baselines, our approach improves zero-shot performance by an average of 20%, highlighting the importance of principled task sampling in offline zero-shot RL.",
+      "authors": [
+        "Nazim Bendib",
+        "Nicolas Perrin-Gilbert",
+        "Olivier Sigaud"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25496",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25496v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25496"
+    },
+    {
+      "id": "2604.25472",
+      "arxivId": "2604.25472",
+      "title": "SciEval: A Benchmark for Automatic Evaluation of K-12 Science Instructional Materials",
+      "briefSummary": "The need to evaluate instructional materials for K-12 science education has become increasingly important, as more educators use generative AI to create instructional materials.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "The need to evaluate instructional materials for K-12 science education has become increasingly important, as more educators use generative AI to create instructional materials. However, the review of instructional materials is time-consuming, expertise-intensive, and difficult to scale, motivating interest in automated evaluation approaches. While large language models (LLMs) have shown strong performance on general evaluation tasks, their performance and reliability on instructional materials remain unclear. To address this gap, we formulate Automatic Instructional Materials Evaluation (AIME) as a generative AI task that predicts scores and evidence using the rubric designed by the educator. We create a benchmark dataset and develop baseline models for AIME. First, we curate the first AIME dataset, SciEval, consisting of instructional materials annotated with pedagogy-aligned evaluation scores and evidence-based rationales. Expert annotations achieve high inter-rater reliability, resulting in a dataset of 273 lesson-level instructional materials evaluated across 13 criteria (N=3549) using the EQuIP rubric. Second, we test mainstream LLMs (GPT, Gemini, Llama, and Qwen) on SciEval and find that none achieve strong performance. Then we fine-tune Qwen3 on SciEval. Results on a held-out test set show that domain-aligned fine-tuning can achieve up to 11 percent performance gains, highlighting the importance of domain-specific fine-tuning for AIME and facilitating the use of LLMs in other educational tasks.",
+      "authors": [
+        "Zhaohui Li",
+        "Peng He",
+        "Zhiyuan Chen",
+        "Honglu Liu",
+        "Zeyuan Wang",
+        "Tingting Li",
+        "Jinjun Xiong"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25472",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25472v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25472",
+      "journalRef": "AIED 2026"
+    },
+    {
+      "id": "2604.25435",
+      "arxivId": "2604.25435",
+      "title": "PI-TTA: Physics-Informed Source-Free Test-Time Adaptation for Robust Human Activity Recognition on Mobile Devices",
+      "briefSummary": "Source-free test-time adaptation (TTA) is appealing for mobile and wearable sensing because it enables on-device personalization from unlabeled test streams without centralizing private data.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Source-free test-time adaptation (TTA) is appealing for mobile and wearable sensing because it enables on-device personalization from unlabeled test streams without centralizing private data. However, sensor-based human activity recognition (HAR) poses challenges that are less pronounced in standard vision benchmarks: behavioral inertial streams are temporally correlated and often exhibit within-session shifts caused by sensor rotation, placement change, and sampling-rate drift. Under this streaming non-i.i.d. setting, widely used vision-style TTA objectives can become unstable, leading to overconfident errors, representation collapse, and catastrophic forgetting. We propose PI-TTA, a lightweight source-free adaptation framework that stabilizes online updates through three physics-consistent constraints: gravity consistency, short-horizon temporal continuity, and spectral stability. PI-TTA updates the same small parameter subset as strong source-free baselines and incurs only modest overhead, making it suitable for on-device deployment. Experiments on USCHAD, PAMAP2, and mHealth under long-sequence stress tests and factorized shift protocols show that PI-TTA mitigates the severe degradation observed in confidence-driven baselines and preserves stable adaptation under sustained streaming conditions. It improves long-sequence accuracy by up to 9.13% and reduces physical-violation rates by 27.5%, 24.1%, and 45.4% on USCHAD, PAMAP2, and mHealth, respectively. These results demonstrate that physics-informed adaptation can improve accuracy, stability, and deployment reliability for real-world mobile sensing systems.",
+      "authors": [
+        "Changyu Li",
+        "Lu Wang",
+        "Ming Lei",
+        "Jiashen Liu",
+        "Yichen Zhang",
+        "Kaishun Wu",
+        "Fei Luo"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25435",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25435v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25435",
+      "comment": "16 pages, 11 figures"
+    },
+    {
+      "id": "2604.25419",
+      "arxivId": "2604.25419",
+      "title": "JURY-RL: Votes Propose, Proofs Dispose for Label-Free RLVR",
+      "briefSummary": "Reinforcement learning with verifiable rewards (RLVR) enhances the reasoning of large language models (LLMs), but standard RLVR often depends on human-annotated answers or carefully curated reward specifications.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Reinforcement learning with verifiable rewards (RLVR) enhances the reasoning of large language models (LLMs), but standard RLVR often depends on human-annotated answers or carefully curated reward specifications. In machine-checkable domains, label-free alternatives such as majority voting or LLM-as-a-judge remove annotation cost but can introduce false positives that destabilize training. We introduce JURY-RL, a label-free RLVR framework that decouples answer proposal from reward disposal: votes from model rollouts propose a candidate answer, and a formal verifier determines whether that candidate can receive positive reward. Concretely, only rollouts matching the plurality-voted answer are rewarded when that answer is successfully verified in Lean. When verification is inconclusive, we invoke ResZero (Residual-Zero), a fallback reward that discards the unverified plurality proposal and redistributes a zero-mean, variance-preserving signal over the residual answers. This design maintains a stable optimization gradient without reinforcing unverifiable consensus. Across three backbone models trained on mathematical data, JURY-RL consistently outperforms other label-free baselines on mathematical reasoning benchmarks and transfers competitively to code generation and general benchmarks. It attains pass@1 performance comparable to supervised ground-truth training, with superior generalization demonstrated by higher pass@k and response diversity.",
+      "authors": [
+        "Xinjie Chen",
+        "Biao Fu",
+        "Jing Wu",
+        "Guoxin Chen",
+        "Xinggao Liu",
+        "Dayiheng Liu",
+        "Minpeng Liao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25419",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25419v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25419",
+      "comment": "Preprint. 32 pages, 9 figures"
+    },
+    {
+      "id": "2604.25369",
+      "arxivId": "2604.25369",
+      "title": "Multi-action Tangled Program Graphs for Multi-task Reinforcement Learning with Continuous Control",
+      "briefSummary": "Over the past few decades, machine learning has been widely used to learn complex tasks.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Over the past few decades, machine learning has been widely used to learn complex tasks. Reinforcement Learning (RL), inspired by human behavior, is a great example, as it involves developing specific behaviours for specific tasks. To further challenge algorithms, Multi-Task RL (MTRL) environments have been introduced, requiring a single model to learn multiple behaviors. The Tangled Program Graph (TPG) algorithm is a Genetic Programming (GP) algorithm designed for discrete MTRL environments. Recently, the MAPLE algorithm has been proposed, as another GP algorithm that achieves high results in single task continuous RL environments. A variation of the TPG is proposed alongside MAPLE, named Multi-Action TPG (MATPG) that aggregates MAPLE agents, and creates a control flow to activate them. Initially tested on single task RL environments only, MATPG achieved similar results to MAPLE. In this work, we present a new benchmark based on the MuJoCo Half Cheetah from Gymnasium. This benchmark features five distinct obstacles that are randomly positioned in front of the agent, each of which demands a unique behavior. This benchmark serves as a use case for MATPG, to prove its ability as a GP solution for continuous MTRL environments. Our experiments demonstrate its superiority in this multi-task use case when combined with lexicase selection. Furthermore, we examine the interpretability of the evolved graph, revealing that the decision flow of the model is fully interpretable.",
+      "authors": [
+        "Quentin Vacher",
+        "Nicolas Beuve",
+        "Mickaël Dardaillon",
+        "Karol Desnos"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25369",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25369v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25369",
+      "journalRef": "EuroGP 2026, Apr 2026, Toulouse, France. pp. 259-274"
+    },
+    {
+      "id": "2604.25345",
+      "arxivId": "2604.25345",
+      "title": "Plausible but Wrong: A case study on Agentic Failures in Astrophysical Workflows",
+      "briefSummary": "Agentic AI systems are increasingly being integrated into scientific workflows, yet their behavior under realistic conditions remains insufficiently understood.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Agentic AI systems are increasingly being integrated into scientific workflows, yet their behavior under realistic conditions remains insufficiently understood. We evaluate CMBAgent across two workflow paradigms and eighteen astrophysical tasks. In the One-Shot setting, access to domain-specific context yields an approximately ~6x performance improvement (0.85 vs. ~0 without context), with the primary failure mode being silent incorrect computation - syntactically valid code that produces plausible but inaccurate results. In the Deep Research setting, the system frequently exhibits silent failures across stress tests, producing physically inconsistent posteriors without self-diagnosis. Overall, performance is strong on well-specified tasks but degrades on problems designed to probe reasoning limits, often without visible error signals. These findings highlight that the most concerning failure mode in agentic scientific workflows is not overt failure, but confident generation of incorrect results. We release our evaluation framework to facilitate systematic reliability analysis of scientific AI agents.",
+      "authors": [
+        "Shivam Rawat",
+        "Lucie Flek"
+      ],
+      "categories": [
+        "cs.AI",
+        "astro-ph.IM"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25345",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25345v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25345"
+    },
+    {
+      "id": "2604.25256",
+      "arxivId": "2604.25256",
+      "title": "AutoResearchBench: Benchmarking AI Agents on Complex Scientific Literature Discovery",
+      "briefSummary": "Autonomous scientific research is significantly advanced thanks to the development of AI agents.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Autonomous scientific research is significantly advanced thanks to the development of AI agents. One key step in this process is finding the right scientific literature, whether to explore existing knowledge for a research problem, or to acquire evidence for verifying assumptions and supporting claims. To assess AI agents' capability in driving this process, we present AutoResearchBench, a dedicated benchmark for autonomous scientific literature discovery. AutoResearchBench consists of two complementary task types: (1) Deep Research, which requires tracking down a specific target paper through a progressive, multi-step probing process, and (2) Wide Research, which requires comprehensively collecting a set of papers satisfying given conditions. Compared to previous benchmarks on agentic web browsing, AutoResearchBench is distinguished along three dimensions: it is research-oriented, calling for in-depth comprehension of scientific concepts; literature-focused, demanding fine-grained utilization of detailed information; and open-ended, involving an unknown number of qualified papers and thus requiring deliberate reasoning and search throughout. These properties make AutoResearchBench uniquely suited for evaluating autonomous research capabilities, and extraordinarily challenging. Even the most powerful LLMs, despite having largely conquered general agentic web-browsing benchmarks such as BrowseComp, achieve only 9.39% accuracy on Deep Research and 9.31% IoU on Wide Research, while many other strong baselines fall below 5%. We publicly release the dataset and evaluation pipeline to facilitate future research in this direction. We publicly release the dataset, evaluation pipeline, and code at https://github.com/CherYou/AutoResearchBench.",
+      "authors": [
+        "Lei Xiong",
+        "Kun Luo",
+        "Ziyi Xia",
+        "Wenbo Zhang",
+        "Jin-Ge Yao",
+        "Zheng Liu",
+        "Jingying Shao",
+        "Jianlyu Chen",
+        "Hongjin Qian",
+        "Xi Yang",
+        "Qian Yu",
+        "Hao Li",
+        "Chen Yue",
+        "Xiaan Du",
+        "Yuyang Wang",
+        "Yesheng Liu",
+        "Haiyu Xu",
+        "Zhicheng Dou"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25256",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25256v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25256"
+    },
+    {
+      "id": "2604.25224",
+      "arxivId": "2604.25224",
+      "title": "ValueAlpha: Agreement-Gated Stress Testing of LLM-Judged Investment Rationales Before Returns Are Observable",
+      "briefSummary": "Long-horizon investment decisions create a pre-realization evaluation problem: realized returns are the eventual arbiter of investment quality, but they arrive too late and are too noisy to guide many model-development...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Long-horizon investment decisions create a pre-realization evaluation problem: realized returns are the eventual arbiter of investment quality, but they arrive too late and are too noisy to guide many model-development and governance decisions. LLM judges offer a tempting substitute for pre-deployment evaluation of AI-finance systems, but unvalidated judges may reward verbosity, confidence, or rubric mimicry rather than financial judgment. This paper introduces \\textbf{ValueAlpha}, a preregistered agreement-gated stress-test protocol for deciding when LLM-judged investment-rationale claims are publishable, qualified, or invalid. In a controlled market-state capital-allocation prototype with 1,000 honest decision cycles and 100 preregistered adversarial controls (1,100 trajectories, 5,500 judge calls), ValueAlpha clears the aggregate agreement gate at \\(\\barκ_w = 0.7168\\) but prevents several overclaims. Lower-rank systems collapse into a tie-class, one rubric dimension fails the per-dimension gate (\\texttt{constraint\\_awareness}, \\(\\barκ_w = 0.2022\\)), single-judge rankings are family-dependent, and terse-correct rationales receive a \\(Δ= -2.81\\) rubric-point penalty relative to honest rationales. A targeted anchor-specificity probe further shows that financial constructs such as constraint awareness are operationally load-bearing. The contribution is therefore not a leaderboard and not a claim to measure true investment skill. ValueAlpha is a pre-calibration metrology layer for AI-finance evaluation: it determines whether a proposed LLM-judge-based investment-rationale claim is stable enough, agreed enough, and uncontaminated enough to be reported at all.",
+      "authors": [
+        "Sidi Chang",
+        "Peiying Zhu",
+        "Yuxiao Chen"
+      ],
+      "categories": [
+        "cs.AI",
+        "q-fin.CP"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25224",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25224v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25224",
+      "comment": "9 pages, Submitted to IEEE Computational Intelligence in Financial Engineering and Economics (CIFEr) 2026, Tokyo, Japan"
+    },
+    {
+      "id": "2604.25098",
+      "arxivId": "2604.25098",
+      "title": "Doing More With Less: Revisiting the Effectiveness of LLM Pruning for Test-Time Scaling",
+      "briefSummary": "While current Large Language Models (LLMs) exhibit remarkable reasoning capabilities through test-time compute scaling (TTS), their massive parameter counts and high inference costs have motivated the development of pru...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "While current Large Language Models (LLMs) exhibit remarkable reasoning capabilities through test-time compute scaling (TTS), their massive parameter counts and high inference costs have motivated the development of pruning methods that can reduce model size without sacrificing performance. However, specific to reasoning LLMs, prior work has shown that structured pruning (methods which removes entire set of layer blocks), significantly degrades TTS reasoning performance. In this work, we revisit this assumption and instead investigate whether unstructured pruning (methods that carefully remove only certain redundant/detrimental weights) exhibits similar limitations. Surprisingly, our extensive experiments across four reasoning benchmarks on two reasoning LLMs: s1.1-7B and Qwen3-8B, consistently show that unstructured pruning augments TTS performance compared to structured pruning, and at times can even outperform the unpruned full-weight LLMs. Furthermore, we also empirically study the impact of different layer-wise sparsity allocation strategies, which are an important parametric choice for instantiating unstructured pruning methods. These findings challenge the conventional notion that pruning always reduces TTS performance and in fact, suggest that carefully undertaken pruning can improve TTS effectiveness even further.",
+      "authors": [
+        "Ocean Monjur",
+        "Shahriar Kabir Nahin",
+        "Anshuman Chhabra"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25098",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25098v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25098"
+    },
+    {
+      "id": "2604.25088",
+      "arxivId": "2604.25088",
+      "title": "Cooperate to Compete: Strategic Coordination in Multi-Agent Conquest",
+      "briefSummary": "Language Model (LM)-based agents remain largely untested in mixed-motive settings where agents must leverage short-term cooperation for long-term competitive goals (e.g., multi-party politics).",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-28",
+      "updatedAt": "2026-04-28",
+      "abstract": "Language Model (LM)-based agents remain largely untested in mixed-motive settings where agents must leverage short-term cooperation for long-term competitive goals (e.g., multi-party politics). We introduce Cooperate to Compete (C2C), a multi-agent environment where players can engage in private negotiations while competing to be the first to achieve their secret objective. Players have asymmetric objectives and negotiations are non-binding, allowing alliances to form and break as players' short-term interests align and diverge. We run AI only games and conduct a user study pitting human players against AI opponents. We identify significant differences between human and AI negotiation behaviors, finding that humans favor lower-complexity deals and are significantly less reliable partners compared to LM-based agents. We also find that humans are more aggressive negotiators, accepting deals without a counteroffer only 56.3% of the time compared to 67.6% for LM-based agents. Through targeted prompting inspired by these findings, we modify agents' negotiation behavior and improve win rates from 22.2% to 32.7%. We run over 1,100 games with over 16,000 private conversations totaling 15.2 million tokens and over 150,000 player actions. Our results establish C2C as a testbed for studying and building LM-based agents that can navigate the sophisticated coordination required for real-world deployments. The game, code, and dataset may be found at https://negotiationgame.io/c2c.",
+      "authors": [
+        "Abigail O'Neill",
+        "Alan Zhu",
+        "Mihran Miroyan",
+        "Narges Norouzi",
+        "Joseph E. Gonzalez"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25088",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25088v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25088"
+    },
+    {
+      "id": "2604.25040",
+      "arxivId": "2604.25040",
+      "title": "Leverage Laws: A Per-Task Framework for Human-Agent Collaboration",
+      "briefSummary": "We propose a per-task leverage ratio for human-agent collaboration: human work displaced by an agent, divided by the human time required to specify the task, resolve mid-run interrupts, and review the result.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-04-27",
+      "updatedAt": "2026-04-27",
+      "abstract": "We propose a per-task leverage ratio for human-agent collaboration: human work displaced by an agent, divided by the human time required to specify the task, resolve mid-run interrupts, and review the result. The denominator decomposes into three channels through which a conserved per-task information requirement must flow, each with its own time-cost scalar. We show that information density itself is directional and bounded by separate ceilings on human-to-agent and agent-to-human flow, and that the asymptotic behavior of leverage decomposes into two scaling axes (capability and memory) with a non-zero floor on the planning term set by irreducible task novelty bounded by human throughput. We extend this per-task analysis to a windowed leverage measure that accommodates recurring tasks, spawned subtasks, and amortized system-design investment. The per-task ceiling does not bind the windowed measure, though both remain bounded: $L_{\\text{task}}$ by per-task novelty, $L_{\\text{window}}$ by the stock of accumulated planning investment that pays out within the window. The framework operationalizes aspects of earlier qualitative work on supervisory control (Sheridan, 1992), common ground (Clark & Brennan, 1991), and mixed-initiative interaction (Horvitz, 1999) within a single normative ratio, and produces a list of testable empirical questions that we leave as open problems.",
+      "authors": [
+        "Stan Loosmore"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2604.25040",
+      "pdfUrl": "https://arxiv.org/pdf/2604.25040v1",
+      "htmlUrl": "https://arxiv.org/html/2604.25040",
+      "comment": "10 pages, 2 figures"
+    },
     {
       "id": "2604.24717",
       "arxivId": "2604.24717",
