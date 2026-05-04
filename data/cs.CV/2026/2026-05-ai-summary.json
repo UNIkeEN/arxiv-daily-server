@@ -1,0 +1,1658 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-05-04T05:53:41Z",
+  "category": "cs.CV",
+  "yearMonth": "2026-05",
+  "promptVersion": "paper-ai-summary/v1",
+  "model": "deepseek-v4-flash",
+  "paperCount": 49,
+  "papers": [
+    {
+      "arxivId": "2605.00825",
+      "aiSummary": {
+        "tldr": "提出后验增强流匹配（PAFM），通过多候选目标的后验期望替代单目标监督，降低梯度方差，在多个图像生成基准上提升FID最多3.4。",
+        "motivation": "流匹配（Flow Matching）训练时每个样本仅监督单条轨迹和中间点，导致训练信号稀疏且高方差，容易引发流坍塌（flow collapse），即模型记忆特定源-目标配对，泛化能力差。",
+        "method": "PAFM将单目标监督替换为对给定中间状态和条件下有效目标补全的后验期望。通过分解后验为中间状态在假设终点下的似然和该终点在条件下的先验，并利用重要性采样构造多个候选目标的混合，从而获得原始FM目标的无偏估计并大幅降低梯度方差。",
+        "result": "在ImageNet和CC12M数据集上，不同模型尺度（SiT-B/2, SiT-XL/2）和架构（SiT, MMDiT）下，PAFM相比FM提升FID50K最高达3.4，且计算开销增加可忽略。",
+        "conclusion": "PAFM是一种理论上严谨、实践中高效的流匹配增强方法，能显著改善高维图像生成的质量和稳定性。",
+        "markdown": "### TL;DR\n提出后验增强流匹配（PAFM），通过多候选目标的后验期望替代单目标监督，降低梯度方差，在多个图像生成基准上提升FID最多3.4。\n\n### 动机\n流匹配（Flow Matching）训练时每个样本仅监督单条轨迹和中间点，导致训练信号稀疏且高方差，容易引发流坍塌（flow collapse），即模型记忆特定源-目标配对，泛化能力差。\n\n### 方法\nPAFM将单目标监督替换为对给定中间状态和条件下有效目标补全的后验期望。通过分解后验为中间状态在假设终点下的似然和该终点在条件下的先验，并利用重要性采样构造多个候选目标的混合，从而获得原始FM目标的无偏估计并大幅降低梯度方差。\n\n### 效果\n在ImageNet和CC12M数据集上，不同模型尺度（SiT-B/2, SiT-XL/2）和架构（SiT, MMDiT）下，PAFM相比FM提升FID50K最高达3.4，且计算开销增加可忽略。\n\n### 结论\nPAFM是一种理论上严谨、实践中高效的流匹配增强方法，能显著改善高维图像生成的质量和稳定性。"
+      },
+      "keywordsZh": [
+        "后验增强流匹配",
+        "流匹配",
+        "图像生成",
+        "梯度方差缩减",
+        "流坍塌",
+        "重要性采样",
+        "扩散模型",
+        "生成模型"
+      ],
+      "keywordsEn": [
+        "Posterior Augmented Flow Matching",
+        "Flow Matching",
+        "image generation",
+        "gradient variance reduction",
+        "flow collapse",
+        "importance sampling",
+        "diffusion models",
+        "generative models"
+      ],
+      "semanticQueryZh": "后验增强流匹配方法 降低梯度方差 图像生成 流坍塌 无偏估计",
+      "generatedAt": "2026-05-04T05:51:21Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00814",
+      "aiSummary": {
+        "tldr": "提出持久视觉记忆（PVM）模块，作为FFN并行分支，缓解LVLM长文本生成中视觉信号稀释问题，在Qwen3-VL上显著提升复杂推理任务准确率。",
+        "motivation": "自回归大型视觉语言模型在长文本生成时，视觉注意力随序列长度衰减，导致视觉信号被稀释，影响复杂多模态推理性能。",
+        "method": "设计轻量可学习的持久视觉记忆（PVM）模块，作为前馈网络的并行分支，建立与距离无关的检索路径，直接提供视觉嵌入，从结构上抑制生成深度中的信号抑制。",
+        "result": "在Qwen3-VL的4B和8B规模上，PVM以极小参数开销带来持续的平均准确率提升，尤其在需要持续视觉感知的复杂推理任务中。深入分析表明PVM能抵抗长度导致的信号衰减并加速内部预测收敛。",
+        "conclusion": "PVM是一种有效且轻量的方案，能增强LVLM在长序列生成中的视觉感知稳定性，适合部署于需要持续视觉注意的场景。",
+        "markdown": "### TL;DR\n提出持久视觉记忆（PVM）模块，作为FFN并行分支，缓解LVLM长文本生成中视觉信号稀释问题，在Qwen3-VL上显著提升复杂推理任务准确率。\n\n### 动机\n自回归大型视觉语言模型在长文本生成时，视觉注意力随序列长度衰减，导致视觉信号被稀释，影响复杂多模态推理性能。\n\n### 方法\n设计轻量可学习的持久视觉记忆（PVM）模块，作为前馈网络的并行分支，建立与距离无关的检索路径，直接提供视觉嵌入，从结构上抑制生成深度中的信号抑制。\n\n### 效果\n在Qwen3-VL的4B和8B规模上，PVM以极小参数开销带来持续的平均准确率提升，尤其在需要持续视觉感知的复杂推理任务中。深入分析表明PVM能抵抗长度导致的信号衰减并加速内部预测收敛。\n\n### 结论\nPVM是一种有效且轻量的方案，能增强LVLM在长序列生成中的视觉感知稳定性，适合部署于需要持续视觉注意的场景。"
+      },
+      "keywordsZh": [
+        "持久视觉记忆",
+        "视觉信号稀释",
+        "大型视觉语言模型",
+        "长文本生成",
+        "视觉感知",
+        "轻量模块",
+        "复杂推理",
+        "Qwen3-VL"
+      ],
+      "keywordsEn": [
+        "persistent visual memory",
+        "visual signal dilution",
+        "large vision-language model",
+        "long text generation",
+        "visual perception",
+        "lightweight module",
+        "complex reasoning",
+        "Qwen3-VL"
+      ],
+      "semanticQueryZh": "视觉信号稀释 持久视觉记忆 长文本生成 视觉语言模型 轻量模块 复杂推理",
+      "generatedAt": "2026-05-04T05:51:20Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00809",
+      "aiSummary": {
+        "tldr": "GenLIP提出一种极简的生成式预训练框架，让视觉Transformer直接预测语言token，在多模态基准上达到或超越强基线。",
+        "motivation": "现有视觉-语言预训练方法通常依赖对比学习或额外解码器，与语言模型的自回归特性不够契合，因此需要一种更简洁、对齐更好的预训练方式。",
+        "method": "GenLIP在标准语言建模目标下，训练ViT直接从视觉token预测语言token，无需对比批量构建或额外文本解码器，整个框架仅含单一Transformer。",
+        "result": "在Recap-DataComp-1B的8B样本上预训练后，GenLIP在多个多模态基准上匹配或超越强基线；在多分辨率、原始宽高比图像上继续预训练，进一步提升了OCR和图表理解等细节敏感任务的性能。",
+        "conclusion": "GenLIP是一种简单、可扩展且高效的视觉编码器预训练方法，为多模态大模型提供了有力的基础。",
+        "markdown": "### TL;DR\nGenLIP提出一种极简的生成式预训练框架，让视觉Transformer直接预测语言token，在多模态基准上达到或超越强基线。\n\n### 动机\n现有视觉-语言预训练方法通常依赖对比学习或额外解码器，与语言模型的自回归特性不够契合，因此需要一种更简洁、对齐更好的预训练方式。\n\n### 方法\nGenLIP在标准语言建模目标下，训练ViT直接从视觉token预测语言token，无需对比批量构建或额外文本解码器，整个框架仅含单一Transformer。\n\n### 效果\n在Recap-DataComp-1B的8B样本上预训练后，GenLIP在多个多模态基准上匹配或超越强基线；在多分辨率、原始宽高比图像上继续预训练，进一步提升了OCR和图表理解等细节敏感任务的性能。\n\n### 结论\nGenLIP是一种简单、可扩展且高效的视觉编码器预训练方法，为多模态大模型提供了有力的基础。"
+      },
+      "keywordsZh": [
+        "生成式预训练",
+        "视觉Transformer",
+        "多模态大模型",
+        "语言建模",
+        "图像理解",
+        "OCR",
+        "图表理解"
+      ],
+      "keywordsEn": [
+        "Generative pre-training",
+        "Vision Transformer",
+        "Multimodal large language model",
+        "Language modeling",
+        "Image understanding",
+        "OCR",
+        "Chart understanding"
+      ],
+      "semanticQueryZh": "生成式视觉语言预训练框架 用于多模态大模型 极简设计 无需对比学习或额外解码器",
+      "generatedAt": "2026-05-04T05:51:20Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00799",
+      "aiSummary": {
+        "tldr": "提出GMGaze，结合CLIP、多尺度Transformer和稀疏MoE实现上下文感知的注视估计，在多个基准上达到最优。",
+        "motivation": "现有注视估计方法（CNN、Transformer、CLIP）存在特征晚融合、缺乏因子感知条件和容量扩展不实用等问题。",
+        "method": "采用多尺度Transformer架构，通过语义原型条件（光照、背景、头部姿态、外观四个原型库）调制CLIP全局嵌入生成两个上下文偏置全局token，与CLIP patch和CNN token在第一层进行早期融合，然后每个token通过稀疏MoE模块实现条件计算。跨域适应引入对抗域适应和特征分离损失。",
+        "result": "在MPIIFaceGaze、EYEDIAP、Gaze360、ETH-XGaze上平均角误差分别为2.49°、3.22°、10.16°、1.44°，域内设置均超越基线；跨域两个标准转移路径达到SOTA。",
+        "conclusion": "GMGaze有效解决了注视估计中的上下文感知和跨域适应问题，性能显著提升。",
+        "markdown": "### TL;DR\n提出GMGaze，结合CLIP、多尺度Transformer和稀疏MoE实现上下文感知的注视估计，在多个基准上达到最优。\n\n### 动机\n现有注视估计方法存在特征晚融合、缺乏因子感知条件和容量扩展不实用等问题。\n\n### 方法\n采用多尺度Transformer架构，通过语义原型条件（光照、背景、头部姿态、外观四个原型库）调制CLIP全局嵌入生成两个上下文偏置全局token，与CLIP patch和CNN token在第一层进行早期融合，然后每个token通过稀疏MoE模块实现条件计算。跨域适应引入对抗域适应和特征分离损失。\n\n### 效果\n在MPIIFaceGaze、EYEDIAP、Gaze360、ETH-XGaze上平均角误差分别为2.49°、3.22°、10.16°、1.44°，域内设置均超越基线；跨域两个标准转移路径达到SOTA。\n\n### 结论\nGMGaze有效解决了注视估计中的上下文感知和跨域适应问题，性能显著提升。"
+      },
+      "keywordsZh": [
+        "注视估计",
+        "多尺度Transformer",
+        "CLIP",
+        "混合专家模型",
+        "上下文感知",
+        "域适应",
+        "语义原型条件",
+        "稀疏MoE"
+      ],
+      "keywordsEn": [
+        "gaze estimation",
+        "multi-scale transformer",
+        "CLIP",
+        "mixture of experts",
+        "context-aware",
+        "domain adaptation",
+        "semantic prototype conditioning",
+        "sparse MoE"
+      ],
+      "semanticQueryZh": "基于CLIP和多尺度Transformer的上下文感知注视估计方法",
+      "generatedAt": "2026-05-04T05:51:26Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00789",
+      "aiSummary": {
+        "tldr": "LightKV通过跨模态消息传递和提示感知压缩，仅用55%视觉token就将LVLMs的KV缓存大小减半，计算量减少40%，且性能保持。",
+        "motivation": "在大型视觉-语言模型(LVLM)推理中，直接使用全量视觉token的KV缓存会导致巨大的GPU内存开销。",
+        "method": "提出LightKV，利用视觉token嵌入间的冗余，通过文本提示引导的跨模态消息传递在prefill阶段逐步压缩视觉token。",
+        "result": "在8个开源LVLM和8个基准上仅用55%原始视觉token，KV缓存减半，计算量降低最多40%，通用性能不变并超越基线。",
+        "conclusion": "LightKV是高效的LVLM KV缓存压缩方案，证明了提示感知跨模态压缩的有效性。",
+        "markdown": "**TL;DR**: LightKV通过跨模态消息传递和提示感知压缩，仅用55%视觉token就将LVLMs的KV缓存大小减半，计算量减少40%，且性能保持。\n\n**动机**: 直接使用全量视觉token的KV缓存会导致巨大GPU内存开销。\n\n**方法**: 利用视觉token嵌入间的冗余，在文本提示引导下进行跨模态消息传递和逐步压缩。\n\n**效果**: 在8个开源LVLM和8个基准上，使用55%视觉token即可将KV缓存减半、计算量降低40%，性能不变且优于基线。\n\n**结论**: 提示感知跨模态压缩是减少LVLM推理内存开销的有效手段。"
+      },
+      "keywordsZh": [
+        "轻量KV缓存",
+        "视觉语言模型",
+        "跨模态压缩",
+        "提示感知",
+        "内存优化",
+        "推理加速",
+        "视觉token压缩"
+      ],
+      "keywordsEn": [
+        "Lightweight KV cache",
+        "Vision-Language Models",
+        "Cross-modal compression",
+        "Prompt-aware",
+        "Memory optimization",
+        "Inference acceleration",
+        "Visual token compression"
+      ],
+      "semanticQueryZh": "面向大型视觉语言模型的轻量KV缓存压缩方法，利用跨模态消息传递和提示感知减少推理内存开销",
+      "generatedAt": "2026-05-04T05:51:33Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00781",
+      "aiSummary": {
+        "tldr": "Map2World 提出基于用户自定义分割图的条件文本到3D世界生成框架，解决了现有方法尺度不一致和布局受限的问题，并引入细节增强网络提升精细度。",
+        "motivation": "3D世界生成在沉浸式内容创建和自动驾驶仿真中至关重要，但现有方法受限于网格布局且对象尺度全局不一致，缺乏灵活性和用户可控性。",
+        "method": "提出 Map2World 框架，以用户定义的任意形状和尺度的分割图作为条件，确保全局尺度一致性；并设计细节增强网络，利用全局结构信息添加精细细节，同时利用预训练资产生成器的强先验提升泛化能力。",
+        "result": "实验表明，Map2World 在用户可控性、尺度一致性和内容连贯性上显著优于现有方法，能在复杂条件下生成高质量3D世界。",
+        "conclusion": "Map2World 提供了一种灵活、一致且用户可控的3D世界生成方案，适用于大规模场景构建，且无需大量训练数据。",
+        "markdown": "### TL;DR\nMap2World 提出基于用户自定义分割图的条件文本到3D世界生成框架，解决了现有方法尺度不一致和布局受限的问题，并引入细节增强网络提升精细度。\n\n### 动机\n3D世界生成在沉浸式内容创建和自动驾驶仿真中至关重要，但现有方法受限于网格布局且对象尺度全局不一致，缺乏灵活性和用户可控性。\n\n### 方法\n提出 Map2World 框架，以用户定义的任意形状和尺度的分割图作为条件，确保全局尺度一致性；并设计细节增强网络，利用全局结构信息添加精细细节，同时利用预训练资产生成器的强先验提升泛化能力。\n\n### 效果\n实验表明，Map2World 在用户可控性、尺度一致性和内容连贯性上显著优于现有方法，能在复杂条件下生成高质量3D世界。\n\n### 结论\nMap2World 提供了一种灵活、一致且用户可控的3D世界生成方案，适用于大规模场景构建，且无需大量训练数据。"
+      },
+      "keywordsZh": [
+        "3D世界生成",
+        "分割图条件",
+        "尺度一致性",
+        "细节增强网络",
+        "用户可控生成",
+        "文本到3D"
+      ],
+      "keywordsEn": [
+        "3D world generation",
+        "segment map conditioning",
+        "scale consistency",
+        "detail enhancer network",
+        "user-controllable generation",
+        "text-to-3D"
+      ],
+      "semanticQueryZh": "基于分割图的条件文本生成3D世界，尺度一致且用户可控",
+      "generatedAt": "2026-05-04T05:51:30Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00764",
+      "aiSummary": {
+        "tldr": "提出融合人眼注视数据的城市主观感知建模方法，通过新数据集和框架验证了眼动信号对预测城市感知的有效性。",
+        "motivation": "现有城市感知计算模型大多直接从街景图像建模，忽略了人类通过注视等感知过程形成主观判断的机制。",
+        "method": "构建Place Pulse-Gaze数据集，包含街景图像、同步眼动数据及感知标签，提出Gaze-Guided Urban Perception Framework，探索纯眼动、眼动与显式语义场景融合、眼动与隐式视觉表示融合三种设置。",
+        "result": "实验表明单独眼动数据已携带有效预测信号，眼动与场景表示融合在语义和隐式表示上均提升预测性能。",
+        "conclusion": "融入人类感知过程（如眼动）对城市场景理解至关重要，为多模态城市计算开辟新方向。",
+        "markdown": "### TL;DR\n提出融合人眼注视数据的城市主观感知建模方法，通过新数据集和框架验证了眼动信号对预测城市感知的有效性。\n\n### 动机\n现有计算模型直接从街景图像建模，忽略人类通过注视形成感知的过程。\n\n### 方法\n构建Place Pulse-Gaze数据集（含同步眼动和感知标签），提出注视引导框架，探索纯眼动、眼动+语义场景、眼动+隐式表示三种融合策略。\n\n### 效果\n单独眼动即有预测能力，融合场景表示进一步提升性能。\n\n### 结论\n强调融入眼动等人类感知过程的重要性，推动多模态城市计算。"
+      },
+      "keywordsZh": [
+        "城市感知",
+        "眼动追踪",
+        "主观评价",
+        "多模态学习",
+        "街景图像",
+        "人类视觉注意"
+      ],
+      "keywordsEn": [
+        "urban perception",
+        "eye-tracking",
+        "subjective evaluation",
+        "multimodal learning",
+        "street view images",
+        "human gaze"
+      ],
+      "semanticQueryZh": "融合眼动追踪的城市主观感知建模方法",
+      "generatedAt": "2026-05-04T05:51:30Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00744",
+      "aiSummary": {
+        "tldr": "提出量子Sobel边缘检测与Harris角点检测方法，使用FRQI和QPIE编码，QPIE在有限测量下结果更稳定，但整体成本受状态制备和测量主导。",
+        "motivation": "边缘和角点检测是计算机视觉的基础任务，量子计算有望提供加速或新范式，但现有量子实现存在效率或稳定性问题。",
+        "method": "基于量子梯度计算（lag-2差值）和两种编码（FRQI、QPIE）实现Sobel边缘检测与Harris角点检测，并引入经典后处理减少假阳性。",
+        "result": "量子电路输出与经典Sobel/Harris一致；QPIE配置在有限测量次数下比FRQI更稳定；梯度计算在电路层面高效，但整体受状态制备和测量开销主导。",
+        "conclusion": "该工作展示了经典边缘/角点检测的功能性量子实现，但端到端加速需依赖未来量子硬件改进。",
+        "markdown": "### TL;DR\n提出量子Sobel边缘检测与Harris角点检测方法，使用FRQI和QPIE编码，QPIE在有限测量下结果更稳定，但整体成本受状态制备和测量主导。\n\n### 动机\n边缘和角点检测是计算机视觉的基础任务，量子计算有望提供加速或新范式，但现有量子实现存在效率或稳定性问题。\n\n### 方法\n基于量子梯度计算（lag-2差值）和两种编码（FRQI、QPIE）实现Sobel边缘检测与Harris角点检测，并引入经典后处理减少假阳性。\n\n### 效果\n量子电路输出与经典Sobel/Harris一致；QPIE配置在有限测量次数下比FRQI更稳定；梯度计算在电路层面高效，但整体受状态制备和测量开销主导。\n\n### 结论\n该工作展示了经典边缘/角点检测的功能性量子实现，但端到端加速需依赖未来量子硬件改进。"
+      },
+      "keywordsZh": [
+        "量子图像处理",
+        "边缘检测",
+        "Sobel算子",
+        "Harris角点检测",
+        "FRQI",
+        "QPIE",
+        "量子梯度计算",
+        "无噪声模拟"
+      ],
+      "keywordsEn": [
+        "Quantum image processing",
+        "Edge detection",
+        "Sobel operator",
+        "Harris corner detection",
+        "FRQI",
+        "QPIE",
+        "Quantum gradient computation",
+        "Noiseless simulation"
+      ],
+      "semanticQueryZh": "量子Sobel边缘检测 Harris角点检测 量子图像编码 FRQI QPIE 对比",
+      "generatedAt": "2026-05-04T05:51:35Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00722",
+      "aiSummary": {
+        "tldr": "提出GSACP，一种端到端在线批内特征亲和传播方法，用于单点监督红外小目标检测，在SIRST3上达到0.6674 mIoU，虚警相对降低38%。",
+        "motivation": "单点监督红外小目标检测能大幅降低密集标注成本，现有方法依赖显式离线伪标签构建，流程复杂。本文探索更简洁的在线端到端替代方案。",
+        "method": "提出GSACP，通过批内点锚定特征亲和传播在线生成点到掩码的监督信号，利用局部图像先验门控硬间隔特征亲和，完全消除外部标签演化循环。理论分析了自参考传播漂移问题并设计了消融实验。",
+        "result": "在SIRST3数据集上，GSACP-Final实现了0.6674 mIoU，并与PAL相比虚警伪影相对减少38%。",
+        "conclusion": "批内特征传播为强调虚警抑制的部署场景提供了紧凑的替代方案，同时揭示了端到端范式的性能边界。",
+        "markdown": "### TL;DR\n提出GSACP，一种端到端在线批内特征亲和传播方法，用于单点监督红外小目标检测，在SIRST3上达到0.6674 mIoU，虚警相对降低38%。\n\n### 动机\n单点监督红外小目标检测能大幅降低密集标注成本，现有方法依赖显式离线伪标签构建，流程复杂。本文探索更简洁的在线端到端替代方案。\n\n### 方法\n提出GSACP，通过批内点锚定特征亲和传播在线生成点到掩码的监督信号，利用局部图像先验门控硬间隔特征亲和，完全消除外部标签演化循环。理论分析了自参考传播漂移问题并设计了消融实验。\n\n### 效果\n在SIRST3数据集上，GSACP-Final实现了0.6674 mIoU，并与PAL相比虚警伪影相对减少38%。\n\n### 结论\n批内特征传播为强调虚警抑制的部署场景提供了紧凑的替代方案，同时揭示了端到端范式的性能边界。"
+      },
+      "keywordsZh": [
+        "单点监督",
+        "红外小目标检测",
+        "特征亲和传播",
+        "端到端",
+        "自参考传播漂移",
+        "低虚警",
+        "GSACP"
+      ],
+      "keywordsEn": [
+        "single-point supervision",
+        "infrared small target detection",
+        "feature affinity propagation",
+        "end-to-end",
+        "self-referential propagation drift",
+        "low false alarm",
+        "GSACP"
+      ],
+      "semanticQueryZh": "单点监督红外小目标检测 端到端特征亲和传播 低虚警方法",
+      "generatedAt": "2026-05-04T05:51:39Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00719",
+      "aiSummary": {
+        "tldr": "提出奖励引导自强化无监督图像去雨方法，利用训练中偶尔出现的高质量去雨结果引导优化，在多个数据集上达到最先进水平。",
+        "motivation": "无监督去雨因缺乏强约束而难以收敛，尤其是雨退化复杂多样，但训练中偶尔出现的高质量去雨结果可被利用来指导优化。",
+        "method": "包含奖励回收和自强化训练两阶段。奖励回收阶段提出基于图像质量评估的动态奖励回收机制，持续收集高质量去雨结果；自强化阶段将这些奖励融入模型优化，约束优化空间，提升去雨输出与干净图像的匹配度。",
+        "result": "在配对合成、配对真实和未配对真实图像数据集上，主观和客观IQA指标均优于现有无监督去雨方法，达到SOTA性能。",
+        "conclusion": "自强化策略可迁移至其他无监督去雨方法，且去雨框架在现有监督去雨网络上表现出强泛化能力。",
+        "markdown": "### TL;DR\n提出奖励引导自强化无监督图像去雨方法，利用训练中偶尔出现的高质量去雨结果引导优化，在多个数据集上达到最先进水平。\n\n### 动机\n无监督去雨因缺乏强约束而难以收敛，尤其是雨退化复杂多样，但训练中偶尔出现的高质量去雨结果可被利用来指导优化。\n\n### 方法\n包含奖励回收和自强化训练两阶段。奖励回收阶段提出基于图像质量评估的动态奖励回收机制，持续收集高质量去雨结果；自强化阶段将这些奖励融入模型优化，约束优化空间，提升去雨输出与干净图像的匹配度。\n\n### 效果\n在配对合成、配对真实和未配对真实图像数据集上，主观和客观IQA指标均优于现有无监督去雨方法，达到SOTA性能。\n\n### 结论\n自强化策略可迁移至其他无监督去雨方法，且去雨框架在现有监督去雨网络上表现出强泛化能力。"
+      },
+      "keywordsZh": [
+        "无监督去雨",
+        "奖励引导",
+        "自强化",
+        "图像质量评估",
+        "动态奖励回收",
+        "图像去雨"
+      ],
+      "keywordsEn": [
+        "unsupervised deraining",
+        "reward-guided",
+        "self-reinforcement",
+        "image quality assessment",
+        "dynamic reward recycling",
+        "image deraining"
+      ],
+      "semanticQueryZh": "无监督图像去雨 奖励引导自强化策略 IQA动态奖励回收",
+      "generatedAt": "2026-05-04T05:51:41Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00718",
+      "aiSummary": {
+        "tldr": "利用粗细标签层次进行双头监督，可在特定3D骨架上显著提升膝骨关节炎严重度分级性能，并让潜在表示更有序。",
+        "motivation": "膝骨关节炎（OA）评估中天然存在标签层次（二分类患病与否和精细的KL分级），但现有研究通常将其作为独立分类问题，未利用层次关系。",
+        "method": "采用简单的双头模型（共享编码器+两个任务专用头）进行层次监督，与单任务（OA或KL）训练对比，在多种3D骨干网络下评估。",
+        "result": "双头监督在选定骨架上显著提升KL相关指标，且潜在表示组织更有序（粗细过渡自然），对响应骨架，注意力热图与软骨区域对齐更强。",
+        "conclusion": "即使简单的层次双头监督也能在噪声标签下重塑疾病表示，为OA诊断和分级提供有用归纳偏置。",
+        "markdown": "### TL;DR\n利用粗细标签层次进行双头监督，可在特定3D骨架上显著提升膝骨关节炎严重度分级性能，并让潜在表示更有序。\n\n### 动机\n膝骨关节炎（OA）评估中天然存在标签层次（二分类患病与否和精细的KL分级），但现有研究通常将其作为独立分类问题，未利用层次关系。\n\n### 方法\n采用简单的双头模型（共享编码器+两个任务专用头）进行层次监督，与单任务（OA或KL）训练对比，在多种3D骨干网络下评估。\n\n### 效果\n双头监督在选定骨架上显著提升KL相关指标，且潜在表示组织更有序（粗细过渡自然），对响应骨架，注意力热图与软骨区域对齐更强。\n\n### 结论\n即使简单的层次双头监督也能在噪声标签下重塑疾病表示，为OA诊断和分级提供有用归纳偏置。"
+      },
+      "keywordsZh": [
+        "膝骨关节炎",
+        "Kellgren-Lawrence分级",
+        "层次标签",
+        "双头监督",
+        "3D CNN",
+        "表示学习",
+        "医学图像分类"
+      ],
+      "keywordsEn": [
+        "knee osteoarthritis",
+        "Kellgren-Lawrence grading",
+        "hierarchical labels",
+        "dual-head supervision",
+        "3D CNN",
+        "representation learning",
+        "medical image classification"
+      ],
+      "semanticQueryZh": "膝骨关节炎粗细分级 层次标签双头监督 3D卷积网络 表示学习 噪声标签",
+      "generatedAt": "2026-05-04T05:51:44Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00707",
+      "aiSummary": {
+        "tldr": "PhysEdit 通过自适应调整推理深度和空间掩码，在图像编辑中实现平均1.18倍加速且不损害指令遵循和身份保持。",
+        "motivation": "现有推理式图像编辑器对不同编辑指令（如换色、插入物体、物理动作）采用相同推理方案，忽略了异构指令在空间覆盖和推理深度上的差异，导致效率低下。",
+        "method": "提出 PhysEdit，包含两个无需重训练的可插拔推理模块：(1) CARD（复杂度自适应推理深度），根据指令和参考图像预测编辑复杂度，动态分配推理步数和推理token长度；(2) SRM（空间推理掩码），从交叉注意力中提取指令相关的空间先验，将推理限制在语义需要的区域。",
+        "result": "在 ImgEdit Basic-Edit Suite 的 737 个样本上，PhysEdit 相对于强推理基线实现 1.18 倍墙钟加速（每样 64.3s vs 76.1s），指令遵循度 CLIP-T 提升 +0.7%（0.2283 vs 0.2266），身份保持 CLIP-I 轻微下降（0.8246 vs 0.8280，可忽略）。外观级编辑加速达 1.52 倍，验证了 CARD 自适应分配的效率贡献。",
+        "conclusion": "PhysEdit 证明了自适应时空推理在异构图像编辑中的有效性，可为实际应用提供更高效且保持质量的可微编辑器。",
+        "markdown": "### TL;DR\nPhysEdit 通过自适应调整推理深度和空间掩码，在图像编辑中实现平均1.18倍加速且不损害指令遵循和身份保持。\n\n### 动机\n现有推理式图像编辑器对不同编辑指令采用固定推理方案，忽略了异构指令在空间覆盖和推理深度上的差异，导致效率低下。\n\n### 方法\n提出 PhysEdit，包含两个无重训练的推理模块：CARD（自适应推理深度）根据编辑复杂度动态分配推理步数和token长度；SRM（空间推理掩码）利用交叉注意力提取空间先验，限制推理区域。\n\n### 效果\n在 ImgEdit Basic-Edit Suite 上，PhysEdit 实现 1.18 倍加速（外观级1.52倍），指令遵循提升0.7%，身份保持几乎不变。\n\n### 结论\n自适应时空推理可以显著提升图像编辑效率，同时保持甚至小幅提升编辑质量。"
+      },
+      "keywordsZh": [
+        "图像编辑",
+        "自适应推理",
+        "空间掩码",
+        "推理加速",
+        "指令遵循",
+        "物理一致性"
+      ],
+      "keywordsEn": [
+        "image editing",
+        "adaptive reasoning",
+        "spatial mask",
+        "inference speedup",
+        "instruction adherence",
+        "physical consistency"
+      ],
+      "semanticQueryZh": "自适应推理深度 图像编辑 空间掩码 效率提升",
+      "generatedAt": "2026-05-04T05:51:46Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00684",
+      "aiSummary": {
+        "tldr": "提出静态与动态图对齐网络（SDGAN），通过联合静态/动态特征、查询-片段对比学习及渐进式多粒度训练，显著提升时间视频定位性能。",
+        "motivation": "时间视频定位（TVG）是视频理解的关键任务，现有基于GCN的方法存在特征表示不完整、查询无关图构建及单粒度匹配三大瓶颈。",
+        "method": "SDGAN联合静态和动态视觉特征构建互补时间图，并通过位置节点对齐增强表示；引入查询-片段对比学习与自适应图建模实现查询感知特征；采用渐进式难易训练策略融合多粒度时间提案。",
+        "result": "在三个基准数据集上，SDGAN均取得了优于现有方法的性能，验证了其有效性。",
+        "conclusion": "该工作为TVG提供了一种融合静态/动态信息、查询感知与多粒度学习的有效框架，可推广至其他视频语言理解任务。",
+        "markdown": "### TL;DR\n提出静态与动态图对齐网络（SDGAN），通过联合静态/动态特征、查询-片段对比学习及渐进式多粒度训练，显著提升时间视频定位性能。\n\n### 动机\n时间视频定位（TVG）是视频理解的关键任务，现有基于GCN的方法存在特征表示不完整、查询无关图构建及单粒度匹配三大瓶颈。\n\n### 方法\nSDGAN联合静态和动态视觉特征构建互补时间图，并通过位置节点对齐增强表示；引入查询-片段对比学习与自适应图建模实现查询感知特征；采用渐进式难易训练策略融合多粒度时间提案。\n\n### 效果\n在三个基准数据集上，SDGAN均取得了优于现有方法的性能。\n\n### 结论\n该工作为TVG提供了一种融合静态/动态信息、查询感知与多粒度学习的有效框架，可推广至其他视频语言理解任务。"
+      },
+      "keywordsZh": [
+        "时间视频定位",
+        "图对齐网络",
+        "静态动态特征",
+        "对比学习",
+        "多粒度训练",
+        "视频理解",
+        "自然语言查询"
+      ],
+      "keywordsEn": [
+        "temporal video grounding",
+        "graph alignment network",
+        "static and dynamic features",
+        "contrastive learning",
+        "multi-granularity training",
+        "video understanding",
+        "natural language query"
+      ],
+      "semanticQueryZh": "时间视频定位 静态动态图对齐 对比学习 多粒度训练 视频自然语言查询",
+      "generatedAt": "2026-05-04T05:51:50Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00678",
+      "aiSummary": {
+        "tldr": "ViTCG 首次将基础 AI 模型用于高光谱 AOD 反演，通过通道分组 Vision Transformer 利用空谱相干性，在 PACE 数据上均方误差降低 62%。",
+        "motivation": "气溶胶光学厚度反演对空气质量监测和气候研究至关重要，传统方法依赖辐射传输和查找表，效率低且易受噪声影响，现有数据驱动方法未能充分利用高光谱图像的空间-光谱一致性。",
+        "method": "提出 ViTCG 框架，采用 Vision Transformer 结合通道分组（Channel-wise Grouping）机制，以高光谱大气顶部辐亮度为输入，联合建模空间上下文和光谱信息，实现端到端 AOD 反演。",
+        "result": "在 PACE 卫星辐射观测数据上，ViTCG 相比 Prithvi 等最先进基础模型，均方误差降低 62%，并生成空间一致的 AOD 场。",
+        "conclusion": "ViTCG 证明了基础 AI 模型在遥感物理参数反演中的潜力，为利用高光谱影像空谱信息提供了新范式，有望推广到其他地球物理参数反演任务。",
+        "markdown": "### TL;DR\nViTCG 首次将基础 AI 模型用于高光谱 AOD 反演，通过通道分组 Vision Transformer 利用空谱相干性，在 PACE 数据上均方误差降低 62%。\n\n### 动机\n气溶胶光学厚度反演对空气质量监测和气候研究至关重要，传统方法依赖辐射传输和查找表，效率低且易受噪声影响，现有数据驱动方法未能充分利用高光谱图像的空间-光谱一致性。\n\n### 方法\n提出 ViTCG 框架，采用 Vision Transformer 结合通道分组（Channel-wise Grouping）机制，以高光谱大气顶部辐亮度为输入，联合建模空间上下文和光谱信息，实现端到端 AOD 反演。\n\n### 效果\n在 PACE 卫星辐射观测数据上，ViTCG 相比 Prithvi 等最先进基础模型，均方误差降低 62%，并生成空间一致的 AOD 场。\n\n### 结论\nViTCG 证明了基础 AI 模型在遥感物理参数反演中的潜力，为利用高光谱影像空谱信息提供了新范式，有望推广到其他地球物理参数反演任务。"
+      },
+      "keywordsZh": [
+        "气溶胶光学厚度",
+        "基础 AI 模型",
+        "Vision Transformer",
+        "高光谱遥感",
+        "PACE 卫星",
+        "空谱相干性"
+      ],
+      "keywordsEn": [
+        "Aerosol Optical Depth",
+        "Foundation AI Model",
+        "Vision Transformer",
+        "Hyperspectral Remote Sensing",
+        "PACE Satellite",
+        "Spatial-Spectral Coherence"
+      ],
+      "semanticQueryZh": "基础 AI 模型反演高光谱气溶胶光学厚度，ViTCG 方法",
+      "generatedAt": "2026-05-04T05:51:52Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00675",
+      "aiSummary": {
+        "tldr": "提出动态边界深度单纯形分类器DMDSC，根据类别频率自适应调整边界，有效解决医学图像开放集识别中的类别不平衡问题。",
+        "motivation": "医学图像数据集存在极端类别不平衡，罕见病理样本少，现有开放集识别方法使用统一边界，无法适应不同类别密度，导致对罕见类识别和未知样本拒识性能下降。",
+        "method": "DMDSC框架在深度单纯形分类器基础上引入动态边界机制，根据标签频率自动为每个类别分配不同边距，对罕见类施加更高惩罚并促进特征聚类更紧凑，从而平衡类间分离与类内紧凑。",
+        "result": "在BloodMNIST、OCTMNIST、DermaMNIST和BreaKHis等医学图像基准上，DMDSC在开放集识别任务中优于DSC、UCDSC等现有方法，具体性能提升未在摘要中量化。",
+        "conclusion": "动态边界策略能有效缓解医学图像中的类别不平衡问题，提升开放集识别的鲁棒性和准确性，适用于临床罕见病理检测场景。",
+        "markdown": "### TL;DR\n提出动态边界深度单纯形分类器DMDSC，根据类别频率自适应调整边界，有效解决医学图像开放集识别中的类别不平衡问题。\n\n### 动机\n医学图像数据集常存在极端类别不平衡，罕见病理样本少。现有开放集识别方法（如DSC、UCDSC）使用统一边界，无法适应不同类别的分布密度，导致对罕见类识别和未知类拒识性能欠佳。\n\n### 方法\nDMDSC在深度单纯形分类器基础上引入动态边界机制：根据标签频率自动为每个类别分配不同边界，对样本少的罕见类施加更大惩罚，并促进其特征聚类更紧凑，从而在保持已知类间分离的同时增强对罕见类的判别和对未知类的拒识。\n\n### 效果\n在BloodMNIST、OCTMNIST、DermaMNIST和BreaKHis四个医学图像基准上，DMDSC的开放集识别准确率和拒识率均优于DSC、UCDSC等现有方法，证明了动态边界的有效性（具体数值见论文）。\n\n### 结论\n动态边界策略是处理医学图像类别不平衡下开放集识别的有效方案，可提升模型对罕见病理的识别能力和对未知样本的鲁棒性，具有临床应用潜力。"
+      },
+      "keywordsZh": [
+        "医学图像",
+        "开放集识别",
+        "类别不平衡",
+        "深度单纯形分类器",
+        "动态边界",
+        "罕见病理检测",
+        "特征聚类"
+      ],
+      "keywordsEn": [
+        "medical image",
+        "open-set recognition",
+        "class imbalance",
+        "deep simplex classifier",
+        "dynamic margin",
+        "rare pathology detection",
+        "feature clustering"
+      ],
+      "semanticQueryZh": "医学图像开放集识别 动态边界深度单纯形分类器 类别不平衡 罕见病理检测",
+      "generatedAt": "2026-05-04T05:51:57Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00665",
+      "aiSummary": {
+        "tldr": "本文利用深度学习从眼底彩色照片预测12个阿尔茨海默病风险因素，发现视网膜结构特征与AD脆弱性相关。",
+        "motivation": "系统性、代谢和生活方式因素与阿尔茨海默病相关，但眼底图像是否包含这些风险因素的结构特征尚不清楚，研究旨在探索眼底照片作为AD风险筛查工具的可能性。",
+        "method": "使用UK Biobank数据集，训练深度学习模型从彩色眼底照片预测12个AD相关风险因素（6个分类变量和6个连续变量），并通过显著性分析（CAM-Score）识别相关视网膜区域（如视神经头和视网膜血管）。",
+        "result": "模型分类性能AUROC在0.5654-0.9480之间，连续变量R²在-0.0291-0.7620之间，优于传统形态学机器学习模型；显著性得分与视网膜形态测量一致，并在AD发病前病例与匹配对照间存在显著差异。",
+        "conclusion": "眼底照片编码了与AD风险因素相关的视网膜特征，深度学习提取的表征可能揭示潜在AD脆弱性的结构变化，但尚不能直接用于诊断，需进一步验证。",
+        "markdown": "### TL;DR\n本文利用深度学习从眼底彩色照片预测12个阿尔茨海默病风险因素，发现视网膜结构特征与AD脆弱性相关。\n\n### 动机\n系统性、代谢和生活方式因素与AD相关，但眼底图像是否包含这些风险因素的结构特征尚不清楚，研究旨在探索眼底照片作为AD风险筛查工具的可能性。\n\n### 方法\n使用UK Biobank数据集，训练深度学习模型从彩色眼底照片预测12个AD相关风险因素（6个分类变量和6个连续变量），并通过显著性分析（CAM-Score）识别相关视网膜区域（如视神经头和视网膜血管）。\n\n### 效果\n模型分类性能AUROC在0.5654-0.9480之间，连续变量R²在-0.0291-0.7620之间，优于传统形态学机器学习模型；显著性得分与视网膜形态测量一致，并在AD发病前病例与匹配对照间存在显著差异。\n\n### 结论\n眼底照片编码了与AD风险因素相关的视网膜特征，深度学习提取的表征可能揭示潜在AD脆弱性的结构变化，但尚不能直接用于诊断，需进一步验证。"
+      },
+      "keywordsZh": [
+        "阿尔茨海默病",
+        "风险因素",
+        "眼底照相",
+        "深度学习",
+        "视网膜结构",
+        "UK Biobank",
+        "显著性分析"
+      ],
+      "keywordsEn": [
+        "Alzheimer's Disease",
+        "risk factors",
+        "fundus photography",
+        "deep learning",
+        "retinal structure",
+        "UK Biobank",
+        "saliency analysis"
+      ],
+      "semanticQueryZh": "深度学习 眼底照片 预测 阿尔茨海默病 风险因素 视网膜结构 UK Biobank",
+      "generatedAt": "2026-05-04T05:52:04Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00664",
+      "aiSummary": {
+        "tldr": "提出一种无需训练的3D修复方法，通过优化初始噪声在结构化潜在扩散框架中实现高保真修复，上下文一致性和提示对齐优于基线。",
+        "motivation": "结构化3D潜在扩散中初始噪声高度敏感，影响修复稳定性，需要确保新结构与已有上下文严格对齐。",
+        "method": "基于整流流模型的反向传播近似优化初始噪声，结合谱参数化实现鲁棒高效的结构化潜在优化。",
+        "result": "在上下一致性和提示对齐上持续优于代表性无训练修复基线，证明初始噪声控制可作为独立维度。",
+        "conclusion": "初始噪声优化是一种有效且正交于采样轨迹操作的3D修复新途径。",
+        "markdown": "### TL;DR\n提出无需训练的3D修复方法，通过优化初始噪声实现高保真结果。\n\n### 动机\n结构化3D潜在扩散中初始噪声决定几何结构，敏感度高，修复需严格对齐上下文。\n\n### 方法\n利用整流流模型的反向传播近似优化初始噪声，采用谱参数化提升鲁棒性和效率。\n\n### 效果\n在上下文一致性和提示对齐上超越代表基线，验证有效性。\n\n### 结论\n初始噪声控制是3D修复的独立维度，值得进一步探索。"
+      },
+      "keywordsZh": [
+        "3D修复",
+        "初始噪声优化",
+        "潜在扩散模型",
+        "无训练",
+        "结构化潜在空间",
+        "上下文一致性",
+        "提示对齐",
+        "谱参数化"
+      ],
+      "keywordsEn": [
+        "3D inpainting",
+        "initial noise optimization",
+        "latent diffusion model",
+        "training-free",
+        "structured latent space",
+        "contextual consistency",
+        "prompt alignment",
+        "spectral parameterization"
+      ],
+      "semanticQueryZh": "3D修复 初始噪声优化 无训练 潜在扩散 结构保持 提示对齐",
+      "generatedAt": "2026-05-04T05:52:00Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00658",
+      "aiSummary": {
+        "tldr": "UniVidX是一个统一的视频生成框架，利用视频扩散先验处理多种模态任务，通过随机条件掩码、解耦门控LoRA和跨模态自注意力实现灵活的条件生成和跨模态一致性。",
+        "motivation": "现有方法为每个问题训练独立模型，固定输入输出映射，限制了跨模态相关性建模。",
+        "method": "提出UniVidX，包含三个关键设计：随机条件掩码（SCM）在训练时随机划分模态为干净条件和噪声目标，实现全向条件生成；解耦门控LoRA（DGL）为每个模态引入LoRA，仅在作为生成目标时激活，保持VDM先验；跨模态自注意力（CMSA）共享键值但保持独立查询，促进信息交换与跨模态对齐。",
+        "result": "在RGB+内在图（反照率、辐照度、法线）和混合RGB+RGBA图层两个领域实例化，仅用不到1000个视频训练，性能达到SOTA并鲁棒泛化到真实场景。",
+        "conclusion": "展示了统一框架在多种视频生成任务中的潜力，适用于通用视频生成和编辑。",
+        "markdown": "### TL;DR\nUniVidX是一个统一的视频生成框架，利用视频扩散先验处理多种模态任务，通过随机条件掩码、解耦门控LoRA和跨模态自注意力实现灵活的条件生成和跨模态一致性。\n\n### 动机\n现有方法为每个问题训练独立模型，固定输入输出映射，限制了跨模态相关性建模。\n\n### 方法\n提出UniVidX，包含三个关键设计：随机条件掩码（SCM）在训练时随机划分模态为干净条件和噪声目标，实现全向条件生成；解耦门控LoRA（DGL）为每个模态引入LoRA，仅在作为生成目标时激活，保持VDM先验；跨模态自注意力（CMSA）共享键值但保持独立查询，促进信息交换与跨模态对齐。\n\n### 效果\n在RGB+内在图（反照率、辐照度、法线）和混合RGB+RGBA图层两个领域实例化，仅用不到1000个视频训练，性能达到SOTA并鲁棒泛化到真实场景。\n\n### 结论\n展示了统一框架在多种视频生成任务中的潜力，适用于通用视频生成和编辑。"
+      },
+      "keywordsZh": [
+        "视频扩散模型",
+        "多模态生成",
+        "条件生成",
+        "随机条件掩码",
+        "解耦门控LoRA",
+        "跨模态自注意力",
+        "内在图",
+        "RGBA图层",
+        "统一框架",
+        "SIGGRAPH 2026"
+      ],
+      "keywordsEn": [
+        "video diffusion model",
+        "multimodal generation",
+        "conditional generation",
+        "stochastic condition masking",
+        "decoupled gated LoRA",
+        "cross-modal self-attention",
+        "intrinsic maps",
+        "RGBA layers",
+        "unified framework",
+        "SIGGRAPH 2026"
+      ],
+      "semanticQueryZh": "统一多模态视频生成框架，利用扩散先验实现RGB、内在图、RGBA图层等模态的条件生成与跨模态对齐",
+      "generatedAt": "2026-05-04T05:52:06Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00632",
+      "aiSummary": {
+        "tldr": "BlenderRAG通过检索增强生成，将自然语言到Blender代码的编译成功率从40.8%提升至70.0%，语义对齐得分从0.41提高到0.77。",
+        "motivation": "现有大模型生成Blender代码时频繁出现语法错误和几何不一致问题，限制了自然语言驱动的3D建模自动化。",
+        "method": "构建包含500个专家验证示例的多模态数据集（文本/代码/图像），并在生成时检索语义相似示例作为上下文，无需微调或专用硬件。",
+        "result": "在四个SOTA大模型上，编译成功率从平均40.8%提升至70.0%，语义归一化对齐（CLIP相似度）从0.41提升至0.77。",
+        "conclusion": "检索增强生成有效提升代码质量，且即插即用，适合快速部署。",
+        "markdown": "### TL;DR\nBlenderRAG通过检索增强生成，将自然语言到Blender代码的编译成功率从40.8%提升至70.0%，语义对齐得分从0.41提高到0.77。\n\n### 动机\n现有大模型生成Blender代码时频繁出现语法错误和几何不一致问题，限制了自然语言驱动的3D建模自动化。\n\n### 方法\n构建包含500个专家验证示例的多模态数据集（文本/代码/图像），并在生成时检索语义相似示例作为上下文，无需微调或专用硬件。\n\n### 效果\n在四个SOTA大模型上，编译成功率从平均40.8%提升至70.0%，语义归一化对齐（CLIP相似度）从0.41提升至0.77。\n\n### 结论\n检索增强生成有效提升代码质量，且即插即用，适合快速部署。"
+      },
+      "keywordsZh": [
+        "Blender",
+        "代码生成",
+        "检索增强生成",
+        "3D建模",
+        "自然语言处理",
+        "多模态",
+        "计算机视觉"
+      ],
+      "keywordsEn": [
+        "Blender",
+        "code generation",
+        "retrieval-augmented generation",
+        "3D modeling",
+        "natural language processing",
+        "multimodal",
+        "computer vision"
+      ],
+      "semanticQueryZh": "检索增强生成 自然语言 生成 Blender 3D 代码",
+      "generatedAt": "2026-05-04T05:52:06Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00630",
+      "aiSummary": {
+        "tldr": "提出CMTA框架，通过捕捉跨模态时序伪影实现AI生成视频的通用检测，在40个子集上达到新SOTA。",
+        "motivation": "AI视频合成技术泛滥，现有检测方法仅依赖单模态或时空伪影，忽视了视觉-文本跨模态空间中的时序稳定性差异。",
+        "method": "利用BLIP生成帧级字幕，CLIP提取视觉-文本特征，通过GRU粗粒度建模跨模态对齐的时序波动，并结合Transformer细粒度捕获帧间变化，共同检测AI视频中的异常稳定语义轨迹。",
+        "result": "在GenVideo、EvalCrafter、VideoPhy、VidProM四个大规模数据集共40个子集上取得最优性能，并展现出优异的跨生成器泛化能力。",
+        "conclusion": "该工作为AI生成视频检测提供了跨模态时序视角，验证了跨模态时序伪影作为通用检测线索的有效性。",
+        "markdown": "### TL;DR\n提出CMTA框架，通过捕捉跨模态时序伪影实现AI生成视频的通用检测，在40个子集上达到新SOTA。\n\n### 动机\nAI视频合成技术泛滥，现有检测方法仅依赖单模态或时空伪影，忽视了视觉-文本跨模态空间中的时序稳定性差异。\n\n### 方法\n利用BLIP生成帧级字幕，CLIP提取视觉-文本特征，通过GRU粗粒度建模跨模态对齐的时序波动，并结合Transformer细粒度捕获帧间变化，共同检测AI视频中的异常稳定语义轨迹。\n\n### 效果\n在GenVideo、EvalCrafter、VideoPhy、VidProM四个大规模数据集共40个子集上取得最优性能，并展现出优异的跨生成器泛化能力。\n\n### 结论\n该工作为AI生成视频检测提供了跨模态时序视角，验证了跨模态时序伪影作为通用检测线索的有效性。"
+      },
+      "keywordsZh": [
+        "AI生成视频检测",
+        "跨模态",
+        "时序伪影",
+        "视频伪造检测",
+        "CLIP",
+        "BLIP",
+        "GRU",
+        "Transformer"
+      ],
+      "keywordsEn": [
+        "AI-generated video detection",
+        "cross-modal",
+        "temporal artifacts",
+        "video forgery detection",
+        "CLIP",
+        "BLIP",
+        "GRU",
+        "Transformer"
+      ],
+      "semanticQueryZh": "跨模态时序伪影的AI生成视频通用检测方法",
+      "generatedAt": "2026-05-04T05:52:13Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00605",
+      "aiSummary": {
+        "tldr": "FaithEIR 提出基于扩散模型的极端图像缩放框架，利用可学习可逆变换与语义先验实现 16 倍以上缩放的高保真重建。",
+        "motivation": "现有极端缩放方法在高倍数（16×以上）下难以保持语义一致性和细节真实性，亟需能解决高度病态映射的方法。",
+        "method": "受奇异值分解启发，设计可学习的可逆变换在潜在空间实现可逆降采样与升采样；提出自适应细节先验（高频字典）补偿量化信息损失；并引入轻量级像素语义嵌入为预训练扩散模型提供语义条件。",
+        "result": "在多个数据集上实验，FaithEIR 在重建保真度和感知质量上均优于当前最先进方法，代码和模型已开源。",
+        "conclusion": "该方法为极端图像缩放提供了兼顾结构一致性与细节真实性的有效方案，尤其适用于高倍数场景。",
+        "markdown": "### TL;DR\nFaithEIR 提出基于扩散模型的极端图像缩放框架，利用可学习可逆变换与语义先验实现 16 倍以上缩放的高保真重建。\n\n### 动机\n现有极端缩放方法在高倍数（16×以上）下难以保持语义一致性和细节真实性，亟需能解决高度病态映射的方法。\n\n### 方法\n受奇异值分解启发，设计可学习的可逆变换在潜在空间实现可逆降采样与升采样；提出自适应细节先验（高频字典）补偿量化信息损失；并引入轻量级像素语义嵌入为预训练扩散模型提供语义条件。\n\n### 效果\n在多个数据集上实验，FaithEIR 在重建保真度和感知质量上均优于当前最先进方法，代码和模型已开源。\n\n### 结论\n该方法为极端图像缩放提供了兼顾结构一致性与细节真实性的有效方案，尤其适用于高倍数场景。"
+      },
+      "keywordsZh": [
+        "极端图像缩放",
+        "扩散模型",
+        "可逆变换",
+        "语义先验",
+        "超分辨率",
+        "高保真重建",
+        "深度学习"
+      ],
+      "keywordsEn": [
+        "extreme image rescaling",
+        "diffusion model",
+        "reversible transformation",
+        "semantic prior",
+        "super-resolution",
+        "high-fidelity reconstruction",
+        "deep learning"
+      ],
+      "semanticQueryZh": "极端图像缩放 扩散模型 可逆变换 语义先验 高保真重建",
+      "generatedAt": "2026-05-04T05:52:13Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00595",
+      "aiSummary": {
+        "tldr": "提出一种融合V2X目标级信息的3D目标检测方法，通过噪声感知训练和置信编码增强鲁棒性，在nuScenes数据集上实现NDS 0.80且对噪声不敏感。",
+        "motivation": "车载感知受视线和视野限制，在遮挡和能见度差时易失效；V2X通信可提供互补信息，但实际应用存在延迟、定位误差和渗透率低等非理想因素，需研究鲁棒融合方法。",
+        "method": "利用nuScenes真值仿真生成带噪声和丢失的目标级V2X消息，将其转换为BEV表征，输入BEVFusion风格检测器；提出噪声感知训练策略及显式置信编码，使模型适应真实V2X不完美条件。",
+        "result": "理想条件下NDS达0.80；传统模型在噪声下性能急剧下降，而所提方法在严重噪声和低V2X渗透率下仍能保持检测增益。",
+        "conclusion": "目标级V2X信息可显著提升检测性能，但需噪声感知训练避免过度依赖；建议在实际部署中结合置信编码与鲁棒训练策略。",
+        "markdown": "### TL;DR\n提出一种融合V2X目标级信息的3D目标检测方法，通过噪声感知训练和置信编码增强鲁棒性，在nuScenes上实现NDS 0.80且对噪声不敏感。\n\n### 动机\n车载感知受视线和视野限制，在遮挡和能见度差时易失效；V2X通信可提供互补信息，但实际应用存在延迟、定位误差和渗透率低等非理想因素，需研究鲁棒融合方法。\n\n### 方法\n利用nuScenes真值仿真生成带噪声和丢失的目标级V2X消息，将其转换为BEV表征，输入BEVFusion风格检测器；提出噪声感知训练策略及显式置信编码，使模型适应真实V2X不完美条件。\n\n### 效果\n理想条件下NDS达0.80；传统模型在噪声下性能急剧下降，而所提方法在严重噪声和低V2X渗透率下仍能保持检测增益。\n\n### 结论\n目标级V2X信息可显著提升检测性能，但需噪声感知训练避免过度依赖；建议在实际部署中结合置信编码与鲁棒训练策略。"
+      },
+      "keywordsZh": [
+        "自动化驾驶",
+        "V2X通信",
+        "3D目标检测",
+        "鸟瞰图(BEV)",
+        "鲁棒融合",
+        "噪声感知训练",
+        "置信编码",
+        "nuScenes数据集"
+      ],
+      "keywordsEn": [
+        "autonomous driving",
+        "V2X",
+        "3D object detection",
+        "bird's-eye view",
+        "robust fusion",
+        "noise-aware training",
+        "confidence encoding",
+        "nuScenes"
+      ],
+      "semanticQueryZh": "V2X目标级信息融合 3D目标检测 噪声鲁棒性 BEV",
+      "generatedAt": "2026-05-04T05:52:20Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00591",
+      "aiSummary": {
+        "tldr": "提出双Softmax提示调优（DSPT），通过自适应梯度抑制在标签噪声下提升CLIP等视觉语言模型的鲁棒性，无需超参数且达到SOTA。",
+        "motivation": "提示调优对标签噪声高度敏感，噪声样本产生过大梯度破坏预训练先验，而CLIP本身已接近最优，需要保守的适应策略。",
+        "method": "DSPT通过顺序概率归一化（双重Softmax）产生自适应的饱和区，自动抑制高误差噪声样本的梯度，同时保留信息更新，将梯度消失转化为噪声过滤机制。",
+        "result": "在多种噪声基准上取得最优鲁棒性，超越复杂架构和手工超参数方法。",
+        "conclusion": "DSPT是一种简单、即插即用的方法，无需超参数，有效利用梯度消失对抗标签噪声，适合实际应用。",
+        "markdown": "**TL;DR:** 提出双Softmax提示调优（DSPT），通过自适应梯度抑制在标签噪声下提升CLIP等视觉语言模型的鲁棒性，无需超参数且达到SOTA。\n\n**动机:** 提示调优对标签噪声高度敏感，噪声样本产生过大梯度破坏预训练先验，而CLIP本身已接近最优，需要保守的适应策略。\n\n**方法:** DSPT通过顺序概率归一化（双重Softmax）产生自适应的饱和区，自动抑制高误差噪声样本的梯度，同时保留信息更新，将梯度消失转化为噪声过滤机制。\n\n**效果:** 在多种噪声基准上取得最优鲁棒性，超越复杂架构和手工超参数方法。\n\n**结论:** DSPT是一种简单、即插即用的方法，无需超参数，有效利用梯度消失对抗标签噪声，适合实际应用。"
+      },
+      "keywordsZh": [
+        "视觉语言模型",
+        "提示调优",
+        "标签噪声",
+        "梯度抑制",
+        "双Softmax",
+        "鲁棒性",
+        "零样本",
+        "CLIP"
+      ],
+      "keywordsEn": [
+        "vision-language models",
+        "prompt tuning",
+        "label noise",
+        "gradient suppression",
+        "double-softmax",
+        "robustness",
+        "zero-shot",
+        "CLIP"
+      ],
+      "semanticQueryZh": "视觉语言模型标签噪声下的提示调优方法 双Softmax梯度抑制",
+      "generatedAt": "2026-05-04T05:52:18Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00583",
+      "aiSummary": {
+        "tldr": "视觉语言模型的视觉模态未被充分防御，四种精心设计的视觉攻击能绕过安全对齐，揭示了跨模态对齐的脆弱性。",
+        "motivation": "视觉模态是VLMs安全对齐中未被充分研究的攻击面，现有文本安全训练无法泛化到视觉传递的有害意图。",
+        "method": "提出了四种利用视觉组件绕过安全对齐的越狱攻击：视觉符号编码（有害指令编码为符号序列并附解码图例）、对象替换（用良性替代品替换有害对象并提示有害行为）、图像文本替换（用良性词替换危害文但保留视觉上下文）、视觉类比谜题（需推断禁止概念）。",
+        "result": "在6个前沿VLM上评估，攻击成功率显著；例如视觉密码在Claude-Haiku-4.5上达40.9%（文本密码仅10.7%）。还提供了初步可解释性和缓解结果。",
+        "conclusion": "稳健的VLM对齐需将视觉作为安全后训练的一类目标，跨模态对齐差距必须被弥合。",
+        "markdown": "## TL;DR\n视觉语言模型的视觉模态未被充分防御，四种精心设计的视觉攻击能绕过安全对齐，揭示了跨模态对齐的脆弱性。\n\n## 动机\n视觉模态是VLMs安全对齐中未被充分研究的攻击面，现有文本安全训练无法泛化到视觉传递的有害意图。\n\n## 方法\n提出四种视觉越狱攻击：视觉符号编码、对象替换、图像文本替换、视觉类比谜题。\n\n## 效果\n在6个前沿VLM上攻击成功，例如视觉密码在Claude-Haiku-4.5上达40.9%成功率（文本密码仅10.7%）。\n\n## 结论\n稳健的VLM对齐需将视觉作为安全后训练的一类目标。"
+      },
+      "keywordsZh": [
+        "视觉语言模型",
+        "越狱攻击",
+        "安全对齐",
+        "视觉模态",
+        "跨模态对齐",
+        "多模态安全",
+        "对抗攻击",
+        "可解释性"
+      ],
+      "keywordsEn": [
+        "vision-language models",
+        "jailbreak attacks",
+        "safety alignment",
+        "visual modality",
+        "cross-modality alignment",
+        "multimodal safety",
+        "adversarial attack",
+        "interpretability"
+      ],
+      "semanticQueryZh": "视觉语言模型 越狱攻击 安全对齐 视觉模态 多模态安全 对抗样本",
+      "generatedAt": "2026-05-04T05:52:27Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00578",
+      "aiSummary": {
+        "tldr": "FedHD 提出一种面向全切片图像的联邦蒸馏框架，通过高斯混合特征对齐与课程式集成，在不交换模型参数的前提下实现异构中心间的协同训练，在三个病理数据集上超越现有方法。",
+        "motivation": "数字病理学中跨机构协作面临多实例学习架构与特征提取器异构的挑战，传统联邦学习难以直接应用。",
+        "method": "每个客户端独立进行高斯混合特征对齐，为每张真实切片生成一个合成特征表示，避免过度压缩；采用课程式集成策略，在性能平缓时逐步引入跨站点的合成特征参与训练，并可选解释模块从合成嵌入重构伪斑块。",
+        "result": "在 TCGA-IDH、CAMELYON16 和 CAMELYON17 三个数据集上，FedHD 一致优于最新的联邦学习和蒸馏基线方法。",
+        "conclusion": "FedHD 是一种架构无关、隐私保护且支持个性化协作的联邦蒸馏框架，适用于不同机构的数字病理学协同分析。",
+        "markdown": "### TL;DR\nFedHD 提出一种面向全切片图像的联邦蒸馏框架，通过高斯混合特征对齐与课程式集成，在不交换模型参数的前提下实现异构中心间的协同训练，在三个病理数据集上超越现有方法。\n\n### 动机\n数字病理学中跨机构协作面临多实例学习架构与特征提取器异构的挑战，传统联邦学习难以直接应用。\n\n### 方法\n每个客户端独立进行高斯混合特征对齐，为每张真实切片生成一个合成特征表示，避免过度压缩；采用课程式集成策略，在性能平缓时逐步引入跨站点的合成特征参与训练，并可选解释模块从合成嵌入重构伪斑块。\n\n### 效果\n在 TCGA-IDH、CAMELYON16 和 CAMELYON17 三个数据集上，FedHD 一致优于最新的联邦学习和蒸馏基线方法。\n\n### 结论\nFedHD 是一种架构无关、隐私保护且支持个性化协作的联邦蒸馏框架，适用于不同机构的数字病理学协同分析。"
+      },
+      "keywordsZh": [
+        "联邦学习",
+        "知识蒸馏",
+        "高斯混合模型",
+        "全切片图像",
+        "数字病理学",
+        "多实例学习",
+        "特征对齐",
+        "课程学习",
+        "隐私保护"
+      ],
+      "keywordsEn": [
+        "Federated Learning",
+        "Knowledge Distillation",
+        "Gaussian Mixture Model",
+        "Whole Slide Image",
+        "Digital Pathology",
+        "Multiple Instance Learning",
+        "Feature Alignment",
+        "Curriculum Learning",
+        "Privacy Preservation"
+      ],
+      "semanticQueryZh": "联邦学习 全切片图像 蒸馏 特征对齐 数字病理 多实例学习",
+      "generatedAt": "2026-05-04T05:52:21Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00569",
+      "aiSummary": {
+        "tldr": "提出 2D-SuGaR，通过引入单目深度和法线先验改进 2D 高斯泼溅的几何精度，在 DTU 数据集上实现网格重建 SOTA，同时保持高质量新视图合成。",
+        "motivation": "2D 高斯泼溅(2DGS)虽能重建几何，但对初始化敏感，依赖 SfM 在困难图像集上可能产生次优结果，需提升几何精度和鲁棒性。",
+        "method": "融入单目深度和法线先验；提出深度引导的高斯初始化策略；基于聚类的退化高斯剪枝技术。",
+        "result": "在 DTU 数据集上网格重建达到 SOTA，同时保持高质量新视图合成。",
+        "conclusion": "该方法增强了 2DGS 的表面重建能力，适用于多视角图像下的精确几何重建与新视角渲染。",
+        "markdown": "**TL;DR**: 提出 2D-SuGaR，通过引入单目深度和法线先验改进 2D 高斯泼溅的几何精度，在 DTU 数据集上实现网格重建 SOTA，同时保持高质量新视图合成。\n\n**动机**: 2D 高斯泼溅(2DGS)虽能重建几何，但对初始化敏感，依赖 SfM 在困难图像集上可能产生次优结果，需提升几何精度和鲁棒性。\n\n**方法**: 融入单目深度和法线先验；提出深度引导的高斯初始化策略；基于聚类的退化高斯剪枝技术。\n\n**效果**: 在 DTU 数据集上网格重建达到 SOTA，同时保持高质量新视图合成。\n\n**结论**: 该方法增强了 2DGS 的表面重建能力，适用于多视角图像下的精确几何重建与新视角渲染。"
+      },
+      "keywordsZh": [
+        "2D高斯泼溅",
+        "网格重建",
+        "单目深度先验",
+        "法线先验",
+        "深度引导初始化",
+        "聚类剪枝",
+        "新视图合成",
+        "DTU数据集"
+      ],
+      "keywordsEn": [
+        "2D Gaussian Splatting",
+        "mesh reconstruction",
+        "monocular depth prior",
+        "normal prior",
+        "depth-guided initialization",
+        "clustering-based pruning",
+        "novel view synthesis",
+        "DTU dataset"
+      ],
+      "semanticQueryZh": "2D高斯泼溅表面重建 单目深度法线先验 网格重建 新视图合成 DTU",
+      "generatedAt": "2026-05-04T05:52:27Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00562",
+      "aiSummary": {
+        "tldr": "提出球面云（Sphere Cloud）表示，通过将点云提升为经过质心的3D线，有效防御基于密度的图像恢复攻击，并利用设备ToF深度图解决尺度模糊，实现隐私保护的视觉定位。",
+        "motivation": "深度神经网络可以从稀疏3D点云中恢复高质量场景细节，引发视觉定位中使用私有地图的隐私泄露风险。现有方法将点提升为随机方向的3D线，但易受基于密度的攻击。",
+        "method": "构建球面云：将所有点云提升为穿过地图质心的3D线，形如单位球面上的点。这种表示使线在质心处最密集，误导密度攻击算法将点错误地集中在质心，从而中和攻击。同时设计构造策略防止直接图像恢复，并利用设备上的ToF传感器获取绝对深度图来引导平移尺度，提出高效定位框架。",
+        "result": "在公开RGB-D数据集上的实验表明，球面云在隐私保护能力和定位运行时间上具有竞争力，且定位精度不显著逊色于其他深度引导定位方法。",
+        "conclusion": "球面云为隐私保护的视觉定位提供了一种有效的表示方法，结合ToF深度图解决了尺度模糊问题，兼具安全性与实用性。",
+        "markdown": "### TL;DR\n提出球面云（Sphere Cloud）表示，通过将点云提升为经过质心的3D线，有效防御基于密度的图像恢复攻击，并利用设备ToF深度图解决尺度模糊，实现隐私保护的视觉定位。\n\n### 动机\n深度神经网络可以从稀疏3D点云中恢复高质量场景细节，引发视觉定位中使用私有地图的隐私泄露风险。现有方法将点提升为随机方向的3D线，但易受基于密度的攻击。\n\n### 方法\n构建球面云：将所有点云提升为穿过地图质心的3D线，形如单位球面上的点。这种表示使线在质心处最密集，误导密度攻击算法将点错误地集中在质心，从而中和攻击。同时设计构造策略防止直接图像恢复，并利用设备上的ToF传感器获取绝对深度图来引导平移尺度，提出高效定位框架。\n\n### 效果\n在公开RGB-D数据集上的实验表明，球面云在隐私保护能力和定位运行时间上具有竞争力，且定位精度不显著逊色于其他深度引导定位方法。\n\n### 结论\n球面云为隐私保护的视觉定位提供了一种有效的表示方法，结合ToF深度图解决了尺度模糊问题，兼具安全性与实用性。"
+      },
+      "keywordsZh": [
+        "隐私保护",
+        "视觉定位",
+        "球面云",
+        "深度引导",
+        "点云攻击",
+        "ToF深度图"
+      ],
+      "keywordsEn": [
+        "privacy-preserving",
+        "visual localization",
+        "sphere cloud",
+        "depth-guided",
+        "point cloud attack",
+        "ToF depth map"
+      ],
+      "semanticQueryZh": "隐私保护的视觉定位方法，使用球面云表示和ToF深度图",
+      "generatedAt": "2026-05-04T05:52:33Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00548",
+      "aiSummary": {
+        "tldr": "通过操作低频噪声成分，无需额外训练即可控制扩散模型生成图像的全局结构和颜色，同时保留高频细节的多样性。",
+        "motivation": "扩散模型输入的白高斯噪声缺乏可解释性，导致难以精确控制生成图像的视觉属性（如结构和颜色），限制了可控性和可预测性。",
+        "method": "分析发现低频噪声主要决定图像的全局结构和颜色组成，因此利用低频图像先验对输入噪声的低频成分进行简单操作，从而引导生成结果，而无需修改模型或增加训练。",
+        "result": "该方法仅需极小的计算开销，即可有效控制生成图像的整体结构和颜色，同时允许高频成分自由形成细节，保持输出多样性。实验验证了低频操作对全局属性的控制能力。",
+        "conclusion": "提供了一种简单、训练免费且效率高的途径，用于在文本到图像扩散模型中实现基于颜色的条件生成，有望应用于图像编辑、风格控制等领域。",
+        "markdown": "## TL;DR\n通过操作低频噪声成分，无需额外训练即可控制扩散模型生成图像的全局结构和颜色，同时保留高频细节的多样性。\n\n## 动机\n扩散模型输入的白高斯噪声缺乏可解释性，导致难以精确控制生成图像的视觉属性（如结构和颜色），限制了可控性和可预测性。\n\n## 方法\n分析发现低频噪声主要决定图像的全局结构和颜色组成，因此利用低频图像先验对输入噪声的低频成分进行简单操作，从而引导生成结果，而无需修改模型或增加训练。\n\n## 效果\n该方法仅需极小的计算开销，即可有效控制生成图像的整体结构和颜色，同时允许高频成分自由形成细节，保持输出多样性。\n\n## 结论\n提供了一种简单、训练免费且效率高的途径，用于在文本到图像扩散模型中实现基于颜色的条件生成，有望应用于图像编辑、风格控制等领域。"
+      },
+      "keywordsZh": [
+        "扩散模型",
+        "文本到图像生成",
+        "频率分析",
+        "颜色控制",
+        "条件生成",
+        "无需训练"
+      ],
+      "keywordsEn": [
+        "diffusion models",
+        "text-to-image generation",
+        "frequency analysis",
+        "color control",
+        "conditional generation",
+        "training-free"
+      ],
+      "semanticQueryZh": "无需训练的扩散模型低频噪声操作实现颜色条件图像生成",
+      "generatedAt": "2026-05-04T05:52:34Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00538",
+      "aiSummary": {
+        "tldr": "提出Vesselpose方法，通过学习体素方向向量结合改进的TEASAR算法，实现高拓扑精度的3D血管图重建。",
+        "motivation": "现有血管分割与追踪方法采用分割-修复范式，难以获得拓扑完整的血管网络。",
+        "method": "先联合预测体素级血管方向向量与分割掩膜，再用方向向量引导的TEASAR算法提取血管图。",
+        "result": "在三个基准数据集（含合成和真实图像）上达到最佳性能，并在大鼠心脏微CT扫描中验证效果；提出假分裂和假合并作为拓扑误差指标。",
+        "conclusion": "该方法显著提升血管图重建的拓扑准确性，能分离贴近的血管段并处理多棵血管树。",
+        "markdown": "### TL;DR\n提出Vesselpose方法，通过学习体素方向向量结合改进的TEASAR算法，实现高拓扑精度的3D血管图重建。\n\n### 动机\n现有血管分割与追踪方法采用分割-修复范式，难以获得拓扑完整的血管网络。\n\n### 方法\n先联合预测体素级血管方向向量与分割掩膜，再用方向向量引导的TEASAR算法提取血管图。\n\n### 效果\n在三个基准数据集（含合成和真实图像）上达到最佳性能，并在大鼠心脏微CT扫描中验证效果；提出假分裂和假合并作为拓扑误差指标。\n\n### 结论\n该方法显著提升血管图重建的拓扑准确性，能分离贴近的血管段并处理多棵血管树。"
+      },
+      "keywordsZh": [
+        "血管分割",
+        "血管追踪",
+        "图重建",
+        "方向向量",
+        "TEASAR算法",
+        "拓扑准确性",
+        "3D医学图像",
+        "微CT"
+      ],
+      "keywordsEn": [
+        "vessel segmentation",
+        "vessel tracing",
+        "graph reconstruction",
+        "direction vectors",
+        "TEASAR algorithm",
+        "topological accuracy",
+        "3D medical imaging",
+        "micro-CT"
+      ],
+      "semanticQueryZh": "3D血管图重建 方向向量 TEASAR 拓扑准确性",
+      "generatedAt": "2026-05-04T05:52:36Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00526",
+      "aiSummary": {
+        "tldr": "提出IdentiFace多模态迭代扩散框架，通过多模态输入和迭代生成实现可识别嫌疑人脸生成，在身份检索上表现优异。",
+        "motivation": "嫌疑人脸生成在犯罪调查中仍是技术挑战：传统素描效率低且质量差，扩散模型存在条件模糊和单次生成方差大等问题。",
+        "method": "设计多模态输入（文本、姿态、面部属性等）增强条件控制，并采用迭代生成流程逐步调整身份特征，同时引入面部身份损失函数保证生成人脸的可识别性。",
+        "result": "在合成数据集和真实场景实验中，IdentiFace在身份检索等指标上优于现有方法，展示了实际应用潜力。",
+        "conclusion": "该框架为刑事调查中生成可识别嫌疑人脸提供了一种有效、实用的解决方案。",
+        "markdown": "### TL;DR\n提出IdentiFace多模态迭代扩散框架，通过多模态输入和迭代生成实现可识别嫌疑人脸生成，在身份检索上表现优异。\n\n### 动机\n嫌疑人脸生成在犯罪调查中仍是技术挑战：传统素描效率低且质量差，扩散模型存在条件模糊和单次生成方差大等问题。\n\n### 方法\n设计多模态输入（文本、姿态、面部属性等）增强条件控制，并采用迭代生成流程逐步调整身份特征，同时引入面部身份损失函数保证生成人脸的可识别性。\n\n### 效果\n在合成数据集和真实场景实验中，IdentiFace在身份检索等指标上优于现有方法，展示了实际应用潜力。\n\n### 结论\n该框架为刑事调查中生成可识别嫌疑人脸提供了一种有效、实用的解决方案。"
+      },
+      "keywordsZh": [
+        "嫌疑人脸生成",
+        "扩散模型",
+        "多模态",
+        "迭代生成",
+        "身份保持",
+        "犯罪调查",
+        "人脸识别"
+      ],
+      "keywordsEn": [
+        "suspect face generation",
+        "diffusion model",
+        "multi-modal",
+        "iterative generation",
+        "identity preservation",
+        "crime investigation",
+        "face recognition"
+      ],
+      "semanticQueryZh": "基于多模态迭代扩散的可识别嫌疑人脸生成方法",
+      "generatedAt": "2026-05-04T05:52:39Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00517",
+      "aiSummary": {
+        "tldr": "PhysiGen 通过将人体简化为几何基元并引入碰撞感知优化，在不增加计算负担的前提下显著提升多人交互生成的物理合理性。",
+        "motivation": "文本驱动的3D人体运动合成中，多人交互生成面临严重的身体相互穿透问题，降低了真实感和可用性。现有方法要么忽略此问题，要么采用计算昂贵的网格级损失函数。",
+        "method": "提出 PhysiGen，一种即插即用的优化策略：将高分辨率人体网格简化为几何基元（如胶囊体），降低碰撞检测成本；识别碰撞区域作为优化方向，显式施加物理约束。",
+        "result": "跨数据集和跨模型实验表明，该方法能有效减少相互穿透，显著提升视觉连贯性和物理合理性，优于现有方法。",
+        "conclusion": "PhysiGen 是一种轻量级、通用且高效的后处理或训练集成方案，可广泛用于提升多人交互生成模型的物理真实性。",
+        "markdown": "### TL;DR\nPhysiGen 通过将人体简化为几何基元并引入碰撞感知优化，在不增加计算负担的前提下显著提升多人交互生成的物理合理性。\n\n### 动机\n文本驱动的3D人体运动合成中，多人交互生成面临严重的身体相互穿透问题，降低了真实感和可用性。现有方法要么忽略此问题，要么采用计算昂贵的网格级损失函数。\n\n### 方法\n提出 PhysiGen，一种即插即用的优化策略：将高分辨率人体网格简化为几何基元（如胶囊体），降低碰撞检测成本；识别碰撞区域作为优化方向，显式施加物理约束。\n\n### 效果\n跨数据集和跨模型实验表明，该方法能有效减少相互穿透，显著提升视觉连贯性和物理合理性，优于现有方法。\n\n### 结论\nPhysiGen 是一种轻量级、通用且高效的后处理或训练集成方案，可广泛用于提升多人交互生成模型的物理真实性。"
+      },
+      "keywordsZh": [
+        "人体交互生成",
+        "物理约束",
+        "碰撞感知",
+        "几何基元",
+        "3D运动合成",
+        "视觉连贯性",
+        "即插即用"
+      ],
+      "keywordsEn": [
+        "human interaction generation",
+        "physical constraints",
+        "collision-aware",
+        "geometric primitives",
+        "3D motion synthesis",
+        "visual coherence",
+        "plug-and-play"
+      ],
+      "semanticQueryZh": "用于多人交互生成的碰撞感知物理约束优化方法",
+      "generatedAt": "2026-05-04T05:52:42Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00503",
+      "aiSummary": {
+        "tldr": "本文提出端到端自回归图像生成方法，联合训练1D语义tokenizer和生成模型，在ImageNet 256×256上达到无引导FID 1.48。",
+        "motivation": "自回归图像生成依赖高效的视觉tokenizer，但传统两阶段训练方法限制了tokenizer对生成任务的适应性，导致生成质量受限。",
+        "method": "设计端到端训练管道，联合优化重建和生成损失，使生成结果直接监督tokenizer；并引入视觉基础模型改进1D语义tokenizer。",
+        "result": "在ImageNet 256×256生成任务上，无分类器引导条件下FID达到1.48，为当前最优。",
+        "conclusion": "端到端联合训练能有效提升tokenizer对生成任务的适应能力，结合视觉基础模型可显著改善自回归图像生成质量。",
+        "markdown": "### TL;DR\n本文提出端到端自回归图像生成方法，联合训练1D语义tokenizer和生成模型，在ImageNet 256×256上达到无引导FID 1.48。\n\n### 动机\n自回归图像生成依赖高效的视觉tokenizer，但传统两阶段训练方法限制了tokenizer对生成任务的适应性，导致生成质量受限。\n\n### 方法\n设计端到端训练管道，联合优化重建和生成损失，使生成结果直接监督tokenizer；并引入视觉基础模型改进1D语义tokenizer。\n\n### 效果\n在ImageNet 256×256生成任务上，无分类器引导条件下FID达到1.48，为当前最优。\n\n### 结论\n端到端联合训练能有效提升tokenizer对生成任务的适应能力，结合视觉基础模型可显著改善自回归图像生成质量。"
+      },
+      "keywordsZh": [
+        "端到端训练",
+        "自回归图像生成",
+        "视觉tokenizer",
+        "1D语义tokenizer",
+        "联合优化",
+        "视觉基础模型",
+        "ImageNet生成",
+        "FID"
+      ],
+      "keywordsEn": [
+        "end-to-end training",
+        "autoregressive image generation",
+        "visual tokenizer",
+        "1D semantic tokenizer",
+        "joint optimization",
+        "vision foundation model",
+        "ImageNet generation",
+        "FID"
+      ],
+      "semanticQueryZh": "联合优化的端到端自回归图像生成方法，使用1D语义tokenizer并借助视觉基础模型",
+      "generatedAt": "2026-05-04T05:52:46Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00498",
+      "aiSummary": {
+        "tldr": "提出GOR-IS框架，通过分解场景为内在组件并在材料与光照域进行修复，实现了物理一致且视觉连贯的3D物体移除，在LPIPS和PSNR上分别提升13%和2dB。",
+        "motivation": "现有3D物体移除方法常忽略全局光照和视图依赖的非朗伯表面，导致结果物理不真实、视觉不一致。",
+        "method": "将场景分解为内在成分（材质与光照），显式建模光传输以保持全局光照一致性，并在内在空间直接修复遮挡区域，解决非朗伯表面问题。",
+        "result": "在合成和真实数据集上，GOR-IS在感知相似度（LPIPS）上提升13%，峰值信噪比（PSNR）提升2dB，优于现有方法。",
+        "conclusion": "GOR-IS是一种实用的3D物体移除方案，能同时保证几何、光照和外观的物理一致性，代码已开源。",
+        "markdown": "### TL;DR\n提出GOR-IS框架，通过分解场景为内在组件并在材料与光照域进行修复，实现了物理一致且视觉连贯的3D物体移除，在LPIPS和PSNR上分别提升13%和2dB。\n\n### 动机\n现有方法忽略全局光照和非朗伯表面，导致修复结果物理不真实、视角不一致。\n\n### 方法\n分解场景为内在成分，显式建模光传输，在内在空间（材质+光照）直接修复。\n\n### 效果\n在合成和真实数据集上，LPIPS降低13%，PSNR提升2dB，视觉质量和物理一致性明显改善。\n\n### 结论\nGOR-IS为3D物体移除提供了更可靠、物理正确的解决方案，代码已开源。"
+      },
+      "keywordsZh": [
+        "三维场景编辑",
+        "物体移除",
+        "内在空间修复",
+        "光传输建模",
+        "全局光照一致性",
+        "非朗伯表面",
+        "3D高斯溅射",
+        "神经辐射场"
+      ],
+      "keywordsEn": [
+        "3D object removal",
+        "intrinsic decomposition",
+        "light transport",
+        "global illumination consistency",
+        "non-Lambertian surfaces",
+        "3D Gaussian Splatting",
+        "Neural Radiance Fields",
+        "scene inpainting"
+      ],
+      "semanticQueryZh": "3D物体移除 内在空间 全局光照一致性 非朗伯表面 修复方法",
+      "generatedAt": "2026-05-04T05:52:47Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00496",
+      "aiSummary": {
+        "tldr": "研究了高帧率视频在零样本人类动作语义理解中的作用，以剑道为例，发现120Hz比30Hz显著提升语义分离性。",
+        "motivation": "快速动作的零样本语义理解在人机交互中关键，但时间分辨率的影响尚未充分探索，尤其是对于高速细微动作。",
+        "method": "提出无训练流程，结合预训练视频-语言模型和大语言模型推理，在120/60/30Hz帧率下进行成对动作比较，并分析基于跟踪的人体关节信息。",
+        "result": "高时间分辨率显著提高零样本设置下的语义分离性，高速视频提供更稳定可解释的语义表示；最近类原型策略的定量评估验证了效果。",
+        "conclusion": "时间分辨率对无训练动作识别至关重要，高速视觉可增强语义理解能力，适用于快速和罕见动作的场景。",
+        "markdown": "## TL;DR\n研究了高帧率视频在零样本人类动作语义理解中的作用，以剑道为例，发现120Hz比30Hz显著提升语义分离性。\n\n## 动机\n快速动作的零样本语义理解在人机交互中关键，但时间分辨率的影响尚未充分探索，尤其是对于高速细微动作。\n\n## 方法\n提出无训练流程，结合预训练视频-语言模型和大语言模型推理，在120/60/30Hz帧率下进行成对动作比较，并分析基于跟踪的人体关节信息。\n\n## 效果\n高时间分辨率显著提高零样本设置下的语义分离性，高速视频提供更稳定可解释的语义表示；最近类原型策略的定量评估验证了效果。\n\n## 结论\n时间分辨率对无训练动作识别至关重要，高速视觉可增强语义理解能力，适用于快速和罕见动作的场景。"
+      },
+      "keywordsZh": [
+        "零样本学习",
+        "动作识别",
+        "时间分辨率",
+        "高速视觉",
+        "人机交互",
+        "剑道",
+        "视频语言模型",
+        "大语言模型"
+      ],
+      "keywordsEn": [
+        "zero-shot learning",
+        "action recognition",
+        "temporal resolution",
+        "high-speed vision",
+        "human-robot interaction",
+        "kendo",
+        "video-language model",
+        "large language model"
+      ],
+      "semanticQueryZh": "零样本高速动作识别 时间分辨率 剑道 无训练 视频语义理解",
+      "generatedAt": "2026-05-04T05:52:52Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00480",
+      "aiSummary": {
+        "tldr": "提出一种主动学习框架，利用视觉语言模型（VLM）的粗粒度弱标签结合人工细粒度标注，通过实例级标签分配和系统噪声建模，在相同标注预算下提升细粒度图像识别性能。",
+        "motivation": "降低主动学习中对昂贵人工标注的依赖，利用VLM作为弱标注器进一步减少标注成本。",
+        "method": "利用VLM在细粒度识别任务中粗标签准确、细标签不可靠的特性，设计实例级标签分配策略，将人工细粒度标注与VLM粗粒度弱标签相结合；并利用少量可信完整标签建模VLM生成标签的系统噪声。",
+        "result": "在CUB200和FGVC-Aircraft数据集上，所提框架在同等标注预算下一致优于现有主动学习方法。",
+        "conclusion": "证明利用VLM作为弱标注器可以有效减少主动学习中的人工标注成本，同时保持或提升模型性能。",
+        "markdown": "### TL;DR\n提出一种主动学习框架，利用VLM的粗粒度弱标签结合人工细粒度标注，通过实例级标签分配和系统噪声建模，在相同标注预算下提升细粒度图像识别性能。\n\n### 动机\n降低主动学习中对昂贵人工标注的依赖，利用VLM作为弱标注器进一步减少标注成本。\n\n### 方法\n利用VLM在细粒度识别任务中粗标签准确、细标签不可靠的特性，设计实例级标签分配策略，将人工细粒度标注与VLM粗粒度弱标签相结合；并利用少量可信完整标签建模VLM生成标签的系统噪声。\n\n### 效果\n在CUB200和FGVC-Aircraft数据集上，所提框架在同等标注预算下一致优于现有主动学习方法。\n\n### 结论\n证明利用VLM作为弱标注器可以有效减少主动学习中的人工标注成本，同时保持或提升模型性能。"
+      },
+      "keywordsZh": [
+        "主动学习",
+        "视觉语言模型",
+        "弱监督",
+        "细粒度识别",
+        "标签分配",
+        "系统噪声建模",
+        "弱标注"
+      ],
+      "keywordsEn": [
+        "active learning",
+        "vision-language model",
+        "weak supervision",
+        "fine-grained recognition",
+        "label assignment",
+        "systematic noise modeling",
+        "weak annotation"
+      ],
+      "semanticQueryZh": "主动学习 视觉语言模型 弱标注 细粒度识别 标签分配 系统噪声",
+      "generatedAt": "2026-05-04T05:52:55Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00474",
+      "aiSummary": {
+        "tldr": "提出以iERF为核心的统一框架，通过局部SRD、全局CAFE和机制ICAT，实现从像素到概念到决策的连贯可解释性。",
+        "motivation": "现有视觉模型的可解释性方法在局部、全局和机制层面割裂，缺乏统一的分析单元和框架。",
+        "method": "基于实例有效感受野（iERF），提出三种方法：局部层面使用共享比率分解（SRD）将特征向量分解为上游特征；全局层面使用概念锚定特征解释（CAFE），利用iERF作为语义标签定位潜在概念；机制层面使用层间概念图（ICAT）量化概念间影响，并通过插入/删除协议验证积分梯度最忠实。",
+        "result": "在ResNet50、VGG16和ViT上，该方法在忠实度和鲁棒性上优于基线，成功解释分散的SAE特征，并揭示正确、错误分类及对抗样本中的主导概念路径。",
+        "conclusion": "提供了一个从像素到概念到决策的、证据驱动的连贯可解释地图，适用于多种视觉架构。",
+        "markdown": "**TL;DR:** 提出以iERF为核心的统一框架，通过局部SRD、全局CAFE和机制ICAT，实现从像素到概念到决策的连贯可解释性。\n\n**动机:** 现有视觉模型的可解释性方法在局部、全局和机制层面割裂，缺乏统一的分析单元和框架。\n\n**方法:** 基于实例有效感受野（iERF），提出三种方法：局部层面使用共享比率分解（SRD）将特征向量分解为上游特征；全局层面使用概念锚定特征解释（CAFE），利用iERF作为语义标签定位潜在概念；机制层面使用层间概念图（ICAT）量化概念间影响，并通过插入/删除协议验证积分梯度最忠实。\n\n**效果:** 在ResNet50、VGG16和ViT上，该方法在忠实度和鲁棒性上优于基线，成功解释分散的SAE特征，并揭示正确、错误分类及对抗样本中的主导概念路径。\n\n**结论:** 提供了一个从像素到概念到决策的、证据驱动的连贯可解释地图，适用于多种视觉架构。"
+      },
+      "keywordsZh": [
+        "视觉模型可解释性",
+        "有效感受野",
+        "特征分解",
+        "概念锚定",
+        "层间概念归因",
+        "积分梯度"
+      ],
+      "keywordsEn": [
+        "Vision model interpretability",
+        "Effective Receptive Field",
+        "Feature decomposition",
+        "Concept anchoring",
+        "Interlayer concept attribution",
+        "Integrated Gradients"
+      ],
+      "semanticQueryZh": "统一视觉模型可解释性框架 iERF 局部全局机制解释方法 SRD CAFE ICAT 概念归因",
+      "generatedAt": "2026-05-04T05:53:00Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00448",
+      "aiSummary": {
+        "tldr": "提出CT-Lite框架，通过特征注意力风格迁移和结构化因式投影，在压缩CT图像上实现接近未压缩基线的胸部异常检测性能，大幅降低计算和参数需求。",
+        "motivation": "医学影像AI部署受限于体积数据的计算复杂度和资源需求；尽管CT比X光信息更丰富，但压缩体积图像的处理仍受限；需要低资源部署和高效数据传输。",
+        "method": "提出特征注意力风格迁移（FAST）蒸馏框架，将高保真CT表示的激活模式和结构关系迁移到压缩输入的时空编码器，结合Gram矩阵注意力风格保持和双重注意力特征对齐。同时提出结构化因式投影（SFP），使用块张量列分解替代密集投影层，减少近一半参数。整个对比学习管线CT-Lite集成这些组件和SigLIP多模态对齐目标。",
+        "result": "在CT-RATE、NIDCH、Rad-ChestCT三个数据集上，CT-Lite的AUROC在5-7%内接近未压缩基线，且参数显著减少。",
+        "conclusion": "本工作为资源受限环境下的AI临床评估铺平道路，证明压缩CT图像用于异常检测的可行性，并通过蒸馏和分解方法有效保持了性能。",
+        "markdown": "### TL;DR\n提出CT-Lite框架，通过特征注意力风格迁移和结构化因式投影，在压缩CT图像上实现接近未压缩基线的胸部异常检测性能，大幅降低计算和参数需求。\n\n### 动机\n医学影像AI部署受限于体积数据的计算复杂度和资源需求；尽管CT比X光信息更丰富，但压缩体积图像的处理仍受限；需要低资源部署和高效数据传输。\n\n### 方法\n提出特征注意力风格迁移（FAST）蒸馏框架，将高保真CT表示的激活模式和结构关系迁移到压缩输入的时空编码器，结合Gram矩阵注意力风格保持和双重注意力特征对齐。同时提出结构化因式投影（SFP），使用块张量列分解替代密集投影层，减少近一半参数。整个对比学习管线CT-Lite集成这些组件和SigLIP多模态对齐目标。\n\n### 效果\n在CT-RATE、NIDCH、Rad-ChestCT三个数据集上，CT-Lite的AUROC在5-7%内接近未压缩基线，且参数显著减少。\n\n### 结论\n本工作为资源受限环境下的AI临床评估铺平道路，证明压缩CT图像用于异常检测的可行性，并通过蒸馏和分解方法有效保持了性能。"
+      },
+      "keywordsZh": [
+        "压缩CT",
+        "胸部异常检测",
+        "特征注意力风格迁移",
+        "结构化因式投影",
+        "知识蒸馏",
+        "对比学习",
+        "低资源部署",
+        "体积图像分析"
+      ],
+      "keywordsEn": [
+        "Compressed CT",
+        "Thoracic abnormality detection",
+        "Feature Attention Style Transfer",
+        "Structured Factorized Projection",
+        "Knowledge distillation",
+        "Contrastive learning",
+        "Resource-efficient",
+        "Volumetric medical imaging"
+      ],
+      "semanticQueryZh": "压缩CT体积图像 胸部异常检测 特征注意力风格迁移 结构化因式投影 知识蒸馏 低资源部署",
+      "generatedAt": "2026-05-04T05:53:05Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00444",
+      "aiSummary": {
+        "tldr": "提出MACF框架，通过紧凑潜在表示的多智能体协作，在不增加预算下有效扩展长视频理解，性能超越现有方法。",
+        "motivation": "多模态大模型在长视频任务中受限于有限的感知上下文预算，现有基于规则的方法存在信息丢失和高成本问题。",
+        "method": "MACF将视频分段分配给各智能体，每个智能体将局部观察编码为紧凑的任务相关潜在表示，通过共享嵌入空间由中央协调器进行信息保留的协作，并采用课程训练逐步对齐语义、总结证据和协调智能体。",
+        "result": "在多个视频理解基准上，MACF在相同预算约束下一致优于最先进的多模态大模型和多智能体系统。",
+        "conclusion": "MACF通过潜在空间协作实现了可扩展的视频理解，为长视频任务提供了一种高效且保真的解决方案。",
+        "markdown": "### TL;DR\n提出MACF框架，通过紧凑潜在表示的多智能体协作，在不增加预算下有效扩展长视频理解，性能超越现有方法。\n\n### 动机\n多模态大模型在长视频任务中受限于有限的感知上下文预算，现有基于规则的方法存在信息丢失和高成本问题。\n\n### 方法\nMACF将视频分段分配给各智能体，每个智能体将局部观察编码为紧凑的任务相关潜在表示，通过共享嵌入空间由中央协调器进行信息保留的协作，并采用课程训练逐步对齐语义、总结证据和协调智能体。\n\n### 效果\n在多个视频理解基准上，MACF在相同预算约束下一致优于最先进的多模态大模型和多智能体系统。\n\n### 结论\nMACF通过潜在空间协作实现了可扩展的视频理解，为长视频任务提供了一种高效且保真的解决方案。"
+      },
+      "keywordsZh": [
+        "多模态大模型",
+        "长视频理解",
+        "多智能体协作",
+        "潜在表示",
+        "课程训练",
+        "感知预算",
+        "视觉保真度"
+      ],
+      "keywordsEn": [
+        "Multi-modal Large Language Models",
+        "Long-video Understanding",
+        "Multi-Agent Collaboration",
+        "Latent Representation",
+        "Curriculum Training",
+        "Perception Budget",
+        "Visual Fidelity"
+      ],
+      "semanticQueryZh": "长视频理解 多智能体协作 紧凑潜在表示 感知预算优化 端到端框架",
+      "generatedAt": "2026-05-04T05:53:01Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00434",
+      "aiSummary": {
+        "tldr": "提出LIMSSR框架，利用LLM在训练时模态缺失下进行序列到分数推理，无需完整训练数据，在动作质量评估上显著超越现有方法。",
+        "motivation": "现有不完全多模态学习方法通常假设训练时全模态可用，不切实际。本文针对训练时观测不完全的设定，避免依赖完整数据的“上帝视角”。",
+        "method": "将挑战重铸为条件序列推理任务，通过提示引导的上下文感知模态补全和多维表示融合，利用LLM语义推理能力推断潜在语义；并引入掩码感知双路径聚合动态校准推理不确定性以减轻幻觉。",
+        "result": "在三个动作质量评估数据集上，LIMSSR显著优于最先进基线，且不依赖完整训练数据。代码已开源。",
+        "conclusion": "该工作为数据高效的多模态学习建立了新范式，尤其适用于训练中模态常缺失的实际场景。",
+        "markdown": "### TL;DR\n提出LIMSSR框架，利用LLM在训练时模态缺失下进行序列到分数推理，无需完整训练数据，在动作质量评估上显著超越现有方法。\n\n### 动机\n现有IML方法大多假设训练时全模态可用，不现实。本文解决训练时观测不完全的更具挑战性设定。\n\n### 方法\n将挑战建模为条件序列推理，通过LLM的提示引导上下文补全和多维表示融合推断潜在语义，并使用掩码感知双路径聚合减轻幻觉。\n\n### 效果\n在三个AQA数据集上，LIMSSR超越SOTA基线，无需完整训练数据。\n\n### 结论\n为数据高效的多模态学习提供了新范式。"
+      },
+      "keywordsZh": [
+        "多模态学习",
+        "模态缺失",
+        "大语言模型",
+        "序列推理",
+        "动作质量评估",
+        "提示引导",
+        "数据高效"
+      ],
+      "keywordsEn": [
+        "multimodal learning",
+        "missing modality",
+        "large language model",
+        "sequence-to-score reasoning",
+        "action quality assessment",
+        "prompt-guided",
+        "data-efficient"
+      ],
+      "semanticQueryZh": "训练时模态缺失的LLM多模态推理方法",
+      "generatedAt": "2026-05-04T05:53:05Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00408",
+      "aiSummary": {
+        "tldr": "LeGS 将 3D 高斯溅射的密度控制从启发式规则转变为可学习的策略，通过强化学习优化，在多个数据集上达到更优的重建质量与效率平衡。",
+        "motivation": "3D 高斯溅射（3DGS）依赖启发式密度控制，无法灵活适应复杂几何场景，限制了渲染性能。",
+        "method": "提出 LeGS 框架，将密度控制建模为参数化策略网络，通过强化学习（RL）优化；设计基于敏感度分析的奖励函数精确量化单个高斯对重建质量的边际贡献，并推导闭式解将奖励计算复杂度从 O(N²) 降至 O(N)。",
+        "result": "在 Mip-NeRF 360、Tanks & Temples 和 Deep Blending 数据集上，LeGS 显著优于现有方法，实现了重建质量与效率的更好平衡。",
+        "conclusion": "LeGS 证明了可学习密度控制策略在 3DGS 中的有效性，为场景自适应优化提供了新方向。",
+        "markdown": "### TL;DR\nLeGS 将 3D 高斯溅射的密度控制从启发式规则转变为可学习的策略，通过强化学习优化，在多个数据集上达到更优的重建质量与效率平衡。\n\n### 动机\n3D 高斯溅射（3DGS）依赖启发式密度控制，无法灵活适应复杂几何场景，限制了渲染性能。\n\n### 方法\n提出 LeGS 框架，将密度控制建模为参数化策略网络，通过强化学习（RL）优化；设计基于敏感度分析的奖励函数精确量化单个高斯对重建质量的边际贡献，并推导闭式解将奖励计算复杂度从 O(N²) 降至 O(N)。\n\n### 效果\n在 Mip-NeRF 360、Tanks & Temples 和 Deep Blending 数据集上，LeGS 显著优于现有方法，实现了重建质量与效率的更好平衡。\n\n### 结论\nLeGS 证明了可学习密度控制策略在 3DGS 中的有效性，为场景自适应优化提供了新方向。"
+      },
+      "keywordsZh": [
+        "3D高斯溅射",
+        "密度控制",
+        "强化学习",
+        "可学习策略",
+        "重建质量",
+        "实时渲染",
+        "敏感度分析",
+        "奖励函数"
+      ],
+      "keywordsEn": [
+        "3D Gaussian Splatting",
+        "density control",
+        "reinforcement learning",
+        "learnable policy",
+        "reconstruction quality",
+        "real-time rendering",
+        "sensitivity analysis",
+        "reward function"
+      ],
+      "semanticQueryZh": "基于强化学习的3D高斯溅射密度控制方法，提升复杂场景下的重建效率与质量",
+      "generatedAt": "2026-05-04T05:53:11Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00405",
+      "aiSummary": {
+        "tldr": "BOLT提出一种轻量级在线自适应模块，仅需0.9M参数即可实现无预先部署的异构协同感知，在DAIR-V2X和OPV2V上AP@50提升最高32.3点。",
+        "motivation": "现有异构协同感知方法依赖离线联合训练或定制适配，实际场景中智能体由不同开发者独立训练、偶尔在线相遇，预处理不实用。",
+        "method": "提出BOLT，即插即用模块，通过在线蒸馏（以自我为教师）仅用自我预测对齐邻居特征，并在自我低置信区域让邻居贡献特征，无需真值标签或预协调。",
+        "result": "仅0.9M可训练参数，在无准备异构协同感知下，AP@50在DAIR-V2X和OPV2V上最多提升32.3点，一致优于单智能体感知和未适应的融合。",
+        "conclusion": "BOLT为无准备异构协同感知提供高效实用的即插即用方案，易于部署和扩展。",
+        "markdown": "### TL;DR\nBOLT提出一种轻量级在线自适应模块，仅需0.9M参数即可实现无预先部署的异构协同感知，在DAIR-V2X和OPV2V上AP@50提升最高32.3点。\n\n### 动机\n现有异构协同感知方法需要离线联合训练或定制适配，实际场景中智能体独立训练、在线偶遇，预处理不实用。\n\n### 方法\n提出BOLT，即插即用模块，通过在线蒸馏（以自我为教师）仅用自我预测对齐邻居特征，并在自我低置信区域让邻居贡献特征，无需真值标签或预协调。\n\n### 效果\n仅0.9M可训练参数，在无准备异构协同感知下，AP@50在DAIR-V2X和OPV2V上最多提升32.3点，一致优于单智能体感知和未适应的融合。\n\n### 结论\nBOLT为无准备异构协同感知提供高效实用的即插即用方案，易部署、扩展性强。"
+      },
+      "keywordsZh": [
+        "异构协同感知",
+        "在线自适应",
+        "轻量级模块",
+        "特征对齐",
+        "知识蒸馏"
+      ],
+      "keywordsEn": [
+        "heterogeneous cooperative perception",
+        "online adaptation",
+        "lightweight module",
+        "feature alignment",
+        "knowledge distillation"
+      ],
+      "semanticQueryZh": "无准备异构协同感知的在线轻量级自适应方法",
+      "generatedAt": "2026-05-04T05:53:15Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00401",
+      "aiSummary": {
+        "tldr": "提出SIMON，利用显著性感知的多视角融合实现零样本脑电图图像检索，在THINGS-EEG上取得最优性能。",
+        "motivation": "现有EEG图像检索方法固定中心注视，与真实人类注意力不符，导致几何-语义分离。",
+        "method": "通过显著性感知采样（SAS）结合前景分割和显著性预测选择注视中心，生成多视角注视图像，突出目标区域并抑制背景，再融合多视图特征进行零样本检索。",
+        "result": "在THINGS-EEG数据集上，受试者内Top-1准确率69.7%，受试者间Top-1准确率19.6%，均超越现有基线。",
+        "conclusion": "显著性感知的多视角整合有效提升EEG-图像检索性能，代码已开源，可应用于脑机接口与视觉解码。",
+        "markdown": "### TL;DR\n提出SIMON，利用显著性感知的多视角融合实现零样本脑电图图像检索，在THINGS-EEG上取得最优性能。\n\n### 动机\n现有EEG图像检索方法固定中心注视，与真实人类注意力不符，导致几何-语义分离。\n\n### 方法\n通过显著性感知采样（SAS）结合前景分割和显著性预测选择注视中心，生成多视角注视图像，突出目标区域并抑制背景，再融合多视图特征进行零样本检索。\n\n### 效果\n在THINGS-EEG数据集上，受试者内Top-1准确率69.7%，受试者间Top-1准确率19.6%，均超越现有基线。\n\n### 结论\n显著性感知的多视角整合有效提升EEG-图像检索性能，代码已开源，可应用于脑机接口与视觉解码。"
+      },
+      "keywordsZh": [
+        "脑电图图像检索",
+        "零样本学习",
+        "显著性感知",
+        "多视角融合",
+        "神经解码",
+        "注视点模拟",
+        "前景分割"
+      ],
+      "keywordsEn": [
+        "EEG-to-image retrieval",
+        "zero-shot learning",
+        "saliency-awareness",
+        "multi-view fusion",
+        "neural decoding",
+        "foveation",
+        "foreground segmentation"
+      ],
+      "semanticQueryZh": "显著性感知的多视角零样本脑电图图像检索方法",
+      "generatedAt": "2026-05-04T05:53:17Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00392",
+      "aiSummary": {
+        "tldr": "RTPrune 通过两阶段 token 剪枝方法，在 DeepSeek-OCR 上实现 99.47% 准确率和 1.23 倍预填充加速，token 保留率仅 84.25%。",
+        "motivation": "DeepSeek-OCR 使用视觉-文本压缩处理长文本，但视觉 token 存在冗余信息；现有剪枝方法不适用于其压缩机制，难以保持文本保真度。",
+        "method": "基于解码过程的两阶段阅读轨迹，先保留高范数 token 捕获关键信息，再通过最优传输合并剩余 token，并引入动态剪枝比率适应 OCR 任务。",
+        "result": "在 OmniDocBench 上，RTPrune 达到 99.47% 准确率和 1.23 倍预填充加速，token 保留率 84.25%，优于现有方法。",
+        "conclusion": "RTPrune 在保持高精度的同时显著提升推理效率，适合部署长文本 OCR 场景。",
+        "markdown": "## TL;DR\nRTPrune 通过两阶段 token 剪枝方法，在 DeepSeek-OCR 上实现 99.47% 准确率和 1.23 倍预填充加速，token 保留率仅 84.25%。\n\n## 动机\nDeepSeek-OCR 使用视觉-文本压缩处理长文本，但视觉 token 存在冗余信息；现有剪枝方法不适用于其压缩机制，难以保持文本保真度。\n\n## 方法\n基于解码过程的两阶段阅读轨迹，先保留高范数 token 捕获关键信息，再通过最优传输合并剩余 token，并引入动态剪枝比率适应 OCR 任务。\n\n## 效果\n在 OmniDocBench 上，RTPrune 达到 99.47% 准确率和 1.23 倍预填充加速，token 保留率 84.25%，优于现有方法。\n\n## 结论\nRTPrune 在保持高精度的同时显著提升推理效率，适合部署长文本 OCR 场景。"
+      },
+      "keywordsZh": [
+        "token剪枝",
+        "OCR推理加速",
+        "视觉-文本压缩",
+        "两阶段阅读",
+        "最优传输",
+        "动态剪枝比率",
+        "DeepSeek-OCR"
+      ],
+      "keywordsEn": [
+        "token pruning",
+        "OCR inference acceleration",
+        "visual-text compression",
+        "two-stage reading",
+        "optimal transport",
+        "dynamic pruning ratio",
+        "DeepSeek-OCR"
+      ],
+      "semanticQueryZh": "OCR token剪枝加速方法 两阶段阅读 动态剪枝比率 DeepSeek",
+      "generatedAt": "2026-05-04T05:53:16Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00367",
+      "aiSummary": {
+        "tldr": "提出流匹配模型实现Sentinel-2卫星图像4倍超分辨率，在感知-失真权衡中优于扩散和GAN方法，并生成大规模高质量影像产品。",
+        "motivation": "卫星图像超分辨率面临光谱保真度与感知质量的权衡，需要稳健技术。",
+        "method": "基于流匹配的生成模型，使用同一天获取的120,851对10米Sentinel-2和2.5米NAIP图像训练，采用欧拉法和中点求解器采样。",
+        "result": "单步采样中像素精度优于扩散和Real-ESRGAN；20步中点求解器生成感知真实的超分辨率图像；土地覆盖分类总体精度89.11%。",
+        "conclusion": "流匹配是有效的Sentinel-2超分辨率方法，可扩展获取高分辨率影像用于地理空间应用。",
+        "markdown": "**TL;DR**: 提出流匹配模型实现Sentinel-2卫星图像4倍超分辨率，在感知-失真权衡中优于扩散和GAN方法，并生成大规模高质量影像产品。\n\n**动机**: 卫星图像超分辨率面临光谱保真度与感知质量的权衡，需要稳健技术。\n\n**方法**: 基于流匹配的生成模型，使用同一天获取的120,851对10米Sentinel-2和2.5米NAIP图像训练，采用欧拉法和中点求解器采样。\n\n**效果**: 单步采样中像素精度优于扩散和Real-ESRGAN；20步中点求解器生成感知真实的超分辨率图像；土地覆盖分类总体精度89.11%。\n\n**结论**: 流匹配是有效的Sentinel-2超分辨率方法，可扩展获取高分辨率影像用于地理空间应用。"
+      },
+      "keywordsZh": [
+        "流匹配",
+        "超分辨率",
+        "卫星图像",
+        "Sentinel-2",
+        "感知-失真权衡",
+        "土地覆盖分类",
+        "生成模型",
+        "地理空间影像"
+      ],
+      "keywordsEn": [
+        "flow matching",
+        "super-resolution",
+        "satellite imagery",
+        "Sentinel-2",
+        "perception-distortion trade-off",
+        "land cover classification",
+        "generative model",
+        "geospatial imagery"
+      ],
+      "semanticQueryZh": "流匹配在Sentinel-2卫星图像超分辨率中的应用，实现高质量地理空间影像生成与土地覆盖分类",
+      "generatedAt": "2026-05-04T05:53:25Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00362",
+      "aiSummary": {
+        "tldr": "提出TCMP，一种基于时序卷积网络的高效运动预测器，在多目标跟踪中实现更优性能且极低计算代价。",
+        "motivation": "多目标跟踪中准确预测非线性运动至关重要，但现有生成模型过于复杂且计算昂贵。",
+        "method": "采用改进的时序卷积网络（TCN），引入扩张卷积和回归头，支持任意时长的时序上下文建模。",
+        "result": "在MOT数据集上，HOTA达63.4%（+1.1%）、IDF1达65.0%（+2.0%）、AssA达49.1%（+1.9%），参数量仅为SOTA的1.4%，FLOPs为5%。",
+        "conclusion": "TCMP在精度和效率上取得最佳平衡，特别适合实时和资源受限的跟踪系统。",
+        "markdown": "# TL;DR\n提出TCMP，基于时序卷积网络的高效运动预测器，在多目标跟踪中实现更优性能且极低计算代价。\n\n## 动机\n多目标跟踪中准确预测非线性运动至关重要，但现有生成模型过于复杂且计算昂贵。\n\n## 方法\n采用改进的时序卷积网络（TCN），引入扩张卷积和回归头，支持任意时长的时序上下文建模。\n\n## 效果\n在MOT数据集上，HOTA达63.4%（+1.1%）、IDF1达65.0%（+2.0%）、AssA达49.1%（+1.9%），参数量仅为SOTA的1.4%，FLOPs为5%。\n\n## 结论\nTCMP在精度和效率上取得最佳平衡，特别适合实时和资源受限的跟踪系统。"
+      },
+      "keywordsZh": [
+        "多目标跟踪",
+        "运动预测",
+        "时序卷积网络",
+        "扩张卷积",
+        "计算效率",
+        "实时跟踪",
+        "自动驾驶",
+        "监控"
+      ],
+      "keywordsEn": [
+        "multi-object tracking",
+        "motion prediction",
+        "temporal convolutional network",
+        "dilated convolution",
+        "computational efficiency",
+        "real-time tracking",
+        "autonomous driving",
+        "surveillance"
+      ],
+      "semanticQueryZh": "多目标跟踪运动预测 高效时序卷积网络 计算效率 实时跟踪",
+      "generatedAt": "2026-05-04T05:53:32Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00350",
+      "aiSummary": {
+        "tldr": "提出首个针对癌症生存预测中分布外检测的基准CURE-OOD，揭示协变量偏移对预测性能的影响及分类导向OOD检测器的失效。",
+        "motivation": "癌症患者生存预测对心理疏导和个性化治疗至关重要，但CT影像采集差异导致的分布外样本会降低模型可靠性，而现有基准缺乏对该问题的系统研究。",
+        "method": "构建CURE-OOD基准，包含四个生存预测任务，基于扫描仪参数定义训练集、分布内和分布外测试集，并引入生存感知基线HazardDev。",
+        "result": "实验表明协变量偏移显著降低生存预测性能，且主流分类导向的OOD检测器在生存预测任务中失效。",
+        "conclusion": "CURE-OOD为系统性分析分布偏移对生存预测和OOD可检测性的影响提供了标准平台。",
+        "markdown": "**TL;DR:** 提出首个针对癌症生存预测中分布外检测的基准CURE-OOD，揭示协变量偏移对预测性能的影响及分类导向OOD检测器的失效。\n\n**动机:** 癌症患者生存预测对心理疏导和个性化治疗至关重要，但CT影像采集差异导致的分布外样本会降低模型可靠性，而现有基准缺乏对该问题的系统研究。\n\n**方法:** 构建CURE-OOD基准，包含四个生存预测任务，基于扫描仪参数定义训练集、分布内和分布外测试集，并引入生存感知基线HazardDev。\n\n**效果:** 实验表明协变量偏移显著降低生存预测性能，且主流分类导向的OOD检测器在生存预测任务中失效。\n\n**结论:** CURE-OOD为系统性分析分布偏移对生存预测和OOD可检测性的影响提供了标准平台。"
+      },
+      "keywordsZh": [
+        "癌症生存预测",
+        "分布外检测",
+        "基准测试",
+        "计算机断层扫描",
+        "协变量偏移",
+        "HazardDev",
+        "医学影像"
+      ],
+      "keywordsEn": [
+        "cancer survival prediction",
+        "out-of-distribution detection",
+        "benchmark",
+        "computed tomography",
+        "covariate shift",
+        "HazardDev",
+        "medical imaging"
+      ],
+      "semanticQueryZh": "癌症生存预测分布外检测基准 CT影像协变量偏移",
+      "generatedAt": "2026-05-04T05:53:27Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00345",
+      "aiSummary": {
+        "tldr": "提出PAD扩散框架，直接在观察空间生成姿态对齐的3D物体，通过注入部分点云锚点消除规范假设，在几何对齐和图像到3D对应上超越现有方法。",
+        "motivation": "解耦的规范-旋转范式存在空间不匹配和变换模糊性，难以生成姿态对齐的3D物体。",
+        "method": "将单目深度反投影为部分点云作为3D几何锚点，注入扩散模型，在观察空间直接生成几何，抛弃规范假设。",
+        "result": "实验表明在几何对齐和图像到3D对应上优于现有方法，并能自然扩展到组合场景重建，保持精确空间布局。",
+        "conclusion": "PAD提供了端到端姿态对齐3D生成的解决方案，具有高保真度和空间布局保持能力。",
+        "markdown": "### TL;DR\n提出PAD扩散框架，直接在观察空间生成姿态对齐的3D物体，通过注入部分点云锚点消除规范假设，在几何对齐和图像到3D对应上超越现有方法。\n\n### 动机\n解耦的规范-旋转范式存在空间不匹配和变换模糊性，难以生成姿态对齐的3D物体。\n\n### 方法\n将单目深度反投影为部分点云作为3D几何锚点，注入扩散模型，在观察空间直接生成几何，抛弃规范假设。\n\n### 效果\n实验表明在几何对齐和图像到3D对应上优于现有方法，并能自然扩展到组合场景重建，保持精确空间布局。\n\n### 结论\nPAD提供了端到端姿态对齐3D生成的解决方案，具有高保真度和空间布局保持能力。"
+      },
+      "keywordsZh": [
+        "姿态感知扩散",
+        "3D生成",
+        "点云",
+        "图像到3D",
+        "姿态对齐",
+        "扩散模型",
+        "组合场景"
+      ],
+      "keywordsEn": [
+        "Pose-Aware Diffusion",
+        "3D generation",
+        "point cloud",
+        "image-to-3D",
+        "pose alignment",
+        "diffusion model",
+        "compositional scene"
+      ],
+      "semanticQueryZh": "姿态对齐3D生成扩散模型 图像到3D 点云注入",
+      "generatedAt": "2026-05-04T05:53:30Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00323",
+      "aiSummary": {
+        "tldr": "提出在线自校准框架OSCAR，结合MCTS与双粒度奖励，利用LVLM自身的判别优势在线生成偏好数据，有效缓解幻觉并提升多模态能力。",
+        "motivation": "现有偏好对齐方法依赖更强模型蒸馏，导致学生模型被迫学习超出感知能力的细节，产生“监督-感知不匹配”，加剧幻觉问题。",
+        "method": "利用LVLM在判别性验证上优于生成任务的“生成-判别差距”，通过蒙特卡洛树搜索（MCTS）探索候选描述，并设计双粒度奖励（局部细节+全局一致性）构建偏好数据，再使用直接偏好优化（DPO）在线迭代训练。",
+        "result": "在多个幻觉基准上达到最先进效果，同时通用多模态能力也得到提升。",
+        "conclusion": "OSCAR无需外部监督，通过模型自我校准有效缓解幻觉，为LVLM的在线对齐提供了新思路。",
+        "markdown": "### TL;DR\n提出在线自校准框架OSCAR，结合MCTS与双粒度奖励，利用LVLM自身的判别优势在线生成偏好数据，有效缓解幻觉并提升多模态能力。\n\n### 动机\n现有偏好对齐方法依赖更强模型蒸馏，导致学生模型被迫学习超出感知能力的细节，产生“监督-感知不匹配”，加剧幻觉问题。\n\n### 方法\n利用LVLM在判别性验证上优于生成任务的“生成-判别差距”，通过蒙特卡洛树搜索（MCTS）探索候选描述，并设计双粒度奖励（局部细节+全局一致性）构建偏好数据，再使用直接偏好优化（DPO）在线迭代训练。\n\n### 效果\n在多个幻觉基准上达到最先进效果，同时通用多模态能力也得到提升。\n\n### 结论\nOSCAR无需外部监督，通过模型自我校准有效缓解幻觉，为LVLM的在线对齐提供了新思路。"
+      },
+      "keywordsZh": [
+        "视觉语言模型",
+        "幻觉问题",
+        "在线自校准",
+        "蒙特卡洛树搜索",
+        "偏好对齐",
+        "直接偏好优化",
+        "多模态"
+      ],
+      "keywordsEn": [
+        "Vision-Language Model",
+        "Hallucination",
+        "Online Self-Calibration",
+        "Monte Carlo Tree Search",
+        "Preference Alignment",
+        "Direct Preference Optimization",
+        "Multimodal"
+      ],
+      "semanticQueryZh": "视觉语言模型幻觉问题的在线自校准方法，利用蒙特卡洛树搜索和双粒度奖励进行偏好对齐",
+      "generatedAt": "2026-05-04T05:53:35Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.00310",
+      "aiSummary": {
+        "tldr": "提出GeoSR-Bench基准，将超分辨率模型评估从传统保真度指标扩展到下游任务性能，发现指标改进与任务增益常不相关甚至负相关。",
+        "motivation": "现有超分辨率研究过度依赖PSNR/SSIM等保真度指标，但这些指标无法反映超分图像在下游任务（如土地覆盖分类、变化检测）中的实际效用，亟需建立任务导向的评估基准。",
+        "method": "构建包含约36,000个地点、空间共位且时间对齐的多分辨率（500m至0.6m）图像对数据集GeoSR-Bench，集成土地覆盖分割、基础设施映射等下游任务，并系统对比GAN、Transformer、神经算子和扩散模型在9种SR模型和5项下游任务上的表现。",
+        "result": "在270组实验设置下，传统SR指标（PSNR/SSIM）的改进与下游任务性能提升之间缺乏相关性，甚至出现负相关，表明仅依赖保真度指标可能误导模型选择。",
+        "conclusion": "超分辨率模型的评估必须整合下游任务，GeoSR-Bench为任务驱动的模型开发和选择提供了有效工具。",
+        "markdown": "### TL;DR\n提出GeoSR-Bench基准，将超分辨率模型评估从传统保真度指标扩展到下游任务性能，发现指标改进与任务增益常不相关甚至负相关。\n\n### 动机\n现有超分辨率研究过度依赖PSNR/SSIM等保真度指标，但这些指标无法反映超分图像在下游任务（如土地覆盖分类、变化检测）中的实际效用，亟需建立任务导向的评估基准。\n\n### 方法\n构建包含约36,000个地点、空间共位且时间对齐的多分辨率（500m至0.6m）图像对数据集GeoSR-Bench，集成土地覆盖分割、基础设施映射等下游任务，并系统对比GAN、Transformer、神经算子和扩散模型在9种SR模型和5项下游任务上的表现。\n\n### 效果\n在270组实验设置下，传统SR指标（PSNR/SSIM）的改进与下游任务性能提升之间缺乏相关性，甚至出现负相关，表明仅依赖保真度指标可能误导模型选择。\n\n### 结论\n超分辨率模型的评估必须整合下游任务，GeoSR-Bench为任务驱动的模型选择和开发提供了有效工具。"
+      },
+      "keywordsZh": [
+        "超分辨率",
+        "遥感图像",
+        "下游任务",
+        "基准数据集",
+        "土地覆盖分类",
+        "GAN",
+        "Transformer",
+        "神经算子",
+        "扩散模型"
+      ],
+      "keywordsEn": [
+        "super-resolution",
+        "remote sensing",
+        "downstream tasks",
+        "benchmark dataset",
+        "land cover classification",
+        "GAN",
+        "Transformer",
+        "neural operator",
+        "diffusion model"
+      ],
+      "semanticQueryZh": "超分辨率模型 遥感 下游任务 基准评估 土地覆盖 分类 变化检测",
+      "generatedAt": "2026-05-04T05:53:41Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    }
+  ]
+}
