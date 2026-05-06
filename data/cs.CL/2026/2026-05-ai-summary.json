@@ -1,12 +1,1702 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-05T05:28:45Z",
+  "generatedAt": "2026-05-06T05:47:34Z",
   "category": "cs.CL",
   "yearMonth": "2026-05",
   "promptVersion": "paper-ai-summary/v1",
   "model": "deepseek-v4-flash",
-  "paperCount": 98,
+  "paperCount": 147,
   "papers": [
+    {
+      "arxivId": "2605.04039",
+      "aiSummary": {
+        "tldr": "临床大语言模型的安全性与准确性遵循不同的缩放定律，证据质量比模型规模更关键。",
+        "motivation": "在医学领域，高准确率并不等同于安全性，少量高风险错误可能比平均性能更重要。",
+        "method": "提出SaFE-Scale框架和RadSaFE-200基准，评估34个本地部署LLM在6种部署条件（闭卷、清洁证据、冲突证据、标准RAG、代理RAG、最大上下文）下的安全指标。",
+        "result": "清洁证据将准确率从73.5%提升至94.1%，高风险错误从12.0%降至2.6%，矛盾从12.7%降至2.3%，危险过信从8.0%降至1.6%。标准RAG和代理RAG未复制此安全性，推理计算增益有限。",
+        "conclusion": "临床LLM的安全性不是缩放的自然结果，而是部署属性，受证据质量、检索设计、上下文构建和集体失败行为影响。",
+        "markdown": "### TL;DR\n临床大语言模型的安全性与准确性遵循不同的缩放定律，证据质量比模型规模更关键。\n\n### 动机\n医学中高准确率不保证安全，少量高风险错误更关键。\n\n### 方法\n提出SaFE-Scale框架和RadSaFE-200基准，评估不同缩放条件（模型规模、证据质量、检索策略、上下文长度、推理计算）下的安全性。\n\n### 效果\n清洁证据显著提升准确率并降低所有安全风险指标；RAG和推理计算未带来同等安全增益。\n\n### 结论\n安全性是部署属性，需关注证据质量和检索设计，而非单纯扩展模型。"
+      },
+      "keywordsZh": [
+        "临床大语言模型",
+        "安全性评估",
+        "缩放定律",
+        "证据质量",
+        "检索增强生成",
+        "放射学",
+        "高风险错误",
+        "过自信"
+      ],
+      "keywordsEn": [
+        "clinical LLM",
+        "safety evaluation",
+        "scaling laws",
+        "evidence quality",
+        "retrieval-augmented generation",
+        "radiology",
+        "high-risk error",
+        "overconfidence"
+      ],
+      "semanticQueryZh": "临床大语言模型安全性评估 不同缩放条件 证据质量 检索增强生成 放射学",
+      "generatedAt": "2026-05-06T05:45:06Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.04018",
+      "aiSummary": {
+        "tldr": "提出BRIGHT-Pro基准和RTriever-4B模型，提升推理密集型检索在代理搜索系统中的评估与性能。",
+        "motivation": "现有推理密集型检索的评估和训练存在局限：基准集证据单一，合成语料优化单段落相关性，无法满足代理搜索中多轮证据组合的需求。",
+        "method": "构建BRIGHT-Pro专家标注基准，为每个查询提供多方面黄金证据；设计RTriever-Synth合成语料，通过方面分解生成互补正例和正条件硬负例，并利用LoRA微调Qwen3-Embedding-4B得到RTriever-4B检索模型。",
+        "result": "在静态和代理搜索协议下评估多种检索器，方面感知和代理评估揭示了标准指标隐藏的行为差异；RTriever-4B显著优于其基础模型Qwen3-Embedding-4B。",
+        "conclusion": "该工作为推理密集型检索提供了更全面的评估框架和有效的训练方法，对构建高性能代理搜索系统具有实用价值。",
+        "markdown": "### TL;DR\n提出BRIGHT-Pro基准和RTriever-4B模型，提升推理密集型检索在代理搜索系统中的评估与性能。\n\n### 动机\n现有推理密集型检索的评估和训练存在局限：基准集证据单一，合成语料优化单段落相关性，无法满足代理搜索中多轮证据组合的需求。\n\n### 方法\n构建BRIGHT-Pro专家标注基准，为每个查询提供多方面黄金证据；设计RTriever-Synth合成语料，通过方面分解生成互补正例和正条件硬负例，并利用LoRA微调Qwen3-Embedding-4B得到RTriever-4B检索模型。\n\n### 效果\n在静态和代理搜索协议下评估多种检索器，方面感知和代理评估揭示了标准指标隐藏的行为差异；RTriever-4B显著优于其基础模型Qwen3-Embedding-4B。\n\n### 结论\n该工作为推理密集型检索提供了更全面的评估框架和有效的训练方法，对构建高性能代理搜索系统具有实用价值。"
+      },
+      "keywordsZh": [
+        "推理密集型检索",
+        "代理搜索",
+        "基准评估",
+        "合成数据",
+        "LoRA微调",
+        "证据检索",
+        "多方面评估"
+      ],
+      "keywordsEn": [
+        "reasoning-intensive retrieval",
+        "agentic search",
+        "benchmark",
+        "synthetic corpus",
+        "LoRA fine-tuning",
+        "Qwen3-Embedding-4B",
+        "evidence portfolio"
+      ],
+      "semanticQueryZh": "推理密集型检索 代理搜索 基准 多方面证据 合成数据 LoRA微调",
+      "generatedAt": "2026-05-06T05:45:07Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03998",
+      "aiSummary": {
+        "tldr": "EQUITRIAGE对五种大语言模型在急诊分诊中的性别偏见进行了公平性审计，发现所有模型均存在高于阈值的性别翻转率，且不同模型偏见的机制不同。",
+        "motivation": "急诊分诊中人类评估存在性别偏差，大语言模型作为辅助工具可能加剧或缓解这一偏差，因此需要对LLM的公平性进行系统性审计。",
+        "method": "使用MIMIC-IV-ED数据集构建18,714个病例，对每个病例生成性别交换的反事实，并采用4种提示策略测试5种LLM（Gemini、Nemotron、DeepSeek、Mistral、GPT-4.1-Nano），共374,275次评估；分析翻转率、方向偏差、校准缺口及消融实验。",
+        "result": "所有模型翻转率超过预注册的5%阈值（9.9%-43.8%）；DeepSeek和Gemini呈现女性低分诊偏差（比例分别为2.15:1和1.34:1）；Demographic blinding使Gemini翻转率降至0.5%，但DeepSeek仍有残留偏差（F/M 1.25），提示年龄作为剩余通道；链式思维提示降低所有模型准确性。",
+        "conclusion": "群体平等、反事实不变性和性别校准时不同的公平属性；干预措施的效果依赖具体模型；临床部署前应对每个模型进行反事实审计。",
+        "markdown": "### TL;DR\nEQUITRIAGE对五种大语言模型在急诊分诊中的性别偏见进行了公平性审计，发现所有模型均存在高于阈值的性别翻转率，且不同模型偏见的机制不同。\n\n### 动机\n急诊分诊中人类评估存在性别偏差，大语言模型作为辅助工具可能加剧或缓解这一偏差，因此需要对LLM的公平性进行系统性审计。\n\n### 方法\n使用MIMIC-IV-ED数据集构建18,714个病例，对每个病例生成性别交换的反事实，并采用4种提示策略测试5种LLM（Gemini、Nemotron、DeepSeek、Mistral、GPT-4.1-Nano），共374,275次评估；分析翻转率、方向偏差、校准缺口及消融实验。\n\n### 效果\n所有模型翻转率超过预注册的5%阈值（9.9%-43.8%）；DeepSeek和Gemini呈现女性低分诊偏差（比例分别为2.15:1和1.34:1）；Demographic blinding使Gemini翻转率降至0.5%，但DeepSeek仍有残留偏差（F/M 1.25），提示年龄作为剩余通道；链式思维提示降低所有模型准确性。\n\n### 结论\n群体平等、反事实不变性和性别校准时不同的公平属性；干预措施的效果依赖具体模型；临床部署前应对每个模型进行反事实审计。"
+      },
+      "keywordsZh": [
+        "公平性审计",
+        "性别偏见",
+        "大语言模型",
+        "急诊分诊",
+        "反事实",
+        "校准偏差",
+        "MIMIC-IV-ED",
+        "提示策略"
+      ],
+      "keywordsEn": [
+        "fairness audit",
+        "gender bias",
+        "large language models",
+        "emergency triage",
+        "counterfactual",
+        "calibration gap",
+        "MIMIC-IV-ED",
+        "prompt strategies"
+      ],
+      "semanticQueryZh": "大语言模型在急诊分诊中的性别公平性审计与反事实不变性研究",
+      "generatedAt": "2026-05-06T05:45:10Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03971",
+      "aiSummary": {
+        "tldr": "LaaB框架通过逻辑一致性桥接神经特征和符号判断，有效提升了大语言模型幻觉检测的性能。",
+        "motivation": "大语言模型易产生事实性幻觉，现有检测方法仅关注隐式神经不确定性或显式符号推理的单一层面，忽视了二者内在的相互依赖性。",
+        "method": "提出LaaB框架，通过引入“元判断”过程将符号标签映射回特征空间，利用响应与元判断标签之间的逻辑一致性（相同或相反）进行对齐和双向信号融合，通过互学习增强幻觉检测。",
+        "result": "在4个公开数据集、4种大语言模型上与8种基线方法对比，LaaB表现出优越性能。",
+        "conclusion": "LaaB为幻觉检测提供了整合神经与符号视角的有效范式，可提升实际部署中LLM的可靠性。",
+        "markdown": "### TL;DR\nLaaB框架通过逻辑一致性桥接神经特征和符号判断，有效提升了大语言模型幻觉检测的性能。\n\n### 动机\n大语言模型易产生事实性幻觉，现有检测方法仅关注隐式神经不确定性或显式符号推理的单一层面，忽视了二者内在的相互依赖性。\n\n### 方法\n提出LaaB框架，通过引入“元判断”过程将符号标签映射回特征空间，利用响应与元判断标签之间的逻辑一致性（相同或相反）进行对齐和双向信号融合，通过互学习增强幻觉检测。\n\n### 效果\n在4个公开数据集、4种大语言模型上与8种基线方法对比，LaaB表现出优越性能。\n\n### 结论\nLaaB为幻觉检测提供了整合神经与符号视角的有效范式，可提升实际部署中LLM的可靠性。"
+      },
+      "keywordsZh": [
+        "大语言模型",
+        "幻觉检测",
+        "逻辑一致性",
+        "神经特征",
+        "符号判断",
+        "元判断",
+        "互学习"
+      ],
+      "keywordsEn": [
+        "Large Language Models",
+        "hallucination detection",
+        "logical consistency",
+        "neural features",
+        "symbolic judgments",
+        "meta-judgment",
+        "mutual learning"
+      ],
+      "semanticQueryZh": "大语言模型幻觉检测方法 逻辑一致性 神经特征与符号判断融合",
+      "generatedAt": "2026-05-06T05:45:01Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03969",
+      "aiSummary": {
+        "tldr": "通过注意力机制融合语言特征增强Transformer检测器，固定阈值协议下跨域跨生成器AI文本检测鲁棒性显著提升，DeBERTa-v3-base+FeatAttn模型在M4基准上达到85.9%平衡准确率。",
+        "motivation": "AI生成文本检测需应对跨域和跨生成器的分布偏移，现有检测器在分布变化下性能脆弱，需提升鲁棒性。",
+        "method": "基于Transformer的检测器在HC3 PLUS上训练并固定决策阈值，通过注意力机制融合可读性、词汇等语言特征（FeatAttn）增强特征表示，采用DeBERTa-v3-base作为骨干网络。",
+        "result": "域内HC3 PLUS上平衡准确率达99.5%；跨域M4基准上最佳模型（DeBERTa-v3-base+FeatAttn）达85.9%，优于强零样本基线7.22个百分点；多种子实验稳定性高；可读性和词汇特征贡献最大。",
+        "conclusion": "特征增强结合现代Transformer骨干（如DeBERTa）显著提升AI文本检测在分布偏移下的鲁棒性，固定阈值协议提供了更真实的评估。",
+        "markdown": "### TL;DR\n通过注意力机制融合语言特征增强Transformer检测器，固定阈值协议下跨域跨生成器AI文本检测鲁棒性显著提升，DeBERTa-v3-base+FeatAttn模型在M4基准上达到85.9%平衡准确率。\n\n### 动机\nAI生成文本检测需应对跨域和跨生成器的分布偏移，现有检测器在分布变化下性能脆弱，需提升鲁棒性。\n\n### 方法\n基于Transformer的检测器在HC3 PLUS上训练并固定决策阈值，通过注意力机制融合可读性、词汇等语言特征（FeatAttn）增强特征表示，采用DeBERTa-v3-base作为骨干网络。\n\n### 效果\n域内HC3 PLUS上平衡准确率达99.5%；跨域M4基准上最佳模型（DeBERTa-v3-base+FeatAttn）达85.9%，优于强零样本基线7.22个百分点；多种子实验稳定性高；可读性和词汇特征贡献最大。\n\n### 结论\n特征增强结合现代Transformer骨干（如DeBERTa）显著提升AI文本检测在分布偏移下的鲁棒性，固定阈值协议提供了更真实的评估。"
+      },
+      "keywordsZh": [
+        "AI文本检测",
+        "分布偏移鲁棒性",
+        "特征增强",
+        "Transformer",
+        "DeBERTa",
+        "注意力融合",
+        "固定阈值",
+        "跨域检测"
+      ],
+      "keywordsEn": [
+        "AI-text detection",
+        "distribution shift robustness",
+        "feature augmentation",
+        "Transformer",
+        "DeBERTa",
+        "attention fusion",
+        "fixed threshold",
+        "cross-domain detection"
+      ],
+      "semanticQueryZh": "鲁棒的AI生成文本检测方法 跨域跨生成器 特征增强 DeBERTa 固定阈值 注意力融合",
+      "generatedAt": "2026-05-06T05:45:14Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03936",
+      "aiSummary": {
+        "tldr": "本研究探索语言模型能否通过反复生成反例和修复定义来进行概念分析，发现模型虽能参与哲学推理，但迭代过程很快陷入收益递减。",
+        "motivation": "概念分析是哲学方法的核心，评估语言模型在此类高阶迭代推理任务上的表现，有助于理解其推理能力的边界。",
+        "method": "采用迭代反例-修复链：一个模型实例针对定义生成反例，另一个实例据此修复定义，循环重复；在20个概念上运行数千次循环，并由人类和LM共同评判反例有效性。",
+        "result": "LM评判接受的反例约为人类的两倍；人类之间及人类与LM对反例有效性的判断中等一致；迭代次数增加使定义更冗长但未提升准确率；部分概念始终难以稳定定义。",
+        "conclusion": "语言模型能进行一定程度的哲学推理，但反例-修复循环收益递减迅速，该任务可作为检验LM持续高阶推理能力的实用测试案例。",
+        "markdown": "### TL;DR\n本研究探索语言模型能否通过反复生成反例和修复定义来进行概念分析，发现模型虽能参与哲学推理，但迭代过程很快陷入收益递减。\n\n### 动机\n概念分析是哲学方法的核心，评估语言模型在此类高阶迭代推理任务上的表现，有助于理解其推理能力的边界。\n\n### 方法\n采用迭代反例-修复链：一个模型实例针对定义生成反例，另一个实例据此修复定义，循环重复；在20个概念上运行数千次循环，并由人类和LM共同评判反例有效性。\n\n### 效果\nLM评判接受的反例约为人类的两倍；人类之间及人类与LM对反例有效性的判断中等一致；迭代次数增加使定义更冗长但未提升准确率；部分概念始终难以稳定定义。\n\n### 结论\n语言模型能进行一定程度的哲学推理，但反例-修复循环收益递减迅速，该任务可作为检验LM持续高阶推理能力的实用测试案例。"
+      },
+      "keywordsZh": [
+        "语言模型",
+        "概念分析",
+        "反例",
+        "哲学推理",
+        "迭代修复",
+        "定义准确率",
+        "收益递减"
+      ],
+      "keywordsEn": [
+        "language models",
+        "conceptual analysis",
+        "counterexamples",
+        "philosophical reasoning",
+        "iterative repair",
+        "definition accuracy",
+        "diminishing returns"
+      ],
+      "semanticQueryZh": "语言模型在概念分析中的反例生成与定义修复能力评估",
+      "generatedAt": "2026-05-06T05:45:20Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03916",
+      "aiSummary": {
+        "tldr": "原子事实核查方法将AI推荐分解为可验证声明并链接指南，使临床医生信任率从26.9%提升至66.5%，效果显著优于传统可解释性方法。",
+        "motivation": "在肿瘤治疗等高危临床决策中，AI建议的可信度是关键障碍，传统可解释性方法提升信任效果有限。",
+        "method": "提出原子事实核查框架：将大模型生成的肿瘤治疗建议拆解为独立、可验证的原子声明，每条声明关联源指南文档，供医生逐条核实。",
+        "result": "随机对照试验（356名临床医生，7476次信任评分）显示原子事实核查的效应量Cohen's d=0.94，信任率从26.9%提升至66.5%；传统透明度机制仅产生d=0.25-0.50的改善。",
+        "conclusion": "对高风险临床AI建议进行原子级事实核查能大幅提升医生信任，优于传统解释方法，为可信临床决策支持系统提供了可操作路径。",
+        "markdown": "### TL;DR\n原子事实核查将AI推荐分解为可验证声明并链接指南，使临床医生信任率从26.9%提升至66.5%，效果显著优于传统可解释性方法。\n\n### 动机\n肿瘤治疗等高风险决策中，医生对AI建议缺乏信任是落地瓶颈，传统可解释性方法提升效果有限。\n\n### 方法\n提出原子事实核查框架：将大模型生成的肿瘤治疗建议拆解为独立原子声明，每条声明关联源指南文档，医生可逐条核实。\n\n### 效果\n随机对照试验（356名临床医生，7476次评分）显示Cohen's d=0.94，信任率从26.9%升至66.5%；传统方法仅提升至d=0.25-0.50。\n\n### 结论\n原子级事实核查能显著增强临床医生对AI建议的信任，为构建可信的临床决策支持系统提供了有效方案。"
+      },
+      "keywordsZh": [
+        "原子事实核查",
+        "临床信任",
+        "大语言模型",
+        "肿瘤决策支持",
+        "可解释AI",
+        "随机对照试验"
+      ],
+      "keywordsEn": [
+        "atomic fact-checking",
+        "clinician trust",
+        "large language model",
+        "oncology decision support",
+        "explainable AI",
+        "randomized controlled trial"
+      ],
+      "semanticQueryZh": "原子事实核查 提升 临床医生 信任 大语言模型 肿瘤治疗 推荐 随机对照试验",
+      "generatedAt": "2026-05-06T05:45:18Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03907",
+      "aiSummary": {
+        "tldr": "提出 Prompt Steering Replacement (PSR) 模型，通过模仿提示方式的 token 级激活干预，在多个基准上优于现有激活引导方法，甚至媲美提示引导。",
+        "motivation": "激活引导方法通常不如提示引导效果好，原因在于现有方法未忠实模拟提示引导中对不同 token 施加不同强度干预的机制。",
+        "method": "将提示引导形式化为激活引导，分析其 token 级干预差异，提出 PSR 模型：从激活中学习 token 特定的引导系数，并训练以模仿提示引导的行为。",
+        "result": "在三个引导基准上，PSR 在多个语言模型上优于现有激活引导方法，尤其在高连贯性输出控制下，并在 AxBench 和人物引导任务上与提示引导表现相当。",
+        "conclusion": "通过蒸馏提示引导行为到简单可解释模型，可以有效弥合激活引导与提示引导之间的性能差距。",
+        "markdown": "### TL;DR\n提出 Prompt Steering Replacement (PSR) 模型，通过模仿提示方式的 token 级激活干预，在多个基准上优于现有激活引导方法，甚至媲美提示引导。\n\n### 动机\n激活引导方法通常不如提示引导效果好，原因在于现有方法未忠实模拟提示引导中对不同 token 施加不同强度干预的机制。\n\n### 方法\n将提示引导形式化为激活引导，分析其 token 级干预差异，提出 PSR 模型：从激活中学习 token 特定的引导系数，并训练以模仿提示引导的行为。\n\n### 效果\n在三个引导基准上，PSR 在多个语言模型上优于现有激活引导方法，尤其在高连贯性输出控制下，并在 AxBench 和人物引导任务上与提示引导表现相当。\n\n### 结论\n通过蒸馏提示引导行为到简单可解释模型，可以有效弥合激活引导与提示引导之间的性能差距。"
+      },
+      "keywordsZh": [
+        "激活引导",
+        "提示引导",
+        "语言模型",
+        "词元级干预",
+        "蒸馏",
+        "可解释性",
+        "PSR",
+        "ICML 2026"
+      ],
+      "keywordsEn": [
+        "activation steering",
+        "prompt steering",
+        "language models",
+        "token-level intervention",
+        "distillation",
+        "interpretability",
+        "PSR",
+        "ICML 2026"
+      ],
+      "semanticQueryZh": "语言模型激活引导方法 模仿提示引导 token级干预",
+      "generatedAt": "2026-05-06T05:45:20Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03903",
+      "aiSummary": {
+        "tldr": "提出CC-OCR V2基准，揭示当前多模态大模型在真实文档处理场景中性能远未达到实际应用要求。",
+        "motivation": "现有OCR基准测试范围与真实场景不一致，缺少实际企业文档处理中的硬例和边缘案例。",
+        "method": "CC-OCR V2包含5个OCR核心任务（文本识别、文档解析、文档定位、关键信息提取、文档问答），共7093个高难度样本，专门针对真实企业文档处理。",
+        "result": "在14个先进LMM上测试，发现当前模型性能大幅下降，与现有基准表现存在显著差距；即使SOTA模型也未达到实际应用需求。",
+        "conclusion": "CC-OCR V2基准揭示了现有LMM在真实文档处理中的不足，敦促研究关注实际应用性能。",
+        "markdown": "### TL;DR\n提出CC-OCR V2基准，揭示当前多模态大模型在真实文档处理场景中性能远未达到实际应用要求。\n\n### 动机\n现有OCR基准测试范围与真实场景不一致，缺少实际企业文档处理中的硬例和边缘案例。\n\n### 方法\n构建CC-OCR V2，包含5个OCR核心任务（文本识别、文档解析、文档定位、关键信息提取、文档问答），共7093个高难度样本。\n\n### 效果\n在14个先进LMM上测试，性能大幅下降，SOTA模型也未满足实际需求。\n\n### 结论\n现有LMM在真实文档处理中表现不足，需要更多面向实际应用的评估。"
+      },
+      "keywordsZh": [
+        "多模态大模型",
+        "OCR基准",
+        "文档处理",
+        "真实场景",
+        "文本识别",
+        "文档解析",
+        "关键信息提取",
+        "文档问答"
+      ],
+      "keywordsEn": [
+        "Large Multimodal Models",
+        "OCR benchmark",
+        "document processing",
+        "real-world",
+        "text recognition",
+        "document parsing",
+        "key information extraction",
+        "document QA"
+      ],
+      "semanticQueryZh": "真实文档处理中的多模态大模型OCR基准测试",
+      "generatedAt": "2026-05-06T05:45:26Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03858",
+      "aiSummary": {
+        "tldr": "提出MCJudgeBench基准，用于在约束级别评估LLM评判器在多约束指令跟随中的表现，发现高整体正确性不保证跨标签一致性且推理提升正确性但未必提升稳定性。",
+        "motivation": "现有LLM评判器评估仅关注整体响应判断，忽略了在细粒度约束级别上的可靠性，导致对失败模式的理解不足。",
+        "method": "构建MCJudgeBench，包含指令、候选响应、显式约束列表、每个约束的金标签（yes/partial/no）以及受控扰动；设计评估提示变体，使用正确性和不一致性两个指标，区分内在不一致性和程序不一致性。",
+        "result": "评估多个专有和开源LLM评判器，发现整体性能高不保证对partial和no等少见标签的可靠检测；高正确性评判器不一定不一致性低；推理增强正确性但未统一改善稳定性。",
+        "conclusion": "应在约束级别评估LLM评判器，以识别和缓解其在多约束指令跟随中的细粒度失败模式。",
+        "markdown": "### TL;DR\n提出MCJudgeBench基准，用于在约束级别评估LLM评判器在多约束指令跟随中的表现，发现高整体正确性不保证跨标签一致性且推理提升正确性但未必提升稳定性。\n\n### 动机\n现有LLM评判器评估仅关注整体响应判断，忽略了在细粒度约束级别上的可靠性，导致对失败模式的理解不足。\n\n### 方法\n构建MCJudgeBench，包含指令、候选响应、显式约束列表、每个约束的金标签（yes/partial/no）以及受控扰动；设计评估提示变体，使用正确性和不一致性两个指标，区分内在不一致性和程序不一致性。\n\n### 效果\n评估多个专有和开源LLM评判器，发现整体性能高不保证对partial和no等少见标签的可靠检测；高正确性评判器不一定不一致性低；推理增强正确性但未统一改善稳定性。\n\n### 结论\n应在约束级别评估LLM评判器，以识别和缓解其在多约束指令跟随中的细粒度失败模式。"
+      },
+      "keywordsZh": [
+        "多约束指令跟随",
+        "LLM评判器",
+        "约束级别评估",
+        "基准测试",
+        "正确性",
+        "不一致性"
+      ],
+      "keywordsEn": [
+        "multi-constraint instruction following",
+        "LLM judge",
+        "constraint-level evaluation",
+        "benchmark",
+        "correctness",
+        "inconsistency"
+      ],
+      "semanticQueryZh": "多约束指令跟随 LLM 评判器约束级别评估基准",
+      "generatedAt": "2026-05-06T05:45:29Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03838",
+      "aiSummary": {
+        "tldr": "提出TRACE框架，通过计量学信任度量、经典ML与LLM分离及模型简约原则，为关键操作领域可信自主AI提供跨域工程方案。",
+        "motivation": "在关键操作领域中，自主AI系统的可信度至关重要，但现有方法缺乏统一的工程框架，且LLM的使用常常是默认而非经过审慎设计。",
+        "method": "TRACE框架包含四层参考架构：L2a（经典ML）与L2b（LLM验证器）显式分离，L3有状态编排与升级策略，L4有限人类监督；结合基于GUM/VIM/ISO 17025的计量学信任度量套件，并引入计算简约比（CPR）作为模型简约原则的量化指标。",
+        "result": "论文通过临床决策支持、工业多域操作、司法AI助手三个跨域实例验证了该架构和度量的可迁移性，但未提供具体数值实验结果。",
+        "conclusion": "TRACE为可信自主AI工程提供了可复用的架构设计和量化可信度方法，尤其强调了设计决策中理性选择LLM而非默认使用的重要性。",
+        "markdown": "### TL;DR\n提出TRACE框架，通过计量学信任度量、经典ML与LLM分离及模型简约原则，为关键操作领域可信自主AI提供跨域工程方案。\n\n### 动机\n在关键操作领域中，自主AI系统的可信度至关重要，但现有方法缺乏统一的工程框架，且LLM的使用常常是默认而非经过审慎设计。\n\n### 方法\nTRACE框架包含四层参考架构：L2a（经典ML）与L2b（LLM验证器）显式分离，L3有状态编排与升级策略，L4有限人类监督；结合基于GUM/VIM/ISO 17025的计量学信任度量套件，并引入计算简约比（CPR）作为模型简约原则的量化指标。\n\n### 效果\n论文通过临床决策支持、工业多域操作、司法AI助手三个跨域实例验证了该架构和度量的可迁移性，但未提供具体数值实验结果。\n\n### 结论\nTRACE为可信自主AI工程提供了可复用的架构设计和量化可信度方法，尤其强调了设计决策中理性选择LLM而非默认使用的重要性。"
+      },
+      "keywordsZh": [
+        "可信自主AI",
+        "计量学框架",
+        "模型简约原则",
+        "经典ML与LLM分离",
+        "跨域工程",
+        "TRACE",
+        "关键操作领域"
+      ],
+      "keywordsEn": [
+        "trustworthy AI",
+        "metrological framework",
+        "model parsimony",
+        "classical ML vs LLM separation",
+        "cross-domain engineering",
+        "TRACE",
+        "critical operations"
+      ],
+      "semanticQueryZh": "关键操作领域可信自主AI的工程框架，结合计量学信任度量和模型简约原则",
+      "generatedAt": "2026-05-06T05:45:33Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03824",
+      "aiSummary": {
+        "tldr": "复现研究表明，当前神经检索在处理复杂集合组合查询时存在“语义捷径”，在严格控制谓词约束的LIMIT+基准上性能崩溃，而经典词法检索反而表现稳健。",
+        "motivation": "复杂信息需求常涉及合取、析取和排除等集合组合查询，但现有检索范式是否真正满足这些约束还是利用“语义捷径”尚不清楚。",
+        "method": "对QUEST和QUEST+Variants基准进行复现，并引入LIMIT+基准，其中相关性取决于任意属性谓词和约束满足，减少预训练知识影响。",
+        "result": "在QUEST上，最优神经检索的Recall@100 >0.41，是BM25（0.20）的两倍以上，但推理定向方法（如ReasonIR、Search-R1）并未普遍超越通用检索。在LIMIT+上，QUEST最强方法Recall@100从0.42降至0.02以下，而经典词法检索升至0.96。按组合深度分层显示，所有方法性能均下降，但代数稀疏和词法方法更稳定，而密集方法崩溃。",
+        "conclusion": "当前神经检索在处理严格约束的集合组合查询时可靠性不足，词法检索在控制条件下表现优异，未来需开发更鲁棒的检索策略。",
+        "markdown": "### TL;DR\n复现研究表明，当前神经检索在处理复杂集合组合查询时存在“语义捷径”，在严格控制谓词约束的LIMIT+基准上性能崩溃，而经典词法检索反而表现稳健。\n\n### 动机\n复杂信息需求常涉及合取、析取和排除等集合组合查询，但现有检索范式是否真正满足这些约束还是利用“语义捷径”尚不清楚。\n\n### 方法\n对QUEST和QUEST+Variants基准进行复现，并引入LIMIT+基准，其中相关性取决于任意属性谓词和约束满足，减少预训练知识影响。\n\n### 效果\n在QUEST上，最优神经检索的Recall@100 >0.41，是BM25（0.20）的两倍以上，但推理定向方法（如ReasonIR、Search-R1）并未普遍超越通用检索。在LIMIT+上，QUEST最强方法Recall@100从0.42降至0.02以下，而经典词法检索升至0.96。按组合深度分层显示，所有方法性能均下降，但代数稀疏和词法方法更稳定，而密集方法崩溃。\n\n### 结论\n当前神经检索在处理严格约束的集合组合查询时可靠性不足，词法检索在控制条件下表现优异，未来需开发更鲁棒的检索策略。"
+      },
+      "keywordsZh": [
+        "集合组合查询",
+        "信息检索",
+        "语义捷径",
+        "可复现研究",
+        "LIMIT+基准",
+        "词法检索",
+        "神经检索"
+      ],
+      "keywordsEn": [
+        "set-compositional queries",
+        "information retrieval",
+        "semantic shortcuts",
+        "reproducibility study",
+        "LIMIT+ benchmark",
+        "lexical retrieval",
+        "neural retrieval"
+      ],
+      "semanticQueryZh": "集合组合查询的信息检索复现研究：LIMIT+基准与神经检索的失效分析",
+      "generatedAt": "2026-05-06T05:45:32Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03799",
+      "aiSummary": {
+        "tldr": "一份系统性的NLP实践指南，覆盖从分词到RLHF的完整流程，并包含塔吉克语和鞑靼语的低资源语言资源。",
+        "motivation": "NLP领域缺乏同时涵盖经典方法和现代LLM、且强调可复现性和开源生态的系统性实践教材，低资源语言的研究资源尤为稀缺。",
+        "method": "通过12个动手环节，结合理论讲解与详细实现方案，使用统一语料库，要求代码、模型和报告均公开发布；特别针对低资源语言（塔吉克语、鞑靼语）开发了子词分词器、词嵌入、词汇数据库和音译基准。",
+        "result": "摘要未提供具体的量化实验结果，但展示了低资源语言的语言学资源构建方法。",
+        "conclusion": "适合高年级本科生、研究生和开发者，可作为从经典机器学习到基于LLM系统的实践路线图，尤其关注开源模型和低资源语言场景。",
+        "markdown": "### TL;DR\n一份系统性的NLP实践指南，覆盖从分词到RLHF的完整流程，并包含塔吉克语和鞑靼语的低资源语言资源。\n\n### 动机\nNLP领域缺乏同时涵盖经典方法和现代LLM、且强调可复现性和开源生态的系统性实践教材，低资源语言的研究资源尤为稀缺。\n\n### 方法\n通过12个动手环节，结合理论讲解与详细实现方案，使用统一语料库，要求代码、模型和报告均公开发布；特别针对低资源语言（塔吉克语、鞑靼语）开发了子词分词器、词嵌入、词汇数据库和音译基准。\n\n### 效果\n摘要未提供具体的量化实验结果，但展示了低资源语言的语言学资源构建方法。\n\n### 结论\n适合高年级本科生、研究生和开发者，可作为从经典机器学习到基于LLM系统的实践路线图，尤其关注开源模型和低资源语言场景。"
+      },
+      "keywordsZh": [
+        "自然语言处理",
+        "实践指南",
+        "低资源语言",
+        "微调",
+        "检索增强生成",
+        "RLHF",
+        "开源模型",
+        "Hugging Face"
+      ],
+      "keywordsEn": [
+        "NLP",
+        "practicum",
+        "low-resource languages",
+        "fine-tuning",
+        "RAG",
+        "RLHF",
+        "open-weight models",
+        "Hugging Face"
+      ],
+      "semanticQueryZh": "NLP实践指南 从分词到RLHF 低资源语言 开源模型 动手教程",
+      "generatedAt": "2026-05-06T05:45:40Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03792",
+      "aiSummary": {
+        "tldr": "TriBench-Ko是一个韩语司法任务基准，系统评估大语言模型在司法工作流中的部署风险，测试发现多数模型在先例检索等方面存在显著风险。",
+        "motivation": "现有法律基准多聚焦代理任务（如律师资格考试），无法全面反映司法流程中LLM的真实风险和性能，亟需针对司法任务专门设计的风险评估基准。",
+        "method": "构建韩语基准TriBench-Ko，覆盖法理学总结、先例检索、法律问题提取和证据分析四项核心任务，每个任务联合评估不准确（幻觉、遗漏、法律错误）、偏见（人口、过度顺从）、不一致（提示敏感、非确定性）和裁决越权四类风险，所有项目基于真实司法判决。",
+        "result": "对多个当代LLM的评估显示，许多模型频繁表现出显著风险，尤其在先例检索和关键法律信息捕获方面表现薄弱，存在幻觉和遗漏等问题。",
+        "conclusion": "LLM在司法场景中的输出需严格审查与谨慎使用；该基准为识别和诊断LLM在司法工作流中的风险提供了系统化工具。",
+        "markdown": "**TL;DR** TriBench-Ko是一个韩语司法任务基准，系统评估大语言模型在司法工作流中的部署风险，测试发现多数模型在先例检索等方面存在显著风险。\n\n**动机** 现有法律基准多聚焦代理任务（如律师资格考试），无法全面反映司法流程中LLM的真实风险和性能，亟需针对司法任务专门设计的风险评估基准。\n\n**方法** 构建韩语基准TriBench-Ko，覆盖法理学总结、先例检索、法律问题提取和证据分析四项核心任务，每个任务联合评估不准确（幻觉、遗漏、法律错误）、偏见（人口、过度顺从）、不一致（提示敏感、非确定性）和裁决越权四类风险，所有项目基于真实司法判决。\n\n**效果** 对多个当代LLM的评估显示，许多模型频繁表现出显著风险，尤其在先例检索和关键法律信息捕获方面表现薄弱，存在幻觉和遗漏等问题。\n\n**结论** LLM在司法场景中的输出需严格审查与谨慎使用；该基准为识别和诊断LLM在司法工作流中的风险提供了系统化工具。"
+      },
+      "keywordsZh": [
+        "大语言模型",
+        "司法工作流",
+        "风险评估",
+        "韩语基准",
+        "先例检索",
+        "法律问题提取",
+        "幻觉",
+        "偏见",
+        "不一致性",
+        "TriBench-Ko"
+      ],
+      "keywordsEn": [
+        "LLM",
+        "judicial workflow",
+        "risk assessment",
+        "Korean benchmark",
+        "precedent retrieval",
+        "legal issue extraction",
+        "hallucination",
+        "bias",
+        "inconsistency",
+        "TriBench-Ko"
+      ],
+      "semanticQueryZh": "韩语司法任务大语言模型风险评估基准测试先例检索法律问题提取",
+      "generatedAt": "2026-05-06T05:45:47Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03742",
+      "aiSummary": {
+        "tldr": "为低资源塔吉克语创建最大语料库，系统评测多种参数高效微调方法，Mistral 7B+QLoRA取得最佳困惑度5.03。",
+        "motivation": "低资源语言（塔吉克语）缺乏大语言模型适配所需的数字语料和方法基准。",
+        "method": "构建并公开了最大的塔吉克语文档语料库（Tajik Web Corpus），包含31.9万文档；在1万文档子样本上对比17种模型配置（自回归、编码器-解码器、编码器-only）和三种微调策略（全微调、LoRA、QLoRA），使用困惑度和交叉熵评估。",
+        "result": "最佳配置为Mistral 7B+QLoRA(r=16)，平均困惑度5.03。增大秩（8到16）改进不显著但内存增加。GPT-2全微调困惑度更低（3.48）但导致灾难性遗忘。XLM-RoBERTa表现最差（困惑度59.3）。",
+        "conclusion": "对于塔吉克语文本生成，推荐使用Mistral 7B结合QLoRA，秩选择8即可平衡质量与资源；全微调不适合低资源场景。",
+        "markdown": "### TL;DR\n为低资源塔吉克语创建最大语料库，系统评测多种参数高效微调方法，Mistral 7B+QLoRA取得最佳困惑度5.03。\n\n### 动机\n低资源语言（塔吉克语）缺乏大语言模型适配所需的数字语料和方法基准。\n\n### 方法\n构建并公开了最大的塔吉克语文档语料库（Tajik Web Corpus），包含31.9万文档；在1万文档子样本上对比17种模型配置（自回归、编码器-解码器、编码器-only）和三种微调策略（全微调、LoRA、QLoRA），使用困惑度和交叉熵评估。\n\n### 效果\n最佳配置为Mistral 7B+QLoRA(r=16)，平均困惑度5.03。增大秩（8到16）改进不显著但内存增加。GPT-2全微调困惑度更低（3.48）但导致灾难性遗忘。XLM-RoBERTa表现最差（困惑度59.3）。\n\n### 结论\n对于塔吉克语文本生成，推荐使用Mistral 7B结合QLoRA，秩选择8即可平衡质量与资源；全微调不适合低资源场景。"
+      },
+      "keywordsZh": [
+        "塔吉克语",
+        "低资源语言",
+        "大语言模型",
+        "参数高效微调",
+        "语料库构建",
+        "困惑度",
+        "QLoRA",
+        "GPT-2",
+        "XLM-RoBERTa"
+      ],
+      "keywordsEn": [
+        "Tajik language",
+        "low-resource language",
+        "large language model",
+        "parameter-efficient fine-tuning",
+        "corpus construction",
+        "perplexity",
+        "QLoRA",
+        "GPT-2",
+        "XLM-RoBERTa"
+      ],
+      "semanticQueryZh": "塔吉克语大语言模型微调方法评估与语料库构建",
+      "generatedAt": "2026-05-06T05:45:51Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03723",
+      "aiSummary": {
+        "tldr": "将LLM生成文本检测从整体二分类扩展到分割人机合著文本，提出基于变化点检测的算法，理论保证最优性，实验优于基线。",
+        "motivation": "现有检测器只能整体判断文本是否由LLM生成，无法处理人机合著文本中需要定位人类或LLM撰写片段的需求。",
+        "method": "将分割人机合著文本的任务类比为时间序列中的变化点检测，提出加权算法和广义算法以适应检测分数异质性，并证明了极小化最优性。",
+        "result": "在多种基线对比中，所提方法在分割准确性和定位精度上均表现出色。",
+        "conclusion": "变化点检测适用于人机合著文本的片段级检测，所提算法兼顾理论最优与实用性能。",
+        "markdown": "### TL;DR\n将LLM生成文本检测从整体二分类扩展到分割人机合著文本，提出基于变化点检测的算法，理论保证最优性，实验优于基线。\n\n### 动机\n现有检测器只能整体判断文本是否由LLM生成，无法处理人机合著文本中需要定位人类或LLM撰写片段的需求。\n\n### 方法\n将分割人机合著文本的任务类比为时间序列中的变化点检测，提出加权算法和广义算法以适应检测分数异质性，并证明了极小化最优性。\n\n### 效果\n在多种基线对比中，所提方法在分割准确性和定位精度上均表现出色。\n\n### 结论\n变化点检测适用于人机合著文本的片段级检测，所提算法兼顾理论最优与实用性能。"
+      },
+      "keywordsZh": [
+        "大语言模型",
+        "文本检测",
+        "人机合著",
+        "变化点检测",
+        "文本分割",
+        "极小化最优"
+      ],
+      "keywordsEn": [
+        "large language model",
+        "text detection",
+        "human-LLM co-authored",
+        "change point detection",
+        "text segmentation",
+        "minimax optimality"
+      ],
+      "semanticQueryZh": "大语言模型 人机合著文本 分割 检测 变化点检测 算法 基于变化点检测的人机合著文本片段分割方法",
+      "generatedAt": "2026-05-06T05:45:42Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03720",
+      "aiSummary": {
+        "tldr": "Rose-SQL 是一种基于小型推理模型上下文学习的免训练多轮 Text-to-SQL 框架，通过 Role-State 状态演化实现结构化推理，在多个规模上超越微调模型。",
+        "motivation": "现有多轮 Text-to-SQL 方法依赖不稳定的 API 推理或昂贵的微调，而小型推理模型在长链思维训练下展现出潜力，但尚未被充分利用。",
+        "method": "Rose-SQL 通过上下文学习利用小型推理模型；引入 Role-State 作为细粒度结构蓝图连接模式链接与 SQL 生成，并通过结构同构检查追踪历史上下文中的 Role-State 演化，以推断当前问题的 SQL 组成。",
+        "result": "在 SParC 和 CoSQL 基准上，Qwen3 系列中 Rose-SQL 在 4B 规模优于上下文学习基线，在 8B 和 14B 规模显著超过最先进微调模型。",
+        "conclusion": "Rose-SQL 证明了无需微调即可利用小型推理模型进行复杂多轮对话语义解析的有效性，降低了计算成本。",
+        "markdown": "### TL;DR\nRose-SQL 是一种基于小型推理模型上下文学习的免训练多轮 Text-to-SQL 框架，通过 Role-State 状态演化实现结构化推理，在多个规模上超越微调模型。\n\n### 动机\n现有方法依赖不稳定的 API 或昂贵微调，而小型推理模型潜力未被充分挖掘。\n\n### 方法\n通过上下文学习利用小型推理模型；引入 Role-State 作为结构蓝图，并利用结构同构检查追踪其演化以指导 SQL 生成。\n\n### 效果\n在 SParC 和 CoSQL 上，Qwen3 系列中 Rose-SQL 在 4B/8B/14B 规模均优于或显著超过基线。\n\n### 结论\n免训练框架有效利用小型推理模型，为多轮 Text-to-SQL 提供高效方案。"
+      },
+      "keywordsZh": [
+        "多轮 Text-to-SQL",
+        "角色状态",
+        "结构推理",
+        "上下文学习",
+        "大型推理模型",
+        "免训练",
+        "对话语义解析",
+        "Qwen3"
+      ],
+      "keywordsEn": [
+        "multi-turn text-to-SQL",
+        "role-state",
+        "structural reasoning",
+        "in-context learning",
+        "large reasoning models",
+        "training-free",
+        "conversational semantic parsing",
+        "Qwen3"
+      ],
+      "semanticQueryZh": "多轮 Text-to-SQL 免训练上下文学习方法 基于角色状态演化",
+      "generatedAt": "2026-05-06T05:45:59Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03706",
+      "aiSummary": {
+        "tldr": "提出 SAM-NER，通过语义原型中介三阶段框架稳定零样本命名实体识别跨域迁移，在 CrossNER 上超越基线。",
+        "motivation": "零样本命名实体识别（ZS-NER）在跨域或模式迁移时，未见过的标签定义与大语言模型内在语义组织不一致，导致语义漂移，性能脆弱。",
+        "method": "提出 SAM-NER 三阶段框架：1) 实体发现：通过合作提取和基于共识的去噪获取高覆盖、高保真实体片段；2) 抽象中介：将实体投影到由高层本体抽象蒸馏出的紧凑通用语义原型空间；3) 语义校准：利用冻结大语言模型进行约束的定义对齐推理，将原型级预测解析为目标域类型。",
+        "result": "在 CrossNER 基准上，SAM-NER 在跨域设置下持续优于强零样本基线，验证了有效性。",
+        "conclusion": "SAM-NER 通过引入域不变的原型空间有效缓解语义漂移，为 ZS-NER 跨域迁移提供了稳健且可解释的解决方案。",
+        "markdown": "### TL;DR\n提出 SAM-NER，通过语义原型中介三阶段框架稳定零样本命名实体识别跨域迁移，在 CrossNER 上超越基线。\n\n### 动机\n零样本命名实体识别（ZS-NER）在跨域或模式迁移时，未见过的标签定义与大语言模型内在语义组织不一致，导致语义漂移，性能脆弱。\n\n### 方法\n提出 SAM-NER 三阶段框架：1) 实体发现：通过合作提取和基于共识的去噪获取高覆盖、高保真实体片段；2) 抽象中介：将实体投影到由高层本体抽象蒸馏出的紧凑通用语义原型空间；3) 语义校准：利用冻结大语言模型进行约束的定义对齐推理，将原型级预测解析为目标域类型。\n\n### 效果\n在 CrossNER 基准上，SAM-NER 在跨域设置下持续优于强零样本基线，验证了有效性。\n\n### 结论\nSAM-NER 通过引入域不变的原型空间有效缓解语义漂移，为 ZS-NER 跨域迁移提供了稳健且可解释的解决方案。"
+      },
+      "keywordsZh": [
+        "零样本命名实体识别",
+        "语义原型中介",
+        "跨域迁移",
+        "大语言模型",
+        "实体发现",
+        "抽象中介",
+        "语义校准",
+        "CrossNER"
+      ],
+      "keywordsEn": [
+        "zero-shot NER",
+        "semantic archetype mediation",
+        "cross-domain transfer",
+        "large language model",
+        "entity discovery",
+        "abstract mediation",
+        "semantic calibration",
+        "CrossNER"
+      ],
+      "semanticQueryZh": "零样本命名实体识别跨域迁移方法，使用语义原型中介的三阶段框架",
+      "generatedAt": "2026-05-06T05:45:55Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03701",
+      "aiSummary": {
+        "tldr": "SERE通过概念路径、句法结构和因果模式三种结构检索策略，为LLM提供更相关的示例，有效缓解因果幻觉，显著提升事件因果识别性能。",
+        "motivation": "现有大语言模型（LLM）在事件因果识别（ECI）中存在因果推理偏差，容易过度预测因果关系（因果幻觉），需要提升其准确性。",
+        "method": "提出SERE框架，利用LLM的少样本学习能力，基于三种结构概念检索示例：概念路径度量（ConceptNet编辑距离）、句法度量（句法树编辑距离）和因果模式过滤（LLM筛选预定义因果结构）。",
+        "result": "在多个ECI数据集上的实验验证了SERE的有效性，代码已公开。",
+        "conclusion": "SERE是一种有效提升LLM在事件因果识别任务中表现的结构示例检索方法，可缓解因果幻觉，提高准确率。",
+        "markdown": "### TL;DR\nSERE通过概念路径、句法结构和因果模式三种结构检索策略，为LLM提供更相关的示例，有效缓解因果幻觉，显著提升事件因果识别性能。\n\n### 动机\n大语言模型在事件因果识别中存在因果推理偏差，容易过度预测因果关系（因果幻觉）。\n\n### 方法\n提出SERE框架，融合三种结构概念：（1）基于ConceptNet编辑距离的概念路径度量，（2）基于句法树编辑距离的句法度量，（3）利用LLM基于预定义因果结构的因果模式过滤，以检索更相关的示例指导因果推理。\n\n### 效果\n在多个ECI数据集上验证了有效性，代码开源。\n\n### 结论\nSERE为提升LLM在事件因果识别中的性能提供了有效途径。"
+      },
+      "keywordsZh": [
+        "事件因果识别",
+        "大语言模型",
+        "少样本学习",
+        "结构示例检索",
+        "因果幻觉",
+        "概念路径",
+        "句法相似性"
+      ],
+      "keywordsEn": [
+        "Event Causality Identification",
+        "Large Language Models",
+        "few-shot learning",
+        "structural example retrieval",
+        "causal hallucination",
+        "Concept Path Metric",
+        "syntactic similarity"
+      ],
+      "semanticQueryZh": "基于结构示例检索的大语言模型事件因果识别方法",
+      "generatedAt": "2026-05-06T05:45:55Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03696",
+      "aiSummary": {
+        "tldr": "本文针对法语端到端ASR，综合评估了不同分词算法和自监督学习模型对多项指标的影响，指出仅用CER/WER的不足。",
+        "motivation": "端到端ASR系统中超参数和模型选择通常仅基于字符/词错误率，但这些指标不足以全面评估转录质量对下游应用的影响。",
+        "method": "在法语上系统比较了多种子词分词算法（如BPE、Unigram等）和自监督预训练模型（如wav2vec 2.0、HuBERT等），采用包括语言学、声学等多维评估指标进行定性分析。",
+        "result": "摘要未报告具体数值结果，仅说明进行了定性研究并揭示了不同选择对转录质量的差异化影响。",
+        "conclusion": "实际部署ASR时应采用更全面的评估指标，单纯依赖CER/WER可能导致系统性能评估偏差。",
+        "markdown": "### TL;DR\n本文针对法语端到端ASR，综合评估了不同分词算法和自监督学习模型对多项指标的影响，指出仅用CER/WER的不足。\n\n### 动机\n端到端ASR系统中超参数和模型选择通常仅基于字符/词错误率，但这些指标不足以全面评估转录质量对下游应用的影响。\n\n### 方法\n在法语上系统比较了多种子词分词算法（如BPE、Unigram等）和自监督预训练模型（如wav2vec 2.0、HuBERT等），采用包括语言学、声学等多维评估指标进行定性分析。\n\n### 效果\n摘要未报告具体数值结果，仅说明进行了定性研究并揭示了不同选择对转录质量的差异化影响。\n\n### 结论\n实际部署ASR时应采用更全面的评估指标，单纯依赖CER/WER可能导致系统性能评估偏差。"
+      },
+      "keywordsZh": [
+        "端到端语音识别",
+        "分词",
+        "自监督学习",
+        "法语",
+        "评估指标",
+        "子词建模"
+      ],
+      "keywordsEn": [
+        "End-to-End ASR",
+        "Tokenization",
+        "Self-Supervised Learning",
+        "French",
+        "Evaluation Metrics",
+        "Subword Modeling"
+      ],
+      "semanticQueryZh": "法语端到端语音识别中分词算法和自监督学习模型的综合评估方法",
+      "generatedAt": "2026-05-06T05:46:00Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03671",
+      "aiSummary": {
+        "tldr": "提出一种通过最小编辑距离（minED）将任意评估指标转化为等效错误率的范式，使自动语音识别指标更接近人类感知且易于解释。",
+        "motivation": "现有自动语音识别评估指标（WER、CER）与人类感知相关性差，且缺乏语义信息；虽有人类感知近似指标，但得分难解释。",
+        "method": "提出一种新范式：将选定的指标嵌入到最小编辑距离（minED）中，得到等价的错误率，使转录错误与人类感知对齐。",
+        "result": "论文未给出具体实验数据，但声称该方法能实现指标的可解释性，并支持从人类视角研究错误的严重性。",
+        "conclusion": "该范式为语音识别评估提供了更符合人类感知、可解释性强的错误率度量，有助于识别关键错误。",
+        "markdown": "### TL;DR\n提出一种通过最小编辑距离（minED）将任意评估指标转化为等效错误率的范式，使自动语音识别指标更接近人类感知且易于解释。\n\n### 动机\n现有自动语音识别评估指标（WER、CER）与人类感知相关性差，且缺乏语义信息；虽有人类感知近似指标，但得分难解释。\n\n### 方法\n提出一种新范式：将选定的指标嵌入到最小编辑距离（minED）中，得到等价的错误率，使转录错误与人类感知对齐。\n\n### 效果\n论文未给出具体实验数据，但声称该方法能实现指标的可解释性，并支持从人类视角研究错误的严重性。\n\n### 结论\n该范式为语音识别评估提供了更符合人类感知、可解释性强的错误率度量，有助于识别关键错误。"
+      },
+      "keywordsZh": [
+        "自动语音识别",
+        "最小编辑距离",
+        "错误率",
+        "人类感知",
+        "评估指标",
+        "可解释性"
+      ],
+      "keywordsEn": [
+        "Automatic Speech Recognition",
+        "Minimum Edit Distance",
+        "Error Rate",
+        "Human Perception",
+        "Evaluation Metrics",
+        "Interpretability"
+      ],
+      "semanticQueryZh": "自动语音识别评估指标可解释性 最小编辑距离 人类感知 错误严重性",
+      "generatedAt": "2026-05-06T05:46:03Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03624",
+      "aiSummary": {
+        "tldr": "比较专家、学生、众包工人和LLM在德语ABSA标注中的质量，发现专家标注可靠性最高但成本高，LLM提供效率与质量的折中，为低资源NLP数据集构建提供建议。",
+        "motivation": "现有德语ABSA标注数据缺乏，需要研究不同标注来源（专家、学生、众包、大语言模型）的质量差异，以指导低资源场景下的数据集构建。",
+        "method": "重新标注现有德语ABSA数据集，以专家标注为基准，计算标注者间一致性（IAA），并训练BERT、T5、LLaMA等SOTA模型进行ACSA和TASD子任务评估。",
+        "result": "专家标注一致性最高，学生和众包工人次之，LLM通过上下文学习达到接近专家的质量；下游模型性能受标注质量影响，专家标注训练模型效果最佳。",
+        "conclusion": "在实际应用中，可根据预算和效率需求选择标注来源：专家适合高精度场景，LLM适合快速低成本启动，学生/众包适合中等质量需求。",
+        "markdown": "### TL;DR\n比较专家、学生、众包工人和LLM在德语ABSA标注中的质量，发现专家标注可靠性最高但成本高，LLM提供效率与质量的折中。\n\n### 动机\n德语ABSA标注资源匮乏，不同标注来源的质量差异不明确，亟需系统评估以指导低资源NLP数据集构建。\n\n### 方法\n基于现有数据集重新由专家建立标准答案，对比学生、众包工人和LLM的标注，通过一致性分析和下游模型（BERT/T5/LLaMA）性能评估质量。\n\n### 效果\n专家标注一致性最高，学生和众包次之，LLM通过指令提示达到接近专家水平；下游模型性能随标注质量提升而改善。\n\n### 结论\n选择标注来源需权衡可靠性与效率：专家最优但贵，LLM性价比高，适合低资源场景。"
+      },
+      "keywordsZh": [
+        "方面级情感分析",
+        "标注质量",
+        "德国语言",
+        "大语言模型",
+        "低资源NLP",
+        "一致性分析"
+      ],
+      "keywordsEn": [
+        "Aspect-Based Sentiment Analysis",
+        "annotation quality",
+        "German ABSA",
+        "Large Language Models",
+        "low-resource NLP",
+        "inter-annotator agreement"
+      ],
+      "semanticQueryZh": "德语方面级情感分析标注质量对比：专家、学生、众包与LLM方法研究",
+      "generatedAt": "2026-05-06T05:46:05Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03618",
+      "aiSummary": {
+        "tldr": "基于提示工程的零微调LLM方法在低资源临床问答任务中取得佳绩，开源模型MedGemma 3 27B表现接近闭源模型。",
+        "motivation": "医疗领域数据稀缺且隐私限制严格（如GDPR），传统微调方法不可行，亟需无需权重更新的高效问答方案。",
+        "method": "评估多种闭源和开源LLM，采用任务分解、思维链、上下文学习等提示策略，并结合多数投票与LLM作为评判的集成方法。",
+        "result": "在ArchEHR-QA 2026的线索引用子任务（Subtask 4）获第1名，患者友好回答生成子任务（Subtask 3）获第3名。",
+        "conclusion": "提示工程配合领域适配的开源模型（如MedGemma 3 27B）可在低资源临床场景达到与闭源模型竞争的性能，验证了无权重更新范式的可行性。",
+        "markdown": "**TL;DR:** 基于提示工程的零微调LLM方法在低资源临床问答任务中取得佳绩，开源模型MedGemma 3 27B表现接近闭源模型。\n\n**动机:** 医疗领域数据稀缺且隐私限制严格，传统微调不可行，需无需权重更新的高效问答方案。\n\n**方法:** 评估多种LLM，采用任务分解、思维链、上下文学习等提示策略，并结合多数投票与LLM评判集成。\n\n**效果:** 在ArchEHR-QA 2026的线索引用子任务获第1名，患者友好回答生成子任务获第3名。\n\n**结论:** 提示工程配合领域适配开源模型可在低资源临床场景达到竞争性能，验证了零微调范式的可行性。"
+      },
+      "keywordsZh": [
+        "低资源临床问答",
+        "提示工程",
+        "大语言模型",
+        "证据接地",
+        "集成学习",
+        "MedGemma",
+        "ArchEHR-QA"
+      ],
+      "keywordsEn": [
+        "low-resource clinical QA",
+        "prompt engineering",
+        "large language models",
+        "evidence grounding",
+        "ensemble learning",
+        "MedGemma",
+        "ArchEHR-QA"
+      ],
+      "semanticQueryZh": "低资源临床问答 提示工程 大语言模型 开源模型 证据接地 ArchEHR-QA",
+      "generatedAt": "2026-05-06T05:46:08Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03590",
+      "aiSummary": {
+        "tldr": "AfriVox-v2 基准测试了多项语音模型在非洲真实噪声场景及十个垂直领域的泛化能力，揭示了显著的性能差距。",
+        "motivation": "现有大语言模型对非洲语言支持不足，已有基准缺乏真实噪声与领域细粒度评估，阻碍了低资源语音应用。",
+        "method": "构建 AfriVox-v2 基准，包含各语言“野外”非脚本音频，并引入政府、金融等十个领域的严格垂直化评估，同时针对数字和命名实体进行专项测试。",
+        "result": "对 Sahara-v2、Gemini 3 Flash 和全语言 CTC 模型进行评测，结果暴露了现代语音模型在专业化、噪声化非洲场景下的真实泛化差距。",
+        "conclusion": "该基准为开发者构建本地化语音 AI 提供了可靠蓝图，强调需关注极端条件与领域特异性。",
+        "markdown": "### TL;DR\nAfriVox-v2 基准测试了多项语音模型在非洲真实噪声场景及十个垂直领域的泛化能力，揭示了显著的性能差距。\n\n### 动机\n现有大语言模型对非洲语言支持不足，已有基准缺乏真实噪声与领域细粒度评估，阻碍了低资源语音应用。\n\n### 方法\n构建 AfriVox-v2 基准，包含各语言“野外”非脚本音频，并引入政府、金融等十个领域的严格垂直化评估，同时针对数字和命名实体进行专项测试。\n\n### 效果\n对 Sahara-v2、Gemini 3 Flash 和全语言 CTC 模型进行评测，结果暴露了现代语音模型在专业化、噪声化非洲场景下的真实泛化差距。\n\n### 结论\n该基准为开发者构建本地化语音 AI 提供了可靠蓝图，强调需关注极端条件与领域特异性。"
+      },
+      "keywordsZh": [
+        "非洲语言",
+        "语音识别",
+        "领域垂直化",
+        "野外音频",
+        "低资源",
+        "基准测试",
+        "泛化差距",
+        "大语言模型"
+      ],
+      "keywordsEn": [
+        "African languages",
+        "speech recognition",
+        "domain verticalization",
+        "in-the-wild audio",
+        "low-resource",
+        "benchmark",
+        "generalization gap",
+        "large language models"
+      ],
+      "semanticQueryZh": "非洲语言语音识别基准 领域垂直化 野外音频 大语言模型评估",
+      "generatedAt": "2026-05-06T05:46:11Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03571",
+      "aiSummary": {
+        "tldr": "PatRe 是首个模拟专利审查全生命周期（审查意见生成与申请人答辩）的基准，基于 480 个真实案例评估 LLM 在复杂法律推理与技术新颖性判断上的表现。",
+        "motivation": "专利审查流程复杂且交互性强，现有基准多将其视为分类或静态抽取任务，无法反映其迭代性。随着申请量增长，亟需更真实的基准来评估 LLM 辅助审查的潜力。",
+        "method": "构建包含 480 个真实专利审查案例的基准 PatRe，覆盖 Office Action 生成和 rebuttal 两阶段，支持 oracle 和检索模拟两种评估设置，将审查建模为动态多轮论证-应答过程。",
+        "result": "在不同 LLM 上的实验揭示了：1) 专有模型与开源模型性能存在差距；2) 审查员分析（Office Action 生成）与申请人答辩（rebuttal）之间存在任务不对称性；3) LLM 在复杂法律推理和技术新颖性判断上既有潜力也有局限。",
+        "conclusion": "PatRe 为研究 LLM 辅助专利审查提供了标准化测试平台，指出了当前模型的不足与改进方向，有助于推动更智能的专利审查工具开发。",
+        "markdown": "**TL;DR:** PatRe 是首个模拟专利审查全生命周期（审查意见生成与申请人答辩）的基准，基于 480 个真实案例评估 LLM 在复杂法律推理与技术新颖性判断上的表现。\n\n**动机:** 专利审查流程复杂且交互性强，现有基准多将其视为分类或静态抽取任务，无法反映其迭代性。随着申请量增长，亟需更真实的基准来评估 LLM 辅助审查的潜力。\n\n**方法:** 构建包含 480 个真实专利审查案例的基准 PatRe，覆盖 Office Action 生成和 rebuttal 两阶段，支持 oracle 和检索模拟两种评估设置，将审查建模为动态多轮论证-应答过程。\n\n**效果:** 在不同 LLM 上的实验揭示了：1) 专有模型与开源模型性能存在差距；2) 审查员分析与申请人答辩之间存在任务不对称性；3) LLM 在复杂法律推理和技术新颖性判断上既有潜力也有局限。\n\n**结论:** PatRe 为研究 LLM 辅助专利审查提供了标准化测试平台，指出了当前模型的不足与改进方向，有助于推动更智能的专利审查工具开发。"
+      },
+      "keywordsZh": [
+        "专利审查",
+        "大语言模型",
+        "基准",
+        "审查意见生成",
+        "答辩生成",
+        "法律推理",
+        "技术新颖性判断",
+        "多轮交互"
+      ],
+      "keywordsEn": [
+        "Patent Examination",
+        "Large Language Models",
+        "Benchmark",
+        "Office Action Generation",
+        "Rebuttal Generation",
+        "Legal Reasoning",
+        "Novelty Judgment",
+        "Multi-turn Interaction"
+      ],
+      "semanticQueryZh": "专利审查 大语言模型 基准 审查意见 答辩 生成 法律推理 技术新颖性",
+      "generatedAt": "2026-05-06T05:46:15Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03534",
+      "aiSummary": {
+        "tldr": "SURE-RAG 提出了一种基于证据充分性验证的选择性 RAG 方法，通过聚合局部关系信号实现可审计的三路决策，在 HotpotQA-RAG v3 上 Macro-F1 达 0.9075，优于 GPT-4o 并降低 37% 的不安全回答风险。",
+        "motivation": "RAG 系统检索到的段落可能相关但无法充分支撑答案，需要验证证据是否足够、反驳或不足，以避免错误回答。",
+        "method": "SURE-RAG 将证据充分性视为集合级属性，使用共享的成对 claim-evidence 验证器输出局部关系分布，并聚合为覆盖率、关系强度、分歧、冲突和检索不确定性等可解释信号，做出支持/反驳/不足的三路决策并生成选择性分数。",
+        "result": "在 HotpotQA-RAG v3 多跳基准上，校准后的 SURE-RAG 取得 0.9075 Macro-F1（0.8951±0.0069），显著优于 DeBERTa 均值池化（0.6516）和 GPT-4o 评判（0.7284），与强但黑盒的拼接交叉编码器（0.8888±0.0109）性能相当且完全可审计。在 30% 覆盖率下风险从 0.2588 降至 0.1642（降幅 37%）。在 HaluBench 不安全检测上，SURE-RAG 的 unsafe-F1 为 0.3343，低于 GPT-4o 的 0.7389，表明充分性验证与幻觉检测是不同问题。",
+        "conclusion": "SURE-RAG 提供了一种可审计、高性能的选择性 RAG 方案，适用于对回答可靠性要求高的场景。",
+        "markdown": "### TL;DR\nSURE-RAG 提出了一种基于证据充分性验证的选择性 RAG 方法，通过聚合局部关系信号实现可审计的三路决策，在 HotpotQA-RAG v3 上 Macro-F1 达 0.9075，优于 GPT-4o 并降低 37% 的不安全回答风险。\n\n### 动机\nRAG 系统检索到的段落可能相关但无法充分支撑答案，需要验证证据是否足够、反驳或不足，以避免错误回答。\n\n### 方法\nSURE-RAG 将证据充分性视为集合级属性，使用共享的成对 claim-evidence 验证器输出局部关系分布，并聚合为覆盖率、关系强度、分歧、冲突和检索不确定性等可解释信号，做出支持/反驳/不足的三路决策并生成选择性分数。\n\n### 效果\n在 HotpotQA-RAG v3 多跳基准上，校准后的 SURE-RAG 取得 0.9075 Macro-F1（0.8951±0.0069），显著优于 DeBERTa 均值池化（0.6516）和 GPT-4o 评判（0.7284），与强但黑盒的拼接交叉编码器（0.8888±0.0109）性能相当且完全可审计。在 30% 覆盖率下风险从 0.2588 降至 0.1642（降幅 37%）。在 HaluBench 不安全检测上，SURE-RAG 的 unsafe-F1 为 0.3343，低于 GPT-4o 的 0.7389，表明充分性验证与幻觉检测是不同问题。\n\n### 结论\nSURE-RAG 提供了一种可审计、高性能的选择性 RAG 方案，适用于对回答可靠性要求高的场景。"
+      },
+      "keywordsZh": [
+        "检索增强生成",
+        "证据充分性验证",
+        "选择性问答",
+        "不确定性量化",
+        "可审计性",
+        "多跳推理"
+      ],
+      "keywordsEn": [
+        "Retrieval-Augmented Generation",
+        "evidence sufficiency verification",
+        "selective answering",
+        "uncertainty quantification",
+        "auditability",
+        "multi-hop reasoning"
+      ],
+      "semanticQueryZh": "检索增强生成中的证据充分性验证与不确定性量化方法",
+      "generatedAt": "2026-05-06T05:46:20Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03514",
+      "aiSummary": {
+        "tldr": "本文质疑图分词大模型（GTokenLLMs）是否真正理解图token，提出GTEval评估框架，实验发现现有模型对指令变化过度敏感或钝感，且严重依赖文本推理，未能充分理解图信息。",
+        "motivation": "大语言模型在自然语言任务上表现卓越，但将其应用于图任务时，图token化方法是否真的让模型理解图结构尚不明确，存在系统性评估缺失。",
+        "method": "形式化GTokenLLMs的统一框架，设计GTEval评估流程，通过在格式和内容层面进行指令变换，测试模型对图token的理解能力。",
+        "result": "对6种代表性GTokenLLMs进行实验，发现它们均不能充分理解图token，表现出对指令变化的过敏感或过不敏感，且依赖文本进行推理；图token虽保留任务相关信息并受到注意力，但利用率因模型和指令而异；额外指令微调可改善原始和已见指令的性能，但未能彻底解决图token理解问题。",
+        "conclusion": "现有图分词大模型未能真正理解图token，需进一步改进模型架构或训练策略以提升图token理解能力。",
+        "markdown": "### TL;DR\n本文质疑图分词大模型是否真正理解图token，提出GTEval评估框架，实验发现现有模型对指令变化过度敏感/钝感，依赖文本推理，图token理解不足。\n\n### 动机\n大语言模型在图任务中的图token化方法虽然广泛使用，但其是否真的让模型理解图结构缺乏系统性评估。\n\n### 方法\n形式化GTokenLLMs统一框架，设计GTEval评估流程，通过在格式和内容层面变换指令，测试模型对图token的理解。\n\n### 效果\n对6种模型实验表明，现有模型不能充分理解图token，存在过敏感/过不敏感，依赖文本推理；图token的利用率因模型和指令而异；指令微调仅部分缓解问题。\n\n### 结论\n当前图分词大模型尚未实现真正的图token理解，需要进一步研究改进。"
+      },
+      "keywordsZh": [
+        "图分词大模型",
+        "图理解",
+        "评估框架",
+        "指令变换",
+        "大语言模型",
+        "图表示学习",
+        "自然语言嵌入"
+      ],
+      "keywordsEn": [
+        "graph-tokenizing LLMs",
+        "graph understanding",
+        "evaluation framework",
+        "instruction transformation",
+        "large language models",
+        "graph representation learning",
+        "natural language embedding"
+      ],
+      "semanticQueryZh": "图分词大模型对图token的理解评估方法",
+      "generatedAt": "2026-05-06T05:46:19Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03510",
+      "aiSummary": {
+        "tldr": "研究发现英语中实际的复合词和派生词组合优于同期可替代的语素组合，说明词汇形态的选择体现了表达性与效率之间的理性权衡。",
+        "motivation": "人类语言通过组合语素而非创造新词来扩展词汇，但语言为何选择某种特定组合而非其他可能形式尚不清楚。现有研究很少从历史语境中的说话者选择角度建模形态组合。",
+        "method": "基于理性言语行为（RSA）框架，利用COHA和COCA构建时间索引词典，对1820-2019年间4323个英语复合词和派生词，将实际组合与同期可用的替代语素组合进行比较，模型结合语义信息量和生产成本。",
+        "result": "实际组合在平均倒数排名（MRR）和top-k准确率上系统性地优于未证实的替代方案；结合语义与生产成本的模型优于纯语义或纯成本基线；随着候选集扩大，Pragmatic Speaker模型（S1）的优势更加明显。",
+        "conclusion": "词汇形态选择反映了沟通中的理性权衡，即表达性与效率之间的平衡，支持将理性沟通模型从话语层面扩展到单词内部结构。",
+        "markdown": "### TL;DR\n研究发现英语中实际的复合词和派生词组合优于同期可替代的语素组合，说明词汇形态的选择体现了表达性与效率之间的理性权衡。\n\n### 动机\n人类语言通过组合语素而非创造新词来扩展词汇，但语言为何选择某种特定组合而非其他可能形式尚不清楚。现有研究很少从历史语境中的说话者选择角度建模形态组合。\n\n### 方法\n基于理性言语行为（RSA）框架，利用COHA和COCA构建时间索引词典，对1820-2019年间4323个英语复合词和派生词，将实际组合与同期可用的替代语素组合进行比较，模型结合语义信息量和生产成本。\n\n### 效果\n实际组合在平均倒数排名（MRR）和top-k准确率上系统性地优于未证实的替代方案；结合语义与生产成本的模型优于纯语义或纯成本基线；随着候选集扩大，Pragmatic Speaker模型（S1）的优势更加明显。\n\n### 结论\n词汇形态选择反映了沟通中的理性权衡，即表达性与效率之间的平衡，支持将理性沟通模型从话语层面扩展到单词内部结构。"
+      },
+      "keywordsZh": [
+        "形态组合",
+        "理性言语行为",
+        "沟通效率",
+        "词汇化",
+        "语素",
+        "英语词汇",
+        "历史语料库"
+      ],
+      "keywordsEn": [
+        "morphological composition",
+        "Rational Speech Act",
+        "communicative efficiency",
+        "lexicalization",
+        "morpheme",
+        "English vocabulary",
+        "historical corpora"
+      ],
+      "semanticQueryZh": "理性沟通如何解释英语复合词和派生词的形态组合选择",
+      "generatedAt": "2026-05-06T05:46:22Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03476",
+      "aiSummary": {
+        "tldr": "CuraView是一个基于GraphRAG和多智能体的医学幻觉检测框架，在出院小结可信度检测中达到F1 0.831（E4），显著提升事实可靠性。",
+        "motivation": "出院小结需要从长电子健康记录中提取关键信息，手动操作劳动密集；大语言模型虽可提高生成效率，但易产生与源记录矛盾的忠实性幻觉，直接危及患者安全。",
+        "method": "提出CuraView多智能体框架，构建基于GraphRAG的患者级知识图谱，实现闭环生成-检测管道，包括句子级证据检索和四级证据等级（E1-E4）分类，生成结构化可解释的证据链。",
+        "result": "在Discharge-Me基准的50个测试患者上，微调Qwen3-14B模型在安全关键指标E4上达到F1 0.831（召回90.9%，精度76.5%），E3+E4上F1 0.823，相对基础模型提升50%，优于RAGTruth和QAGS基线。",
+        "conclusion": "证据链图检索验证能显著提升临床文档的事实可靠性，同时产生可复用的标注数据集，支持下游模型训练与蒸馏。",
+        "markdown": "### TL;DR\nCuraView是一个基于GraphRAG和多智能体的医学幻觉检测框架，在出院小结可信度检测中达到F1 0.831（E4），显著提升事实可靠性。\n\n### 动机\n出院小结需要从长电子健康记录中提取关键信息，手动操作劳动密集；大语言模型虽可提高生成效率，但易产生与源记录矛盾的忠实性幻觉，直接危及患者安全。\n\n### 方法\n提出CuraView多智能体框架，构建基于GraphRAG的患者级知识图谱，实现闭环生成-检测管道，包括句子级证据检索和四级证据等级（E1-E4）分类，生成结构化可解释的证据链。\n\n### 效果\n在Discharge-Me基准的50个测试患者上，微调Qwen3-14B模型在安全关键指标E4上达到F1 0.831（召回90.9%，精度76.5%），E3+E4上F1 0.823，相对基础模型提升50%，优于RAGTruth和QAGS基线。\n\n### 结论\n证据链图检索验证能显著提升临床文档的事实可靠性，同时产生可复用的标注数据集，支持下游模型训练与蒸馏。"
+      },
+      "keywordsZh": [
+        "多智能体框架",
+        "医学幻觉检测",
+        "GraphRAG",
+        "忠实性验证",
+        "出院小结",
+        "电子健康记录",
+        "证据链",
+        "知识图谱"
+      ],
+      "keywordsEn": [
+        "multi-agent framework",
+        "medical hallucination detection",
+        "GraphRAG",
+        "faithfulness verification",
+        "discharge summary",
+        "electronic health records",
+        "evidence chain",
+        "knowledge graph"
+      ],
+      "semanticQueryZh": "基于知识图谱和多智能体的医学幻觉检测方法，用于出院小结忠实性验证",
+      "generatedAt": "2026-05-06T05:46:30Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03472",
+      "aiSummary": {
+        "tldr": "提出动态情绪特征图（DESG）评估心理健康对话治疗反应质量，无需大语言模型作为最终评判者。",
+        "motivation": "现有评估方法（直接LLM评判或文本相似度）与治疗质量对齐差，因为标签依赖于临床方向。",
+        "method": "DESG以解耦的临床状态表示对话窗口，并使用非对称临床几何进行评分。",
+        "result": "在构建的诊断压力测试基准（3000个窗口）上，DESG-Ensemble达到0.9353 macro-F1，超过ConcatANN 1.51个百分点，BERTScore 19.63个百分点，TRACT 33.81个百分点。",
+        "conclusion": "DESG为心理支持对话提供可靠的离线评估，且可解释性强。",
+        "markdown": "### TL;DR\n提出动态情绪特征图（DESG）评估心理健康对话治疗反应质量，无需大语言模型作为最终评判者。\n\n### 动机\n现有评估方法（直接LLM评判或文本相似度）与治疗质量对齐差，因为标签依赖于临床方向。\n\n### 方法\nDESG以解耦的临床状态表示对话窗口，并使用非对称临床几何进行评分。\n\n### 效果\n在构建的诊断压力测试基准（3000个窗口）上，DESG-Ensemble达到0.9353 macro-F1，超过ConcatANN 1.51个百分点，BERTScore 19.63个百分点，TRACT 33.81个百分点。\n\n### 结论\nDESG为心理支持对话提供可靠的离线评估，且可解释性强。"
+      },
+      "keywordsZh": [
+        "心理健康对话",
+        "治疗反应评估",
+        "动态情绪特征图",
+        "临床状态解耦",
+        "非对称几何评分",
+        "对话评估",
+        "心理治疗",
+        "隐性迎合"
+      ],
+      "keywordsEn": [
+        "mental health dialogue",
+        "therapeutic response evaluation",
+        "Dynamic Emotional Signature Graphs",
+        "clinical state decoupling",
+        "asymmetric geometric scoring",
+        "dialogue evaluation",
+        "psychotherapy",
+        "stealth sycophancy"
+      ],
+      "semanticQueryZh": "心理健康对话 治疗反应质量 离线评估 动态情绪特征图 无需大语言模型",
+      "generatedAt": "2026-05-06T05:46:33Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03450",
+      "aiSummary": {
+        "tldr": "将主题模型作为二分类器，无需修改训练过程即可从德国新闻中检索七类极端气候事件，其性能与微调嵌入分类器相当，且优于开源LLM。",
+        "motivation": "在大型新闻数据库中识别极端气候事件相关文本时，有监督深度学习标注数据不足，而主题模型无监督且可解释，但通常仅用于探索分析，需要验证其作为分类器的有效性。",
+        "method": "利用主题模型的后验分布选择相关文档，基于查询关键词概率选择主题，无需修改训练过程，并在标注样本上评估精度。",
+        "result": "主题模型相比微调文本嵌入分类器和开源LLM取得了有竞争力的精度（LLM精度最低），且结果依赖灾害类型，不支持将气候事件视为单一类别。",
+        "conclusion": "主题模型可作为有效的无监督二分类器，适用于极端气候事件新闻检索，但需注意灾害类型的异质性。",
+        "markdown": "### TL;DR\n将主题模型作为二分类器，无需修改训练过程即可从德国新闻中检索七类极端气候事件，其性能与微调嵌入分类器相当，且优于开源LLM。\n\n### 动机\n在大型新闻数据库中识别极端气候事件相关文本时，有监督深度学习标注数据不足，而主题模型无监督且可解释，但通常仅用于探索分析，需要验证其作为分类器的有效性。\n\n### 方法\n利用主题模型的后验分布选择相关文档，基于查询关键词概率选择主题，无需修改训练过程，并在标注样本上评估精度。\n\n### 效果\n主题模型相比微调文本嵌入分类器和开源LLM取得了有竞争力的精度（LLM精度最低），且结果依赖灾害类型，不支持将气候事件视为单一类别。\n\n### 结论\n主题模型可作为有效的无监督二分类器，适用于极端气候事件新闻检索，但需注意灾害类型的异质性。"
+      },
+      "keywordsZh": [
+        "主题模型",
+        "二分类",
+        "极端气候事件",
+        "德国新闻",
+        "无监督学习",
+        "自然语言处理",
+        "信息检索",
+        "新闻分类"
+      ],
+      "keywordsEn": [
+        "topic model",
+        "binary classification",
+        "extreme climate events",
+        "German news",
+        "unsupervised learning",
+        "natural language processing",
+        "information retrieval",
+        "news classification"
+      ],
+      "semanticQueryZh": "主题模型无监督二分类 极端气候事件 德国新闻检索",
+      "generatedAt": "2026-05-06T05:46:29Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03447",
+      "aiSummary": {
+        "tldr": "ERP实验发现自闭症儿童在线处理递归结构时早期感知和句法重分析显著受损，词汇语义加工相对保留。",
+        "motivation": "递归是语言的核心特性，但自闭症儿童对复杂递归的在线加工机制尚不清楚，本研究旨在通过ERP揭示其神经认知缺陷。",
+        "method": "采用句子-图片匹配范式，记录汉语自闭症儿童和典型发育儿童加工两级递归所有格结构时的ERP成分（P200、N400、P600），分析组间差异。",
+        "result": "自闭症儿童P200波幅显著降低，无典型后部语法效应；两组均无N400违例效应，但自闭症儿童表现出反转的前部效应和衰减的后部效应；P600波幅显著降低，无后部语法效应，延迟趋势明显。",
+        "conclusion": "自闭症儿童词汇语义加工相对保留，但递归所需的在线句法计算严重受损，支持语言模块化分离假说。",
+        "markdown": "### TL;DR\nERP实验发现自闭症儿童在线处理递归结构时早期感知和句法重分析显著受损，词汇语义加工相对保留。\n\n### 动机\n递归是语言的核心特性，但自闭症儿童对复杂递归的在线加工机制尚不清楚，本研究旨在通过ERP揭示其神经认知缺陷。\n\n### 方法\n采用句子-图片匹配范式，记录汉语自闭症儿童和典型发育儿童加工两级递归所有格结构时的ERP成分（P200、N400、P600），分析组间差异。\n\n### 效果\n自闭症儿童P200波幅显著降低，无典型后部语法效应；两组均无N400违例效应，但自闭症儿童表现出反转的前部效应和衰减的后部效应；P600波幅显著降低，无后部语法效应，延迟趋势明显。\n\n### 结论\n自闭症儿童词汇语义加工相对保留，但递归所需的在线句法计算严重受损，支持语言模块化分离假说。"
+      },
+      "keywordsZh": [
+        "自闭症谱系障碍",
+        "递归结构",
+        "事件相关电位",
+        "句法加工",
+        "词汇语义加工",
+        "P200",
+        "P600",
+        "语言模块化"
+      ],
+      "keywordsEn": [
+        "Autism Spectrum Disorder",
+        "Recursive Structures",
+        "ERP",
+        "Syntax Processing",
+        "Lexical-Semantic Processing",
+        "P200",
+        "P600",
+        "Language Modularity"
+      ],
+      "semanticQueryZh": "自闭症儿童递归句法加工的ERP研究 事件相关电位 句法重分析缺陷 神经认知机制",
+      "generatedAt": "2026-05-06T05:46:32Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03443",
+      "aiSummary": {
+        "tldr": "印尼Spotify评论情感分析基准测试：经典模型中决策树最佳，BiLSTM整体最优但忽视少数类，结合SMOTE可提升三类平衡。",
+        "motivation": "情感分析对理解用户反馈至关重要，但印尼语评论分析研究较少，且存在类别不平衡问题。",
+        "method": "使用10万条印尼语Spotify评论（清洗后7万条），对比支持向量机、多项式朴素贝叶斯、决策树与两层BiLSTM，采用相同预处理流水线（俚语规范化、停用词移除、词干提取）。",
+        "result": "决策树在经典模型中表现最佳（加权F1最高），BiLSTM整体加权F1最高但对少数中立类效果差。结合SMOTE的机器学习模型在三类上更平衡。",
+        "conclusion": "BiLSTM适合整体情感检测，而机器学习+SMOTE更适合三类平衡分类任务。",
+        "markdown": "### TL;DR\n印尼Spotify评论情感分析基准测试：经典模型中决策树最佳，BiLSTM整体最优但忽视少数类，结合SMOTE可提升三类平衡。\n\n### 动机\n情感分析对商业应用重要，但印尼语评论研究不足，且类别不平衡影响分类效果。\n\n### 方法\n对比SVM、MNB、决策树与BiLSTM，使用相同预处理（俚语规范化、停用词移除、词干提取）。\n\n### 效果\n决策树经典最优；BiLSTM加权F1最高但对中立类差；SMOTE改善平衡性。\n\n### 结论\nBiLSTM适合整体，经典模型+SMOTE得三类平衡。"
+      },
+      "keywordsZh": [
+        "情感分析",
+        "印尼语",
+        "Spotify评论",
+        "机器学习",
+        "BiLSTM",
+        "SMOTE",
+        "不平衡分类",
+        "基准测试"
+      ],
+      "keywordsEn": [
+        "sentiment analysis",
+        "Indonesian",
+        "Spotify reviews",
+        "machine learning",
+        "BiLSTM",
+        "SMOTE",
+        "class imbalance",
+        "benchmark"
+      ],
+      "semanticQueryZh": "印尼语Spotify评论情感分析 机器学习 BiLSTM 类别不平衡 基准测试",
+      "generatedAt": "2026-05-06T05:46:42Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03440",
+      "aiSummary": {
+        "tldr": "研究表明，在邮件情感分析中，线性SVM在准确率（98.74%）和速度上均优于LSTM，传统机器学习仍具竞争力。",
+        "motivation": "电子通信的快速增长需要更鲁棒的邮件分类和情感检测系统，现有方法在效率和精度上需进一步权衡。",
+        "method": "比较了SVM、Logistic Regression、Naive Bayes与LSTM四种模型，均使用Word2Vec嵌入表示特征，并通过混淆矩阵等评估性能。",
+        "result": "线性SVM准确率达98.74%，为最优；LSTM召回率高但训练和推理时间显著更长；传统分类器在高维稀疏向量空间中仍保持高鲁棒性。",
+        "conclusion": "对于邮件情感分析任务，SVM在预测精度和处理速度之间提供了最佳平衡，适合部署于高性能自动邮件过滤系统。",
+        "markdown": "### TL;DR\n研究表明，在邮件情感分析中，线性SVM在准确率（98.74%）和速度上均优于LSTM，传统机器学习仍具竞争力。\n### 动机\n电子通信的快速增长需要更鲁棒的邮件分类和情感检测系统，现有方法在效率和精度上需进一步权衡。\n### 方法\n比较了SVM、Logistic Regression、Naive Bayes与LSTM四种模型，均使用Word2Vec嵌入表示特征，并通过混淆矩阵等评估性能。\n### 效果\n线性SVM准确率达98.74%，为最优；LSTM召回率高但训练和推理时间显著更长；传统分类器在高维稀疏向量空间中仍保持高鲁棒性。\n### 结论\n对于邮件情感分析任务，SVM在预测精度和处理速度之间提供了最佳平衡，适合部署于高性能自动邮件过滤系统。"
+      },
+      "keywordsZh": [
+        "邮件情感分析",
+        "传统机器学习",
+        "深度学习",
+        "SVM",
+        "LSTM",
+        "Word2Vec",
+        "分类准确率",
+        "模型对比"
+      ],
+      "keywordsEn": [
+        "email sentiment analysis",
+        "traditional machine learning",
+        "deep learning",
+        "SVM",
+        "LSTM",
+        "Word2Vec",
+        "classification accuracy",
+        "model comparison"
+      ],
+      "semanticQueryZh": "邮件情感分析中传统机器学习与深度学习模型效果对比，SVM与LSTM性能比较，Word2Vec特征下的分类准确率",
+      "generatedAt": "2026-05-06T05:46:39Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03439",
+      "aiSummary": {
+        "tldr": "在印尼Tokopedia产品评论的三类情感分析任务中，传统线性SVM（97.60%准确率）表现优于微调IndoBERT（88.70%），主要因数据采样差异。",
+        "motivation": "印尼电商平台用户评论爆发式增长，自动情感分析对大规模客户满意度评估和产品问题识别至关重要。",
+        "method": "对比TF-IDF+逻辑回归/线性SVM/多项式朴素贝叶斯与微调IndoBERT（indobenchmark/indobert-base-p1）在三类情感分类；采用平衡类权重和自定义加权交叉熵损失处理类别不平衡。",
+        "result": "线性SVM达准确率97.60%，宏F1 0.5510；IndoBERT准确率88.70%，宏F1 0.5088。性能差距主要源于基线使用全量数据而Transformer仅用采样子集。",
+        "conclusion": "传统机器学习在充分数据下仍具竞争力，而Transformer模型需注意数据采样策略；研究最终部署了Gradio交互式应用验证可行性。",
+        "markdown": "### TL;DR\n在印尼Tokopedia产品评论的三类情感分析任务中，传统线性SVM（97.60%准确率）表现优于微调IndoBERT（88.70%），主要因数据采样差异。\n\n### 动机\n印尼电商平台用户评论爆发式增长，自动情感分析对大规模客户满意度评估和产品问题识别至关重要。\n\n### 方法\n对比TF-IDF+逻辑回归/线性SVM/多项式朴素贝叶斯与微调IndoBERT（indobenchmark/indobert-base-p1）在三类情感分类；采用平衡类权重和自定义加权交叉熵损失处理类别不平衡。\n\n### 效果\n线性SVM达准确率97.60%，宏F1 0.5510；IndoBERT准确率88.70%，宏F1 0.5088。性能差距主要源于基线使用全量数据而Transformer仅用采样子集。\n\n### 结论\n传统机器学习在充分数据下仍具竞争力，而Transformer模型需注意数据采样策略；研究最终部署了Gradio交互式应用验证可行性。"
+      },
+      "keywordsZh": [
+        "情感分析",
+        "印尼语",
+        "产品评论",
+        "传统机器学习",
+        "IndoBERT",
+        "类别不平衡",
+        "微调",
+        "Tokopedia"
+      ],
+      "keywordsEn": [
+        "sentiment analysis",
+        "Indonesian",
+        "product reviews",
+        "traditional machine learning",
+        "IndoBERT",
+        "class imbalance",
+        "fine-tuning",
+        "Tokopedia"
+      ],
+      "semanticQueryZh": "印尼电商产品评论情感分析 传统机器学习与IndoBERT对比",
+      "generatedAt": "2026-05-06T05:46:43Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03414",
+      "aiSummary": {
+        "tldr": "比较 Flair、Spacy 和 Stanza 三种命名实体识别工具在德语新闻中提取极端气候事件地名的效果，并评估它们对下游地理定位的影响。",
+        "motivation": "从文本中确定极端气候事件和灾害的地理位置是气候影响与适应研究的常见问题，但现有NER工具在德语新闻上的表现差异尚未被系统比较。",
+        "method": "选取 Flair、Spacy 和 Stanza 三种现成NER工具，对德语新闻文章进行地名识别，并通过三种方法将候选地名映射到国家级别，以此评估工具差异对下游地理定位任务的影响。",
+        "result": "工具间输出存在可量化的差异，这些差异会传播到下游任务，导致关于文档地理焦点的不同决策，进而影响对德国媒体中各国突出程度的结论。",
+        "conclusion": "研究提醒在使用NER工具进行事件地理定位时需注意工具选择带来的偏差，建议根据具体应用场景评估工具稳健性。",
+        "markdown": "**TL;DR**：比较 Flair、Spacy 和 Stanza 三种命名实体识别工具在德语新闻中提取极端气候事件地名的效果，并评估它们对下游地理定位的影响。\n\n**动机**：从文本中确定极端气候事件和灾害的地理位置是气候影响与适应研究的常见问题，但现有NER工具在德语新闻上的表现差异尚未被系统比较。\n\n**方法**：选取 Flair、Spacy 和 Stanza 三种现成NER工具，对德语新闻文章进行地名识别，并通过三种方法将候选地名映射到国家级别，以此评估工具差异对下游地理定位任务的影响。\n\n**效果**：工具间输出存在可量化的差异，这些差异会传播到下游任务，导致关于文档地理焦点的不同决策，进而影响对德国媒体中各国突出程度的结论。\n\n**结论**：研究提醒在使用NER工具进行事件地理定位时需注意工具选择带来的偏差，建议根据具体应用场景评估工具稳健性。"
+      },
+      "keywordsZh": [
+        "极端气候事件",
+        "地理定位",
+        "命名实体识别",
+        "NER工具比较",
+        "德国新闻",
+        "下游任务影响",
+        "Flair",
+        "Spacy",
+        "Stanza"
+      ],
+      "keywordsEn": [
+        "extreme climate events",
+        "geolocation",
+        "named entity recognition",
+        "NER tool comparison",
+        "German news",
+        "downstream task impact",
+        "Flair",
+        "Spacy",
+        "Stanza"
+      ],
+      "semanticQueryZh": "德国新闻极端气候事件地理定位NER工具比较",
+      "generatedAt": "2026-05-06T05:46:42Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03387",
+      "aiSummary": {
+        "tldr": "提出一种RAG+Prompt系统，通过检索相似日汉示例和语言分析增强提示，显著提升包含名词修饰从句的日汉翻译质量（BLEU+23.4%）。",
+        "motivation": "大语言模型在日汉翻译中，尤其是包含名词修饰从句（NMCC）的句子上表现不可靠，需要可解释且可审计的改进方法。",
+        "method": "构建RAG+Prompt系统：语言分析模块输出NMCC内外分类（A1）和风险预测（A2），结合检索到的top-5相似日汉示例（基于L2距离），插入到增强提示中，驱动GPT-4o生成翻译，不修改基模型。",
+        "result": "在66句测试集上，宏观平均句子级BLEU从无检索时的24.28提升至知识库2000条时的29.96（+5.68，+23.4%），且BLEU随知识库增大而单调上升。",
+        "conclusion": "该方法以可解释、可审计的方式改善了含NMCC的日汉翻译，验证了检索增强提示的有效性，但受限于单一模型和指标，未来需拓展体裁和语言对。",
+        "markdown": "### TL;DR\n提出一种RAG+Prompt系统，通过检索相似日汉示例和语言分析增强提示，显著提升包含名词修饰从句的日汉翻译质量（BLEU+23.4%）。\n\n### 动机\n大语言模型在日汉翻译中，尤其是包含名词修饰从句（NMCC）的句子上表现不可靠，需要可解释且可审计的改进方法。\n\n### 方法\n构建RAG+Prompt系统：语言分析模块输出NMCC内外分类（A1）和风险预测（A2），结合检索到的top-5相似日汉示例（基于L2距离），插入到增强提示中，驱动GPT-4o生成翻译，不修改基模型。\n\n### 效果\n在66句测试集上，宏观平均句子级BLEU从无检索时的24.28提升至知识库2000条时的29.96（+5.68，+23.4%），且BLEU随知识库增大而单调上升。\n\n### 结论\n该方法以可解释、可审计的方式改善了含NMCC的日汉翻译，验证了检索增强提示的有效性，但受限于单一模型和指标，未来需拓展体裁和语言对。"
+      },
+      "keywordsZh": [
+        "RAG",
+        "Prompt工程",
+        "日汉翻译",
+        "名词修饰从句",
+        "大语言模型",
+        "可解释翻译",
+        "机器翻译",
+        "嵌入检索"
+      ],
+      "keywordsEn": [
+        "RAG",
+        "Prompt engineering",
+        "Japanese-Chinese translation",
+        "Noun-modifying clause constructions",
+        "Large language models",
+        "Explainable translation",
+        "Machine translation",
+        "Embedding retrieval"
+      ],
+      "semanticQueryZh": "基于检索增强生成的可解释日汉翻译系统，用于处理名词修饰从句的机器翻译",
+      "generatedAt": "2026-05-06T05:46:55Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03314",
+      "aiSummary": {
+        "tldr": "提出Side-by-Side (SxS)交错推理方法，将LLM推理过程中的披露时机变为可控决策，通过训练模型在支持性推理充分后才输出内容，从而在准确率和延迟之间取得更好的帕累托权衡。",
+        "motivation": "在单流自回归接口中，token同时用于更新状态和作为公开输出，导致“静默税”：延迟思考会增加首个相关内容的时间，而过早输出则可能造成偏见。需要更灵活地控制披露时机。",
+        "method": "提出Side-by-Side (SxS)交错推理，在相同上下文中交替进行部分披露和持续私有推理，仅当推理支持时才释放内容。通过构建蕴含对齐的交错轨迹（匹配答案前缀与支持推理前缀），先用SFT学习双动作语义，再用RL恢复推理性能。",
+        "result": "在Qwen3-30B-A3B（MoE）和Qwen3-4B（dense）模型上，在AIME25（域内）和GPQA-Diamond（域外）基准上，SxS在准确率与内容延迟（如token级等待）的权衡上取得了改进。",
+        "conclusion": "SxS提供了一种简单有效的方法来优化LLM推理中的披露时机，可在不牺牲准确率的情况下减少不必要的延迟，适用于需要逐步推理和输出的场景。",
+        "markdown": "### TL;DR\n提出Side-by-Side (SxS)交错推理方法，将LLM推理过程中的披露时机变为可控决策，通过训练模型在支持性推理充分后才输出内容，从而在准确率和延迟之间取得更好的帕累托权衡。\n\n### 动机\n在单流自回归接口中，token同时用于更新状态和作为公开输出，导致“静默税”：延迟思考会增加首个相关内容的时间，而过早输出则可能造成偏见。需要更灵活地控制披露时机。\n\n### 方法\n提出Side-by-Side (SxS)交错推理，在相同上下文中交替进行部分披露和持续私有推理，仅当推理支持时才释放内容。通过构建蕴含对齐的交错轨迹（匹配答案前缀与支持推理前缀），先用SFT学习双动作语义，再用RL恢复推理性能。\n\n### 效果\n在Qwen3-30B-A3B（MoE）和Qwen3-4B（dense）模型上，在AIME25（域内）和GPQA-Diamond（域外）基准上，SxS在准确率与内容延迟（如token级等待）的权衡上取得了改进。\n\n### 结论\nSxS提供了一种简单有效的方法来优化LLM推理中的披露时机，可在不牺牲准确率的情况下减少不必要的延迟，适用于需要逐步推理和输出的场景。"
+      },
+      "keywordsZh": [
+        "交错推理",
+        "披露策略",
+        "LLM推理",
+        "延迟权衡",
+        "自回归生成",
+        "强化学习",
+        "监督微调"
+      ],
+      "keywordsEn": [
+        "interleaved reasoning",
+        "disclosure policy",
+        "LLM reasoning",
+        "latency trade-off",
+        "autoregressive generation",
+        "reinforcement learning",
+        "supervised fine-tuning"
+      ],
+      "semanticQueryZh": "LLM推理中如何控制输出时机以减少延迟并保持准确率？Side-by-Side交错推理方法",
+      "generatedAt": "2026-05-06T05:47:02Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03301",
+      "aiSummary": {
+        "tldr": "SHIELD创建了一个多样化临床笔记数据集，并通过蒸馏小语言模型实现高精度去标识化，平衡了性能与企业部署需求。",
+        "motivation": "现有临床文本去标识化基准数据集（如i2b2 2006/2014）已过时，缺乏语义和人口统计学多样性；大语言模型虽零样本性能领先，但企业部署受制于计算成本和隐私治理限制。",
+        "method": "通过集合覆盖多样性采样和人工审核构建包含1,394份笔记、10,505个PHI标注（9类）的SHIELD数据集；评估四个大语言模型作为上限，然后将能力蒸馏到本地可部署的小语言模型（如DeBERTa v3）。",
+        "result": "最佳蒸馏模型在结构化PHI类别（日期、医生、ID、患者、电话）上匹配教师模型，微平均跨度级精度0.88、召回0.86，且跨数据集泛化良好，但机构特有实体迁移困难。",
+        "conclusion": "公开SHIELD数据集和蒸馏DeBERTa v3模型；建议企业采用覆盖广泛模型的混合部署策略，结合高量笔记的专用模型。",
+        "markdown": "## TL;DR\nSHIELD创建了一个多样化临床笔记数据集，并通过蒸馏小语言模型实现高精度去标识化，平衡了性能与企业部署需求。\n\n## 动机\n现有临床文本去标识化基准数据集（如i2b2 2006/2014）已过时，缺乏语义和人口统计学多样性；大语言模型虽零样本性能领先，但企业部署受制于计算成本和隐私治理限制。\n\n## 方法\n通过集合覆盖多样性采样和人工审核构建包含1,394份笔记、10,505个PHI标注（9类）的SHIELD数据集；评估四个大语言模型作为上限，然后将能力蒸馏到本地可部署的小语言模型（如DeBERTa v3）。\n\n## 效果\n最佳蒸馏模型在结构化PHI类别上匹配教师模型，微平均跨度级精度0.88、召回0.86，且跨数据集泛化良好，但机构特有实体迁移困难。\n\n## 结论\n公开SHIELD数据集和蒸馏DeBERTa v3模型；建议企业采用覆盖广泛模型的混合部署策略，结合高量笔记的专用模型。"
+      },
+      "keywordsZh": [
+        "临床去标识化",
+        "数据集",
+        "小语言模型",
+        "知识蒸馏",
+        "电子健康记录",
+        "隐私保护",
+        "SHIELD",
+        "DeBERTa"
+      ],
+      "keywordsEn": [
+        "clinical de-identification",
+        "dataset",
+        "small language model",
+        "knowledge distillation",
+        "electronic health records",
+        "privacy protection",
+        "SHIELD",
+        "DeBERTa"
+      ],
+      "semanticQueryZh": "临床文本去标识化数据集SHIELD与蒸馏小语言模型在电子健康记录隐私保护中的应用",
+      "generatedAt": "2026-05-06T05:47:00Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03299",
+      "aiSummary": {
+        "tldr": "提出LLM-XTM框架，利用大语言模型和自一致性不确定性量化，以黑盒方式增强跨语言主题模型的连贯性和对齐能力。",
+        "motivation": "现有跨语言主题模型依赖稀疏双语资源，主题不连贯或对齐弱；基于LLM的方法成本高且易幻觉，白盒方法需token概率难以获取。",
+        "method": "结合LLM引导的主题精炼与自一致性不确定性量化，实现黑盒、稳定、可扩展的增强。",
+        "result": "在多语言语料上取得更优的主题连贯性和对齐，减少对双语词典和昂贵LLM调用的依赖。",
+        "conclusion": "LLM-XTM是一种有效且实用的跨语言主题模型增强方法，兼顾性能与资源效率。",
+        "markdown": "### TL;DR\n提出LLM-XTM框架，利用大语言模型和自一致性不确定性量化，以黑盒方式增强跨语言主题模型的连贯性和对齐能力。\n\n### 动机\n现有跨语言主题模型依赖稀疏双语资源，主题不连贯或对齐弱；基于LLM的方法成本高且易幻觉，白盒方法需token概率难以获取。\n\n### 方法\n结合LLM引导的主题精炼与自一致性不确定性量化，实现黑盒、稳定、可扩展的增强。\n\n### 效果\n在多语言语料上取得更优的主题连贯性和对齐，减少对双语词典和昂贵LLM调用的依赖。\n\n### 结论\nLLM-XTM是一种有效且实用的跨语言主题模型增强方法，兼顾性能与资源效率。"
+      },
+      "keywordsZh": [
+        "跨语言主题建模",
+        "大语言模型",
+        "主题精炼",
+        "自一致性不确定性量化",
+        "黑盒增强",
+        "主题连贯性"
+      ],
+      "keywordsEn": [
+        "cross-lingual topic modeling",
+        "large language model",
+        "topic refinement",
+        "self-consistency uncertainty",
+        "black-box enhancement",
+        "topic coherence"
+      ],
+      "semanticQueryZh": "使用大语言模型黑盒增强跨语言主题模型的方法，提高主题连贯性和对齐",
+      "generatedAt": "2026-05-06T05:46:56Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03244",
+      "aiSummary": {
+        "tldr": "提出基于叙事学理论的电影剧本摘要框架 S^2tory，通过角色发展轨迹提取情节核心，实现高语义保真度的压缩摘要。",
+        "motivation": "电影剧本非线性、交叉剪辑的叙事结构使得传统基于表面显著性的摘要方法无法保留核心故事进程，需要结合叙事学理论指导。",
+        "method": "利用角色发展轨迹识别情节核心，通过叙事专家代理（NEAgent）进行理论约束推理，将蒸馏知识注入小模型用于情节核心识别，再用另一模型生成摘要。",
+        "result": "在 MovieSum 数据集上达到最先进的语义保真度，约 3.5 倍压缩率；在 BookSum 上的零样本评估验证了强域外泛化能力。人类评估证实叙事学理论对复杂非线性叙事建模的关键作用。",
+        "conclusion": "叙事学理论为建模复杂非线性叙事提供了不可或缺的基础，该框架可推广到其他非结构化叙事文本。",
+        "markdown": "### TL;DR\n提出基于叙事学理论的电影剧本摘要框架 S^2tory，通过角色发展轨迹提取情节核心，实现高语义保真度的压缩摘要。\n\n### 动机\n电影剧本非线性、交叉剪辑的叙事结构使得传统基于表面显著性的摘要方法无法保留核心故事进程，需要结合叙事学理论指导。\n\n### 方法\n利用角色发展轨迹识别情节核心，通过叙事专家代理（NEAgent）进行理论约束推理，将蒸馏知识注入小模型用于情节核心识别，再用另一模型生成摘要。\n\n### 效果\n在 MovieSum 数据集上达到最先进的语义保真度，约 3.5 倍压缩率；在 BookSum 上的零样本评估验证了强域外泛化能力。人类评估证实叙事学理论对复杂非线性叙事建模的关键作用。\n\n### 结论\n叙事学理论为建模复杂非线性叙事提供了不可或缺的基础，该框架可推广到其他非结构化叙事文本。"
+      },
+      "keywordsZh": [
+        "电影剧本摘要",
+        "叙事学",
+        "情节核心提取",
+        "角色发展轨迹",
+        "知识蒸馏",
+        "语义保真度"
+      ],
+      "keywordsEn": [
+        "movie script summarization",
+        "narratology",
+        "plot nuclei extraction",
+        "character development trajectories",
+        "knowledge distillation",
+        "semantic fidelity"
+      ],
+      "semanticQueryZh": "基于叙事学的电影剧本自动摘要方法",
+      "generatedAt": "2026-05-06T05:47:08Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.02457",
+      "aiSummary": {
+        "tldr": "本文利用论证结构（前提与结论）来预测仇恨内容，在WSF-ARG+数据集上达到96% F1分数，为信息无序治理提供了新方向。",
+        "motivation": "信息无序（虚假信息、仇恨言论等）对社会危害巨大，需要综合解决方案。本文尝试用论证结构连接不同维度的问题。",
+        "method": "使用WSF-ARG+数据集，该数据集标注了白人至上主义论坛消息的论证结构（前提和结论）以及消息的可检查性和仇恨性。通过分析论证组件的仇恨性，预测整条消息的仇恨程度。",
+        "result": "实验表明，所提方法在仇恨内容识别上达到最高96% F1分数，显示出论证结构用于信息无序治理的潜力。",
+        "conclusion": "论证结构可以有效预测内容仇恨性，未来可扩展到对抗信息无序的其他方面。",
+        "markdown": "### TL;DR\n本文利用论证结构（前提与结论）来预测仇恨内容，在WSF-ARG+数据集上达到96% F1分数，为信息无序治理提供了新方向。\n\n### 动机\n信息无序（虚假信息、仇恨言论等）对社会危害巨大，需要综合解决方案。本文尝试用论证结构连接不同维度的问题。\n\n### 方法\n使用WSF-ARG+数据集，该数据集标注了白人至上主义论坛消息的论证结构（前提和结论）以及消息的可检查性和仇恨性。通过分析论证组件的仇恨性，预测整条消息的仇恨程度。\n\n### 效果\n实验表明，所提方法在仇恨内容识别上达到最高96% F1分数，显示出论证结构用于信息无序治理的潜力。\n\n### 结论\n论证结构可以有效预测内容仇恨性，未来可扩展到对抗信息无序的其他方面。"
+      },
+      "keywordsZh": [
+        "论证结构",
+        "仇恨内容检测",
+        "信息无序",
+        "WSF-ARG+数据集",
+        "F1分数",
+        "自然语言处理"
+      ],
+      "keywordsEn": [
+        "argument structure",
+        "hate speech detection",
+        "information disorder",
+        "WSF-ARG+ dataset",
+        "F1 score",
+        "natural language processing"
+      ],
+      "semanticQueryZh": "利用论证结构预测仇恨内容 信息无序 自然语言处理",
+      "generatedAt": "2026-05-05T02:19:42Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03229",
+      "aiSummary": {
+        "tldr": "稀疏记忆微调（SMF）通过仅更新少量记忆行，在医学问答微调中几乎不遗忘原有能力，效果优于LoRA和全微调。",
+        "motivation": "预训练语言模型在适应新任务时常出现灾难性遗忘，损害其通用能力，亟需一种低遗忘的微调方法。",
+        "method": "在预训练模型上添加键值记忆层，每个训练步仅更新当前批次激活最多的少量记忆行（稀疏更新），并比较了KL散度和TF-IDF两种行选择规则。",
+        "result": "在MedMCQA（4选1医学问答）上，SMF相比基线提升2.5个百分点，同时将WikiText困惑度和TriviaQA准确率两种遗忘探测指标控制在基准模型约1个点以内；而LoRA和全微调虽然获得更大提升，但在探测任务上出现明显漂移。",
+        "conclusion": "SMF是一种低遗忘的微调替代方案，适用于希望保持模型通用能力同时提升下游任务性能的场景。",
+        "markdown": "### TL;DR\n稀疏记忆微调（SMF）通过仅更新少量记忆行，在医学问答微调中几乎不遗忘原有能力，效果优于LoRA和全微调。\n\n### 动机\n预训练语言模型在适应新任务时常出现灾难性遗忘，损害其通用能力，亟需一种低遗忘的微调方法。\n\n### 方法\n在预训练模型上添加键值记忆层，每个训练步仅更新当前批次激活最多的少量记忆行（稀疏更新），并比较了KL散度和TF-IDF两种行选择规则。\n\n### 效果\n在MedMCQA（4选1医学问答）上，SMF相比基线提升2.5个百分点，同时将WikiText困惑度和TriviaQA准确率两种遗忘探测指标控制在基准模型约1个点以内；而LoRA和全微调虽然获得更大提升，但在探测任务上出现明显漂移。\n\n### 结论\nSMF是一种低遗忘的微调替代方案，适用于希望保持模型通用能力同时提升下游任务性能的场景。"
+      },
+      "keywordsZh": [
+        "灾难性遗忘",
+        "稀疏记忆微调",
+        "键值记忆层",
+        "低遗忘微调",
+        "医学问答",
+        "LoRA",
+        "全微调"
+      ],
+      "keywordsEn": [
+        "catastrophic forgetting",
+        "sparse memory finetuning",
+        "key-value memory",
+        "low-forgetting adaptation",
+        "medical QA",
+        "LoRA",
+        "full finetuning"
+      ],
+      "semanticQueryZh": "低遗忘微调方法，稀疏记忆微调用于医学问答，避免灾难性遗忘",
+      "generatedAt": "2026-05-06T05:47:05Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03196",
+      "aiSummary": {
+        "tldr": "通过测量隐藏状态与可回答参考集的几何偏差，在生成前就能判断查询是否超出模型知识，在数学提示上表现良好（ROC-AUC 0.78-0.84），但事实提示无可靠信号。",
+        "motivation": "让语言模型在生成答案前就能感知自己是否知道答案，避免生成不可靠内容，对提升可信度至关重要。",
+        "method": "基于表示几何：计算当前隐藏状态与预定义可回答参考集质心的欧氏距离，作为不可回答性的指标，无需标签或模型输出。",
+        "result": "在Llama 3.1-8B等模型上，数学提示下ROC-AUC达0.78-0.84，优于拒绝基线和自我一致性；事实提示无效，代码提示部分有效但方差大。",
+        "conclusion": "几何偏差可作为轻量级预生成信号，在具有形式化可回答性约束的结构化领域（如数学）可靠，但泛化到事实类查询效果有限。",
+        "markdown": "### TL;DR\n通过测量隐藏状态与可回答参考集的几何偏差，在生成前就能判断查询是否超出模型知识，在数学提示上表现良好（ROC-AUC 0.78-0.84），但事实提示无可靠信号。\n\n### 动机\n让语言模型在生成答案前就能感知自己是否知道答案，避免生成不可靠内容，对提升可信度至关重要。\n\n### 方法\n基于表示几何：计算当前隐藏状态与预定义可回答参考集质心的欧氏距离，作为不可回答性的指标，无需标签或模型输出。\n\n### 效果\n在Llama 3.1-8B等模型上，数学提示下ROC-AUC达0.78-0.84，优于拒绝基线和自我一致性；事实提示无效，代码提示部分有效但方差大。\n\n### 结论\n几何偏差可作为轻量级预生成信号，在具有形式化可回答性约束的结构化领域（如数学）可靠，但泛化到事实类查询效果有限。"
+      },
+      "keywordsZh": [
+        "语言模型",
+        "可回答性",
+        "表示几何",
+        "预生成信号",
+        "无监督",
+        "数学推理",
+        "隐藏状态",
+        "ROC-AUC"
+      ],
+      "keywordsEn": [
+        "language model",
+        "answerability",
+        "representation geometry",
+        "pre-generation signal",
+        "unsupervised",
+        "math reasoning",
+        "hidden states",
+        "ROC-AUC"
+      ],
+      "semanticQueryZh": "无监督 LLM 可回答性预生成信号 表示几何 数学推理",
+      "generatedAt": "2026-05-06T05:47:12Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03147",
+      "aiSummary": {
+        "tldr": "本文提出使用大语言模型从财报电话会议中自动提取关键绩效指标，人类评估精确率达79.7%，并引入三个新基准以评估领域迁移。",
+        "motivation": "财报电话会议是上市公司重要的财务信息来源，但其非结构化、无标签、口语化的特点使得信息提取困难，缺乏自动化的KPI提取方法。",
+        "method": "评估基于SEC文件训练的模型和上下文学习方法，引入三个新基准（SECB、ECB、ECB-A），并设计基于LLM的开放式提取系统，从非结构化会议记录中抽取KPI。",
+        "result": "基于编码器的模型在领域迁移中表现不佳；提出的LLM系统经人工评估达到79.7%精确率，为有价值领域提供基线。",
+        "conclusion": "LLM能有效从财报电话会议中提取KPI，但领域适应性仍是挑战，新基准有助于推动相关研究。",
+        "markdown": "### TL;DR\n本文提出使用大语言模型从财报电话会议中自动提取关键绩效指标，人类评估精确率达79.7%，并引入三个新基准以评估领域迁移。\n\n### 动机\n财报电话会议是上市公司重要的财务信息来源，但其非结构化、无标签、口语化的特点使得信息提取困难，缺乏自动化的KPI提取方法。\n\n### 方法\n评估基于SEC文件训练的模型和上下文学习方法，引入三个新基准（SECB、ECB、ECB-A），并设计基于LLM的开放式提取系统，从非结构化会议记录中抽取KPI。\n\n### 效果\n基于编码器的模型在领域迁移中表现不佳；提出的LLM系统经人工评估达到79.7%精确率，为有价值领域提供基线。\n\n### 结论\nLLM能有效从财报电话会议中提取KPI，但领域适应性仍是挑战，新基准有助于推动相关研究。"
+      },
+      "keywordsZh": [
+        "关键绩效指标",
+        "财报电话会议",
+        "大语言模型",
+        "信息抽取",
+        "领域迁移",
+        "SEC文件",
+        "基准数据集",
+        "自然语言处理"
+      ],
+      "keywordsEn": [
+        "Key Performance Indicators",
+        "Earnings Calls",
+        "Large Language Models",
+        "Information Extraction",
+        "Domain Shift",
+        "SEC Filings",
+        "Benchmark Dataset",
+        "Natural Language Processing"
+      ],
+      "semanticQueryZh": "用大语言模型从财报电话会议中自动提取关键绩效指标的方法和基准数据集",
+      "generatedAt": "2026-05-06T05:47:12Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03103",
+      "aiSummary": {
+        "tldr": "提出 MedStruct-S 基准，用于评估 OCR 临床报告中的键发现、条件问答和端到端抽取，实验表明编码器模型在特定任务上优于同量级解码器。",
+        "motivation": "从 OCR 临床报告中提取半结构化信息是重建患者纵向病史的关键，但现有评估未考虑未知键和 OCR 噪声，难以衡量模型鲁棒性。",
+        "method": "构建 MedStruct-S 基准，包含 3582 页标注的真实临床报告，覆盖键发现、键条件问答和端到端键值对抽取三个任务；并对比编码器（序列标注+后处理）和解码器（结构化生成）两种范式。",
+        "result": "编码器模型在非空值键条件问答上表现最佳，且同量级下整体优于解码器；但微调的大型解码器模型（103B）总体最强。",
+        "conclusion": "MedStruct-S 为半结构化信息抽取的模型选择提供了可靠且实用的基准，可指导实际应用中的模型评估。",
+        "markdown": "### TL;DR\n提出 MedStruct-S 基准，针对 OCR 临床报告中的键发现、条件问答和端到端抽取任务，对比编码器和解码器模型，发现编码器在特定任务上优势明显。\n\n### 动机\n半结构化信息抽取对重构患者病史至关重要，但现有基准忽略未知键和 OCR 噪声。\n\n### 方法\n构建包含 3582 页真实临床报告的基准，评估三种任务，并测试多个编码器/解码器模型。\n\n### 效果\n编码器模型在非空值条件问答上最佳，同量级下优于解码器；但大模型微调后整体更强。\n\n### 结论\nMedStruct-S 为模型选择提供了可靠基准。"
+      },
+      "keywordsZh": [
+        "半结构化信息抽取",
+        "OCR临床报告",
+        "键发现",
+        "条件问答",
+        "端到端键值对抽取",
+        "基准测试",
+        "编码器模型",
+        "解码器模型"
+      ],
+      "keywordsEn": [
+        "semi-structured information extraction",
+        "OCR clinical reports",
+        "key discovery",
+        "key-conditioned QA",
+        "end-to-end key-value extraction",
+        "benchmark",
+        "encoder-only models",
+        "decoder-only models"
+      ],
+      "semanticQueryZh": "OCR临床报告半结构化信息抽取基准：键发现、条件问答与端到端提取方法评估",
+      "generatedAt": "2026-05-06T05:47:21Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03092",
+      "aiSummary": {
+        "tldr": "通过声明性LLM流水线为投资者微博构建结构化意见图，增强情感分析并提升图神经网络分类性能。",
+        "motivation": "现有金融情感分析仅关注情感极性，缺乏对情感背后原因（目标）的细粒度理解，限制了分析深度。",
+        "method": "使用声明性LLM流水线从StockTwits评论中为每个句子生成结构化意见图，并将其与StockEmotions数据集结合作为情感标签的语义增强特征；采用图神经网络（GNN）进行分类。",
+        "result": "在StockEmotions数据集上的实验表明，引入意见语义后，GNN分类器在不同情感类别上的性能均得到提升。",
+        "conclusion": "本研究为金融文本情感分析提供了一种可扩展的语义增强方法，通过显式建模情感目标，有助于更细粒度的市场情绪理解。",
+        "markdown": "### TL;DR\n通过声明性LLM流水线为投资者微博构建结构化意见图，增强情感分析并提升图神经网络分类性能。\n\n### 动机\n现有金融情感分析仅关注情感极性，缺乏对情感背后原因（目标）的细粒度理解，限制了分析深度。\n\n### 方法\n使用声明性LLM流水线从StockTwits评论中为每个句子生成结构化意见图，并将其与StockEmotions数据集结合作为情感标签的语义增强特征；采用图神经网络（GNN）进行分类。\n\n### 效果\n在StockEmotions数据集上的实验表明，引入意见语义后，GNN分类器在不同情感类别上的性能均得到提升。\n\n### 结论\n本研究为金融文本情感分析提供了一种可扩展的语义增强方法，通过显式建模情感目标，有助于更细粒度的市场情绪理解。"
+      },
+      "keywordsZh": [
+        "金融情感分析",
+        "意见图",
+        "图神经网络",
+        "投资者微博",
+        "声明性LLM流水线",
+        "情感目标",
+        "StockEmotions数据集"
+      ],
+      "keywordsEn": [
+        "financial sentiment analysis",
+        "opinion graph",
+        "graph neural network",
+        "investor micro-blog",
+        "declarative LLM pipeline",
+        "emotion target",
+        "StockEmotions dataset"
+      ],
+      "semanticQueryZh": "金融微博情感分析 使用图神经网络和意见图 增强情感目标理解",
+      "generatedAt": "2026-05-06T05:47:20Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03073",
+      "aiSummary": {
+        "tldr": "通过低成本TTS合成实体密集音频数据并微调LoRA，将印地语小众领域ASR实体命中率提升17倍，但仍未达到预定目标。",
+        "motivation": "现有开源和商业ASR系统在印地语数字、货币、地址等小众领域表现极差，亟需低成本解决方案。",
+        "method": "使用开源印地语TTS流水线合成约2.2万条实体密集的印地语-英语混合语音（成本<50美元），在vasista22/whisper-telugu-large-v2上执行LoRA微调。",
+        "result": "在合成保留测试集上，实体命中率从0.027（开源）和0.16（商业）提升至0.473；泰卢固语脚本坍塌率从0.46-0.71修复至0.81-0.97；但印地语和泰米尔语未达预期目标。",
+        "conclusion": "TTS-STT飞轮能以极低成本显著改善小众领域ASR，但效果因语言而异，需针对性设计。",
+        "markdown": "### TL;DR\n通过低成本TTS合成实体密集音频数据并微调LoRA，将印地语小众领域ASR实体命中率提升17倍，但仍未达到预定目标。\n\n### 动机\n现有开源和商业ASR系统在印地语数字、货币、地址等小众领域表现极差，亟需低成本解决方案。\n\n### 方法\n使用开源印地语TTS流水线合成约2.2万条实体密集的印地语-英语混合语音（成本<50美元），在vasista22/whisper-telugu-large-v2上执行LoRA微调。\n\n### 效果\n在合成保留测试集上，实体命中率从0.027（开源）和0.16（商业）提升至0.473；泰卢固语脚本坍塌率从0.46-0.71修复至0.81-0.97；但印地语和泰米尔语未达预期目标。\n\n### 结论\nTTS-STT飞轮能以极低成本显著改善小众领域ASR，但效果因语言而异，需针对性设计。"
+      },
+      "keywordsZh": [
+        "印地语ASR",
+        "实体密集",
+        "TTS-STT飞轮",
+        "LoRA微调",
+        "脚本坍塌",
+        "低成本数据合成"
+      ],
+      "keywordsEn": [
+        "Indic ASR",
+        "entity-dense",
+        "TTS-STT flywheel",
+        "LoRA fine-tuning",
+        "script collapse",
+        "low-cost data synthesis"
+      ],
+      "semanticQueryZh": "使用合成数据微调LoRA提升印地语实体密集ASR性能",
+      "generatedAt": "2026-05-06T05:47:26Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03052",
+      "aiSummary": {
+        "tldr": "LLM处理否定既用抑制机制更用构造机制，后期注意力层是错误主因，消融后准确率提升。",
+        "motivation": "理解LLM如何处理否定对于提升其逻辑推理能力和可靠性至关重要，但模型常给出错误答案，原因不明。",
+        "method": "通过观察和因果可解释性技术（如注意力头分析、消融实验）在Mistral-7B和Llama-3.1-8B上研究否定处理机制，对比两种假设：抑制被否定概念 vs. 直接构造否定短语表示。",
+        "result": "发现模型同时使用两种机制，但构造机制更主导；后期注意力层促进简单捷径，消融这些模块可大幅提高否定相关问题的准确率。",
+        "conclusion": "LLM内部存在竞争机制，构造性计算占优，改进后期注意力可增强否定推理能力。",
+        "markdown": "### TL;DR\nLLM处理否定既用抑制机制更用构造机制，后期注意力层是错误主因，消融后准确率提升。\n\n### 动机\n理解LLM如何处理否定对于提升其逻辑推理能力和可靠性至关重要，但模型常给出错误答案，原因不明。\n\n### 方法\n通过观察和因果可解释性技术（如注意力头分析、消融实验）在Mistral-7B和Llama-3.1-8B上研究否定处理机制，对比两种假设：抑制被否定概念 vs. 直接构造否定短语表示。\n\n### 效果\n发现模型同时使用两种机制，但构造机制更主导；后期注意力层促进简单捷径，消融这些模块可大幅提高否定相关问题的准确率。\n\n### 结论\nLLM内部存在竞争机制，构造性计算占优，改进后期注意力可增强否定推理能力。"
+      },
+      "keywordsZh": [
+        "否定处理",
+        "大型语言模型",
+        "机械可解释性",
+        "注意力机制",
+        "构造性表示",
+        "因果推理",
+        "Mistral-7B",
+        "Llama-3.1-8B"
+      ],
+      "keywordsEn": [
+        "negation processing",
+        "large language models",
+        "mechanistic interpretability",
+        "attention mechanism",
+        "constructive representation",
+        "causal reasoning",
+        "Mistral-7B",
+        "Llama-3.1-8B"
+      ],
+      "semanticQueryZh": "大型语言模型否定处理机制的可解释性研究，包括抑制和构造两种机制，以及后期注意力层对准确率的影响",
+      "generatedAt": "2026-05-06T05:47:23Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
+    {
+      "arxivId": "2605.03050",
+      "aiSummary": {
+        "tldr": "研究评估大型推理模型在含有错误预设的用户查询中的表现，发现其准确率仅略高于非推理模型，且仍未能挑战多数错误预设。",
+        "motivation": "用户查询常包含不准确假设，AI模型若不纠正可能强化错误观点，需评估推理模型的应对能力。",
+        "method": "构造涵盖健康、科学、常识等多领域、不同预设强度的查询集，对比推理模型与非推理模型在识别和挑战错误预设方面的准确性。",
+        "result": "推理模型准确率比非推理模型高2-11%，但仍未挑战26-42%的错误预设，且易受预设表达强度影响。",
+        "conclusion": "当前推理模型在识别和挑战错误预设方面仍有明显不足，需进一步改进以更可靠地应对用户信息需求。",
+        "markdown": "### TL;DR\n研究评估大型推理模型在含有错误预设的用户查询中的表现，发现其准确率仅略高于非推理模型，且仍未能挑战多数错误预设。\n\n### 动机\n用户查询常包含不准确假设，AI模型若不纠正可能强化错误观点，需评估推理模型的应对能力。\n\n### 方法\n构造涵盖健康、科学、常识等多领域、不同预设强度的查询集，对比推理模型与非推理模型在识别和挑战错误预设方面的准确性。\n\n### 效果\n推理模型准确率比非推理模型高2-11%，但仍未挑战26-42%的错误预设，且易受预设表达强度影响。\n\n### 结论\n当前推理模型在识别和挑战错误预设方面仍有明显不足，需进一步改进以更可靠地应对用户信息需求。"
+      },
+      "keywordsZh": [
+        "推理模型",
+        "预设",
+        "错误假设",
+        "查询",
+        "大语言模型",
+        "评估",
+        "准确率",
+        "ACL 2026"
+      ],
+      "keywordsEn": [
+        "reasoning models",
+        "presuppositions",
+        "false assumptions",
+        "queries",
+        "large language models",
+        "evaluation",
+        "accuracy",
+        "ACL 2026"
+      ],
+      "semanticQueryZh": "推理模型对含有错误预设的用户查询的评估研究 预设挑战 准确率",
+      "generatedAt": "2026-05-06T05:47:34Z",
+      "model": "deepseek-v4-flash",
+      "promptVersion": "paper-ai-summary/v1"
+    },
     {
       "arxivId": "2605.02815",
       "aiSummary": {
@@ -552,37 +2242,6 @@
       ],
       "semanticQueryZh": "自动化提取数字化百科全书词条并链接到Wikidata的方法",
       "generatedAt": "2026-05-05T02:19:29Z",
-      "model": "deepseek-v4-flash",
-      "promptVersion": "paper-ai-summary/v1"
-    },
-    {
-      "arxivId": "2605.02457",
-      "aiSummary": {
-        "tldr": "本文利用论证结构（前提与结论）来预测仇恨内容，在WSF-ARG+数据集上达到96% F1分数，为信息无序治理提供了新方向。",
-        "motivation": "信息无序（虚假信息、仇恨言论等）对社会危害巨大，需要综合解决方案。本文尝试用论证结构连接不同维度的问题。",
-        "method": "使用WSF-ARG+数据集，该数据集标注了白人至上主义论坛消息的论证结构（前提和结论）以及消息的可检查性和仇恨性。通过分析论证组件的仇恨性，预测整条消息的仇恨程度。",
-        "result": "实验表明，所提方法在仇恨内容识别上达到最高96% F1分数，显示出论证结构用于信息无序治理的潜力。",
-        "conclusion": "论证结构可以有效预测内容仇恨性，未来可扩展到对抗信息无序的其他方面。",
-        "markdown": "### TL;DR\n本文利用论证结构（前提与结论）来预测仇恨内容，在WSF-ARG+数据集上达到96% F1分数，为信息无序治理提供了新方向。\n\n### 动机\n信息无序（虚假信息、仇恨言论等）对社会危害巨大，需要综合解决方案。本文尝试用论证结构连接不同维度的问题。\n\n### 方法\n使用WSF-ARG+数据集，该数据集标注了白人至上主义论坛消息的论证结构（前提和结论）以及消息的可检查性和仇恨性。通过分析论证组件的仇恨性，预测整条消息的仇恨程度。\n\n### 效果\n实验表明，所提方法在仇恨内容识别上达到最高96% F1分数，显示出论证结构用于信息无序治理的潜力。\n\n### 结论\n论证结构可以有效预测内容仇恨性，未来可扩展到对抗信息无序的其他方面。"
-      },
-      "keywordsZh": [
-        "论证结构",
-        "仇恨内容检测",
-        "信息无序",
-        "WSF-ARG+数据集",
-        "F1分数",
-        "自然语言处理"
-      ],
-      "keywordsEn": [
-        "argument structure",
-        "hate speech detection",
-        "information disorder",
-        "WSF-ARG+ dataset",
-        "F1 score",
-        "natural language processing"
-      ],
-      "semanticQueryZh": "利用论证结构预测仇恨内容 信息无序 自然语言处理",
-      "generatedAt": "2026-05-05T02:19:42Z",
       "model": "deepseek-v4-flash",
       "promptVersion": "paper-ai-summary/v1"
     },
