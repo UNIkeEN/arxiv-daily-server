@@ -1,9 +1,128 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-06T05:51:24Z",
+  "generatedAt": "2026-05-07T05:45:45Z",
   "category": "cs.GR",
-  "paperCount": 29,
+  "paperCount": 33,
   "papers": [
+    {
+      "id": "2605.05095",
+      "arxivId": "2605.05095",
+      "title": "A Bayesian Approach for Task-Specific Next-Best-View Selection with Uncertain Geometry",
+      "briefSummary": "We develop a framework for task-specific active next-best-view selection in 3D reconstruction from point clouds, by casting the problem in the language of Bayesian decision theory.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-05-06",
+      "updatedAt": "2026-05-06",
+      "abstract": "We develop a framework for task-specific active next-best-view selection in 3D reconstruction from point clouds, by casting the problem in the language of Bayesian decision theory. Our framework works by (a) placing a prior distribution over the space of implicit surfaces, (b) using recently-developed stochastic surface reconstruction methods to calculate the resulting posterior distribution, then (c) using the posterior distribution to carefully reason about which view to scan next. This enables us to perform camera selection in a manner that is directly optimized for the intended use of the reconstructed data - meaning, we reduce uncertainty only in those regions that make a difference in the task at hand, as opposed to prior approaches that reduce it uniformly across space. We evaluate our method across three distinct downstream tasks: semantic classification, segmentation, and PDE-guided physics simulation. Experimental results demonstrate that our framework achieves superior task performance with fewer views compared to commonly used baselines and prior general uncertainty-reduction techniques.",
+      "authors": [
+        "Jingsen Zhu",
+        "Silvia Sellán",
+        "Alexander Terenin"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV",
+        "cs.LG",
+        "stat.ML"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.05095",
+      "pdfUrl": "https://arxiv.org/pdf/2605.05095v1",
+      "htmlUrl": "https://arxiv.org/html/2605.05095",
+      "journalRef": "ACM SIGGRAPH 2026",
+      "comment": "Code for this paper is available at https://github.com/jingsenzhu/BayesianNBV"
+    },
+    {
+      "id": "2605.04773",
+      "arxivId": "2605.04773",
+      "title": "AGIPC: Adaptive In-Solve Algebraic Coarsening for GPU IPC",
+      "briefSummary": "Implicit time integration is key to robustly simulating stiff materials and large deformations, but its performance is often dominated by repeatedly solving large linear systems.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-05-06",
+      "updatedAt": "2026-05-06",
+      "abstract": "Implicit time integration is key to robustly simulating stiff materials and large deformations, but its performance is often dominated by repeatedly solving large linear systems. Adaptive coarsening can reduce this cost by concentrating degrees of freedom (DoF) to where it is most needed, yet conventional explicit remeshing changes connectivity (and often vertex ordering), complicating parallel implementations, harming memory locality, and sometimes being disallowed when it may introduce local geometry intersections. Adaptive subspace approaches avoid topological changes, but basis construction and updates incur irregular data access patterns and typically produce dense system matrices, limiting GPU efficiency and keeping many practical systems CPU-centric. We present algebraic adaptive in-solve coarsening, a GPU-oriented method that dynamically reduces DoF within the Newton solve of implicit time integration without explicit topological modification. Starting from a fine mesh, we express adaptivity as a selective edge-collapse process governed by per-edge tags. Collapsible edges are aggregated in parallel using a warp-level hash mapping scheme that groups fine vertices into coarse super-nodes, while protected edges preserve local detail. This defines an implicit coarse mesh whose linear system is assembled algebraically by mapping and reducing fine-scale gradients and Hessians via efficient GPU reduction kernels. We solve the resulting coarse system with a preconditioned conjugate gradient (PCG) method and then prolongate the solution back to the fine mesh. Our approach integrates seamlessly with IPC's barrier energy and exploits GPU parallelism end-to-end. Across a range of challenging scenarios, we achieve up to 3x speedup over a state-of-the-art GPU IPC solver while producing visually indistinguishable results.",
+      "authors": [
+        "Xuan Wang",
+        "Zhaofeng Luo",
+        "Minchen Li",
+        "Taku Komura",
+        "Kemeng Huang"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.PF"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.04773",
+      "pdfUrl": "https://arxiv.org/pdf/2605.04773v1",
+      "htmlUrl": "https://arxiv.org/html/2605.04773"
+    },
+    {
+      "id": "2605.04509",
+      "arxivId": "2605.04509",
+      "title": "CoherentRaster: Efficient 3D Gaussian Splatting for Light Field Displays",
+      "briefSummary": "Light field displays (LFDs) require rendering an interlaced image that encodes many view-dependent observations.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-05-06",
+      "updatedAt": "2026-05-06",
+      "abstract": "Light field displays (LFDs) require rendering an interlaced image that encodes many view-dependent observations. This multi-view requirement introduces substantial computational overhead, making real-time rendering difficult to achieve. While 3D Gaussian Splatting (3DGS) is efficient for single-view rendering on 2D displays, directly extending it to LFDs is computationally expensive. Moreover, prior accelerations either suffer from GPU inefficiency under spatially incoherent subpixel layouts or rely on computationally heavy multi-plane intermediates. In this paper, we propose CoherentRaster, a 3DGS-based light field rendering framework that performs subpixel-level rasterization. Our method employs Cross-view Coherent Attribute Reuse to eliminate redundant computation across neighboring viewpoints and applies View-coherent Remapping to restore warp-level memory efficiency degraded by the interlaced subpixel layout. Together, CoherentRaster provides an efficient pipeline for real-time, high-quality light field synthesis on consumer-grade hardware.",
+      "authors": [
+        "Gyujin Sim",
+        "Seungjoo Shin",
+        "Hosung Jeon",
+        "Gwangsoon Lee",
+        "Hyon-Gon Choo",
+        "Sunghyun Cho"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.04509",
+      "pdfUrl": "https://arxiv.org/pdf/2605.04509v1",
+      "htmlUrl": "https://arxiv.org/html/2605.04509"
+    },
+    {
+      "id": "2605.04128",
+      "arxivId": "2605.04128",
+      "title": "Awaking Spatial Intelligence in Unified Multimodal Understanding and Generation",
+      "briefSummary": "We present JoyAI-Image, a unified multimodal foundation model for visual understanding, text-to-image generation, and instruction-guided image editing.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-05-05",
+      "updatedAt": "2026-05-05",
+      "abstract": "We present JoyAI-Image, a unified multimodal foundation model for visual understanding, text-to-image generation, and instruction-guided image editing. JoyAI-Image couples a spatially enhanced Multimodal Large Language Model (MLLM) with a Multimodal Diffusion Transformer (MMDiT), allowing perception and generation to interact through a shared multimodal interface. Around this architecture, we build a scalable training recipe that combines unified instruction tuning, long-text rendering supervision, spatially grounded data, and both general and spatial editing signals. This design gives the model broad multimodal capability while strengthening geometry-aware reasoning and controllable visual synthesis. Experiments across understanding, generation, long-text rendering, and editing benchmarks show that JoyAI-Image achieves state-of-the-art or highly competitive performance. More importantly, the bidirectional loop between enhanced understanding, controllable spatial editing, and novel-view-assisted reasoning enables the model to move beyond general visual competence toward stronger spatial intelligence. These results suggest a promising path for unified visual models in downstream applications such as vision-language-action systems and world models.",
+      "authors": [
+        "Lin Song",
+        "Wenbo Li",
+        "Guoqing Ma",
+        "Wei Tang",
+        "Bo Wang",
+        "Yuan Zhang",
+        "Yijun Yang",
+        "Yicheng Xiao",
+        "Jianhui Liu",
+        "Yanbing Zhang",
+        "Guohui Zhang",
+        "Wenhu Zhang",
+        "Hang Xu",
+        "Nan Jiang",
+        "Xin Han",
+        "Haoze Sun",
+        "Maoquan Zhang",
+        "Haoyang Huang",
+        "Nan Duan"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.04128",
+      "pdfUrl": "https://arxiv.org/pdf/2605.04128v1",
+      "htmlUrl": "https://arxiv.org/html/2605.04128"
+    },
     {
       "id": "2605.04017",
       "arxivId": "2605.04017",
