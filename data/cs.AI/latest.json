@@ -1,9 +1,624 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-24T06:28:45Z",
+  "generatedAt": "2026-05-25T06:52:09Z",
   "category": "cs.AI",
   "paperCount": 100,
   "papers": [
+    {
+      "id": "2605.23904",
+      "arxivId": "2605.23904",
+      "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
+      "briefSummary": "Agent skills today are hand-crafted, generated one-shot, or evolved through loosely controlled self-revision, none of which behaves like a deep-learning optimizer for the skill, and none of which reliably improves over...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Agent skills today are hand-crafted, generated one-shot, or evolved through loosely controlled self-revision, none of which behaves like a deep-learning optimizer for the skill, and none of which reliably improves over its starting point under feedback. We argue the skill should instead be trained as the external state of a frozen agent, with the same discipline that makes weight-space optimization reproducible. SkillOpt is, to our knowledge, the first systematic controllable text-space optimizer for agent skills: a separate optimizer model turns scored rollouts into bounded add/delete/replace edits on a single skill document, and an edit is accepted only when it strictly improves a held-out validation score. A textual learning-rate budget, rejected-edit buffer, and epoch-wise slow/meta update make skill training stable while adding zero inference-time model calls at deployment. Across six benchmarks, seven target models, and three execution harnesses (direct chat, Codex, Claude Code), SkillOpt is best or tied on all 52 evaluated (model, benchmark, harness) cells and beats every per-cell competitor among human, one-shot LLM, Trace2Skill, TextGrad, GEPA, and EvoSkill skills. On GPT-5.5 it lifts the average no-skill accuracy by +23.5 points in direct chat, by +24.8 inside the Codex agentic loop, and by +19.1 inside Claude Code. Transfer experiments further show that optimized skill artifacts retain value when moved across model scales, between Codex and Claude Code execution environments, and to a nearby math benchmark without further optimization.",
+      "authors": [
+        "Yifan Yang",
+        "Ziyang Gong",
+        "Weiquan Huang",
+        "Qihao Yang",
+        "Ziwei Zhou",
+        "Zisu Huang",
+        "Yan Li",
+        "Xuemei Gao",
+        "Qi Dai",
+        "Bei Liu",
+        "Kai Qiu",
+        "Yuqing Yang",
+        "Dongdong Chen",
+        "Xue Yang",
+        "Chong Luo"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23904",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23904v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23904",
+      "comment": "27 pages, 4 figures, 6 tables"
+    },
+    {
+      "id": "2605.23899",
+      "arxivId": "2605.23899",
+      "title": "From Raw Experience to Skill Consumption: A Systematic Study of Model-Generated Agent Skills",
+      "briefSummary": "Language agents increasingly improve by reusing \\emph{skills} -- structured procedural artifacts distilled from past experience.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Language agents increasingly improve by reusing \\emph{skills} -- structured procedural artifacts distilled from past experience. In particular, \\emph{domain-level} and \\emph{model-generated} skills are especially promising. They offer fast adaptation within a domain by encoding domain-specific recurring procedures, and they scale beyond labor-intensive hand-crafting. However, while extraction methods continue to proliferate, understanding remains limited, with no comprehensive study spanning the full skill lifecycle -- \\textbf{experience generation}, \\textbf{skill extraction}, and \\textbf{skill consumption} -- to ask whether such skills actually work, when they work, and what makes them succeed or fail. To close this gap, we build a utility-grounded evaluation framework that provides systematic experimental results across extractors and target agents, covering five diverse agentic task domains. We find that model-generated skills are beneficial on average but exhibit non-trivial negative transfer, and that neither extractors nor targets behave uniformly. A model can be a strong extractor yet a weak consumer, or vice versa, with skill utility independent of model scale or baseline task strength. To explain these patterns, we then dissect each lifecycle stage in depth, analyzing how experience composition shapes skill quality, what properties characterize useful skills, and how the same skill transfers across different consumers. Finally, we translate these findings into a concrete \\emph{meta-skill} that guides skill extraction toward the features tied to actual utility, which consistently improves skill quality across domains and substantially reduces negative transfer.",
+      "authors": [
+        "Zisu Huang",
+        "Jingwen Xu",
+        "Yifan Yang",
+        "Ziyang Gong",
+        "Qihao Yang",
+        "Muzhao Tian",
+        "Xiaohua Wang",
+        "Changze Lv",
+        "Xuemei Gao",
+        "Qi Dai",
+        "Bei Liu",
+        "Kai Qiu",
+        "Xue Yang",
+        "Dongdong Chen",
+        "Xiaoqing Zheng",
+        "Chong Luo"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23899",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23899v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23899"
+    },
+    {
+      "id": "2605.23898",
+      "arxivId": "2605.23898",
+      "title": "SPACENUM: Revisiting Spatial Numerical Understanding in VLMs",
+      "briefSummary": "Vision-Language Models (VLMs) are increasingly deployed in embodied environments, where they need produce numerical outputs such as action magnitudes and spatial coordinates.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Vision-Language Models (VLMs) are increasingly deployed in embodied environments, where they need produce numerical outputs such as action magnitudes and spatial coordinates. Although these numbers appear meaningful, it remains unclear whether these numerical outputs are genuinely grounded in spatial perception. Therefore, in this work, we revisit spatial numerical understanding through SpaceNum, a unified framework that captures two complementary settings: numbers as dynamic transitions during spatial exploration, and numbers as static layouts in spatial reasoning. We formulate two bidirectional tasks, Num2Space and Space2Num, to evaluate how well VLMs map between vision-side spatial structure and language-side numerical representations. We systematically study whether current VLMs truly understand numerical values in spatial settings. Across dynamic transitions and static layouts, we find that models largely fail to ground numbers in spatial meaning and often perform close to random guess. Through error analysis, reasoning trace analysis, and controlled interventions, we show that current VLMs rely heavily on shallow spatial cues, struggle to build stable coordinate-aware representations, and fail to abstract structured spatial layouts from visual observations. We further show that explicit reasoning provides only marginal gains, while tuning can partially improve spatial numerical understanding and transfer to external spatial reasoning benchmarks.",
+      "authors": [
+        "Jianshu Zhang",
+        "Yijiang Li",
+        "Huifeixin Chen",
+        "Haoran Lu",
+        "Letian Xue",
+        "Bingyang Wang",
+        "Han Liu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23898",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23898v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23898",
+      "comment": "Project page: https://sterzhang.github.io/SpaceNum-Home"
+    },
+    {
+      "id": "2605.23780",
+      "arxivId": "2605.23780",
+      "title": "Beyond Binary Edits Robust Multimodal Knowledge Editing with Adversarial Subspace Alignment",
+      "briefSummary": "Multimodal large language models (MLLMs) need efficient mechanisms to update knowledge without degrading existing capabilities.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Multimodal large language models (MLLMs) need efficient mechanisms to update knowledge without degrading existing capabilities. While intrinsic multimodal knowledge editing achieves strong reliability and locality, it often exhibits limited generality, failing to propagate edits across semantically equivalent visual and linguistic variations. This issue arises from the lack of explicit semantic supervision, rigid editing scopes, and biased anchoring to individual samples in high-dimensional multimodal spaces. We address robust intrinsic multimodal knowledge editing by explicitly targeting generalization. We formalize robustness through knowledge units that group semantically equivalent multimodal inputs and define generality as consistent predictions within each unit. To expose fragile semantic regions, we introduce Latent Adversarial Robustification (LAR), which generates adversarial yet semantically coherent variants in the joint latent space. We further propose Rank-Constrained Subspace Learning (RCSL), enforcing low-rank alignment of adversarial representations at the edit layer via a singular value-based objective. Extensive analysis demonstrates the effectiveness of ASAM empirically.",
+      "authors": [
+        "Haoyuan Wang",
+        "Xiaohao Liu",
+        "Jiajie Su",
+        "Jianmao Xiao",
+        "Chaochao Chen"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23780",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23780v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23780"
+    },
+    {
+      "id": "2605.23772",
+      "arxivId": "2605.23772",
+      "title": "Agentic Proving for Program Verification",
+      "briefSummary": "Agentic systems have recently emerged as state-of-the-art approaches for automated theorem proving in formal mathematics.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Agentic systems have recently emerged as state-of-the-art approaches for automated theorem proving in formal mathematics. To assess how far these capabilities extend to program verification, we evaluate Claude Code in an agentic proving framework on CLEVER, a Lean 4 benchmark for verifiable code generation. Our results show that Claude generates arguably valid specifications for 98.8% of problems (with 81.3% also accepted by CLEVER's isomorphism-based scoring on the correct portion of the benchmark), certifies implementations against correct ground-truth specifications for 87.5% of problems, and reaches a 98.1% success rate on the end-to-end program generation and verification pipeline over entries with self-consistent premises. Across all stages, Claude further provides high-quality feedback on its own attempts (as confirmed under manual review), identifying underlying causes of failure and lingering bugs in the dataset. These findings highlight a growing mismatch between the difficulty of existing program verification benchmarks and the capabilities of modern agentic provers, and point to the need for more rigorous, bug-resilient evaluation methodologies, and in particular for alternatives to isomorphism-based scoring of generated specifications. More broadly, our results provide empirical evidence that tight compiler-in-the-loop agentic paradigms are currently the most effective approach for foundational program verification.",
+      "authors": [
+        "Alessandro Sosso",
+        "Akhil Arora",
+        "Bas Spitters"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LO",
+        "cs.PL",
+        "cs.SE"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23772",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23772v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23772"
+    },
+    {
+      "id": "2605.23723",
+      "arxivId": "2605.23723",
+      "title": "MemAudit: Post-hoc Auditing of Poisoned Agent Memory via Causal Attribution and Structural Anomaly Detection",
+      "briefSummary": "Large language model agents increasingly rely on persistent memory to store past interactions, retrieve relevant demonstrations, and improve long-horizon task execution.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Large language model agents increasingly rely on persistent memory to store past interactions, retrieve relevant demonstrations, and improve long-horizon task execution. However, this memory mechanism also creates a practical security vulnerability: an adversarial user may inject malicious records into the agent's memory through ordinary interaction, and these records can later be retrieved to steer the agent's reasoning and actions. Existing defenses primarily focus on online intervention, such as prompt filtering or output blocking, but they do not address the post-hoc question of which stored memories are responsible after harmful behavior has already been observed. We propose \\textbf{MemAudit}, a post-hoc causal memory auditing framework for memory-augmented LLM agents. The framework combines two complementary signals: (1) a counterfactual memory influence score that measures each memory's causal contribution to harmful outputs, and (2) a memory consistency graph that identifies structurally anomalous memories within the broader memory store. We evaluate MemAudit against MINJA, a query-only memory injection attack in which malicious records are generated and stored through normal agent interactions rather than direct memory-bank modification. Across both QA and reasoning-agent settings, MemAudit substantially reduces attack success rates under realistic post-hoc auditing scenarios. The results show that QA attack success is reduced from $70\\%$ to $0\\%$, while RAP attack success drops from $83.3\\%$ to $0\\%$.",
+      "authors": [
+        "Zhewen Tan",
+        "Yilun Yao",
+        "Huiyan Jin",
+        "Wenhan Yu",
+        "Guoan Wang",
+        "Mengyuan Fan",
+        "liang lu",
+        "Feng Liu",
+        "Xiangzheng Zhang",
+        "Duohe Ma",
+        "Tong Yang",
+        "Lin Sun"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23723",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23723v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23723"
+    },
+    {
+      "id": "2605.23652",
+      "arxivId": "2605.23652",
+      "title": "One Policy, Infinite NPCs: Persona-Traceable Shared RL Policies for Scalable Game Agents",
+      "briefSummary": "On a 300-persona life-simulation benchmark, pcsp achieves compositional zero-shot persona identification up to 17x above chance, Spearman rho approx 0.73 semantic-behavioral alignment, and 22x faster inference than an L...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "On a 300-persona life-simulation benchmark, pcsp achieves compositional zero-shot persona identification up to 17x above chance, Spearman rho approx 0.73 semantic-behavioral alignment, and 22x faster inference than an LLM-as-policy baseline. Life simulation games require hundreds to thousands of non-player characters (NPCs) that behave consistently with distinct personalities while remaining controllable through designer-authored natural language. Existing methods fail on constraints like persona consistency, controllability, or real-time inference. We introduce pcsp (Persona Conditioned Shared Policy), a single reinforcement learning policy conditioned on frozen LLM embeddings of free-form persona descriptions. pcsp combines once-per-NPC persona encoding, low-rank persona projection, neural persona conditioning, and a PPO + InfoNCE consistency + KL diversity training objective. Across three experimental settings, ablations show that the InfoNCE trajectory-consistency objective is load bearing: removing it collapses zero-shot persona identification to chance. External validation on Melting Pot 2.4.0 substrates confirms that our method produces persona-conditioned behavioral divergence in multi-agent strategic environments. We distinguish two senses of held-out evaluation: compositional zero-shot and vocabulary-expansion held-out. Finally, a UE5 deployment reproduces the in-engine persona-conditioning ablation at 64 agents with a low failure rate, showing that the sub-frame inference profile survives in a commercial game engine. These results prove that shared RL policies can support scalable, real-time, persona-conditioned NPC control.",
+      "authors": [
+        "Yoosung Hong"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23652",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23652v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23652",
+      "comment": "18 pages, 15 figures, 14 tables"
+    },
+    {
+      "id": "2605.23592",
+      "arxivId": "2605.23592",
+      "title": "Solving the Aircraft Disassembly Scheduling Problem",
+      "briefSummary": "Dismantling aircrafts reaching their end of life is a complex endeavour that is necessary in terms of sustainability but yields small income margins for air transport companies.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Dismantling aircrafts reaching their end of life is a complex endeavour that is necessary in terms of sustainability but yields small income margins for air transport companies. An efficient scheduling of the disassembly procedure is thus crucial to ensure the profitability of the process and incentivize practice. This is a large scheduling problem that involves thousands of tasks and many different constraints: Extracting parts that are destined to be reused requires technicians with specific certifications and equipment. Extraction operations might be subject to precedence relations. Furthermore, the aircraft must be kept balanced during the whole process. Finally, some of the locations of the aircraft have a limited space that caps the number of technicians able to work there concurrently. This article presents the problem in details and proposes two approaches to solve the problem: a Constraint Programming model and a MIP model. The models are tested on instances of varying sizes involving up to 1450 tasks, which are based on real operational data provided by an industrial partner.",
+      "authors": [
+        "Charles Thomas",
+        "Pierre Schaus"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23592",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23592v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23592"
+    },
+    {
+      "id": "2605.23590",
+      "arxivId": "2605.23590",
+      "title": "Co-ReAct: Rubrics as Step-Level Collaborators for ReAct Agents",
+      "briefSummary": "ReAct-style agents for search-intensive, multi-step reasoning tasks rely largely on their own internal judgment to decide what evidence to seek, which reasoning or action step to take next, and when to stop, often produ...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "ReAct-style agents for search-intensive, multi-step reasoning tasks rely largely on their own internal judgment to decide what evidence to seek, which reasoning or action step to take next, and when to stop, often producing shallow, redundant, or poorly targeted trajectories. Prior work has explored rubrics as external quality signals, but existing uses are mostly evaluative rather than action-guiding: rubrics typically serve as training-time rewards or post-hoc evaluators of completed outputs, and in deep-research settings they are often coarse-grained and report-level rather than step-level. We introduce Co-ReAct, a rubric-guided action-selection framework that uses rubrics as step-level guidance during inference. At each decision step, Co-ReAct injects a rubric into the agent's context to guide the next Reason-or-Act decision, specifying what the agent should target in evidence seeking, search, reasoning, or self-evaluation. To make this guidance reliable, we train a dedicated rubric generator with GRPO. Unlike prior pairwise or binary preference formulations, our objective optimizes a list-wise Spearman rank-correlation reward against multi-judge expert consensus rankings, encouraging rubrics that are discriminative rather than merely plausible. On DeepResearchBench and SQA-CS-V2, Co-ReAct consistently improves over ReAct and representative test-time compute baselines across search agents built on both 8B/14B open-source and frontier closed-source base models. The trained rubric generator can also serve as a drop-in component that improves these baselines without changing their underlying decision mechanisms. Our code is publicly available at https://github.com/ZBWpro/Co-ReAct.",
+      "authors": [
+        "Jiazheng Kang",
+        "Bowen Zhang",
+        "Zixin Song",
+        "Jiangwang Chen",
+        "Xiao Yang",
+        "Da Zhu",
+        "Guanjun Jiang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23590",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23590v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23590"
+    },
+    {
+      "id": "2605.23569",
+      "arxivId": "2605.23569",
+      "title": "CP or DP? Why Not Both: A Case Study in the Partial Shop Scheduling Problem",
+      "briefSummary": "Dynamic Programming (DP) and Constraint Programming (CP) are well-established paradigms for solving combinatorial optimization problems.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Dynamic Programming (DP) and Constraint Programming (CP) are well-established paradigms for solving combinatorial optimization problems. Usually, these two approaches are used separately. This paper aims to show that the two can be combined effectively and elegantly, with DP serving as the primary search framework and CP used as a subroutine to leverage global constraint propagation. This paper presents such an approach for the Partial Shop Scheduling Problem (PSSP), for which a pure DP method has previously been proposed, and efficient CP filtering algorithms are available. The PSSP is a general scheduling problem where each job consists of a set of operations with arbitrary precedence constraints. The approach is flexible enough to accommodate anytime DP strategies, such as anytime column search, whereas the original DP algorithm operated in a strictly layer-wise manner. Moreover, the flexibility of the CP modeling makes it straightforward to incorporate arbitrary precedence constraints. As a result, the model naturally handles any precedence graph and even enables the design of a Large Neighborhood Search (LNS) scheme, in which the DP model is reused, and partial-order schedules are imposed across restarts to improve the incumbent solution. While not competitive with state-of-the-art pure CP solvers for this specific problem, our primary contribution is demonstrating the viability of this hybrid integration.",
+      "authors": [
+        "Emma Legrand",
+        "Roger Kameugne",
+        "Pierre Schaus"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23569",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23569v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23569"
+    },
+    {
+      "id": "2605.23493",
+      "arxivId": "2605.23493",
+      "title": "EDGE-OPD: Internalizing Privileged Context with Evidence Guided On-Policy Distillation",
+      "briefSummary": "On-Policy Distillation (OPD) has gained wide attraction as an LLM post-training paradigm due to its effectiveness in improving capabilities without introducing model distribution drift, and consequently, regression in g...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "On-Policy Distillation (OPD) has gained wide attraction as an LLM post-training paradigm due to its effectiveness in improving capabilities without introducing model distribution drift, and consequently, regression in general tasks. On-Policy Self-Distillation (OPSD) is an efficient use-case of OPD, which is appealing as it requires only a single model as a student and teacher, and it also has the benefit of providing privileged context that is a absent at inference time (e.g. a persona, a private fact, or a worked solution) to the teacher during the training process. The challenge in this approach is that the privileged information can change model behavior more than intended: it can modify reasoning, degrade general capabilities, and affect performance indicators like response length, style, or local token preferences. Consequently, OPSD may train the student on side effects rather than a desired, transferable behavior. In this paper, we study this problem in a rare-token/identity setting and propose EviDence GuidEd On-Policy Distillation (EDGE-OPD), a modification of OPSD with two distinct characteristics: a) it uses guided rollouts to inject privileged-context behavior to the student at sampling time, so that the rare target behavior is actually present in the on-policy data, and b) it applies an evidence mask: the student is updated only at token positions where the privileged context supports the sampled token, rather than on every token in the rollout. We empirically show that OPSD (and its variant RLSD, with and without a verifier) completely fail to learn a target identity, while the integration of guided rollouts allows them to succeed. Additionally, mask-region ablations show that the persona signal is localized to the positive-evidence tail, allows us to draw valuable insights about efficient knowledge transfer and preservation of general purpose capabilities.",
+      "authors": [
+        "Aristotelis Lazaridis",
+        "Dylan Bates",
+        "Aman Sharma",
+        "Brian King",
+        "Vincent Lu",
+        "Jack FitzGerald"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23493",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23493v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23493"
+    },
+    {
+      "id": "2605.23414",
+      "arxivId": "2605.23414",
+      "title": "When Planning Fails Despite Correct Execution: On Epistemic Calibration for LLM-Based Multi-Agent Systems",
+      "briefSummary": "LLM-based multi-agent systems can fail even when planned actions are executed correctly because agents may misjudge their knowledge when evaluating plan feasibility, a phenomenon we term epistemic miscalibration in plan...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "LLM-based multi-agent systems can fail even when planned actions are executed correctly because agents may misjudge their knowledge when evaluating plan feasibility, a phenomenon we term epistemic miscalibration in planning. Unlike execution errors, epistemic miscalibration is latent during planning, as generated plans can remain self-consistent and executable without observable errors; the miscalibration is also dynamic, as new information can alter feasibility assessments, potentially obscuring past miscalibration signals and causing them to recur over time. To address this, we propose the Epistemic Planning Calibration Agentic Workflow (EPC-AW), which assesses whether plans remain supported under varying information conditions rather than directly verifying feasibility. EPC-AW employs Information-consistency-based Plan Selection, selecting plans whose evaluations are stable across agents, together with Consistency-guided Epistemic State Refinement to adapt calibration over time by leveraging past discrepancies to guide future planning. Experiments show that EPC-AW improves system-level success by an average of 9.75%.",
+      "authors": [
+        "Zehao Wang",
+        "Shilong Jin",
+        "Zhao Cao",
+        "Lanjun Wang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23414",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23414v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23414"
+    },
+    {
+      "id": "2605.23320",
+      "arxivId": "2605.23320",
+      "title": "Human-in-the-Loop Multi-Agent Ventilator Decision Support with Contextual Bandit Preference Learning",
+      "briefSummary": "Ventilator decision support requires sequential decisions that track evolving physiology and disease trajectories while respecting safety boundaries and clinician specific tuning styles.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Ventilator decision support requires sequential decisions that track evolving physiology and disease trajectories while respecting safety boundaries and clinician specific tuning styles. Rule based approaches rarely generalize personalization, and end to end reinforcement learning or single large language model systems remain difficult to control and audit. We propose the Ventilator Decision Support System (VDSS), a human in the loop multi agent framework that coordinates modular decision components through contract driven structured interfaces and produces traceable evidence for review. VDSS performs online preference adaptation with a contextual bandit, updating clinician specific preferences from the final accepted decision at each adjustment cycle and using them to guide subsequent recommendations. Structured rejection feedback triggers targeted replanning to reduce unproductive iterations and improve interaction stability. Retrospective ICU trajectory replay with expert review indicates higher recommendation acceptability and fewer interaction rounds to reach an acceptable plan, supporting clinically deployable human AI collaboration.",
+      "authors": [
+        "Sijia Li",
+        "Xiaoyu Tan",
+        "Qixing Wang",
+        "Weiyi Zhao",
+        "Chen Zhan",
+        "Teqi Hao",
+        "Xuemin Wang",
+        "Lei Gu",
+        "Roland Eils",
+        "Xihe Qiu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23320",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23320v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23320",
+      "comment": "miccai 2026"
+    },
+    {
+      "id": "2605.23311",
+      "arxivId": "2605.23311",
+      "title": "DART: Semantic Recoverability for Structured Tool Agents",
+      "briefSummary": "When a structured tool agent fails mid-execution, the runtime faces a dilemma: replaying the entire task is safe but wasteful, while restoring from a local checkpoint is efficient but can leave committed downstream work...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "When a structured tool agent fails mid-execution, the runtime faces a dilemma: replaying the entire task is safe but wasteful, while restoring from a local checkpoint is efficient but can leave committed downstream work tied to an upstream history that no longer exists. This tension is acute in commitment-sensitive settings, where rollback targets a single failed instance yet downstream consumers have already acted on its output. Existing recovery approaches provide mechanical rollback but no criterion for whether a local restore remains semantically valid after downstream commitment. We formalize this gap as semantic recoverability and address it in DART, a modular runtime that localizes the failed instance, certifies semantically recoverable boundaries of that instance, aligns checkpoints to those boundaries, and selects an admissible restore point that preserves committed downstream work under dependency and effect constraints-or blocks otherwise. Across three LLM-driven domains and external validation on a LangGraph-based substrate, DART correctly recovers all evaluated commitment-sensitive cases where baseline local recovery fails, and a five-domain safety audit finds no unsafe admitted rollbacks. These results show that controller legality does not imply semantic validity, and that sound local recovery requires an explicit admissibility check.",
+      "authors": [
+        "Ke Yang",
+        "Panpan Li",
+        "Zonghan Wu",
+        "Kejin Xu",
+        "Huaxi Huang",
+        "Xiaoshui Huang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23311",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23311v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23311"
+    },
+    {
+      "id": "2605.23297",
+      "arxivId": "2605.23297",
+      "title": "Ontological Knowledge Blocks: Executable Compliance and Profile-Based Validation for Trustworthy AI Systems",
+      "briefSummary": "AI-enabled services deployed in critical digital infrastructure are subject to governance obligations spanning transparency, accountability, fairness, and traceability.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "AI-enabled services deployed in critical digital infrastructure are subject to governance obligations spanning transparency, accountability, fairness, and traceability. Compliance today remains documentation-centric: obligations are described in prose, audits rely on static checklists, and verification depends on manual review. Such approaches do not scale to automated AI systems. This paper introduces Ontological Knowledge Blocks (OKBs), a programmable governance infrastructure that compiles regulatory obligations into machine-checkable constraints over structured evidence graphs. We formalize an OKB as a 5-tuple that binds normative obligations to an RDF/OWL concept schema, executable SHACL validation rules, explicit evidence requirements, and PROV-O provenance links. A deterministic regulatory compiler translates structured Intermediate Representation (IR) records into composable KB modules, enabling profile-based governance reconfiguration without modifying service code. We implement two prototypes and evaluate them in an AI-assisted HPC resource allocation scenario across 24 validation runs and four governance profiles. Results demonstrate profile-sensitive validation, strictly additive violation accumulation, SHACL validation latency between 12.6 ms and 100.3 ms, and profile equivalence testing confirming Combined as the strictly most comprehensive profile. All artefacts are released as open source.",
+      "authors": [
+        "Aasish Kumar Sharma",
+        "Julian M. Kunkel"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.DC"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23297",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23297v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23297",
+      "comment": "6 pages, 3 figures. Accepted at the Security, Trust and Privacy for Software and Applications (STPSA) Workshop, IEEE COMPSAC 2026, Madrid, Spain, July 7-10, 2026"
+    },
+    {
+      "id": "2605.23296",
+      "arxivId": "2605.23296",
+      "title": "Parallel Context Compaction for Long-Horizon LLM Agent Serving",
+      "briefSummary": "Long-horizon LLM agents accumulate growing conversation histories that eventually exceed the model's context window.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Long-horizon LLM agents accumulate growing conversation histories that eventually exceed the model's context window. Context compaction via LLM-based summarization keeps the conversation bounded, but summarization is inherently lossy and the blocking call stalls agent inference for tens of seconds. Moreover, the operator has no fine-grained control over summary volume since prompt instructions are largely ignored, and as context grows, both the amount of output tokens the model produces and the information it retains fluctuate substantially from run to run, making the agent's retained knowledge unpredictable across runs. We introduce \\textbf{parallel compaction} for long-horizon agentic flows and characterize it against the sequential synchronous baseline across four backbones spanning 8B to 120B parameters, mixing dense and MoE architectures with reasoning and non-reasoning models, on the HotpotQA multi-hop QA and LoCoMo long-context dialogue benchmarks. Parallel compaction gives the operator fine-grained, predictable control over summary volume and enables more targeted prompt engineering per block. At matched compaction decode volume, it reduces end-to-end wall time and improves compaction throughput over the sequential baseline.",
+      "authors": [
+        "Musa Cim",
+        "Burak Topcu",
+        "Chita Das",
+        "Mahmut Taylan Kandemir"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23296",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23296v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23296"
+    },
+    {
+      "id": "2605.23262",
+      "arxivId": "2605.23262",
+      "title": "Design and Report Benchmarks for Knowledge Work",
+      "briefSummary": "The development of LLM agents has led to a growing body of work on knowledge-work AI, including coding, research, and healthcare.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "The development of LLM agents has led to a growing body of work on knowledge-work AI, including coding, research, and healthcare. However, current knowledge-work evaluation and benchmark design still largely follow the logic of traditional NLP tasks. As a result, higher benchmark performance does not reliably show that a system can carry out knowledge work in real-world deployment settings. This paper contributes a three-step approach for making explicit how benchmarked tasks represent the work claims attached to their scores: defining the work activity under evaluation, specifying the tested setting, and scoring the appropriate work product. We review work studies showing that knowledge work is organized through roles and responsibilities, local materials and tools, and artifacts that must remain usable in downstream workflows. We then translate these concerns into benchmark design and reporting guidance, covering how tasks should be mapped to work activities, how tested settings should specify materials, tools, roles, and constraints, and how scoring should focus on the work product left by the system. To name the work activity being evaluated and distinguish it from common benchmark tasks, we derive an inventory of 18 work activities from the O{*}NET occupational task database. We demonstrate the approach through three benchmark case analyses: GDPval, a non-code occupational deliverable benchmark; OfficeQA Pro, a grounded document-analysis benchmark scored by final answers; and APEX-SWE, a software-engineering benchmark with executable scored products. These cases show how benchmark design choices shape the strongest work claim a score can support, and where gaps arise between the benchmarked task, tested setting, scored product, and broader work claim.",
+      "authors": [
+        "Yining Hua",
+        "Hongbin Na",
+        "Cyrus Ayubcha",
+        "Levi Lian"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23262",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23262v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23262"
+    },
+    {
+      "id": "2605.23238",
+      "arxivId": "2605.23238",
+      "title": "GENSTRAT: Toward a Science of Strategic Reasoning in Large Language Models",
+      "briefSummary": "Large language models (LLMs) are increasingly deployed as economic agents in marketplaces, auctions, and bidding settings.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Large language models (LLMs) are increasingly deployed as economic agents in marketplaces, auctions, and bidding settings. Anticipating their behavior in any specific deployment is hard. Existing strategic-reasoning benchmarks evaluate models on fixed canonical games. These benchmarks may saturate as the frontier improves, and they do not allow evaluators to generalize with confidence from benchmark performance to the varied and messy strategic environments that actual deployments involve. We introduce GENSTRAT, which uses procedurally generated strategic environments to address these challenges. Concretely, we generate a distribution of two-player zero-sum imperfect-information card games. The generator can draw fresh games on demand, allowing for evergreen evaluation and resistance to contamination. We pair the game distribution with a capability-profile methodology that decomposes model competence across six axes (state space, temporal depth, information sensitivity, opponent modeling, risk, and brittleness). We also introduce a jaggedness measure of within-distribution smoothness that detects when a model's advantage jumps unpredictably between strategically similar games. We sample 50 benchmark games from a 2,000-game generated pool and evaluate nine frontier and open-weight LLMs in a head-to-head tournament with over 36,000 matches. Newer frontier-tier models score higher on average. Beyond that average, models with near-identical overall strength show qualitatively different capability profiles, and two of the top three leaderboard models (gpt-5 and claude) are noticeably more locally volatile than the third (gemini-3.1-pro), despite being close in overall strength. Together, the capability profile and the jaggedness measure give a deployment-relevant diagnostic that the overall ranking alone cannot provide.",
+      "authors": [
+        "Vartan Shadarevian",
+        "Kia Ghods",
+        "Alex Kenich",
+        "Anany Kotawala"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.GT",
+        "cs.LG",
+        "cs.MA"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23238",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23238v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23238",
+      "comment": "33 pages, 8 figures, 9 tables (4 figures, 2 tables in main paper)"
+    },
+    {
+      "id": "2605.23218",
+      "arxivId": "2605.23218",
+      "title": "Foundation Protocol: A Coordination Layer for Agentic Society",
+      "briefSummary": "Autonomous agents are moving from tools into a layer of social infrastructure: they browse, purchase, deploy software, manage systems, and increasingly interact with one another.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Autonomous agents are moving from tools into a layer of social infrastructure: they browse, purchase, deploy software, manage systems, and increasingly interact with one another. As these systems scale, the bottleneck shifts away from raw model capability toward coordination. Agents need to form reliable relationships, organize multi-agent work, exchange value, support an AI economy, and stay safe and accountable under real-world oversight. This paper introduces the Foundation Protocol (FP), a graph-first coordination layer for an emerging human-AI society. FP unifies heterogeneous entities, including agents, tools, resources, humans, institutions, and organizations, and supports native multi-party organization and event-based collaboration. It also provides economic primitives for metering, receipts, and settlement, and treats policy, provenance, and audit as first-class concerns. FP is designed to wrap and bridge existing protocols rather than replace them, enabling incremental adoption while reducing integration and governance overhead. The aim is to keep autonomous agency composable while keeping accountability non-negotiable, so that coordination itself can become shared infrastructure for a human-AI society that is open, pluralistic, and governable.",
+      "authors": [
+        "Bang Liu",
+        "Yongfeng Gu",
+        "Jiayi Zhang",
+        "Zhaoyang Yu",
+        "Sirui Hong",
+        "Maojia Song",
+        "Xiaoqiang Wang",
+        "Mingyi Deng",
+        "Zijie Zhuang",
+        "Ronghao Wang",
+        "Mingzhe Cao",
+        "Yutong Zhu",
+        "Xingjian Li",
+        "Yifan Wu",
+        "Jianhao Ruan",
+        "Yiran Peng",
+        "Shuangrui Chen",
+        "Jinlin Wang",
+        "Yizhang Lin",
+        "Dongjie Zhang",
+        "Dekun Wu",
+        "Chen Ma",
+        "Lizi Liao",
+        "Han Yu",
+        "Jian Pei",
+        "Heng Ji",
+        "Qiang Yang",
+        "Yuyu Luo",
+        "Chenglin Wu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23218",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23218v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23218"
+    },
+    {
+      "id": "2605.23204",
+      "arxivId": "2605.23204",
+      "title": "AutoResearch AI: Towards AI-Powered Research Automation for Scientific Discovery",
+      "briefSummary": "Scientific research is being reshaped by AI systems that move beyond isolated assistance toward longer-horizon workflows spanning literature grounding, hypothesis generation, experimentation, validation, reporting, and...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Scientific research is being reshaped by AI systems that move beyond isolated assistance toward longer-horizon workflows spanning literature grounding, hypothesis generation, experimentation, validation, reporting, and revision. This shift marks a transition from task-level AI for science to workflow-level research automation. Yet current systems remain fragmented, differing in autonomy, domain scope, execution environment, validation mechanism, and human oversight, while still struggling with evidence preservation, reproducibility, weak-direction rejection, provenance tracking, cross-domain robustness, and accountable scientific closure. This survey examines these developments through AutoResearch, defined as the developmental spectrum of AI-powered scientific workflow automation. Within it, Vibe Research denotes the human-steered region of prompt-based assistance and human-verified execution, whereas emerging AI-led systems coordinate larger portions of the discovery loop without achieving robust autonomy. We analyze how research systems redistribute control, evidence, execution, validation, and accountability across workflows and organize the field around five workflow conditions: literature and research grounding; hypothesis formation and planning; experimentation and tool use; feedback, validation, and review; and reporting and knowledge communication. We further synthesize AI scientist systems, mixed-initiative co-research frameworks, benchmarks, domain deployments, and open-source infrastructures. Finally, we propose five evaluation dimensions--novelty, validity, impact, reliability, and provenance--and show that AutoResearch autonomy is domain-conditioned, being more credible in structured, executable, and rapidly verifiable settings but limited in embodied, delayed, heterogeneous, ethical, or institutionally accountable contexts.",
+      "authors": [
+        "Guiyao Tie",
+        "Jiawen Shi",
+        "Dingjie Song",
+        "Yixiao Huang",
+        "Ziji Sheng",
+        "Xueyang Zhou",
+        "Daizong Liu",
+        "Pan Zhou",
+        "Yongchao Chen",
+        "Ran Xu",
+        "Lifang He",
+        "Qingsong Wen",
+        "Manling Li",
+        "Cong Lu",
+        "Shuai Li",
+        "Pengtao Xie",
+        "Yixuan Yuan",
+        "Rui Meng",
+        "Lei Xing",
+        "Lichao Sun",
+        "Caiming Xiong",
+        "Philip S. Yu",
+        "Jianfeng Gao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23204",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23204v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23204",
+      "comment": "49 pages, 12 figures, 10 tables"
+    },
+    {
+      "id": "2605.23179",
+      "arxivId": "2605.23179",
+      "title": "Redrawing the AI Map: A Theory of Accountability Boundaries in Agentic Ecosystems",
+      "briefSummary": "Agentic AI orchestrators reduce the interface and assembly costs of composing information systems capabilities across organizational boundaries, seemingly accelerating modularization and organizational disaggregation.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "Agentic AI orchestrators reduce the interface and assembly costs of composing information systems capabilities across organizational boundaries, seemingly accelerating modularization and organizational disaggregation. Yet AI-enabled capabilities whose outputs require evidence, review, signoff, or assignable responsibility may retain integrated accountability boundaries even when their technical interfaces become modular. We develop a capability-level theory of accountability-boundary placement in agentic ecosystems. We introduce accountability assets: complementary assets that make AI-supported outputs legitimate, auditable, reviewable, and assignable to a responsible party. We argue that verification cost and responsibility transferability determine whether the execution and accountability boundaries can move together. The theory identifies three boundary strategies: component, integrated, and dual-track. It also introduces rule debt, the governance burden that accrues when organizational decision rules migrate from formal information systems into ungoverned agentic execution environments. Integrating digital innovation, transaction cost, complementary-assets, digital platform governance, and IS control perspectives, we develop seven propositions linking agentic assembly-cost reductions, accountability assets, appropriability, orchestrator intent capture, and boundary misconfiguration to boundary strategy, value appropriation, and rule debt. The theory explains when digital modularization extends to organizational disaggregation and when accountability keeps capabilities integrated. Structured illustrations across document processing, legal services, audit, clinical decision support, and procurement discipline the boundary logic.",
+      "authors": [
+        "Muhammad Zia Hydari",
+        "Farooq Muzaffar"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23179",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23179v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23179"
+    },
+    {
+      "id": "2605.23109",
+      "arxivId": "2605.23109",
+      "title": "Inductive Deductive Synthesis: Enabling AI to Generate Formally Verified Systems",
+      "briefSummary": "AI agents increasingly excel at generating, testing, and refining code.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-05-22",
+      "updatedAt": "2026-05-22",
+      "abstract": "AI agents increasingly excel at generating, testing, and refining code. However, they fall short on tasks requiring formal guarantees of full coverage that testing alone cannot provide. Distributed systems are a prime example: properties such as consistency between reads and writes must hold under every possible interleaving of events. Mechanized formal verification can guarantee such correctness, but typically demands months to years of expert effort. As evidence, even SOTA coding agents (Codex with GPT-5.4 and Claude Code with Opus 4.6) succeed on only 2/7 distributed key-value-store specifications. In this paper, we present the first effective approach to addressing this gap, Inductive Deductive Synthesis (IDS), which jointly and incrementally synthesizes implementation and proof, and learns from failed attempts to systematically try promising strategies. Built as an agentic LLM system, IDS achieves 7/7 in about 6.8 hours and $106 per spec on average, roughly 200x faster than expert effort and 17% cheaper than SOTA agents. IDS further incorporates performance feedback into the same loop, yielding implementations up to 3x faster than published verified systems.",
+      "authors": [
+        "Shubham Agarwal",
+        "Alexander Krentsel",
+        "Shu Liu",
+        "Mert Cemri",
+        "Audrey Cheng",
+        "Rui Meng",
+        "Tomas Pfister",
+        "Chun-Liang Li",
+        "Sylvia Ratnasamy",
+        "Aditya Parameswaran",
+        "Matei Zaharia",
+        "Ion Stoica",
+        "Mohsen Lesani"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.DC",
+        "cs.LO",
+        "cs.PL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2605.23109",
+      "pdfUrl": "https://arxiv.org/pdf/2605.23109v1",
+      "htmlUrl": "https://arxiv.org/html/2605.23109"
+    },
     {
       "id": "2605.22794",
       "arxivId": "2605.22794",
@@ -2133,582 +2748,6 @@
       "pdfUrl": "https://arxiv.org/pdf/2605.15132v1",
       "htmlUrl": "https://arxiv.org/html/2605.15132",
       "comment": "25 pages, 2 figures, 14 tables"
-    },
-    {
-      "id": "2605.15109",
-      "arxivId": "2605.15109",
-      "title": "Why Neighborhoods Matter: Traversal Context and Provenance in Agentic GraphRAG",
-      "briefSummary": "Retrieval-Augmented Generation can improve factuality by grounding answers in external evidence, but Agentic GraphRAG complicates what it means for citations to be faithful.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Retrieval-Augmented Generation can improve factuality by grounding answers in external evidence, but Agentic GraphRAG complicates what it means for citations to be faithful. In these systems, an agent explores a knowledge graph before producing an answer and a small set of citations. We frame citation faithfulness as a trajectory-level problem: final citations should not only support the answer, but also account for the graph traversal, structure, and visited-but-uncited entities that may influence it. Through controlled ablation experiments, we compare the effects of isolating, removing, and masking cited and uncited graph entities. Our results show that cited evidence is often necessary, as removing it substantially changes answers and reduces accuracy. However, citations are not sufficient, because accurate answers can also depend on uncited traversal context and surrounding graph structure. These findings suggest that citation evaluation in Agentic GraphRAG should move beyond source support toward provenance over the broader retrieval trajectory.",
-      "authors": [
-        "Riccardo Terrenzi",
-        "Maximilian von Zastrow",
-        "Serkan Ayvaz"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.IR"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.15109",
-      "pdfUrl": "https://arxiv.org/pdf/2605.15109v1",
-      "htmlUrl": "https://arxiv.org/html/2605.15109",
-      "comment": "7 pages, 2 figures, Submitted at IJCAI-ECAI 2026 Joint Workshop on GENAIK and NORA"
-    },
-    {
-      "id": "2605.15100",
-      "arxivId": "2605.15100",
-      "title": "Dual-Dimensional Consistency: Balancing Budget and Quality in Adaptive Inference-Time Scaling",
-      "briefSummary": "Large Language Models (LLMs) have demonstrated remarkable abilities in reasoning.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Large Language Models (LLMs) have demonstrated remarkable abilities in reasoning. However, maximizing their potential through inference-time scaling faces challenges in trade-off between sampling budget and reasoning quality. Current strategies remain inefficient as they typically treat sampling width and depth as orthogonal objectives, where width consensus methods risk reinforcing hallucinations, while depth pruning mechanisms prematurely truncate complex yet valid reasoning chains. Therefore, we propose Dual-Dimensional Consistency (DDC), a unified framework that bridges path quality with adaptive termination. By coupling Confidence-Weighted Bayesian protocol with a Trend-Aware Stratified Pruning, our method ensures that computational resources are concentrated on high quality reasoning paths, filtering hallucinations while accelerating consensus. Evaluations across five benchmarks demonstrate that this approach reduces token consumption by over 10 times while maintaining or exceeding the accuracy of strong baselines across various LLMs.",
-      "authors": [
-        "Rongman Xu",
-        "Yifei Li",
-        "Tianzhe Zhao",
-        "Yanrui Wu",
-        "Bo Li",
-        "Hang Yan"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.15100",
-      "pdfUrl": "https://arxiv.org/pdf/2605.15100v1",
-      "htmlUrl": "https://arxiv.org/html/2605.15100"
-    },
-    {
-      "id": "2605.15041",
-      "arxivId": "2605.15041",
-      "title": "Case-Based Calibration of Adaptive Reasoning and Execution for LLM Tool Use",
-      "briefSummary": "Tool use extends large language models beyond parametric knowledge, but reliable execution requires balancing appropriate reasoning depth with strict structural validity.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Tool use extends large language models beyond parametric knowledge, but reliable execution requires balancing appropriate reasoning depth with strict structural validity. We approach this problem from a case-based perspective to present CAST, a case-driven framework that treats historical execution trajectories as structured cases. Instead of reusing raw exemplar outputs, CAST extracts case-derived signals to identify complexity profiles for estimating optimal reasoning strategies, alongside failure profiles to map likely structural breakdowns. The framework translates this knowledge into a fine-grained reward design and adaptive reasoning, enabling the model to autonomously internalize case-based strategies during reinforcement learning. Experiments on BFCLv2 and ToolBench demonstrate that CAST improves both schema-faithful execution and task-level tool-use success while reducing unnecessary deliberation. The approach achieves up to 5.85 percentage points gain in overall execution accuracy and reduces average reasoning length by 26%, significantly mitigating high-impact structural errors. Ultimately, this demonstrates how historical execution cases can provide reusable adaptation knowledge for calibrated tool use.",
-      "authors": [
-        "Renning Pang",
-        "Tian Lan",
-        "Leyuan Liu",
-        "Piao Tong",
-        "Sheng Cao",
-        "Xiaosong Zhang"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.15041",
-      "pdfUrl": "https://arxiv.org/pdf/2605.15041v1",
-      "htmlUrl": "https://arxiv.org/html/2605.15041"
-    },
-    {
-      "id": "2605.15040",
-      "arxivId": "2605.15040",
-      "title": "Orchard: An Open-Source Agentic Modeling Framework",
-      "briefSummary": "Agentic modeling aims to transform LLMs into autonomous agents capable of solving complex tasks through planning, reasoning, tool use, and multi-turn interaction with environments.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Agentic modeling aims to transform LLMs into autonomous agents capable of solving complex tasks through planning, reasoning, tool use, and multi-turn interaction with environments. Despite major investment, open research remains constrained by infrastructure and training gaps. Many high-performing systems rely on proprietary codebases, models, or services, while most open-source frameworks focus on orchestration and evaluation rather than scalable agent training. We present Orchard, an open-source framework for scalable agentic modeling. At its core is Orchard Env, a lightweight environment service providing reusable primitives for sandbox lifecycle management across task domains, agent harnesses, and pipeline stages. On top of Orchard Env, we build three agentic modeling recipes. Orchard-SWE targets coding agents. We distill 107K trajectories from MiniMax-M2.5 and Qwen3.5-397B, introduce credit-assignment SFT to learn from productive segments of unresolved trajectories, and apply Balanced Adaptive Rollout for RL. Starting from Qwen3-30B-A3B-Thinking, Orchard-SWE achieves 64.3% on SWE-bench Verified after SFT and 67.5% after SFT+RL, setting a new state of the art among open-source models of comparable size. Orchard-GUI trains a 4B vision-language computer-use agent using only 0.4K distilled trajectories and 2.2K open-ended tasks. It achieves 74.1%, 67.0%, and 64.0% success rates on WebVoyager, Online-Mind2Web, and DeepShop, respectively, making it the strongest open-source model while remaining competitive with proprietary systems. Orchard-Claw targets personal assistant agents. Trained with only 0.2K synthetic tasks, it achieves 59.6% pass@3 on Claw-Eval and 73.9% when paired with a stronger ZeroClaw harness. Collectively, these results show that a lightweight, open, harness-agnostic environment layer enables reusable agentic data, training recipes, and evaluations across domains.",
-      "authors": [
-        "Baolin Peng",
-        "Wenlin Yao",
-        "Qianhui Wu",
-        "Hao Cheng",
-        "Xiao Yu",
-        "Rui Yang",
-        "Tao Ge",
-        "Alessandrio Sordoni",
-        "Xingdi Yuan",
-        "Yelong Shen",
-        "Pengcheng He",
-        "Tong Zhang",
-        "Zhou Yu",
-        "Jianfeng Gao"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.15040",
-      "pdfUrl": "https://arxiv.org/pdf/2605.15040v1",
-      "htmlUrl": "https://arxiv.org/html/2605.15040"
-    },
-    {
-      "id": "2605.15015",
-      "arxivId": "2605.15015",
-      "title": "Small, Private Language Models as Teammates for Educational Assessment Design",
-      "briefSummary": "Generative AI increasingly supports educational design tasks, e.g., through Large Language Models (LLMs), demonstrating the capability to design assessment questions that are aligned with pedagogical frameworks (e.g., B...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Generative AI increasingly supports educational design tasks, e.g., through Large Language Models (LLMs), demonstrating the capability to design assessment questions that are aligned with pedagogical frameworks (e.g., Bloom's taxonomy). However, they often rely on subjective or limited evaluation methods; focus primarily on proprietary models; or rarely systematically examine generation, evaluation, or deployment constraints in real educational settings. Meanwhile, Small Language Models (SLMs) have emerged as local alternatives that better address privacy and resource limitations; yet their effectiveness for assessment tasks remains underexplored. To address this gap, we systematically compare LLMs and SLMs for assessment question design; evaluate generation quality across Bloom's taxonomy levels using reproducible, pedagogically grounded metrics; and further assess model-based judging against expert-informed evaluation by analyzing reliability and agreement patterns. Results show that SLMs achieve competitive performance across key pedagogically motivated quality dimensions while enabling local, privacy-sensitive deployment. However, model-based evaluations also exhibit systematic inconsistencies and bias relative to expert ratings. These findings provide evidence to posit language models as bounded assistants in assessment workflows; underscore the necessity of Human-in-the-Loop; and advance the automated educational question generation field by examining quality, reliability, and deployment-aware trade-offs.",
-      "authors": [
-        "Chris Davis Jaldi",
-        "Anmol Saini",
-        "Shan Zhang",
-        "Noah Schroeder",
-        "Cogan Shimizu",
-        "Eleni Ilkou"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL",
-        "cs.HC"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.15015",
-      "pdfUrl": "https://arxiv.org/pdf/2605.15015v1",
-      "htmlUrl": "https://arxiv.org/html/2605.15015"
-    },
-    {
-      "id": "2605.14998",
-      "arxivId": "2605.14998",
-      "title": "Learning Developmental Scaffoldings to Guide Self-Organisation",
-      "briefSummary": "From subcellular structures to entire organisms, many natural systems generate complex organisation through self-organisation: local interactions that collectively give rise to global structure without any blueprint of...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "From subcellular structures to entire organisms, many natural systems generate complex organisation through self-organisation: local interactions that collectively give rise to global structure without any blueprint of the outcome. Yet a significant portion of the information driving such processes is not produced by self-organisation itself, instead, it is often offloaded to initial conditions of the system. Biological development is a prime example, where maternal pre-patterns encode positional and symmetry-breaking information that scaffolds the self-organising process. From maternal morphogen gradients in early embryogenesis to tissue-level morphogenetic pre-patterns guiding organ formation, this transfer of information to initial conditions, analogous to a memory-compute trade-off in computational systems, is a fundamental part of developmental processes. In this work, we study this offloading phenomenon by introducing a model that jointly learns both the self-organisation rules and the pre-patterns, allowing their interplay to be varied and measured under controlled conditions: a Neural Cellular Automaton (NCA) paired with a learned coordinate-based pattern generator (SIREN), both trained simultaneously to generate a set of patterns. We provide information-theoretic analyses of how information is distributed between pre-patterns and the self-organising process, and show that jointly learning both components yields improvements in robustness, encoding capacity, and symmetry breaking over purely self-organising alternatives. Our analysis further suggests that effective pre-patterns do not simply approximate their targets; rather, they bias the developmental dynamics in ways that facilitate convergence, pointing to a non-trivial relationship between the structure of initial conditions and the dynamics of self-organisation.",
-      "authors": [
-        "Milton L. Montero",
-        "Elias Najarro",
-        "Jakob Schauser",
-        "Sebastian Risi"
-      ],
-      "categories": [
-        "cs.AI",
-        "eess.SY",
-        "q-bio.QM"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14998",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14998v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14998",
-      "comment": "10 pages, 5 figures. Under review"
-    },
-    {
-      "id": "2605.14995",
-      "arxivId": "2605.14995",
-      "title": "Explainable Detection of Depression Status Shifts from User Digital Traces",
-      "briefSummary": "Every day, users generate digital traces (e.g., social media posts, chats, and online interactions) that are inherently timestamped and may reflect aspects of their mental state.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Every day, users generate digital traces (e.g., social media posts, chats, and online interactions) that are inherently timestamped and may reflect aspects of their mental state. These traces can be organized into temporal trajectories that capture how a user's mental health signals evolve, including phases of improvement, deterioration, or stability. In this work, we propose an explainable framework for detecting and analyzing depression-related status shifts in user digital traces. The approach combines multiple BERT-based models to extract complementary signals across different dimensions (e.g., sentiment, emotion, and depression severity). Such signals are then aggregated over time to construct user-level trajectories that are analyzed to identify meaningful change points. To enhance interpretability, the framework integrates a large language model to generate concise and human-readable reports that describe the evolution of mental-health signals and highlight key transitions. We evaluate the framework on two social media datasets. Results show that the approach produces more coherent and informative summaries than direct LLM-based reporting, achieving higher coverage of user history, stronger temporal coherence, and improved sensitivity to change points. An ablation study confirms the contribution of each component, particularly temporal modeling and segmentation. Overall, the method provides an interpretable view of mental health signals over time, supporting research and decision making without aiming at clinical diagnosis.",
-      "authors": [
-        "Loris Belcastro",
-        "Francesco Gervino",
-        "Fabrizio Marozzo",
-        "Domenico Talia",
-        "Paolo Trunfio"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL",
-        "cs.LG",
-        "cs.SI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14995",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14995v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14995"
-    },
-    {
-      "id": "2605.14968",
-      "arxivId": "2605.14968",
-      "title": "GraphFlow: An Architecture for Formally Verifiable Visual Workflows Enabling Reliable Agentic AI Automation",
-      "briefSummary": "GraphFlow is a visual workflow system designed to improve the reliability of agentic AI automation in multi-step, mission-critical processes.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "GraphFlow is a visual workflow system designed to improve the reliability of agentic AI automation in multi-step, mission-critical processes. In these workflows, small errors compound rapidly: under an idealized model of independent steps, a ten-step process with 90% per-step reliability completes successfully only 35% of the time. Existing workflow platforms provide durable execution and observability but offer few semantic correctness guarantees, while agentic systems plan at inference time, making behavior sensitive to prompt variation and difficult to audit. GraphFlow is designed to address this gap by treating workflow diagrams as the executable specification, a single artifact defining data scope, execution semantics, and monitoring. At compile time, a restricted class of diagrams is specified to produce reusable automations whose contracts (preconditions, postconditions, and composition obligations) are intended to be proof-checked before admission to a shared library. At runtime, a durable engine records outcomes in an append-only event log and can enforce contracts at system boundaries, supporting replay, retries, and audit. Swimlanes make trust boundaries explicit, separating verified logic from external systems, human judgment, and AI decisions. A year-long pilot across three clinical sites executed 8,728 cohort-enrolled workflow runs with a 97.08% completion rate under an early prototype without the verified-core subsystem; observed failures were localized primarily to external integrations. The formal semantics and proof-checked admission model described here are specified and under active development. Evaluation of the verified core is reserved for future work.",
-      "authors": [
-        "Drewry H. Morris",
-        "Luis Valles",
-        "Reza Hosseini Ghomi"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14968",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14968v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14968"
-    },
-    {
-      "id": "2605.14912",
-      "arxivId": "2605.14912",
-      "title": "From Sycophantic Consensus to Pluralistic Repair: Why AI Alignment Must Surface Disagreement",
-      "briefSummary": "Pluralistic alignment is typically operationalised as preference aggregation: producing responses that span (Overton), steer toward (Steerable), or proportionally represent (Distributional) diverse human values.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Pluralistic alignment is typically operationalised as preference aggregation: producing responses that span (Overton), steer toward (Steerable), or proportionally represent (Distributional) diverse human values. We argue that aggregation alone is an incomplete primitive for deployed pluralistic alignment. Under genuine value pluralism, the failure mode of contemporary RLHF-trained assistants is not insufficient coverage but sycophantic consensus: a learned tendency to agree with, validate, and minimise friction with the immediate interlocutor. Because deployed AI systems now mediate consequential deliberation across health, civic life, labour, and governance, the collapse of disagreement at the interaction layer is not a narrow technical concern but a structural failure with distributive consequences. We reframe pluralistic alignment around three conversational mechanisms drawn from Grice's maxims: scoping (acknowledging the limits of one's perspective), signalling (surfacing value-conflict rather than smoothing it over), and repair (revising one's position on principled grounds, not on user pressure). We formalise a metric, the Pluralistic Repair Score (PRS), distinguishing principled revision from capitulation, and present a small-scale empirical illustration on two frontier RLHF-trained models (Claude Sonnet 4.5, N=198; GPT-4o, N=100) showing that, for both, agreement-following coexists with low repair-quality on contested-value prompts. PRS measures an interactional precondition for pluralism (visible disagreement; principled revision) rather than pluralism in full; we discuss the difference, take seriously the reflexive question of whose \"principled\" counts, and argue that pluralism is most decisively made or unmade at the deployment-governance layer: interfaces, preference-data pipelines, and audit infrastructure.",
-      "authors": [
-        "Varad Vishwarupe",
-        "Nigel Shadbolt",
-        "Marina Jirotka"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CY",
-        "cs.HC",
-        "cs.LG"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14912",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14912v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14912"
-    },
-    {
-      "id": "2605.14907",
-      "arxivId": "2605.14907",
-      "title": "KGPFN: Unlocking the Potential of Knowledge Graph Foundation Model via In-Context Learning",
-      "briefSummary": "Knowledge graph (KG) foundation models aim to generalize across graphs with unseen entities and relations by learning transferable relational structure.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Knowledge graph (KG) foundation models aim to generalize across graphs with unseen entities and relations by learning transferable relational structure. However, most existing methods primarily emphasize relation-level universality, while in-context learning, the other pillar of foundation models remains under-explored for KG reasoning. In KGs, context is inherently structured and heterogeneous: effective prediction requires conditioning on the local context around the query entities as well as the global context that summarizes how a relation behaves across many instances. We propose KGPFN, a KG foundation model using Prior-data Fitted Network that unifies transferable relational regularities with inference-time in-context learning from structured context. KGPFN first learns relation representations via message passing on relation graphs to capture cross-graph relational invariances. For query-specific reasoning, it encodes local neighborhoods using a multi-layer NBFNet as local context. To enable ICL at global scale, it constructs relation-specific global context by retrieving a large set of instances of the query relation together with their local neighborhoods, and aggregates them within a Prior-Data Fitted Network framework that combines feature-level and sample-level attention. Through multi-graph pretraining on diverse KGs, KGPFN learns when to instantiate reusable patterns and when to override them using contextual evidence. Experiments on 57 KG benchmarks demonstrate that KGPFN achieves strong adaptation to previously unseen graphs through in-context learning alone, consistently outperforming competitive fine-tuned KG foundation models. Our code is available at https://github.com/HKUST-KnowComp/KGPFN.",
-      "authors": [
-        "Yisen Gao",
-        "Jiaxin Bai",
-        "Haoyu Huang",
-        "Zhongwei Xie",
-        "Yufei Li",
-        "Hong Ting Tsang",
-        "Sirui Han",
-        "Yangqiu Song"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14907",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14907v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14907"
-    },
-    {
-      "id": "2605.14900",
-      "arxivId": "2605.14900",
-      "title": "COREKG: Coreset-Guided Personalized Summarization of Knowledge Graphs",
-      "briefSummary": "Knowledge Graphs (KGs) are extensively used across different domains and in several applications.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Knowledge Graphs (KGs) are extensively used across different domains and in several applications. Often, these KGs are very large in size. Such KGs become unwieldy for tasks such as question answering and visualization. Summarization of KGs offers a viable alternative in such cases. Furthermore, personalized KG summarization is crucial in the current data-driven world as it captures the specific requirements of users based on their query patterns. Since it only maintains relevant information, the personalized summaries of KG are small, resulting in significantly smaller storage requirements and query runtime. In this work, we adapt the coreset theory to create personalized KG summaries. For a given dataset and a user-specific query workload, we present an approach that samples a relevant subset of triples using sensitivity-based importance sampling. We ensure that the subset approximates the characteristics of the full dataset with bounded approximation error. We define sensitivity scores that measure the importance of a triple with respect to a user's query workload, which are then used by our coreset construction algorithm. We explicitly focus on personalized knowledge graph summarization by constructing summaries independently for each user based on their query behaviour. Our evaluation on Freebase, WikiData, and DBpedia shows that COREKG delivers higher query-answering accuracy and structural coverage than the state-of-the-art methods, such as GLIMPSE, PPR, iSummary, PEGASUS and APEX$^2$ while requiring only a tiny fraction of the original graph.",
-      "authors": [
-        "Sohel Aman Khan",
-        "Raghava Mutharaju",
-        "Supratim Shit"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14900",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14900v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14900",
-      "comment": "Accepted at IJCAI 2026"
-    },
-    {
-      "id": "2605.14892",
-      "arxivId": "2605.14892",
-      "title": "Beyond Individual Intelligence: Surveying Collaboration, Failure Attribution, and Self-Evolution in LLM-based Multi-Agent Systems",
-      "briefSummary": "LLM-based autonomous agents have demonstrated strong capabilities in reasoning, planning, and tool use, yet remain limited when tasks require sustained coordination across roles, tools, and environments.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "LLM-based autonomous agents have demonstrated strong capabilities in reasoning, planning, and tool use, yet remain limited when tasks require sustained coordination across roles, tools, and environments. Multi-agent systems address this through structured collaboration among specialized agents, but tighter coordination also amplifies a less explored risk: errors can propagate across agents and interaction rounds, producing failures that are difficult to diagnose and rarely translate into structural self-improvement. Existing surveys cover individual agent capabilities, multi-agent collaboration, or agent self-evolution separately, leaving the causal dependencies among them unexamined. This survey provides a unified review organized around four causally linked stages, which we term the LIFE progression: Lay the capability foundation, Integrate agents through collaboration, Find faults through attribution, and Evolve through autonomous self-improvement. For each stage, we provide systematic taxonomies and formally characterize the dependencies between adjacent stages, revealing how each stage both depends on and constrains the next. Beyond synthesizing existing work, we identify open challenges at stage boundaries and propose a cross-stage research agenda for closed-loop multi-agent systems capable of continuously diagnosing failures, reorganizing structures, and refining agent behaviors, extending current coordination frameworks toward more self-organizing forms of collective intelligence. By bridging these previously fragmented research threads, this survey aims to offer both a systematic reference and a conceptual roadmap toward autonomous, self-improving multi-agent intelligence.",
-      "authors": [
-        "Shihao Qi",
-        "Jie Ma",
-        "Rui Xing",
-        "Wei Guo",
-        "Xiao Huang",
-        "Zhitao Gao",
-        "Jianhao Deng",
-        "Jun Liu",
-        "Lingling Zhang",
-        "Bifan Wei",
-        "Boqian Yang",
-        "Pinghui Wang",
-        "Jianwen Sun",
-        "Jing Tao",
-        "Yaqiang Wu",
-        "Hui Liu",
-        "Yu Yao",
-        "Tongliang Liu"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14892",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14892v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14892"
-    },
-    {
-      "id": "2605.14886",
-      "arxivId": "2605.14886",
-      "title": "BiFedKD: Bidirectional Federated Knowledge Distillation Framework for Non-IID and Long-Tailed ECG Monitoring",
-      "briefSummary": "Electrocardiogram (ECG) monitoring in Internet of Medical Things (IoMT) networks is constrained by strict data-sharing regulations and privacy concerns.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Electrocardiogram (ECG) monitoring in Internet of Medical Things (IoMT) networks is constrained by strict data-sharing regulations and privacy concerns. Federated learning (FL) enables collaborative learning by keeping raw ECG data on devices, but frequent transmissions of high-dimensional model updates incur heavy per-round traffic over bandwidth-limited links. To alleviate this bottleneck, federated distillation (FD) replaces parameter exchange with logit-based knowledge transfer. However, the performance of FD often degrades under the non-independent and identically distributed (non-IID) and long-tailed label distributions in ECG deployments. To address these challenges, we propose a bidirectional federated knowledge distillation (BiFedKD) framework that employs an aggregation-by-distillation pipeline with temperature scaling to produce a stable global distillation signal for cross-client alignment. Experiments on the MIT-BIH Arrhythmia dataset show that BiFedKD improves accuracy and Macro-F1 over the baseline by $3.52\\%$ and $9.93\\%$, respectively. Moreover, to reach the same Macro-F1, BiFedKD reduces communication overhead by $40\\%$ and computation cost by $71.7\\%$ compared with the baseline.",
-      "authors": [
-        "Zixuan Shu",
-        "Tiancheng Cao",
-        "Hen-Wei Huang"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14886",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14886v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14886"
-    },
-    {
-      "id": "2605.14865",
-      "arxivId": "2605.14865",
-      "title": "Holistic Evaluation and Failure Diagnosis of AI Agents",
-      "briefSummary": "AI agents execute complex multi-step processes, but current evaluation falls short: outcome metrics report success or failure without explaining why, and process-level approaches struggle to connect failure types to the...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "AI agents execute complex multi-step processes, but current evaluation falls short: outcome metrics report success or failure without explaining why, and process-level approaches struggle to connect failure types to their precise locations within long, structured traces. We present a holistic agent evaluation framework that pairs top-down agent-level diagnosis with bottom-up span-level evaluation, decomposing analysis into independent per-span assessments. This decomposition scales to traces of arbitrary length and produces span-level rationales for each verdict. On the TRAIL benchmark, our framework achieves state-of-the-art results across all metrics on both GAIA and SWE-Bench, with relative gains over the strongest prior baselines of up to 38% on category F1, up to 3.5x on localization accuracy, and up to 12.5x on joint localization-categorization accuracy. Per-category analysis shows our framework leading in more error categories than any other evaluator. Notably, the same frontier model achieves several times higher localization accuracy when used inside our framework than as a monolithic judge over the full trace, showing that evaluation methodology, not model capability, is the bottleneck.",
-      "authors": [
-        "Netta Madvil",
-        "Gilad Dym",
-        "Alon Mecilati",
-        "Edo Dekel",
-        "Jonatan Liberman",
-        "Rotem Brazilay",
-        "Liron Schliesser",
-        "Max Svidlo",
-        "Shai Nir",
-        "Orel Shalom",
-        "Yaron Friedman",
-        "David Connack",
-        "Amos Rimon",
-        "Philip Tannor",
-        "Shir Chorev"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14865",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14865v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14865"
-    },
-    {
-      "id": "2605.14857",
-      "arxivId": "2605.14857",
-      "title": "A Deterministic Agentic Workflow for HS Tariff Classification: Multi-Dimensional Rule Reasoning with Interpretable Decisions",
-      "briefSummary": "Harmonized System (HS) tariff classification is a high-stakes, expert-level task in which a free-form product description must be mapped to a specific six- or eight-digit code under the General Interpretive Rules (GIR),...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Harmonized System (HS) tariff classification is a high-stakes, expert-level task in which a free-form product description must be mapped to a specific six- or eight-digit code under the General Interpretive Rules (GIR), section notes, chapter notes, and Explanatory Notes. The difficulty lies not in knowledge volume but in *multi-dimensional rule reasoning*: a correct classification must satisfy competing priority rules along several axes simultaneously, including material, form, function, essential character, the part-versus-whole boundary, and specific listing versus residual headings. End-to-end prompting of large language models fails characteristically by resolving one axis while ignoring the priority constraints on the others. We present a *deterministic agentic workflow* in contrast to self-planning agents: the control flow is fixed, language model calls are confined to narrow stages, and reflection and verification are retained as local mechanisms. This design yields interpretability by construction--each decision is decomposed into stage-wise structured outputs with verbatim citation of the chapter or section notes that bear on it. The architecture combines offline knowledge-engineering of the Chinese HS tariff with an online six-stage pipeline. Evaluated on HSCodeComp at the six-digit level, the workflow reaches 75.0% top-1 and 91.5% top-3 at four digits, and 64.2% top-1 and 78.3% top-3 at six digits with Qwen3.6-plus; an open-weight Qwen3.6-27B-FP8 backbone in non-thinking mode achieves 84.2% four-digit and 77.4% six-digit top-1 agreement with the frontier model. A two-stage manual audit of 226 six-digit disagreements suggests that a non-trivial fraction of HSCodeComp ground-truth labels may deviate from HS general rules; full adjudication records are released in the appendix as preliminary findings for community review.",
-      "authors": [
-        "Yu Zhang",
-        "Dongjiang Zhuang",
-        "Qu Zhou",
-        "Zheng Huang",
-        "Junhe Wu",
-        "Jing Cao",
-        "Kai Chen"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.IR"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14857",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14857v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14857"
-    },
-    {
-      "id": "2605.14833",
-      "arxivId": "2605.14833",
-      "title": "Emotion-Attended Stateful Memory (EASM):The Architecture for Hyper-Personalization at Scale",
-      "briefSummary": "Current language model systems remain fundamentally stateless across sessions, limiting their ability to personalize interactions over time.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Current language model systems remain fundamentally stateless across sessions, limiting their ability to personalize interactions over time. While retrieval-augmented generation and fine-tuning improve knowledge access and domain capability, they do not enable persistent understanding of individual users. We propose an emotion-attended stateful memory architecture that dynamically constructs user-specific conversational context using long-term history, emotional signals, and inferred intent at inference time. To evaluate its impact, we conducted a controlled A/B study across thirty non-scripted conversations spanning six emotionally distinct categories using the same underlying language model in both conditions. The memory-enriched condition consistently outperformed the stateless baseline across all evaluated scenarios. The largest gains were observed in memory grounding (95% improvement), plan clarity (57%), and emotional validation (34%). Results remained consistent even in emotionally adversarial conversations involving grief, distress, and uncertainty. These findings suggest that stateful emotional memory may represent a foundational infrastructure layer for hyper-personalized AI systems, though broader validation across larger and more diverse evaluations remains necessary",
-      "authors": [
-        "Vineet Kotecha",
-        "Vansh Gupta"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.HC"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14833",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14833v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14833",
-      "comment": "18 pages, 3 figures, 3 tables. Industry research whitepaper. Includes controlled A/B evaluation across 30 scenarios and 6 emotional categories"
-    },
-    {
-      "id": "2605.14831",
-      "arxivId": "2605.14831",
-      "title": "Interestingness as an Inductive Heuristic for Future Compression Progress",
-      "briefSummary": "One of the bottlenecks on the way towards recursively self-improving systems is the challenge of interestingness: the ability to prospectively identify which tasks or data hold the potential for future progress.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "One of the bottlenecks on the way towards recursively self-improving systems is the challenge of interestingness: the ability to prospectively identify which tasks or data hold the potential for future progress. We formalize interestingness as an inductive heuristic for future compression progress and investigate its predictability using tools from Kolmogorov Complexity and Algorithmic Statistics. By analyzing complexity-runtime profiles under Length, Algorithmic, and Speed priors, we demonstrate that the inductive property of interestingness -- the capacity for past progress to signal future discovery -- is theoretically viable and empirically supported. We prove that expected future progress depends exponentially on the recency of the last observed breakthrough. Furthermore, we show that the Algorithmic Prior is significantly more optimistic than the Length Prior, yielding a quadratic increase in expected discovery for the same observed profile. These findings are experimentally confirmed across three diverse universal computational paradigms.",
-      "authors": [
-        "Vincent Herrmann",
-        "Jürgen Schmidhuber"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.LG"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14831",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14831v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14831"
-    },
-    {
-      "id": "2605.14802",
-      "arxivId": "2605.14802",
-      "title": "A Heterogeneous Temporal Memory Governance Framework for Long-Term LLM Persona Consistency",
-      "briefSummary": "Large language models often suffer from fact loss, timeline confusion, persona drift, and reduced stability during long-range interaction, especially under high-noise knowledge bases, context clearing, and cross-model t...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Large language models often suffer from fact loss, timeline confusion, persona drift, and reduced stability during long-range interaction, especially under high-noise knowledge bases, context clearing, and cross-model transfer. To address these issues, we introduce ARPM, an external temporal memory governance framework for long-term dialogue. ARPM separates static knowledge memory from dynamic dialogue experience memory and combines vector retrieval, BM25, RRF fusion, dual-temporal reranking, chronological evidence reading, and a controlled analysis protocol for evidence verification and answer binding. Unlike approaches that encode persona consistency into model weights or rely only on long context, ARPM treats continuity as a traceable, auditable, and transferable governance problem. Using engineering logs, we conduct three experiments. First, in a 50-round question-answering setting, we compare signal-to-noise ratios of 1:5 and 1:200+, and distinguish CSV auto-judgment from manual review. Under 1:5, CSV recall accuracy is 54.0%, while manual review raises it to 100.0%. Under 1:200+, the values are 44.0% and 80.0%. These results show that automatic rules can underestimate recall after supporting evidence enters the prompt. Second, ablation results show that dialogue history retrieval is necessary for recent continuity: disabling it reduces strict accuracy from 100% to 66.7%, and disabling BM25 reduces it to 80.0%, indicating that pure semantic retrieval is insufficient for correction and tracing. Third, under a 5.1-million-character noise substrate, periodic context clearing, and multi-model handoff, ARPM maintains semantic continuity, boundary continuity, and persona consistency, while exposing limits caused by weak protocol compliance. These findings show that long-term persona consistency can be decomposed into governable components and evaluated in a white-box manner.",
-      "authors": [
-        "Zhao Yang",
-        "Wang Huan",
-        "Li Yingshuo",
-        "Tu Haomiao",
-        "Lin Hujite"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14802",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14802v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14802",
-      "comment": "23 pages, 5 figures, 2 tables. Preprint version. Code for ARPM v4.0 is available at: https://github.com/Spirtxiaoqi7/ARPM"
-    },
-    {
-      "id": "2605.14774",
-      "arxivId": "2605.14774",
-      "title": "Identifying Culprits Through Deep Deterministic Policy Gradient Deep Learning Investigation",
-      "briefSummary": "In the world of AI and advanced technologies investigation aspects identification of a crime or criminal plays a major problem.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "In the world of AI and advanced technologies investigation aspects identification of a crime or criminal plays a major problem. In this research we focus on a Conventional ways of implicating criminal investigations usually rely on limited data analysis. Finding an optimal and efficient method that will effectively identify criminals from complex datasets and minimise false positives and false negatives is the considered as a challenge. The main novelty approach of this work is based on the deep learning algorithm Deep Deterministic Policy Gradient (DDPG) is presented in this paper. We train the DDPG model with a dataset of crime scene material, witness statements and suspect profiles. The algorithm uses features to maximise the likelihood of identifying the offender while minimising the noise impact and irrelevant data. We show the efficacy of the proposed method, where DDPG identified criminals with an amazing accuracy of 95% than other several existing methods.",
-      "authors": [
-        "Lata B T",
-        "Savitha N J"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14774",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14774v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14774",
-      "journalRef": "Mathematical Statistician and Engineering Applications, https://www.philstat.org/index.php/MSEA/article/view/2953, ISSN: 2094-0343"
-    },
-    {
-      "id": "2605.14771",
-      "arxivId": "2605.14771",
-      "title": "MediaClaw: Multimodal Intelligent-Agent Platform Technical Report",
-      "briefSummary": "MediaClaw is a multimodal agent platform built on the OpenClaw ecosystem.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "MediaClaw is a multimodal agent platform built on the OpenClaw ecosystem. Its core design follows a three-layer architecture of unified abstraction, pluginized extension, and workflow orchestration. The system is intended to address practical deployment pain points in AIGC adoption, including fragmented capabilities, heterogeneous interfaces, disconnected production processes, and limited reuse of high-quality production workflows. \\system{} abstracts full-category AIGC capabilities into a unified invocation model, uses plugins to support hot-pluggable capability expansion, and uses task-oriented Skills to turn complex production processes into reusable workflow assets. This report focuses on the architectural design philosophy of MediaClaw, the design logic of its core capability model, and the key engineering trade-offs in implementation. It aims to provide reusable practical reference for building multimodal capability platforms.",
-      "authors": [
-        "Shaoan Zhao",
-        "Huanlin Gao",
-        "Qiang Hui",
-        "Ting Lu",
-        "Xueqiang Guo",
-        "Yantao Li",
-        "Xinpei Su",
-        "Fuyuan Shi",
-        "Chao Tan",
-        "Fang Zhao",
-        "Kai Wang",
-        "Shiguo Lian"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14771",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14771v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14771"
-    },
-    {
-      "id": "2605.14761",
-      "arxivId": "2605.14761",
-      "title": "AI Outperforms Humans in Personalized Image Aesthetics Assessment via LLM-Based Interviews and Semantic Feature Extraction",
-      "briefSummary": "Accurately predicting individual aesthetic evaluation for images is a fundamental challenge for AI.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "Accurately predicting individual aesthetic evaluation for images is a fundamental challenge for AI. Various deep learning (DL)-based models have been proposed for this task, training on image evaluation data to extract objective low-level features. However, aesthetic preferences are inherently subjective and individual-dependent. Accurate prediction thus requires the extraction of high-level semantic features of images and the active collection of preference information from the target individual. To address this issue, we focus on the utility of Large Language Models (LLMs) pretrained on vast amounts of textual data, and develop an integrated DL-LLM system. The system actively elicits aesthetic preferences through LLM-based semi-structured interviews and predicts aesthetic evaluation by leveraging both low-level and high-level features. In our experiments, we compare the proposed system against conventional systems, human predictors, and the target individual's own re-evaluations after a certain time interval. Our results show that the proposed system outperforms all of them, with particularly strong performance on highly-rated images. Moreover, the prediction error of the proposed system is smaller than within-person variability, while human predictors show the largest error, likely due to the influence of their own aesthetic values. These results suggest that AI may be better positioned than others or one's future self to capture individual aesthetic preferences at a given point. This opens a new question of whether AI could serve as a deeper interpreter of human aesthetic sensibility than humans themselves.",
-      "authors": [
-        "Yoshia Abe",
-        "Tatsuya Daikoku",
-        "Yasuo Kuniyoshi"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.HC"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14761",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14761v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14761",
-      "comment": "25 pages, 13 figures"
-    },
-    {
-      "id": "2605.14758",
-      "arxivId": "2605.14758",
-      "title": "Probabilistic Verification of Recurrent Neural Networks for Single and Multi-Agent Reinforcement Learning",
-      "briefSummary": "History-dependent policies induced by recurrent neural networks (RNNs) rely on latent hidden state dynamics, making verification in partially observable reinforcement learning (RL) challenging.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.AI",
-      "publishedAt": "2026-05-14",
-      "updatedAt": "2026-05-14",
-      "abstract": "History-dependent policies induced by recurrent neural networks (RNNs) rely on latent hidden state dynamics, making verification in partially observable reinforcement learning (RL) challenging. Existing RNN verification tools typically rely on restrictive modeling assumptions or coarse over-approximations of the hidden state space, which can lead to overly conservative or inconclusive results. We propose $\\textbf{RNN}$ $\\textbf{Pro}$babilistic $\\textbf{Ve}$rification ($\\texttt{RNN-ProVe}$), a probabilistic framework that $\\textit{estimates the likelihood}$ of undesired behaviors in RNN-based policies. $\\texttt{RNN-ProVe}$ uses policy-driven sampling to approximate the set of hidden states that are feasible under a trained policy, and derives statistical error bounds to produce bounded-error, high-confidence estimates of behavioral violations. Experiments on partially observable single-agent and cooperative multi-agent tasks show that $\\texttt{RNN-ProVe}$ yields more quantitative, feasibility-aware probabilistic guarantees than existing tools, while scaling to recurrent and multi-agent settings.",
-      "authors": [
-        "Luca Marzari",
-        "Enrico Marchesini"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.14758",
-      "pdfUrl": "https://arxiv.org/pdf/2605.14758v1",
-      "htmlUrl": "https://arxiv.org/html/2605.14758",
-      "comment": "Accepted at the 35th International Joint Conference on Artificial Intelligence (IJCAI) 2026"
     }
   ]
 }
