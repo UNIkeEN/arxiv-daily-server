@@ -1,10 +1,222 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-08T07:12:57Z",
+  "generatedAt": "2026-06-09T06:31:54Z",
   "category": "cs.GR",
   "yearMonth": "2026-06",
-  "paperCount": 13,
+  "paperCount": 21,
   "papers": [
+    {
+      "id": "2606.09741",
+      "arxivId": "2606.09741",
+      "title": "bbsolver: A Unified Error-Bounded Spatiotemporal Optimization Solver for Key Timing and Topology-Consistent Vector Paths",
+      "briefSummary": "Dense sampling records what an animation system actually evaluated, but it produces a poor final representation: every sampled frame can become a key, edit handles become noisy, and animated vector paths remain hard to...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-06-08",
+      "updatedAt": "2026-06-08",
+      "abstract": "Dense sampling records what an animation system actually evaluated, but it produces a poor final representation: every sampled frame can become a key, edit handles become noisy, and animated vector paths remain hard to adjust. Existing reducers usually treat the two axes separately: animation-curve reducers reduce key timing, while curve and path simplifiers reduce geometry. When applied independently to animated paths, these methods can break point identity across frames, change vertex structure over time, or provide no single error budget that covers both timing and shape. bbsolver frames the task as tolerance-bounded spatiotemporal reduction. A host application, such as After Effects or Blender, samples temporal and spatial animation into a documented JSON bundle; the standalone solver chooses sparse keys, interpolation metadata, and path representation; and the output is accepted only if replayed samples remain within the requested worst-case error. The same solver core can be used by any application that can export samples and write back returned keys or paths. In After Effects validation, solved keys written back into AE and re-sampled from AE playback reduce a DUIK humanoid walk cycle from 12,684 samples to 540 keys at epsilon=1, a 23.5x reduction, and an ant rig from 11,956 samples to 653 keys, an 18.3x reduction, with maximum errors below 1 px and 1 degree. A Blender-sampled FBX mocap retarget reaches 214 keys from 13,455 samples at epsilon=3; baselines tuned to matched measured accuracy require 4.5x to 27.5x more scalar key entries. For vector paths, bbsolver supports reduction when vertex identity/order is constant over time and diagnostics for variable-vertex-count streams, including a 6.7x After Effects-compatible procedural-path compression and exact transition-timing recovery in a diagnostic case.",
+      "authors": [
+        "Ilya Gusinski"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.09741",
+      "pdfUrl": "https://arxiv.org/pdf/2606.09741v1",
+      "htmlUrl": "https://arxiv.org/html/2606.09741",
+      "comment": "18 pages, 11 figures; source code and reproducibility artifact at https://github.com/ivg-design/bbsolver"
+    },
+    {
+      "id": "2606.09606",
+      "arxivId": "2606.09606",
+      "title": "Path-Traced Inverse Rendering with Global Illumination in 3D Gaussian Fields",
+      "briefSummary": "Ray tracing enables 3D Gaussian fields to serve as a representation for physically based light transport.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-06-08",
+      "updatedAt": "2026-06-08",
+      "abstract": "Ray tracing enables 3D Gaussian fields to serve as a representation for physically based light transport. Faithful inverse rendering requires forward rendering and backward optimization to be defined within a consistent light-transport pipeline. Existing inverse rendering methods estimate G-buffers via splatting and optimize materials in screen space, tying the recovered properties to a rasterization-based pipeline. This pipeline mismatch, together with simplified rendering equations that neglect indirect illumination, often leads to inconsistent shading, visible artifacts, and inaccurate material-lighting estimation under path-traced rendering. Therefore, we propose a splatting-free path-traced inverse rendering framework for 3D Gaussian fields, where forward light transport and backward gradient propagation are defined within a unified ray-tracing pipeline. Our key idea is to define a path-space equivalent interaction model for overlapping Gaussian primitives, under which Monte-Carlo-based path tracing is unbiased for the induced light-transport integral, while pathwise gradients are replayed over the same ray-traced interactions rather than splatting-derived screen-space buffers. The framework optimizes materials and a compact Spherical-Gaussian environment under the full rendering equation with ray-traced visibility and multi-bounce light transport. Extensive experiments demonstrate competitive material inversion and improved path-traced rendering quality, producing more plausible shadows, reflections, and relighting results under global illumination.",
+      "authors": [
+        "Junke Zhu",
+        "Hao Zhang",
+        "Yutian Zhu",
+        "Ang Li",
+        "Chenxiao Hu",
+        "Meng Gai",
+        "Fei Zhu",
+        "Zhangjin Huang",
+        "Sheng Li"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.09606",
+      "pdfUrl": "https://arxiv.org/pdf/2606.09606v1",
+      "htmlUrl": "https://arxiv.org/html/2606.09606"
+    },
+    {
+      "id": "2606.09018",
+      "arxivId": "2606.09018",
+      "title": "MaterialClusterGS: Palette-Based Material Decomposition and Physically-Based Relighting with 2D Gaussian Splatting",
+      "briefSummary": "We present MaterialClusterGS, a palette-based material decomposition framework for 2D Gaussian Splatting that enables physically based relighting and material editing.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-06-08",
+      "updatedAt": "2026-06-08",
+      "abstract": "We present MaterialClusterGS, a palette-based material decomposition framework for 2D Gaussian Splatting that enables physically based relighting and material editing. Existing Gaussian inverse rendering methods typically assign independent BRDF parameters to individual primitives. While flexible, this local fitting strategy makes material recovery highly under-constrained: shadows, indirect illumination, geometric errors, and visibility residuals can be absorbed into thousands of slightly different local material estimates. Meanwhile, recent palette-based appearance methods operate solely in RGB space without modeling physical materials or illumination. To bridge this gap, we represent scene materials using a compact global palette of shared BRDF prototypes assigned via a continuous spatial material field. Without shared material structure, editing one region does not propagate consistently to others of the same material, making per-primitive decompositions impractical for editing. We jointly optimize the material field, palette prototypes, and environment lighting under a physically based rendering objective. The resulting framework recovers compact, spatially coherent attributes directly usable for material editing, relighting, and transfer.",
+      "authors": [
+        "Hao Zhang",
+        "Ang Li",
+        "Boyan Du",
+        "Junke Zhu",
+        "Fei Zhu",
+        "Meng Gai",
+        "Zhangjin Huang",
+        "Guoping Wang",
+        "Sheng Li"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.09018",
+      "pdfUrl": "https://arxiv.org/pdf/2606.09018v1",
+      "htmlUrl": "https://arxiv.org/html/2606.09018"
+    },
+    {
+      "id": "2606.08739",
+      "arxivId": "2606.08739",
+      "title": "The Minimal Retroreflective Microfacet Model",
+      "briefSummary": "We present the Minimal Retroreflective Microfacet (MRM) model, which turns any existing microfacet BSDF into a physically plausible retroreflective one by a single substitution: replacing the view direction with its ref...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-06-07",
+      "updatedAt": "2026-06-07",
+      "abstract": "We present the Minimal Retroreflective Microfacet (MRM) model, which turns any existing microfacet BSDF into a physically plausible retroreflective one by a single substitution: replacing the view direction with its reflection about the surface normal before evaluating the standard model. Based on the previously published back-vector formulation, MRM requires only minimal code changes and has been adopted in the OpenPBR and MaterialX material standards. We prove reciprocity and energy conservation under the assumption of a reflection-symmetric normal distribution function (NDF), which holds for all commonly used distributions, and validate the model against measured retroreflective material data.",
+      "authors": [
+        "Jamie Portsmouth",
+        "Matthias Raab",
+        "Laurent Belcour",
+        "Francis Liu"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.08739",
+      "pdfUrl": "https://arxiv.org/pdf/2606.08739v1",
+      "htmlUrl": "https://arxiv.org/html/2606.08739",
+      "journalRef": "Journal of Computer Graphics Techniques (JCGT), Vol. 15, No. 1, pp. 60-75, 2026",
+      "comment": "16 pages, 7 figures, 1 code listing. Author's version. Published in the Journal of Computer Graphics Techniques (JCGT), Vol. 15, No. 1, 2026. Article URL: http://jcgt.org/published/0015/01/04/"
+    },
+    {
+      "id": "2606.08469",
+      "arxivId": "2606.08469",
+      "title": "OctaOctree Neural Radiosity for Real-time Glossy Material Rendering",
+      "briefSummary": "Modeling high-frequency outgoing radiance distributions remains a fundamental challenge in global illumination, especially for glossy and specular materials.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-06-07",
+      "updatedAt": "2026-06-07",
+      "abstract": "Modeling high-frequency outgoing radiance distributions remains a fundamental challenge in global illumination, especially for glossy and specular materials. Existing neural-based radiance caching methods commonly rely on positional feature encodings or spatially organized caches, which makes it difficult to represent sharp directional radiance variations without increasing the model complexity or sampling cost. To address this challenge, we propose OctaOctree, an efficient spatial-angular radiance representation for global illumination. OctaOctree organizes outgoing radiance with an adaptive octree in 3D space, and associates each spatial node with an octahedral directional map. By coupling the spatial hierarchy with direction-dependent storage, our representation allocates fine spatial resolution to local illumination and visibility changes, while using coarser spatial levels with richer angular resolution to capture glossy and specular radiance distributions. This design embeds a reflectance-aware spatial-angular prior directly into the radiance representation, reducing the burden on neural networks or reconstruction modules to recover high-frequency view-dependent effects from positional features alone. As a result, OctaOctree provides a compact and expressive neural encoding for a wide range of indirect illumination effects, from diffuse interreflection to sharp glossy reflections. Experiments demonstrate that our method produces high-quality, direction-aware global illumination with single network query at primary intersections, achieving improved fidelity and real-time performance compared with baseline neural radiosity and radiance caching approaches.",
+      "authors": [
+        "Jierui Ren",
+        "Haojie Jin",
+        "Bo Pang",
+        "Meng Gai",
+        "Fei Zhu",
+        "Yisong Chen",
+        "Sheng Li"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.08469",
+      "pdfUrl": "https://arxiv.org/pdf/2606.08469v1",
+      "htmlUrl": "https://arxiv.org/html/2606.08469",
+      "comment": "11 pages, 9 figures"
+    },
+    {
+      "id": "2606.08258",
+      "arxivId": "2606.08258",
+      "title": "MS-COOT: Comparing Morse-Smale Complexes with Co-Optimal Transport",
+      "briefSummary": "Understanding and comparing structures in scalar fields is a central challenge in scientific visualization, with applications ranging from feature analysis to temporal and structural comparison.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-06-06",
+      "updatedAt": "2026-06-06",
+      "abstract": "Understanding and comparing structures in scalar fields is a central challenge in scientific visualization, with applications ranging from feature analysis to temporal and structural comparison. The Morse-Smale (MS) complex provides a natural representation by decomposing a scalar field into regions induced by gradient flow. However, existing approaches typically rely on graph-based representations, capturing relationships between critical points while discarding region-level structure. In this work, we represent the MS complex as a hypergraph, where critical points form nodes and regions define hyperedges. We introduce MS-COOT, a co-optimal transport distance that jointly computes correspondences between critical points and regions. This formulation enables explicit region-to-region matching within a distance-based framework, allowing identification of region-level events such as splitting and merging. We instantiate this framework with domain-specific components, including a hypernetwork function encoding critical point-region relationships, persistence-based probability measures that emphasize topologically significant features, and a sample cost term that incorporates critical point attributes. We evaluate MS-COOT on five datasets spanning 2D simulations, 3D surface meshes, and volumetric data. Our results show that MS-COOT captures region-level structural changes that are not reflected by graph-based distances, while achieving strong performance in downstream tasks such as classification and resolution discrimination.",
+      "authors": [
+        "Guangyu Meng",
+        "Mingzhe Li",
+        "Erin Wolf Chambers"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.08258",
+      "pdfUrl": "https://arxiv.org/pdf/2606.08258v1",
+      "htmlUrl": "https://arxiv.org/html/2606.08258"
+    },
+    {
+      "id": "2606.08043",
+      "arxivId": "2606.08043",
+      "title": "OmniFaceRig: Fully Automatic Inner-Mouth-Aware Face Rigging Across Diverse 3D Character Topologies",
+      "briefSummary": "Facial rigging - creating FACS-based blendshapes together with inner-mouth geometry (teeth, gums, and tongue) - remains a major bottleneck in 3D character production.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-06-06",
+      "updatedAt": "2026-06-06",
+      "abstract": "Facial rigging - creating FACS-based blendshapes together with inner-mouth geometry (teeth, gums, and tongue) - remains a major bottleneck in 3D character production. Existing pipelines still require substantial designer effort, especially for manual landmark annotation, per-character template adjustment, and inner-mouth placement. We present OmniFaceRig, a fully automatic end-to-end pipeline that converts a static surface-only 3D character mesh, with no pre-modeled oral cavity, into an inner-mouth-aware FACS rig with up to 155 blendshapes, procedurally fitted teeth, gums, and tongue, and re-packed UV/texture. OmniFaceRig supports diverse topologies - humans, humanoids, long-muzzled animals (e.g., dogs, wolves, foxes), and short-muzzled animals (e.g., cats, bears, rabbits, tigers) - with no manual landmarks, no user-provided templates, and no per-asset setup. The pipeline combines hybrid VLM+CV riggability checking, multi-model face parsing, dense keypoint-driven template registration, procedural inner-mouth construction, and collision-aware blendshape transfer. For non-human characters, OmniFaceRig selects topology-specific face and inner-mouth templates and uses collision-aware inner-mouth fitting to reduce teeth-face intersections without exposing users to category-specific tuning. We also publicly release Omni-Bench, a freely available benchmark dataset of 1,000 biped 3D characters with FACS facial blendshapes and inner-mouth geometry, spanning humans, humanoids, cats, dogs, and other animals. Experiments show high final rigging success on screened Omni-Bench inputs, nearly complete face detection recall from the segmentation ensemble and reliable inner-mouth placement with low penetration. Together, OmniFaceRig provides an automatic path from static generated characters to animation-ready facial rigs across both human and non-human topologies.",
+      "authors": [
+        "Chao Wang",
+        "Guangyao Ma",
+        "John Doublestein",
+        "Junming Chen",
+        "Yiming Lin",
+        "Zhaoen Su",
+        "Xiaomin Luo",
+        "Shiyang Cheng",
+        "Jie Shen",
+        "Doug Roble",
+        "Dilin Wang",
+        "Yilei Li",
+        "Rakesh Ranjan"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.08043",
+      "pdfUrl": "https://arxiv.org/pdf/2606.08043v1",
+      "htmlUrl": "https://arxiv.org/html/2606.08043"
+    },
+    {
+      "id": "2606.08041",
+      "arxivId": "2606.08041",
+      "title": "Wispy to Voluminous: Prior-free Multi-view Capture of Strand-level Facial Hair",
+      "briefSummary": "Facial hair is a defining trait of personal identity, yet remains a critical bottleneck for digital avatars.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-06-06",
+      "updatedAt": "2026-06-06",
+      "abstract": "Facial hair is a defining trait of personal identity, yet remains a critical bottleneck for digital avatars. Recent volumetric methods achieve photorealism but bake hair into the underlying face geometry, preventing editability and failing to resolve sparse, strand-like structures. Meanwhile, scalp-hair reconstruction methods target dense hair volumes and do not transfer to the sparse, spatially-varying nature of facial hair. We present a pipeline that automatically reconstructs facial hair -- beard, mustache, lashes, and brows -- from multi-view images, converting an unstructured 3D Gaussian representation into an explicit curve-based strand representation. We resolve geometric ambiguities in four stages: (i) optimizing 3D Gaussians constrained by tracked head geometry to enforce early ray termination and suppress sub-surface noise; (ii) tracing continuous strands robust to frequent crossings and extreme curvature; (iii) grounding strands to the surface and resolving root-tip ambiguity via a physically-motivated prior; and (iv) refining the reconstruction through opacity-driven density control under photometric optimization. To our knowledge, this is the first method to reconstruct high-fidelity facial hair strands from a 3D Gaussian representation. The recovered strands faithfully preserve the orientation and sparsity patterns characteristic of facial hair, and yield assets immediately suitable for downstream production tasks, including facial animation and physical simulation, geometric grooming and transfer, appearance editing, and physics-based rendering.",
+      "authors": [
+        "Jaeseong Lee",
+        "Giljoo Nam",
+        "Adrian Jarabo",
+        "Carlos Aliaga"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.08041",
+      "pdfUrl": "https://arxiv.org/pdf/2606.08041v1",
+      "htmlUrl": "https://arxiv.org/html/2606.08041",
+      "comment": "27 pages, 16 figures, supplementary included"
+    },
     {
       "id": "2606.07337",
       "arxivId": "2606.07337",
