@@ -1,10 +1,508 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-06-24T06:28:48Z",
+  "generatedAt": "2026-06-25T06:31:18Z",
   "category": "cs.AI",
   "yearMonth": "2026-06",
-  "paperCount": 527,
+  "paperCount": 547,
   "papers": [
+    {
+      "id": "2606.26057",
+      "arxivId": "2606.26057",
+      "title": "The Unfireable Safety Kernel: Execution-Time AI Alignment for AI Agents and Other Escapable AI Systems",
+      "briefSummary": "AI agents are granted access to tools, APIs, and other infrastructure, making them active principals in those systems.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "AI agents are granted access to tools, APIs, and other infrastructure, making them active principals in those systems. The dominant approach places controls inside the agent's own runtime: system prompts, output filters, and guardrail libraries. Any control in the agent's address space is reachable by inputs that influence it; this generalizes to any AI system with sufficient reach into its own runtime, a class we term escapable AI systems. We identify four properties that an authorization mechanism must satisfy for architectural control rather than for cooperative requests: process separation, pre-action enforcement on a structurally only path, fail-closed at both the request and system levels, and externalized signed evidence verifiable outside the controlled system's trust boundary. We position this layer as execution-time AI alignment, complementing training-time alignment (RLHF, Constitutional AI) and inference-time alignment. We present the Unfireable Safety Kernel, a Rust reference implementation realizing all four. Its fail-closed invariant is machine-checked at two levels: an SMT theorem (Z3) and an exhaustive bounded-model-checking proof of the production decision function (Kani, 4/4 harnesses). A Python-to-Rust migration was gated on byte-equivalence (1000/1000 fixtures; 17/17 adversarial classes). We evaluate the kernel governing a live, escapable AI system, a deterministic, self-improving world model, against an escape-seeking adversary driving its real self-modification seam: across 1,000 self-modifications, all 704 attempts on the safety-critical core are refused, with no escape; a further 300, under the operator kill switch, are also refused. A separate campaign of 6,240 authorization round-trips had no successful bypass. Against 3 contemporary systems claiming the agent control plane, the agent invokes control; here, it lacks that choice.",
+      "authors": [
+        "Seth Dobrin",
+        "Łukasz Chmiel"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.26057",
+      "pdfUrl": "https://arxiv.org/pdf/2606.26057v1",
+      "htmlUrl": "https://arxiv.org/html/2606.26057",
+      "comment": "Pre-print submitted for publication"
+    },
+    {
+      "id": "2606.25996",
+      "arxivId": "2606.25996",
+      "title": "Autodata: An agentic data scientist to create high quality synthetic data",
+      "briefSummary": "We introduce Autodata, a general method that enables AI agents to act as data scientists who build high quality training and evaluation data.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "We introduce Autodata, a general method that enables AI agents to act as data scientists who build high quality training and evaluation data. We show how to train (meta-optimize) such a data scientist agent, so that it learns to create even stronger data. We describe the overall formulation, and a specific practical implementation, Agentic Self-Instruct. We conduct experiments on computer science research tasks, legal reasoning tasks and reasoning with mathematical objects, where we obtain improved results compared to classical synthetic dataset creation methods. Further, meta-optimizing the data scientist agent itself delivers an even larger performance uplift. Agentic data creation provides a way to convert increased inference compute into higher quality model training. Overall, we believe this direction has the potential to change the way we build AI data.",
+      "authors": [
+        "Ilia Kulikov",
+        "Chenxi Whitehouse",
+        "Tianhao Wu",
+        "Yixin Nie",
+        "Swarnadeep Saha",
+        "Eryk Helenowski",
+        "Weizhe Yuan",
+        "Olga Golovneva",
+        "Jack Lanchantin",
+        "Yoram Bachrach",
+        "Jakob Foerster",
+        "Xian Li",
+        "Han Fang",
+        "Sainbayar Sukhbaatar",
+        "Jason Weston"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25996",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25996v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25996"
+    },
+    {
+      "id": "2606.25984",
+      "arxivId": "2606.25984",
+      "title": "InvestPhilBench: A Multi-Layer Dynamic Benchmark for Evaluating Large Language Model Procedural Reasoning in Expert Investment Philosophy",
+      "briefSummary": "Large language models are increasingly deployed as investment research assistants, yet no benchmark tests whether they can accurately reconstruct and apply the specific procedural decision frameworks of expert investors.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Large language models are increasingly deployed as investment research assistants, yet no benchmark tests whether they can accurately reconstruct and apply the specific procedural decision frameworks of expert investors. We introduce InvestPhilBench, a multi-layer dynamic benchmark spanning eight cognitive tiers, from principle identification (L1) to novel framework extrapolation (L8). The v0.6 release comprises 118 primary-source-verified investment principle cards, 25 decision framework cards with explicit topology metadata, and 243 QA questions (197 dev / 46 held-out test). For reproducible scoring at scale we introduce the Benchmark Automated Scoring Pipeline (BASP) -- five algorithmic metrics (OGRS, KCCS, SAP@k, IVP, CKCA) -- the Failure Mode Detection Protocol (FMDP) with computable rules for six failure modes, and Gate Reconstruction Accuracy (GRA), a per-gate metric for questions with gold reasoning programs. In this release, InvestPhilBench is primarily a benchmark-and-methodology contribution. A four-model sanity wave on the 188-question development split shows a sharp provider-tier split (BASP 0.906 vs. 0.438); these mixed-judge numbers are confounded upper bounds. The central finding: the BASP composite saturates at the frontier (Claude L4 = 0.932) while GRA still exposes a procedural deficit (frontier L4 GRA approx. 0.77, L7 GRA 0.57-0.62) -- composite scoring rewards fluent prose and hides the procedural gap. v0.6 implements a unified judge and true model-in-the-loop retrieval/oracle conditions; the de-confounded multi-model leaderboard and full three-condition run are v1.0 deliverables. On a 100-item expert-annotated gold set the automated BASP composite tracks the human reference at Pearson r = 0.72 (MAE = 0.10), with attribution (SAP@3) the weakest sub-metric and the failure-mode detector running sensitive-but-over-flagging.",
+      "authors": [
+        "Mingguang Chen",
+        "Bo Qu"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25984",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25984v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25984",
+      "comment": "57 pages, 6 figures, 26 tables. Benchmark, data, and code released. v0.6 release; preliminary empirical study (de-confounded multi-model leaderboard forthcoming)"
+    },
+    {
+      "id": "2606.25964",
+      "arxivId": "2606.25964",
+      "title": "WinDOM: Self-Family Distillation for Small-Model GUI Grounding",
+      "briefSummary": "Small ($\\sim$2B) GUI-grounding agents are attractive for on-device deployment, accessibility tooling, and low-cost iteration, but at this scale they face two open recipe questions: how to obtain bounding-box training da...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Small ($\\sim$2B) GUI-grounding agents are attractive for on-device deployment, accessibility tooling, and low-cost iteration, but at this scale they face two open recipe questions: how to obtain bounding-box training data without expensive human annotation, and how to combine supervised fine-tuning with reinforcement learning. We address both, with the explicit goal of pushing small-model performance rather than scaling up. WinDOM is a $54{,}425$-record grounding corpus harvested by driving an open-source Windows 11 web reimplementation under headless Playwright, with bounding boxes read directly off the DOM and no OCR or human annotation. Self-Family Distillation (SFD) is a single rejection-sampling cold-start parameterised only by the teacher choice: either an EMA of the student (no external model) or a frozen larger same-family teacher. We then treat the saturation depth of the SFD cold-start as an explicit GRPO hyperparameter. On a Qwen3.5-2B student, the under-saturated cold-start is a better GRPO initialiser than the converged one: SFD-4B with Early-init RL gains $+5.4$ OOD-mean ($+3.5$ ScreenSpot-Pro, $+7.0$ OSWorld-G, $+5.8$ ScreenSpot-V2) over the base. The same-size EMA mode lands within roughly one OOD-mean point of the cross-size $4$B variant ($65.2$ vs $66.3$) without an external teacher.",
+      "authors": [
+        "Chengheng Li-Chen",
+        "Zhiqian Zhou",
+        "Hao Chen",
+        "Nicolas Chauvin"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25964",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25964v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25964"
+    },
+    {
+      "id": "2606.25960",
+      "arxivId": "2606.25960",
+      "title": "Agentic System as Compressor: Quantifying System Intelligence in Bits",
+      "briefSummary": "Large language models are turning from isolated predictors into agentic systems: they call tools, retrieve evidence, obey environment constraints, use verifiers, and complete tasks through search and multi-turn interact...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Large language models are turning from isolated predictors into agentic systems: they call tools, retrieve evidence, obey environment constraints, use verifiers, and complete tasks through search and multi-turn interaction. We adopts an analytical viewpoint based on \"compression is intelligence\": under a fixed task distribution, interface, and compute budget, a stronger agentic system lets a target object be reconstructed with fewer bits. We operationalize the measure with arithmetic coding, seed coding, and a fallback, and evaluate it in five settings: reversed text, chess moves, protein sequences, retrieval-augmented question answering, and semantic story compression; in all of them agentic components reduce codelength. These small, controlled experiments cover component types typical of real agentic systems, show that codelength can analyze how components, observers, and budgets change residual uncertainty, and offer guidance for evaluating real agent systems.",
+      "authors": [
+        "Zihan Qin",
+        "Hongrui Zhang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25960",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25960v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25960"
+    },
+    {
+      "id": "2606.25836",
+      "arxivId": "2606.25836",
+      "title": "AI Snitches Get Glitches: Towards Evading Agentic Surveillance",
+      "briefSummary": "To better assist users with completing challenging tasks, AI agents mediate communications, access data, and interact with different APIs.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "To better assist users with completing challenging tasks, AI agents mediate communications, access data, and interact with different APIs. Many employers (and even nation-states) already provide their users with this technology. However, widespread adoption of AI agents creates a new risk to abuse access to user data for another goal: surveilling users. These users might not even have the ability or permission to control the actions and data accesses of the surveilling agents. We introduce and formalize the problem of agentic surveillance: the ability of an AI agent to analyze available information, craft a report, and send it out using available tools. To evaluate surveillance capabilities across different models, we create SurveilBench, a dataset of various reporting scenarios focusing on three domains: corporate, education, and police. We find that some models exhibit emergent (i.e., unprompted) tendencies to help surveillance, but they also report the attempts to surveil users to the government. Finally, we repurpose prompt injections for evading surveillance and develop three evasion techniques that hide from, deceive, or induce over-escalation in surveillance agents. We conclude that agentic surveillance can already be easily implemented and, therefore, call for a comprehensive technical, ethical, and legislative framework to protect users.",
+      "authors": [
+        "Hyejun Jeong",
+        "Dzung Pham",
+        "Amir Houmansadr",
+        "Eugene Bagdasarian"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25836",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25836v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25836",
+      "comment": "https://aisec.cs.umass.edu/demo/ai-snitches-get-stitches/"
+    },
+    {
+      "id": "2606.25797",
+      "arxivId": "2606.25797",
+      "title": "Confidence Sequences for Online Statistical Model Checking of Markov Decision Processes",
+      "briefSummary": "Markov decision processes (MDPs) are a classic model of decision making under uncertainty, exhibiting both non-deterministic choice as well as probabilistic uncertainty.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Markov decision processes (MDPs) are a classic model of decision making under uncertainty, exhibiting both non-deterministic choice as well as probabilistic uncertainty. Traditionally, exact knowledge of the underlying probabilities is assumed. However, this often is unrealistic, e.g.\\ when modelling cyber-physical systems or biological processes. Here, statistical methods provide a way towards obtaining meaningful guarantees. The classical approach is to gather samples in the MDP, use these to draw statistical conclusions about the transition probabilities, and from there obtain bounds on the true value; then, if these bounds are too broad, repeat. However, existing implementations of this approach are either subtly incorrect or sub-optimal, and quite often both. We present several \\emph{confidence sequences}, which are specifically designed for such \\enquote{online} settings, implement all of them in an efficient tool, and show their practical applicability. In particular, we show that they outperform classical \\enquote{union-bound} style approaches, and overall our implementation requires 50x less samples on average than previous state of the art.",
+      "authors": [
+        "Konstantin Kueffner",
+        "Tobias Meggendorfer",
+        "Maximilian Weininger",
+        "Patrick Wienhöft"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25797",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25797v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25797"
+    },
+    {
+      "id": "2606.25778",
+      "arxivId": "2606.25778",
+      "title": "Fuzzy Quantification over OWL Ontologies and Knowledge Graphs",
+      "briefSummary": "This paper presents a versatile framework for evaluating fuzzy quantification queries over both standard and fuzzy ontologies as well as knowledge graphs.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "This paper presents a versatile framework for evaluating fuzzy quantification queries over both standard and fuzzy ontologies as well as knowledge graphs. The primary objective is the retrieval of individuals that satisfy queries articulated via Type I or Type II fuzzy quantified expressions. A key advantage of the proposed approach is its inherent adaptability: it remains entirely agnostic to the quantifier type, the underlying evaluation method, and the specific data source of the ontology (i.e., OWL ontologies or RDFS knowledge graphs). Furthermore, we present Q2S2, a publicly accessible implementation of this system developed to support future research.",
+      "authors": [
+        "Enrique Palacín",
+        "Fernando Bobillo",
+        "Ignacio Huitzil",
+        "Francesca A. Lisi",
+        "Umberto Straccia"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25778",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25778v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25778"
+    },
+    {
+      "id": "2606.25719",
+      "arxivId": "2606.25719",
+      "title": "Position Spaces and Graphs",
+      "briefSummary": "In this paper, we introduce position graphs, a graph-based reasoning framework based on the formalization of position spaces.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "In this paper, we introduce position graphs, a graph-based reasoning framework based on the formalization of position spaces. This framework utilizes two strict partial orders, representing horizontal and vertical alignment and precedence, to model the relative positions of discrete tokens. Unlike general qualitative spatial calculi, position graphs are constrained by a chain condition and compatibility requirements that focus on rows and columns. We provide a comprehensive theoretical analysis of this representation, beginning with a characterization of graph consistency. Conditions to ensure the consistency of position graphs are established. Furthermore, we investigate the computational complexity of structural pattern discovery, modeled as the induced subgraph isomorphism problem. We demonstrate that this problem remains NP-complete even within the restricted class of position graphs. While initially motivated by document processing, this work focuses on the underlying mathematical properties and algebraic consistency of position-based constraints, providing a formal logical layer that is independent of specific data extraction techniques.",
+      "authors": [
+        "Rita-Nathalia Assaf",
+        "Tom Davot",
+        "Frédéric Lardeux",
+        "Frédéric Saubion"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25719",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25719v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25719"
+    },
+    {
+      "id": "2606.25705",
+      "arxivId": "2606.25705",
+      "title": "GUI agent: Guided Exploration of User-Sensitive Screens",
+      "briefSummary": "LLM agents are increasingly being used to automate tasks for users within an open GUI environment.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "LLM agents are increasingly being used to automate tasks for users within an open GUI environment. They inevitably encounter screens containing user-sensitive information, for which takeover of task execution by the user is highly desirable or even necessary. State-of-the-art LLM-driven agents are usually fine-tuned to complete tasks regardless of the safety implications of their actions. This makes their real-world deployment difficult and adversely affects the reliability. Therefore, it is crucial to identify and categorize user-sensitive states and define user-sensitive queries. This dataset would be to engineers to recognize and request handover to the user in critical scenarios. This short paper develops an explorer agent that systematically explores the query space starting from one demonstrated task to identify queries that, if executed, would lead to user-sensitive states in a GUI environment.",
+      "authors": [
+        "Aradhana Nayak",
+        "Mussadiq Nazeer",
+        "Wang Peng",
+        "Feng Liu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25705",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25705v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25705"
+    },
+    {
+      "id": "2606.25626",
+      "arxivId": "2606.25626",
+      "title": "Reasonable Motion: A General ASP Foundation for Environment Constrained Movement Trajectory Computation",
+      "briefSummary": "We present a general answer set programming based hybrid quantitative-qualitative method for computing constrained branching trajectory modes for moving objects in real-world settings.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "We present a general answer set programming based hybrid quantitative-qualitative method for computing constrained branching trajectory modes for moving objects in real-world settings. The method performs constrained traversal of an environment graph, enumerating geometrically admissible motion behaviours as stable models, each constituting a distinct trajectory mode characterised by both domain-dependent and independent factors such as derived event sequence, map topology, and domain norms. The hybrid trajectory computation method is generally applicable across motion characteristics typically encountered in diverse dynamic domains with moving objects, e.g., autonomous driving. We demonstrate applicability and highlight how computed trajectories are traceable to their underlying stable model, thereby affording verifiable interpretability that purely learned approaches cannot provide. We also perform an empirical evaluation with Argoverse 2, a large-scale real-world autonomous driving benchmark representative of the class of dynamic domains within the scope of the proposed method.",
+      "authors": [
+        "Julius Monsen",
+        "Jakob Suchan",
+        "Mehul Bhatt",
+        "Lars Karlsson"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.HC",
+        "cs.RO"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25626",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25626v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25626",
+      "comment": "Accepted at: LPNMR 2026 - 18th International Conference on Logic Programming and Non-monotonic Reasoning, 7 - 11 September 2026 - Klagenfurt, Austria"
+    },
+    {
+      "id": "2606.25532",
+      "arxivId": "2606.25532",
+      "title": "Agentic evolution of physically constrained foundation models",
+      "briefSummary": "Artificial intelligence increasingly drives automated scientific discovery, yet contemporary generalist agents lack physical grounding, frequently hallucinating hardware-incompatible designs.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Artificial intelligence increasingly drives automated scientific discovery, yet contemporary generalist agents lack physical grounding, frequently hallucinating hardware-incompatible designs. Here, we present a physically grounded, multi-agent discovery engine that autonomously architects hardware-compliant computing systems. Anchored by an Evolutionary Knowledge Graph structuring past scientific innovations, the framework extracts an \"algorithmic Chain-of-Thought\" to transform blind stochastic search into directed structural evolution. Applied to the extreme testbed of foundation model deployment, the engine evolved two hardware-aware compression methodologies surpassing human-engineered heuristics: Q-Enhance mitigates long-context accuracy loss in dense models, and MoE-Salient-AQ outperforms state-of-the-art manual sparse Mixture-of-Experts designs by 3.7% at sub-3-bit regimes. Utilizing a bandwidth-efficient Sensitivity Profile, we successfully deployed a massive 235-billion-parameter model onto a constrained dual-A100 server, reducing memory requirements by 75% with a marginal 0.64% accuracy degradation. By transforming unconstrained combinatorial search into knowledge-driven autonomy, this establishes a scalable hardware-software co-design paradigm for machine-driven discovery within strict physical boundaries.",
+      "authors": [
+        "Jiangwei Zhang",
+        "Wen Sun",
+        "Chong Wang",
+        "Shiyao Li",
+        "Cheng Che",
+        "Chunjing Han",
+        "Dan Meng",
+        "Jian Yang",
+        "Yu Wang",
+        "Rui Hou"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.AR",
+        "cs.LG",
+        "cs.MA"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25532",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25532v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25532",
+      "comment": "29 pages, 5 main figures and 4 extended data figures"
+    },
+    {
+      "id": "2606.25524",
+      "arxivId": "2606.25524",
+      "title": "Cliff Tokens: Identifying Single-Token Failure Triggers in LLM Mathematical Reasoning",
+      "briefSummary": "Large language models (LLMs) reach high accuracy in mathematical reasoning, but individual traces on the same problem diverge; some arrive at the correct answer while others fail.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Large language models (LLMs) reach high accuracy in mathematical reasoning, but individual traces on the same problem diverge; some arrive at the correct answer while others fail. Prior work analyzes failure at the step, chunk, or sentence level, or at tokens where failure has already occurred. Neither identifies the precise token that triggers the shift toward failure. We introduce the cliff token, a token where the token-wise potential drops significantly under an adaptive threshold that scales with the local token-wise potential, based on a one-sided two-proportion z-test. Across seven models and three mathematical reasoning benchmarks (GSM1K, MATH500, AIME 2025), cliff tokens act as failure triggers; deleting the first cliff token and resampling recovers pass@64 to 1.0, while keeping it limits recovery to between 0.71 and 1.00. We further introduce a cliff taxonomy of deterministic, uncertain, and sampled-off cliffs, defined by greedy choice and token entropy. Each type has distinct probabilistic characteristics, and the taxonomy generalizes across model scales. Finally, we validate the taxonomy via single-token preference optimization at cliff positions (Cliff-DPO). Trained on GSM8K, Cliff-DPO improves accuracy across benchmarks by up to +6.6. Optimizing at uncertain and sampled-off cliffs improves reasoning, while deterministic cliffs do not.",
+      "authors": [
+        "Jaeyong Ko",
+        "Pilsung Kang",
+        "Yukyung Lee"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25524",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25524v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25524"
+    },
+    {
+      "id": "2606.25519",
+      "arxivId": "2606.25519",
+      "title": "Quantization Inflates Reasoning: Token Inflation as a Hidden Cost of Low-Bit Reasoning Models",
+      "briefSummary": "Quantization is widely used to reduce the inference cost of large language models, but its effect on reasoning models is not fully captured by final-answer accuracy or per-token latency.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Quantization is widely used to reduce the inference cost of large language models, but its effect on reasoning models is not fully captured by final-answer accuracy or per-token latency. We show that low-bit post-training quantization can introduce a hidden test-time compute cost: quantized reasoning models often generate longer chains of thought even when they still answer correctly. Across mathematical reasoning, code generation, scientific question answering, and agentic tool-use benchmarks, we find that INT4/INT3 quantization can preserve accuracy but increase reasoning-token usage, offsetting the expected per-token speedup. To measure this effect, we introduce the CoT Token Inflation Ratio, which compares reasoning length between quantized and full-precision models averaged across all evaluation benchmarks. We further show that token inflation is accompanied by behavioral changes in the reasoning trace, including more intermediate steps and greater semantic repetition. These changes translate into measurable end-to-end real-world serving penalties. Finally, we evaluate mitigation strategies and find that prompting and decoding-time sampling offer inconsistent accuracy-length trade-offs, while quantization-aware training shows more promise in reducing both accuracy degradation and token inflation. Our results suggest that reasoning-token usage should be reported alongside accuracy when evaluating quantized reasoning models.",
+      "authors": [
+        "Xinyu Lian",
+        "Walid Krichene",
+        "Beichen Huang",
+        "Masahiro Tanaka",
+        "Olatunji Ruwase",
+        "Li Zhang",
+        "Minjia Zhang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25519",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25519v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25519"
+    },
+    {
+      "id": "2606.25400",
+      "arxivId": "2606.25400",
+      "title": "BrainAgent: A Large Language Model-Driven Multi-Agent Framework for Autonomous Brain Signal Understanding",
+      "briefSummary": "Brain-Computer Interfaces (BCIs) and brain signal understanding are pivotal for clinical health and next-generation interactions.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Brain-Computer Interfaces (BCIs) and brain signal understanding are pivotal for clinical health and next-generation interactions. Despite this significance, its widespread adoption in real-world scenarios remains restricted, primarily because current analytical paradigms lack sufficient agentic intelligence. First, existing methodologies impose prohibitive technical barriers, requiring extensive specialized expertise. Second, they remain inherently static and task-specific, failing to execute the complex, long-horizon workflows essential for real-world deployment. To accelerate the democratization of brain signal understanding, we draw inspiration from Large Language Models (LLMs) to introduce BrainAgent, an LLM-driven multi-agent framework designed to ground abstract natural language intent into rigorous, executable, and end-to-end processing pipelines. BrainAgent employs a hierarchical architecture where a central supervisor orchestrates specialized sub-agents for adaptive task decomposition and execution. Furthermore, we establish a comprehensive, systematic benchmark for evaluating agentic systems in brain signal analysis. Empirical results demonstrate that BrainAgent effectively automates complex workflows with superior reliability, marking a paradigm shift toward democratized brain signal understanding.",
+      "authors": [
+        "Yangxuan Zhou",
+        "Sha Zhao",
+        "Jiquan Wang",
+        "Shijian Li",
+        "Gang Pan"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25400",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25400v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25400",
+      "comment": "22 pages, 11 figures"
+    },
+    {
+      "id": "2606.25396",
+      "arxivId": "2606.25396",
+      "title": "Long-Term Simulation Exposes Cognitive-Developmental Risks in AI Companions",
+      "briefSummary": "AI companions powered by large language models increasingly interact with cognition-developing users, including children and adolescents, creating risks that may accumulate over time.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "AI companions powered by large language models increasingly interact with cognition-developing users, including children and adolescents, creating risks that may accumulate over time. Existing safety evaluations largely rely on single-turn or short-session tests, which cannot capture risks that emerge only through prolonged interaction. To address this gap, we propose TSJ (Theater-Stage-Judge), a longitudinal framework combining persona-driven user simulation, dynamic psychological-state updating and retrospective evaluation. We evaluate six mainstream models across four developmental stages, twenty-four risk dimensions and three psychological-vulnerability personas, covering 12,960 simulated person-day interactions. TSJ shows that short-horizon testing systematically underestimates developmental risks, for which TSJ yields a stable risk estimate only after 140 turns within prolonged simulated relationships. Applying TSJ further identifies early childhood and emerging adulthood as the most vulnerable stages, with cognitive trust and emotional dependency as the weakest domains. TSJ provides a scalable methodology for longitudinal cognitive developmental risk evaluation in AI companion systems.",
+      "authors": [
+        "Kaicheng Shen",
+        "Lingyu Li",
+        "Wen Wu",
+        "Yan Teng",
+        "Liang He",
+        "Yingchun Wang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25396",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25396v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25396",
+      "comment": "19 pages, 4 figures, 2 tables"
+    },
+    {
+      "id": "2606.25389",
+      "arxivId": "2606.25389",
+      "title": "Offline Multi-agent Continual Cooperation via Skill Partition and Reuse",
+      "briefSummary": "Extracting skills from multi-agent offline dataset improves learning efficiency via sharing task-invariant coordination skills among tasks.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Extracting skills from multi-agent offline dataset improves learning efficiency via sharing task-invariant coordination skills among tasks. In settings where tasks occur sequentially and the space of skills grows exponentially, existing approaches that rely on heuristically designed and fixed-sized skill libraries struggle to resolve the problem of distributional shift and interference, facing catastrophic forgetting and plasticity loss. To address this problem and endow agents with the ability to continually discover and reuse coordination skills in open-environment, we propose COMAD, a principled framework for Continual Offline Multi-agent Skill Discovery via Skill Partition and Reuse. We first discover skills from mixed multi-agent behavior data with an auto-encoder to transform coordination knowledge into reusable coordination skills. Then we construct a skill-augmented policy learning objective with multi-head architectures, explicitly guiding the advantage function with reusable skills identified via a density-based reusability estimator. Theoretical analysis shows our method approximates the optimum of a continual skill discovery problem. Empirical results across diverse MARL benchmarks show that COMAD continually expands its skill library to mitigate interference, achieving superior forward and backward transfer for task streams compared to multiple baselines.",
+      "authors": [
+        "Yuchen Xiao",
+        "Lei Yuan",
+        "Ruiqi Xue",
+        "Tieyue Yin",
+        "Yang Yu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25389",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25389v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25389",
+      "comment": "29 pages, 12 figures, ICML 2026"
+    },
+    {
+      "id": "2606.25374",
+      "arxivId": "2606.25374",
+      "title": "What Actually Works for Spacecraft Fault-Tolerant Control: An Honest Settled-Gate Benchmark of Learned and Classical Methods",
+      "briefSummary": "Recent learned fault-tolerant-control (FTC) work reports high success on spacecraft actuator faults, but often in simulation, on narrow fault sets, and with transient metrics that a trajectory need only touch once.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Recent learned fault-tolerant-control (FTC) work reports high success on spacecraft actuator faults, but often in simulation, on narrow fault sets, and with transient metrics that a trajectory need only touch once. We ask what recovers spacecraft pointing when success means holding it on faults never seen in training. We answer with a benchmark built around a settled gate, pointing held within 0.2 deg over a dwell window and scored on the true state, train/test splits disjoint in inertia, gain, sign pattern, and bias, Wilson intervals over n=500 episodes per cell, and one-command reproduction on a 6-DOF Basilisk testbed. Across classical, adaptive, learned end-to-end, and structured controllers, three findings stand out. Fault-unaware PD/PID and from-scratch end-to-end RL score 0%, so learning capacity alone is not the lever. Classical adaptive laws resolve sign faults but handle gain poorly at 55.2%, and a literature-faithful Nussbaum-gain law reaches 45.2% and 3.2%. A structured estimate-then-control design, with a learned recurrent module that infers actuator gain online and feeds an analytic law, wins on sign and gain faults at 97.8% and 94.4%, approaching the privileged oracle while unstructured methods remain at zero. The hard wall is constant additive bias, which is 0% for every controller including the privileged gain oracle, because an integral-free law cannot null a constant disturbance. We close it with a disturbance observer that recovers bias from the dynamics and is self-correcting for gain-estimate error. Composed with the gain estimate, it recovers 59.4% of held-out bias faults with no sign/gain regression, moving that class off zero. We classify sensor-fault regimes similarly, show that sensor bias is unobservable from the corrupted measurement alone and therefore requires fusion rather than an observer, and release the benchmark so the gate is shared.",
+      "authors": [
+        "Alireza Shojaei"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25374",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25374v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25374"
+    },
+    {
+      "id": "2606.25358",
+      "arxivId": "2606.25358",
+      "title": "Agentic Knowledge Tracing: A Multi-Agent LLM Architecture for Stealth Assessment of Financial Literacy in Serious Games",
+      "briefSummary": "Assessing financial literacy during gameplay without disrupting the learning experience remains a key challenge in serious games for education.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-24",
+      "updatedAt": "2026-06-24",
+      "abstract": "Assessing financial literacy during gameplay without disrupting the learning experience remains a key challenge in serious games for education. We present the Agentic BKT pipeline, a multi-agent large language model architecture for stealth assessment of financial competencies from open-ended gameplay events. The pipeline processes events from a 2D platformer serious game aligned with the OECD/INFE financial literacy framework through four phases: (1) the game captures every player decision as a structured event log; (2) an LLM event classifier labels each action on a four-point rubric validated against three domain experts (Fleiss kappa = 0.624, substantial agreement); (3) four domain-specific agents specializing in risk mitigation, investing, spending, and credit management perform session-level reasoning over behavioral trajectories, feeding per-competency Bayesian Knowledge Tracing that estimates mastery within each domain; and (4) an expert judge agent synthesizes the domain-level estimates into an overall mastery score. Evaluated with 193 K-12 participants across 264 game sessions, the Agentic BKT pipeline yields mastery estimates significantly correlated with learning gain (r = 0.276, p = 0.0001) and post-test scores (r = 0.333, p < 0.0001) while showing no correlation with pre-test scores, providing both convergent and discriminant validity. The multi-agent approach approximately triples the predictive validity of a single-LLM baseline (r = 0.095, not significant) in this study, demonstrating that domain decomposition and session-level reasoning play a central role in capturing the multidimensional nature of financial literacy from gameplay",
+      "authors": [
+        "Gabriel Santos",
+        "Rita Julia",
+        "Marcelo Nascimento"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.MA"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25358",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25358v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25358",
+      "comment": "8 pages, 5 figures, IEEE CoG 2026"
+    },
+    {
+      "id": "2606.25191",
+      "arxivId": "2606.25191",
+      "title": "To Isolate or to Score? Model-Adaptive Assessment for Cost-Efficient Multi-Agent RAG",
+      "briefSummary": "Multi-agent document assessment for retrieval-augmented generation is computationally expensive, driving practitioners toward smaller, deployable models whose assessment mechanisms remain poorly understood.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-06-23",
+      "updatedAt": "2026-06-23",
+      "abstract": "Multi-agent document assessment for retrieval-augmented generation is computationally expensive, driving practitioners toward smaller, deployable models whose assessment mechanisms remain poorly understood. We conduct a controlled study of training-free interventions on 7B-9B instruction-tuned models across diverse QA benchmarks, revealing a sharp dichotomy in how models benefit from assessment. For weaker baselines, the dominant mechanism is per-document isolation. Astoundingly, assessment-free isolation matches full multi-agent assessment, demonstrating that resolving multi-document context confusion, rather than scoring quality, drives outsized gains of up to 50 percentage points. Conversely, for strong baselines where scoring quality matters, we introduce Reasoning-Score Coupling, a label-free perturbation probe that classifies scoring behavior. Integrating these findings, we propose MADARA, a model-adaptive routing architecture. Crucially, MADARA's diagnostic thresholds derived from a single pilot model generalize zero-shot to four unseen model families, providing a robust, lightweight pipeline to eliminate computational overhead.",
+      "authors": [
+        "Jungseob Lee",
+        "Chanjun Park",
+        "Heuiseok Lim"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2606.25191",
+      "pdfUrl": "https://arxiv.org/pdf/2606.25191v1",
+      "htmlUrl": "https://arxiv.org/html/2606.25191",
+      "comment": "23 pages, 2 figures, 19 tables. Code: https://github.com/js-lee-AI/MADARA"
+    },
     {
       "id": "2606.24855",
       "arxivId": "2606.24855",
