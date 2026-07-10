@@ -1,9 +1,66 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-09T06:38:49Z",
+  "generatedAt": "2026-07-10T06:25:38Z",
   "category": "cs.GR",
   "paperCount": 100,
   "papers": [
+    {
+      "id": "2607.08741",
+      "arxivId": "2607.08741",
+      "title": "ARDY: Autoregressive Diffusion with Hybrid Representation for Interactive Human Motion Generation",
+      "briefSummary": "Generating realistic 3D human motions in real-time within interactive applications is key for animation, simulation, and humanoid robotics.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-09",
+      "updatedAt": "2026-07-09",
+      "abstract": "Generating realistic 3D human motions in real-time within interactive applications is key for animation, simulation, and humanoid robotics. While recent offline motion generation approaches offer precise control via text and kinematic constraints, they lack the inference speed required for interactive settings. Conversely, existing online methods enable real-time synthesis but often sacrifice controllability or struggle with complex text semantics and long-horizon goals due to limited context windows. In this work, we introduce ARDY, a streaming generation framework that bridges this gap by enabling high-fidelity motion generation controllable via online text prompts and flexible kinematic constraints. ARDY employs a hybrid representation that combines explicit root features with a latent body embedding, balancing precise trajectory control with efficient generative learning. We propose a two-stage autoregressive transformer denoiser that features variable history context and supports conditioning on flexible, long-horizon kinematic constraints. By training on a large-scale motion capture dataset and being directly conditioned on text labels and kinematic constraints sampled from ground truth poses, ARDY natively learns controllable generation that supports online prompting and flexible long-horizon goals. Extensive evaluations on the HumanML3D benchmark and the large-scale, high-fidelity Bones Rigplay dataset demonstrate ARDY's high motion quality and constraint adherence, validating the efficacy of our key architectural decisions. Finally, we demonstrate the method's practical versatility through an interactive demo featuring dynamic text control, diverse keyframe pose constraints, path following, and interactive locomotion control via mouse and keyboard. Supplementary video results, code, and model releases can be found at https://research.nvidia.com/labs/sil/projects/ardy/.",
+      "authors": [
+        "Kaifeng Zhao",
+        "Mathis Petrovich",
+        "Haotian Zhang",
+        "Tingwu Wang",
+        "Siyu Tang",
+        "Davis Rempe"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV",
+        "cs.LG",
+        "cs.RO"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.08741",
+      "pdfUrl": "https://arxiv.org/pdf/2607.08741v1",
+      "htmlUrl": "https://arxiv.org/html/2607.08741",
+      "doi": "10.1145/3811284",
+      "comment": "ACM Transactions on Graphics (SIGGRAPH 2026)"
+    },
+    {
+      "id": "2607.08398",
+      "arxivId": "2607.08398",
+      "title": "HoloTetSphere: Unified TetSphere Mesh Reconstruction for Physical Simulations",
+      "briefSummary": "Standard pipelines for physics-ready 3D reconstruction rely on a decoupled two-stage paradigm: extracting surface geometry followed by an error-prone tetrahedralization process.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-09",
+      "updatedAt": "2026-07-09",
+      "abstract": "Standard pipelines for physics-ready 3D reconstruction rely on a decoupled two-stage paradigm: extracting surface geometry followed by an error-prone tetrahedralization process. While recent Lagrangian methods like TetSphere Splatting attempt to bypass this by directly optimizing volumetric primitives, their homeomorphic constraints prevent topology-adaptive optimization. Consequently, they produce disjoint tetrahedra rather than a single connected mesh, rendering the structures unsuitable for further physical simulations. To address this, we propose a topology-adaptive framework for holistic tetrahedral mesh reconstruction through end-to-end topological and geometric optimization. First, by coupling Gaussian spheres to tetrahedral elements and leveraging edge connections, we estimate a continuous opacity field for differentiable element pruning. Next, jointly minimizing mesh smoothing energy and multi-view Gaussian rendering error drives alternating geometric refinement while preserving topological adaptivity. Consequently, our approach effectively constructs a unified and topologically coherent tetrahedral mesh. Extensive experiments demonstrate that our method outperforms state-of-the-art techniques by achieving superior geometric accuracy and producing coherent, single-connected tetrahedral meshes, thereby effectively bypassing the error-prone conventional tetrahedralization step for reconstructed surface meshes and streamlining downstream physical simulation.",
+      "authors": [
+        "YaQiao Dai",
+        "Renjiao Yi",
+        "Zhirui Gao",
+        "Wei Chen",
+        "Kai Xu",
+        "Chenyang Zhu"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.08398",
+      "pdfUrl": "https://arxiv.org/pdf/2607.08398v1",
+      "htmlUrl": "https://arxiv.org/html/2607.08398",
+      "comment": "Accepted to ECCV 2026"
+    },
     {
       "id": "2607.05938",
       "arxivId": "2607.05938",
@@ -2516,57 +2573,6 @@
       "pdfUrl": "https://arxiv.org/pdf/2605.19355v1",
       "htmlUrl": "https://arxiv.org/html/2605.19355",
       "comment": "SIGGRAPH 2026 / ACM TOG. Project page available at https://suzyn.github.io/space_page/"
-    },
-    {
-      "id": "2605.19350",
-      "arxivId": "2605.19350",
-      "title": "CompoSE: Compositional Synthesis and Editing of 3D Shapes via Part-Aware Control",
-      "briefSummary": "Creating and editing high-quality 3D content remains a central challenge in computer graphics.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-05-19",
-      "updatedAt": "2026-05-19",
-      "abstract": "Creating and editing high-quality 3D content remains a central challenge in computer graphics. We address this challenge by introducing CompoSE, a novel method for Compositional Synthesis and Editing of 3D shapes via part-aware control. Our method takes as input a set of coarse geometric primitives (e.g., bounding boxes) that represent distinct object parts arranged in a particular spatial configuration, and synthesizes as output part-separated 3D objects that support localized granular (i.e., compositional) editing of individual parts. The key insight that enables our method is our use of a diffusion transformer architecture that alternates between processing each part locally and aggregating contextual information across parts globally, and features a novel conditioning technique that ensures strong adherence to the user's input. Importantly, our method learns to infer part semantics and symmetries directly from the user's coarse layout guidance, and does not require part-level text prompts. We demonstrate that our method enables powerful part-level editing capabilities, including context-aware substitution, addition, deletion, and style-preserving resizing operations. We show through extensive experiments that our method significantly outperforms existing approaches on guided synthesis, as measured by objective metrics and LLM-based evaluations.",
-      "authors": [
-        "Habib Slim",
-        "Shariq Farooq Bhat",
-        "Mohamed Elhoseiny",
-        "Yifan Wang",
-        "Mike Roberts"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.LG"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.19350",
-      "pdfUrl": "https://arxiv.org/pdf/2605.19350v1",
-      "htmlUrl": "https://arxiv.org/html/2605.19350"
-    },
-    {
-      "id": "2605.19305",
-      "arxivId": "2605.19305",
-      "title": "Matérn Noise for Triangulation-Agnostic Flow Matching on Meshes",
-      "briefSummary": "This paper tackles the task of learning to generate signals over triangle meshes in a triangulation-agnostic manner, meaning the trained model can be applied to different meshes and triangulations effectively.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-05-19",
-      "updatedAt": "2026-05-19",
-      "abstract": "This paper tackles the task of learning to generate signals over triangle meshes in a triangulation-agnostic manner, meaning the trained model can be applied to different meshes and triangulations effectively. Practically, the paper adapts the flow matching (FM) paradigm to a mesh-based, triangulation-agnostic setting. Theoretically, it proposes a specific noise distribution which is triangulation agnostic, to be used inside the FM model's denoising process. While noise distributions are usually trivial to devise for, e.g., images, devising a triangulation-agnostic distribution proves to be a much more difficult task. We formulate a mathematical definition of triangulation agnosticism of distributions, via their spectrum. We then show that a discretization of a specific Gaussian random field called a Matérn process holds these desired properties, and provides a simple and efficient sampling algorithm. We use it as our noise model, and adapt FM to the triangulation-agnostic setting by using a state-of-the-art approach for learning signals on meshes in the gradient domain -- PoissonNet -- as the denoiser. We conduct experiments on elaborate tasks such as sampling elastic rest states, and generating poses of humanoids. Our method is shown to be capable of producing highly realistic results for meshes of over one million triangles, significantly exceeding the state-of-the-art in quality and diversity.",
-      "authors": [
-        "Tianshu Kuai",
-        "Arman Maesumi",
-        "Daniel Ritchie",
-        "Noam Aigerman"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CV",
-        "cs.LG"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.19305",
-      "pdfUrl": "https://arxiv.org/pdf/2605.19305v1",
-      "htmlUrl": "https://arxiv.org/html/2605.19305",
-      "comment": "In ACM Transactions on Graphics (SIGGRAPH 2026). Project page: https://matern-fm.github.io/"
     }
   ]
 }
