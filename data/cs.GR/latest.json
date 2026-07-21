@@ -1,9 +1,156 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-20T06:00:40Z",
+  "generatedAt": "2026-07-21T05:35:11Z",
   "category": "cs.GR",
   "paperCount": 100,
   "papers": [
+    {
+      "id": "2607.18187",
+      "arxivId": "2607.18187",
+      "title": "EVOLVE: Efficient Learned Volume Compression with Variable-Rate Encoding on a Cross-Domain Database",
+      "briefSummary": "Large-scale scientific simulations generate volumetric data at rates that far outpace advances in storage and network bandwidth, making effective lossy compression increasingly critical.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-20",
+      "updatedAt": "2026-07-20",
+      "abstract": "Large-scale scientific simulations generate volumetric data at rates that far outpace advances in storage and network bandwidth, making effective lossy compression increasingly critical. However, conventional compressors often struggle to preserve fine structural details at high compression ratios (CRs), and implicit neural representations (INRs) require costly per-volume optimization and produce models with fixed CRs. To respond, we present EVOLVE, an autoencoder (AE)-based volume-compression framework that targets high CRs for offline compression, with three key contributions. First, we construct a large-scale cross-domain database of 6,376 volumes from 21 scientific simulations, curated via perceptual hashing to ensure diversity, enabling the optimized model to extract features that generalize across volumes within the covered scientific simulation domains. Second, we reexamine the design space of AE-based compressors and incorporate several macro- and micro-designs into a vanilla AE to develop EVOLVE, which substantially improves the expressive power and compression capability. Third, we develop a learnable gain mechanism with a three-stage training strategy to enable variable-rate encoding, allowing a single model to support continuous CR adjustment at inference time. Experiments on multiple unseen scientific simulation datasets demonstrate that EVOLVE achieves substantially higher CRs than conventional compressors at comparable reconstruction quality, while delivering compression speeds that are orders of magnitude faster than INR-based methods, highlighting its promise as a strong alternative for compressing scientific data. The code, model weights, and results are available on our project page at https://evolve-vis.github.io.",
+      "authors": [
+        "Kaiyuan Tang",
+        "Maizhe Yang",
+        "Chaoli Wang"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.DB",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.18187",
+      "pdfUrl": "https://arxiv.org/pdf/2607.18187v1",
+      "htmlUrl": "https://arxiv.org/html/2607.18187",
+      "comment": "To be published in Proceedings of IEEE VIS 2026, IEEE Transactions on Visualization and Computer Graphics"
+    },
+    {
+      "id": "2607.17916",
+      "arxivId": "2607.17916",
+      "title": "Packet-Loss Robust 3D Gaussian Compression via Atomic Packaging and GNN-based Error Concealment",
+      "briefSummary": "3D Gaussian Splatting (3DGS) and recent compression schemes such as HAC++ enable high-fidelity real-time neural rendering, but their bitstreams are fragile under packet loss during network streaming.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-20",
+      "updatedAt": "2026-07-20",
+      "abstract": "3D Gaussian Splatting (3DGS) and recent compression schemes such as HAC++ enable high-fidelity real-time neural rendering, but their bitstreams are fragile under packet loss during network streaming. Existing compression methods often separate correlated anchor attributes into independent streams, so losing one packet can create attribute-inconsistent broken anchors and severe rendering artifacts. We propose a packet-loss robust 3DGS transmission and error concealment framework. On the encoder side, anchor-level atomic packaging jointly encapsulates all attributes of each anchor, converting corrupted-attribute failures into clean missing-anchor erasures. Stratified random grouping further disperses packet losses across the spatial domain to avoid large contiguous voids. On the decoder side, we formulate recovery as prior-aware attribute inpainting. A Context-Aware Residual Interpolation (CARI) branch uses hash-grid prior predictions and neighboring residuals to build a robust baseline, while a lightweight two-layer graph neural network with cross-attention over hash-grid priors refines high-frequency attribute residuals. Attribute-wise confidence control falls back to interpolation when learned predictions are unreliable. Experiments under 20 percent random packet loss on BungeeNeRF, Mip-NeRF 360, and Tanks and Temples show that the proposed method substantially improves over no-concealment transmission and limits average PSNR degradation to about 3 dB relative to the lossless HAC++ reference.",
+      "authors": [
+        "Yuxuan Tao",
+        "Xuerui Ma",
+        "Hao Zhang",
+        "Chunhua Peng"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV",
+        "cs.MM"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.17916",
+      "pdfUrl": "https://arxiv.org/pdf/2607.17916v1",
+      "htmlUrl": "https://arxiv.org/html/2607.17916",
+      "comment": "21 pages, 3 figures, 3 tables"
+    },
+    {
+      "id": "2607.17725",
+      "arxivId": "2607.17725",
+      "title": "Fast VEM Fluid Simulation",
+      "briefSummary": "The intricate motion arising from fluid--boundary interactions is visually compelling, yet notoriously difficult and computationally expensive to simulate in the presence of complex boundaries.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-20",
+      "updatedAt": "2026-07-20",
+      "abstract": "The intricate motion arising from fluid--boundary interactions is visually compelling, yet notoriously difficult and computationally expensive to simulate in the presence of complex boundaries. Accurately resolving boundary geometry requires body-fitted grids constructed via cut-cell methods, which often leads to poorly conditioned linear systems in the pressure projection stage and, consequently, prohibitive computational cost. We present FastVEM, an efficient boundary-conforming fluid simulation framework that enables high-fidelity flow--boundary interaction at substantially reduced cost. Computational efficiency is achieved through a coordinated, top-down design spanning numerical discretization, grid construction, and linear solvers. FastVEM adopts a Virtual Element Method (VEM) discretization to robustly enforce incompressibility and boundary conditions on irregular body-fitted grids, and employs a VEM polynomial-space Particle-in-Cell scheme for advection. Complementing this discretization, a convexity-preserving cut-cell strategy is introduced to construct simulation-friendly body-fitted grids. To accelerate pressure projection, we develop a Galerkin geometric multigrid solver featuring a diffusion-free prolongation operator that prevents coarse-level matrix densification, along with a nested, boundary-aware grid hierarchy that ensures well-posed placement of coarse-level degrees of freedom. Compared to prior cut-cell--based fluid simulators, FastVEM speeds up the computationally dominant pressure projection stage by up to 100x, while robustly handling even more challenging boundary geometries.",
+      "authors": [
+        "Runze Zhang",
+        "Bo Ren"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.17725",
+      "pdfUrl": "https://arxiv.org/pdf/2607.17725v1",
+      "htmlUrl": "https://arxiv.org/html/2607.17725",
+      "doi": "10.1145/3811315",
+      "journalRef": "ACM Transactions on Graphics, Vol. 45, No. 4, Article 65, 18 pages, July 2026"
+    },
+    {
+      "id": "2607.17411",
+      "arxivId": "2607.17411",
+      "title": "Feature-Guided Diffusion for Non-Differentiable Inverse Rendering",
+      "briefSummary": "Inverse rendering is traditionally solved via differentiable renderers and gradient descent, which requires substantial problem-specific engineering and is prone to getting stuck in local minima due to ambiguities.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-19",
+      "updatedAt": "2026-07-19",
+      "abstract": "Inverse rendering is traditionally solved via differentiable renderers and gradient descent, which requires substantial problem-specific engineering and is prone to getting stuck in local minima due to ambiguities. Derivative-free approaches alleviate engineering requirements, but often heavily depend on a good problem initialization. In this work, we propose Feature-Informed Diffusion Evolution (FIDE), a fully black-box framework that requires no gradients or specific initialization: the renderer is treated as an opaque function whose only requirement is to produce images. Our key insight is feature guiding: rather than reducing each candidate rendering to a scalar loss value, we use a Vision Transformer (ViT) to extract dense visual features from it. We subsequently use these features to train a diffusion-based candidate proposal model, allowing the network to use visual cues to predict parameters that would match the target image. The candidate solutions proposed by this diffusion model are then refined in a closed loop with a CMA evolution strategy, continuously narrowing the proposal region as optimization progresses. We validate across diverse inverse problems from path tracing, vector splines, Voronoi shaders, and robotics, and demonstrate that feature-guiding substantially improves convergence over scalar-loss baselines and reliably escapes local minima where gradient-based methods stall.",
+      "authors": [
+        "Andrei-Timotei Ardelean",
+        "Michael Fischer",
+        "Tim Weyrich",
+        "Tomáš Iser"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.17411",
+      "pdfUrl": "https://arxiv.org/pdf/2607.17411v1",
+      "htmlUrl": "https://arxiv.org/html/2607.17411"
+    },
+    {
+      "id": "2607.17145",
+      "arxivId": "2607.17145",
+      "title": "Text2Villa: Hierarchical Generation of 3D Indoor Environments with Physics-Aware Analysis-by-Synthesis",
+      "briefSummary": "Generating 3D indoor scenes from natural language holds tremendous potential, yet existing methods predominantly fail to generate multi-room structures with vertical connectivity and arbitrary polygonal boundaries.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-19",
+      "updatedAt": "2026-07-19",
+      "abstract": "Generating 3D indoor scenes from natural language holds tremendous potential, yet existing methods predominantly fail to generate multi-room structures with vertical connectivity and arbitrary polygonal boundaries. Furthermore, they lack a deep grounding in continuous 3D physical laws, leading to severe geometric penetrations and floating artifacts. In this work, we propose Text2Villa, a novel hierarchical generative framework. At the macro level, we construct a multi-story dataset to fine-tune an autoregressive layout generator, ensuring the direct parsing of text into 3D building foundations featuring polygonal boundaries and multi-story connectivity. To enforce physical laws during micro-level asset arrangement, we introduce the Affordance-driven Physical-Semantic Scene Graph (A-PSSG) to explicitly abstract physical affordances (such as support surfaces and containment cavities) into node attributes, establishing strict geometric and semantic edge constraints. Guided by the A-PSSG, we formulate scene instantiation as a constrained closed-loop optimization problem following the analysis-by-synthesis paradigm. By integrating an underlying geometric collision detection engine with the high-level semantic reasoning of multimodal large language models (MLLMs), our heuristic solver dynamically executes physics-aware actions under the observation-evaluation-modification mechanism to effectively resolve mesh collisions, floating artifacts, and fine-grained cavity containment failures. Extensive experiments demonstrate that Text2Villa outperforms previous methods across various metrics, robustly generating high-fidelity and physically plausible villa-level 3D environments from text, thereby providing a reliable and interactive 3D content foundation for downstream applications.",
+      "authors": [
+        "Xiang Tang",
+        "Ruotong Li",
+        "Xiaopeng Fan"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.17145",
+      "pdfUrl": "https://arxiv.org/pdf/2607.17145v1",
+      "htmlUrl": "https://arxiv.org/html/2607.17145",
+      "comment": "17 pages, 12 figures"
+    },
+    {
+      "id": "2607.16946",
+      "arxivId": "2607.16946",
+      "title": "Points as Tori: Fast Pointwise Signed Distance for Point Clouds",
+      "briefSummary": "We describe a method for computing signed distance to point clouds that allows fast pointwise evaluation at arbitrary spatial resolution.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-18",
+      "updatedAt": "2026-07-18",
+      "abstract": "We describe a method for computing signed distance to point clouds that allows fast pointwise evaluation at arbitrary spatial resolution. As input, our method takes a point cloud with normals; as output, it provides an analytical parameterization that allows queries of signed distance to the approximate underlying surface at arbitrary points - simultaneously providing reconstruction and distance. Our key idea is to reconstruct shapes by locally fitting point clouds with tori, which have closed-form signed distance functions. Tori are fitted in a feed-forward manner, using a pre-trained network to output per-point curvature and shift parameters. Importantly, our method does not require costly global optimization or spatial discretization, and is easily parallelizable. Underlying our method is a new theory that unifies signed distance with the classic reconstruction methods of winding numbers and Poisson surface reconstruction. We use our method to compute signed distance to point clouds arising from photogrammetry, meshes, 3D Gaussians, and neural implicits. Our method allows point clouds to be used directly in applications, without explicit surface reconstruction: as examples, we take offsets of point clouds, apply morphological and Boolean operations, and directly visualize offset surfaces using sphere tracing.",
+      "authors": [
+        "Nicole Feng",
+        "Ioannis Gkioulekas",
+        "Keenan Crane"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.16946",
+      "pdfUrl": "https://arxiv.org/pdf/2607.16946v1",
+      "htmlUrl": "https://arxiv.org/html/2607.16946",
+      "doi": "10.1145/3811385",
+      "journalRef": "ACM Transactions on Graphics, volume 45 (2026), article number 53",
+      "comment": "Published in ACM Transactions on Graphics, volume 45 (2026). For associated presentations and code, see https://nzfeng.github.io/research/PointsAsTori"
+    },
     {
       "id": "2607.15951",
       "arxivId": "2607.15951",
@@ -2428,165 +2575,6 @@
       "htmlUrl": "https://arxiv.org/html/2605.25921",
       "doi": "10.1109/WACV61042.2026.00493",
       "comment": "31 pages, 26 figures, 7 tables, 4 algorithms. Published at IEEE/CVF Winter Conference on Applications of Computer Vision (WACV) 2026"
-    },
-    {
-      "id": "2605.25426",
-      "arxivId": "2605.25426",
-      "title": "Learning View-Dependent Splatting Kernels",
-      "briefSummary": "We present a differentiable framework to automatically learn view-dependent 2D kernels in a splatting-based pipeline to improve reconstruction quality and representation efficiency for novel 3D view synthesis.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-05-25",
-      "updatedAt": "2026-05-25",
-      "abstract": "We present a differentiable framework to automatically learn view-dependent 2D kernels in a splatting-based pipeline to improve reconstruction quality and representation efficiency for novel 3D view synthesis. Our volumetric primitive is defined as a bounding ellipsoid and a 3D-kernel latent vector. We first learn a projection network to output a 2D-kernel latent, taking the attributes of the ellipsoid and the 3D-kernel latent as input. Next, the result is sent to a decoder to produce a radially symmetric 2D kernel in terms of Mahalanobis distance, bounded by the projected ellipsoid. The neural networks along with per-primitive attributes are jointly optimized. The effectiveness of our approach is demonstrated on standard benchmarks, comparing favorably against state-of-the-art techniques on both analytical and learned kernels. Finally, we extend the idea to learn general 2D kernels for 2D splatting as well as image representation.",
-      "authors": [
-        "Huakeng Ding",
-        "Zhanpeng Liu",
-        "Fan Pei",
-        "Kun Zhou",
-        "Hongzhi Wu"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CV"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.25426",
-      "pdfUrl": "https://arxiv.org/pdf/2605.25426v1",
-      "htmlUrl": "https://arxiv.org/html/2605.25426",
-      "comment": "Accepted to SIGGRAPH 2026. 10 pages, 8 figures"
-    },
-    {
-      "id": "2605.25345",
-      "arxivId": "2605.25345",
-      "title": "Depth Peeling for High-Fidelity Gaussian-Enhanced Surfel Rendering",
-      "briefSummary": "Novel view synthesis has been significantly advanced by NeRFs and 3D Gaussian Splatting (3DGS), which require ordering volumetric samples or primitives for correct color blending.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-05-25",
-      "updatedAt": "2026-05-25",
-      "abstract": "Novel view synthesis has been significantly advanced by NeRFs and 3D Gaussian Splatting (3DGS), which require ordering volumetric samples or primitives for correct color blending. While the recent Gaussian-Enhanced Surfels (GES) enable high-performance, sort-free rendering, they suffer from aliasing artifacts and suboptimal reconstruction. To address these limitations, we propose DP-GES, a novel representation that augments opaque surfels with semi-transparent boundaries and leverages Depth Peeling to establish accurate per-pixel ordering. This design enables sort-free Gaussian splatting with correct transmittance modulation, effectively eliminating aliasing and popping artifacts while facilitating a fully differentiable joint optimization. Extensive experiments demonstrate that our method achieves superior reconstruction quality and compares favorably against state-of-the-art techniques across a wide range of scenes.",
-      "authors": [
-        "Keyang Ye",
-        "Hongzhi Wu",
-        "Kun Zhou"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CV"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.25345",
-      "pdfUrl": "https://arxiv.org/pdf/2605.25345v1",
-      "htmlUrl": "https://arxiv.org/html/2605.25345"
-    },
-    {
-      "id": "2605.24915",
-      "arxivId": "2605.24915",
-      "title": "Snapshot Polarimetric Display Inverse Rendering",
-      "briefSummary": "Inverse rendering remains a core challenge in graphics and vision, especially in the snapshot configurations required for lightweight desktop workflows, where the per-frame information budget is highly constrained.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-05-24",
-      "updatedAt": "2026-05-24",
-      "abstract": "Inverse rendering remains a core challenge in graphics and vision, especially in the snapshot configurations required for lightweight desktop workflows, where the per-frame information budget is highly constrained. Previous inverse rendering work explores various available dimensions for enriching the per-shot information, including temporal modulation, spectral encoding, and polarization. In this work, we introduce polarimetric display inverse rendering, using an LCD to project a linearly polarized RGB binary pattern and an RGB polarization camera augmented with a quarter-wave plate to acquire spectro-polarimetric measurements in a single shot. A feed-forward transformer maps these measurements to per-pixel normal, albedo, roughness, and metallicity. To overcome training data scarcity, we expand a limited set of measured polarimetric bidirectional reflectance distribution functions via a generative manifold. Evaluations on a real desktop setup demonstrate accurate inverse rendering across diverse scenes, outperforming existing approaches.",
-      "authors": [
-        "Seokjun Choi",
-        "Yunseong Moon",
-        "Kaizhang Kang",
-        "Hoon-Gyu Chung",
-        "Jin-Nyeong Kim",
-        "Giljoo Nam",
-        "Seung-Hwan Baek"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CV"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.24915",
-      "pdfUrl": "https://arxiv.org/pdf/2605.24915v1",
-      "htmlUrl": "https://arxiv.org/html/2605.24915"
-    },
-    {
-      "id": "2605.23508",
-      "arxivId": "2605.23508",
-      "title": "DrawVideo: Generating Long Video from Storyboard Keyframe Sketches",
-      "briefSummary": "Long video generation requires high-fidelity synthesis, coherent narrative structure, and user control over extended time spans.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-05-22",
-      "updatedAt": "2026-05-22",
-      "abstract": "Long video generation requires high-fidelity synthesis, coherent narrative structure, and user control over extended time spans. Existing text-to-video methods often rely on a single long prompt, limiting control over pose, composition, layout, and motion. We propose DrawVideo, a sketch-guided, storyboard-driven framework for controllable long-video generation. DrawVideo decomposes long videos into independently controllable shots, each defined by a black-and-white sketch, an appearance prompt, and a motion prompt. The sketch controls pose and layout, the appearance prompt defines identity, scene, and style, and the motion prompt guides temporal dynamics. DrawVideo follows a hierarchical 'global multi-shot, local single-sketch' strategy: it first generates a structure-aligned reference keyframe, then expands the motion prompt into derivative keyframes representing action states, and finally synthesizes clips between adjacent keyframes to build each shot. We also introduce SketchLongVideo, the first dataset for sketch-guided text-to-long-video generation, constructed from animation videos via shot detection, keyframe extraction, vision-language recognition, prompt decomposition, and sketch conversion. Experiments show that DrawVideo achieves strong structural controllability, appearance consistency, visual stability, and coherent long-video generation.",
-      "authors": [
-        "Chuanzhi Xu",
-        "Huiqi Liang",
-        "Bang Shi",
-        "Huiming Zhang",
-        "Yifan Xiao",
-        "Guangcheng Lin",
-        "Haodong Chen",
-        "Qiang Qu",
-        "Zhicheng Lu",
-        "Weidong Cai"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.AI",
-        "cs.CV",
-        "cs.MM",
-        "eess.IV"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.23508",
-      "pdfUrl": "https://arxiv.org/pdf/2605.23508v1",
-      "htmlUrl": "https://arxiv.org/html/2605.23508",
-      "comment": "45 pages, 19 figures"
-    },
-    {
-      "id": "2605.23462",
-      "arxivId": "2605.23462",
-      "title": "Closing Trajectories: Equation-Free Cyclic Animation via Koopman Surrogates",
-      "briefSummary": "Cyclic animation is widely used in computer graphics and interactive content.It supports seamless playback in games, VR, and interactive simulation,where short clips must repeat smoothly over long durations.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-05-22",
-      "updatedAt": "2026-05-22",
-      "abstract": "Cyclic animation is widely used in computer graphics and interactive content.It supports seamless playback in games, VR, and interactive simulation,where short clips must repeat smoothly over long durations. Achievingphysically plausible cyclic synthesis from an input sequence is challengingbecause the endpoint states of the observed sequence rarely match exactly,and the governing equations of the underlying system are often unavailable.We therefore propose an equation-free framework that identiffes a Koopmansurrogate from the observed trajectory and computes a cyclic trajectory byapplying a Fourier-parameterized, time-varying control force under a hardtemporal periodicity constraint. The resulting formulation reduces cyclicsynthesis to a linearly constrained quadratic program that can be solvedefffciently through a structured KKT system. Our method is applicable toa diverse range of examples, including N-body systems, cloth, deformableobjects, shallow water, etc.",
-      "authors": [
-        "Shixun Huang",
-        "Siyuan Chen",
-        "Yue Chang",
-        "Zhecheng Wang",
-        "Peter Yichen Chen"
-      ],
-      "categories": [
-        "cs.GR"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.23462",
-      "pdfUrl": "https://arxiv.org/pdf/2605.23462v1",
-      "htmlUrl": "https://arxiv.org/html/2605.23462"
-    },
-    {
-      "id": "2605.20185",
-      "arxivId": "2605.20185",
-      "title": "PiG-Avatar: Hierarchical Neural-Field-Guided Gaussian Avatars",
-      "briefSummary": "Existing Gaussian avatar methods typically parameterize geometry on a body-template surface, which entangles the avatar's representation space with the template's deformation space and limits the capture of layered, off...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-05-19",
-      "updatedAt": "2026-05-20",
-      "abstract": "Existing Gaussian avatar methods typically parameterize geometry on a body-template surface, which entangles the avatar's representation space with the template's deformation space and limits the capture of layered, off-body, and non-rigid clothing geometry. We present PiG-Avatar, which addresses this limitation by using the parametric body model solely for kinematic transport, while representing the avatar as Gaussians anchored in a volumetric canonical space governed by a continuous neural field. This decouples representation from template topology, avoiding the geometric constraints of surface-based parameterizations. Kinematic coherence is maintained through 3D barycentric anchor transport, which guides motion without constraining geometry and allows anchors to deviate freely from the template surface, yielding dense, stable temporal surface correspondences by construction. To make this unconstrained formulation tractable, we introduce dual-level spatially coherent optimization, combining Sobolev-preconditioned neural-field updates with a novel KNN-based preconditioning of canonical anchor geometry. Together, these mechanisms induce an emergent self-organization of anchor density: anchors migrate toward regions of high curvature, appearance variation, and non-coherent motion without explicit heuristics. As a result, complex clothing geometry and layered surfaces emerge as natural, high-fidelity outputs. This single representation further supports hierarchical reconstruction across multiple levels of detail, with coarse-level supervision propagating to finer levels through the shared field and coupled anchor graph. On established benchmarks featuring subjects with complex clothing and challenging non-rigid motion, PiG-Avatar achieves state-of-the-art rendering quality, generalizes robustly to imperfect body model initialization, and renders in real time across all detail levels.",
-      "authors": [
-        "Julian Kaltheuner",
-        "Jan Spindler",
-        "Sina Kitz",
-        "Patrick Stotko",
-        "Reinhard Klein"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CV"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2605.20185",
-      "pdfUrl": "https://arxiv.org/pdf/2605.20185v2",
-      "htmlUrl": "https://arxiv.org/html/2605.20185"
     }
   ]
 }

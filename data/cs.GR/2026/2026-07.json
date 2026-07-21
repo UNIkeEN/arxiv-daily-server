@@ -1,10 +1,157 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-20T05:53:45Z",
+  "generatedAt": "2026-07-21T05:35:11Z",
   "category": "cs.GR",
   "yearMonth": "2026-07",
-  "paperCount": 20,
+  "paperCount": 26,
   "papers": [
+    {
+      "id": "2607.18187",
+      "arxivId": "2607.18187",
+      "title": "EVOLVE: Efficient Learned Volume Compression with Variable-Rate Encoding on a Cross-Domain Database",
+      "briefSummary": "Large-scale scientific simulations generate volumetric data at rates that far outpace advances in storage and network bandwidth, making effective lossy compression increasingly critical.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-20",
+      "updatedAt": "2026-07-20",
+      "abstract": "Large-scale scientific simulations generate volumetric data at rates that far outpace advances in storage and network bandwidth, making effective lossy compression increasingly critical. However, conventional compressors often struggle to preserve fine structural details at high compression ratios (CRs), and implicit neural representations (INRs) require costly per-volume optimization and produce models with fixed CRs. To respond, we present EVOLVE, an autoencoder (AE)-based volume-compression framework that targets high CRs for offline compression, with three key contributions. First, we construct a large-scale cross-domain database of 6,376 volumes from 21 scientific simulations, curated via perceptual hashing to ensure diversity, enabling the optimized model to extract features that generalize across volumes within the covered scientific simulation domains. Second, we reexamine the design space of AE-based compressors and incorporate several macro- and micro-designs into a vanilla AE to develop EVOLVE, which substantially improves the expressive power and compression capability. Third, we develop a learnable gain mechanism with a three-stage training strategy to enable variable-rate encoding, allowing a single model to support continuous CR adjustment at inference time. Experiments on multiple unseen scientific simulation datasets demonstrate that EVOLVE achieves substantially higher CRs than conventional compressors at comparable reconstruction quality, while delivering compression speeds that are orders of magnitude faster than INR-based methods, highlighting its promise as a strong alternative for compressing scientific data. The code, model weights, and results are available on our project page at https://evolve-vis.github.io.",
+      "authors": [
+        "Kaiyuan Tang",
+        "Maizhe Yang",
+        "Chaoli Wang"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.DB",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.18187",
+      "pdfUrl": "https://arxiv.org/pdf/2607.18187v1",
+      "htmlUrl": "https://arxiv.org/html/2607.18187",
+      "comment": "To be published in Proceedings of IEEE VIS 2026, IEEE Transactions on Visualization and Computer Graphics"
+    },
+    {
+      "id": "2607.17916",
+      "arxivId": "2607.17916",
+      "title": "Packet-Loss Robust 3D Gaussian Compression via Atomic Packaging and GNN-based Error Concealment",
+      "briefSummary": "3D Gaussian Splatting (3DGS) and recent compression schemes such as HAC++ enable high-fidelity real-time neural rendering, but their bitstreams are fragile under packet loss during network streaming.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-20",
+      "updatedAt": "2026-07-20",
+      "abstract": "3D Gaussian Splatting (3DGS) and recent compression schemes such as HAC++ enable high-fidelity real-time neural rendering, but their bitstreams are fragile under packet loss during network streaming. Existing compression methods often separate correlated anchor attributes into independent streams, so losing one packet can create attribute-inconsistent broken anchors and severe rendering artifacts. We propose a packet-loss robust 3DGS transmission and error concealment framework. On the encoder side, anchor-level atomic packaging jointly encapsulates all attributes of each anchor, converting corrupted-attribute failures into clean missing-anchor erasures. Stratified random grouping further disperses packet losses across the spatial domain to avoid large contiguous voids. On the decoder side, we formulate recovery as prior-aware attribute inpainting. A Context-Aware Residual Interpolation (CARI) branch uses hash-grid prior predictions and neighboring residuals to build a robust baseline, while a lightweight two-layer graph neural network with cross-attention over hash-grid priors refines high-frequency attribute residuals. Attribute-wise confidence control falls back to interpolation when learned predictions are unreliable. Experiments under 20 percent random packet loss on BungeeNeRF, Mip-NeRF 360, and Tanks and Temples show that the proposed method substantially improves over no-concealment transmission and limits average PSNR degradation to about 3 dB relative to the lossless HAC++ reference.",
+      "authors": [
+        "Yuxuan Tao",
+        "Xuerui Ma",
+        "Hao Zhang",
+        "Chunhua Peng"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV",
+        "cs.MM"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.17916",
+      "pdfUrl": "https://arxiv.org/pdf/2607.17916v1",
+      "htmlUrl": "https://arxiv.org/html/2607.17916",
+      "comment": "21 pages, 3 figures, 3 tables"
+    },
+    {
+      "id": "2607.17725",
+      "arxivId": "2607.17725",
+      "title": "Fast VEM Fluid Simulation",
+      "briefSummary": "The intricate motion arising from fluid--boundary interactions is visually compelling, yet notoriously difficult and computationally expensive to simulate in the presence of complex boundaries.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-20",
+      "updatedAt": "2026-07-20",
+      "abstract": "The intricate motion arising from fluid--boundary interactions is visually compelling, yet notoriously difficult and computationally expensive to simulate in the presence of complex boundaries. Accurately resolving boundary geometry requires body-fitted grids constructed via cut-cell methods, which often leads to poorly conditioned linear systems in the pressure projection stage and, consequently, prohibitive computational cost. We present FastVEM, an efficient boundary-conforming fluid simulation framework that enables high-fidelity flow--boundary interaction at substantially reduced cost. Computational efficiency is achieved through a coordinated, top-down design spanning numerical discretization, grid construction, and linear solvers. FastVEM adopts a Virtual Element Method (VEM) discretization to robustly enforce incompressibility and boundary conditions on irregular body-fitted grids, and employs a VEM polynomial-space Particle-in-Cell scheme for advection. Complementing this discretization, a convexity-preserving cut-cell strategy is introduced to construct simulation-friendly body-fitted grids. To accelerate pressure projection, we develop a Galerkin geometric multigrid solver featuring a diffusion-free prolongation operator that prevents coarse-level matrix densification, along with a nested, boundary-aware grid hierarchy that ensures well-posed placement of coarse-level degrees of freedom. Compared to prior cut-cell--based fluid simulators, FastVEM speeds up the computationally dominant pressure projection stage by up to 100x, while robustly handling even more challenging boundary geometries.",
+      "authors": [
+        "Runze Zhang",
+        "Bo Ren"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.17725",
+      "pdfUrl": "https://arxiv.org/pdf/2607.17725v1",
+      "htmlUrl": "https://arxiv.org/html/2607.17725",
+      "doi": "10.1145/3811315",
+      "journalRef": "ACM Transactions on Graphics, Vol. 45, No. 4, Article 65, 18 pages, July 2026"
+    },
+    {
+      "id": "2607.17411",
+      "arxivId": "2607.17411",
+      "title": "Feature-Guided Diffusion for Non-Differentiable Inverse Rendering",
+      "briefSummary": "Inverse rendering is traditionally solved via differentiable renderers and gradient descent, which requires substantial problem-specific engineering and is prone to getting stuck in local minima due to ambiguities.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-19",
+      "updatedAt": "2026-07-19",
+      "abstract": "Inverse rendering is traditionally solved via differentiable renderers and gradient descent, which requires substantial problem-specific engineering and is prone to getting stuck in local minima due to ambiguities. Derivative-free approaches alleviate engineering requirements, but often heavily depend on a good problem initialization. In this work, we propose Feature-Informed Diffusion Evolution (FIDE), a fully black-box framework that requires no gradients or specific initialization: the renderer is treated as an opaque function whose only requirement is to produce images. Our key insight is feature guiding: rather than reducing each candidate rendering to a scalar loss value, we use a Vision Transformer (ViT) to extract dense visual features from it. We subsequently use these features to train a diffusion-based candidate proposal model, allowing the network to use visual cues to predict parameters that would match the target image. The candidate solutions proposed by this diffusion model are then refined in a closed loop with a CMA evolution strategy, continuously narrowing the proposal region as optimization progresses. We validate across diverse inverse problems from path tracing, vector splines, Voronoi shaders, and robotics, and demonstrate that feature-guiding substantially improves convergence over scalar-loss baselines and reliably escapes local minima where gradient-based methods stall.",
+      "authors": [
+        "Andrei-Timotei Ardelean",
+        "Michael Fischer",
+        "Tim Weyrich",
+        "Tomáš Iser"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.17411",
+      "pdfUrl": "https://arxiv.org/pdf/2607.17411v1",
+      "htmlUrl": "https://arxiv.org/html/2607.17411"
+    },
+    {
+      "id": "2607.17145",
+      "arxivId": "2607.17145",
+      "title": "Text2Villa: Hierarchical Generation of 3D Indoor Environments with Physics-Aware Analysis-by-Synthesis",
+      "briefSummary": "Generating 3D indoor scenes from natural language holds tremendous potential, yet existing methods predominantly fail to generate multi-room structures with vertical connectivity and arbitrary polygonal boundaries.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-19",
+      "updatedAt": "2026-07-19",
+      "abstract": "Generating 3D indoor scenes from natural language holds tremendous potential, yet existing methods predominantly fail to generate multi-room structures with vertical connectivity and arbitrary polygonal boundaries. Furthermore, they lack a deep grounding in continuous 3D physical laws, leading to severe geometric penetrations and floating artifacts. In this work, we propose Text2Villa, a novel hierarchical generative framework. At the macro level, we construct a multi-story dataset to fine-tune an autoregressive layout generator, ensuring the direct parsing of text into 3D building foundations featuring polygonal boundaries and multi-story connectivity. To enforce physical laws during micro-level asset arrangement, we introduce the Affordance-driven Physical-Semantic Scene Graph (A-PSSG) to explicitly abstract physical affordances (such as support surfaces and containment cavities) into node attributes, establishing strict geometric and semantic edge constraints. Guided by the A-PSSG, we formulate scene instantiation as a constrained closed-loop optimization problem following the analysis-by-synthesis paradigm. By integrating an underlying geometric collision detection engine with the high-level semantic reasoning of multimodal large language models (MLLMs), our heuristic solver dynamically executes physics-aware actions under the observation-evaluation-modification mechanism to effectively resolve mesh collisions, floating artifacts, and fine-grained cavity containment failures. Extensive experiments demonstrate that Text2Villa outperforms previous methods across various metrics, robustly generating high-fidelity and physically plausible villa-level 3D environments from text, thereby providing a reliable and interactive 3D content foundation for downstream applications.",
+      "authors": [
+        "Xiang Tang",
+        "Ruotong Li",
+        "Xiaopeng Fan"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.17145",
+      "pdfUrl": "https://arxiv.org/pdf/2607.17145v1",
+      "htmlUrl": "https://arxiv.org/html/2607.17145",
+      "comment": "17 pages, 12 figures"
+    },
+    {
+      "id": "2607.16946",
+      "arxivId": "2607.16946",
+      "title": "Points as Tori: Fast Pointwise Signed Distance for Point Clouds",
+      "briefSummary": "We describe a method for computing signed distance to point clouds that allows fast pointwise evaluation at arbitrary spatial resolution.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-07-18",
+      "updatedAt": "2026-07-18",
+      "abstract": "We describe a method for computing signed distance to point clouds that allows fast pointwise evaluation at arbitrary spatial resolution. As input, our method takes a point cloud with normals; as output, it provides an analytical parameterization that allows queries of signed distance to the approximate underlying surface at arbitrary points - simultaneously providing reconstruction and distance. Our key idea is to reconstruct shapes by locally fitting point clouds with tori, which have closed-form signed distance functions. Tori are fitted in a feed-forward manner, using a pre-trained network to output per-point curvature and shift parameters. Importantly, our method does not require costly global optimization or spatial discretization, and is easily parallelizable. Underlying our method is a new theory that unifies signed distance with the classic reconstruction methods of winding numbers and Poisson surface reconstruction. We use our method to compute signed distance to point clouds arising from photogrammetry, meshes, 3D Gaussians, and neural implicits. Our method allows point clouds to be used directly in applications, without explicit surface reconstruction: as examples, we take offsets of point clouds, apply morphological and Boolean operations, and directly visualize offset surfaces using sphere tracing.",
+      "authors": [
+        "Nicole Feng",
+        "Ioannis Gkioulekas",
+        "Keenan Crane"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.16946",
+      "pdfUrl": "https://arxiv.org/pdf/2607.16946v1",
+      "htmlUrl": "https://arxiv.org/html/2607.16946",
+      "doi": "10.1145/3811385",
+      "journalRef": "ACM Transactions on Graphics, volume 45 (2026), article number 53",
+      "comment": "Published in ACM Transactions on Graphics, volume 45 (2026). For associated presentations and code, see https://nzfeng.github.io/research/PointsAsTori"
+    },
     {
       "id": "2607.15951",
       "arxivId": "2607.15951",
