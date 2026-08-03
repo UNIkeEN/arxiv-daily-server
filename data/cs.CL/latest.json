@@ -1,9 +1,802 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-02T05:47:52Z",
+  "generatedAt": "2026-08-03T05:56:34Z",
   "category": "cs.CL",
   "paperCount": 100,
   "papers": [
+    {
+      "id": "2607.29678",
+      "arxivId": "2607.29678",
+      "title": "TokTier: Exact Stateful Tokenization for Agentic LLM Serving",
+      "briefSummary": "LLM serving systems cache prompt KV state, yet most front ends still re-tokenize the full request text on every call.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "LLM serving systems cache prompt KV state, yet most front ends still re-tokenize the full request text on every call. The cost lands on coding agents, which resubmit a long transcript after each small tool result, and reuse is hard because even a short append can change token boundaries near the end of the previous sequence. Across 153,951 calls from two agent ecosystems, the median call appends about 1.4K characters, and only 1.0-3.6% of calls start or rebuild a session with contexts of millions of characters. At a 94.1% fleet prompt-cache hit rate, tokenization reaches up to 64% of time to first token. TokTier is a stateful tokenization service with one contract: emitted token IDs are always identical to full reference tokenization of the request text. For a session continuation, it re-tokenizes a small window around the append and splices only after a per-request stable-boundary check, widening the window or falling back to full tokenization on failure. For a call without a reusable prefix, it decomposes GPT-family regex pre-tokenization into run-local rules and runs exact pre-tokenization and BPE on a GPU. A sampled shadow verifier re-checks live traffic. Across 17 tokenizer families, differential campaigns cover 1.5x10^10 split checks, a 12.4 TB real-text corpus, and 93,000+ replayed agent steps, with zero divergence. Incremental repair takes 0.5-1.1 ms from 100K to 3M characters, up to 437x faster than HF tokenization and 2.1x faster at 1M than the strongest cache-based baseline (Gigatoken) fully prewarmed. GPU full tokenization encodes a 1M-character request in 0.87 ms, up to 491x below HF and 23.4x below the fastest published CPU method. With vLLM, median time to first token drops 16-34% and P99 drops 23% under recorded bursts. Under a 50 ms P99 objective, four repair cores plus one GPU sustain 1,821 requests/s where a 16-core stateless front end saturates at 40.",
+      "authors": [
+        "Zhenyu Zhang",
+        "Zhichao Cao"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.DC",
+        "cs.PF"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29678",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29678v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29678",
+      "comment": "24 pages, 18 figures, 8 tables"
+    },
+    {
+      "id": "2607.29642",
+      "arxivId": "2607.29642",
+      "title": "Evolving language compositionality in a frequency-structured meaning space",
+      "briefSummary": "The iterated learning model was introduced to investigate language evolution: the way in which the characteristic properties of human languages have been shaped, at least partly, by repeated transmission from one langua...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "The iterated learning model was introduced to investigate language evolution: the way in which the characteristic properties of human languages have been shaped, at least partly, by repeated transmission from one language user to another. The key finding is that language compositionality can arise spontaneously as a consequence of language being passed repeatedly through a language learning bottleneck. Here we explore how changing the frequency of different meanings, so that some meanings occur much more frequently than others, affects the character of its compositionality. We find that, as observed in natural languages, high-frequency meanings can escape the pressure to conform to the grammar that characterizes lower-frequency meanings. However, when the frequency structure is instead imposed on parts rather than on whole meaning vectors, the language fails to transmit across generations. This occurs despite the fact that the most frequent elements are reliably learned. These results suggest that frequency can shape emergent linguistic structure only when the frequency distribution is defined over form-meaning units that learners can acquire holistically. When frequency is instead distributed over smaller units, it fails to support the relational structure required for compositional generalisation, thereby preventing stable language transmission.",
+      "authors": [
+        "Fabio De Ponte",
+        "Eloise Gaines-White",
+        "Conor Houghton",
+        "Seth Bullock"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29642",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29642v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29642",
+      "comment": "17 pages, 4 figures (plus 2 figures in appendix), submitted to Wivace 2026 (https://sites.google.com/cam.ac.uk/wivace26)"
+    },
+    {
+      "id": "2607.29602",
+      "arxivId": "2607.29602",
+      "title": "FriendBench: Benchmarking Dyadic Familiarity Inference in Humans and Multimodal Large Language Models",
+      "briefSummary": "Reading a social situation often depends on behavior, not words alone.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Reading a social situation often depends on behavior, not words alone. We introduce FriendBench, a benchmark for inferring whether two people are already familiar or are meeting as strangers, from a 20-second clip of a dyadic ice-breaker conversation. Every pair answers the same type of prompt, so only the manner of interaction can reveal the answer. Across text, audio, and video, we compare 26 models from seven companies against matched human panels over 96 balanced dyads. The best model and the human crowd are statistically indistinguishable on accuracy in every modality, but reach it differently: humans stay balanced across the two answers, while the strongest models lean toward \"stranger\"---a difference in effective prior, not discrimination. Richer channels help both unequally, and only humans gain from visible behavior on top of speech. We release the stimuli, human ratings, and model predictions.",
+      "authors": [
+        "Jeffrey M. Girard",
+        "Jason Z. Zheng",
+        "Jacqueline R. Vertino",
+        "Antony D'Avirro",
+        "Benjamin Peloquin"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CV",
+        "cs.HC"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29602",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29602v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29602",
+      "comment": "15 pages, 3 figures"
+    },
+    {
+      "id": "2607.29591",
+      "arxivId": "2607.29591",
+      "title": "ResKV: Reconstructing Omitted Attention Contributions for Fixed-Budget KV Cache Compression",
+      "briefSummary": "KV cache compression is essential for efficient long-context inference.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "KV cache compression is essential for efficient long-context inference. Existing eviction methods permanently discard unselected tokens and consequently remove their aggregate contribution to attention. Merging-based alternatives preserve more information but can perturb retained keys and values that should remain exact. We observe that the information omitted by cache eviction can be formulated as residual statistics in both the numerator and denominator of softmax attention. Based on this observation, we propose ResKV, which divides a fixed KV budget into an exact main cache and a compact residual cache that reconstructs the contribution of omitted tokens. ResKV lets main-cache tokens and residual entries participate in the same softmax normalization, so residual entries restore both attention numerator and denominator mass rather than acting as a post-hoc correction. A construction-time validation proxy determines residual allocation for each layer and KV head, while a decode-time dynamic gate adjusts residual contributions for individual queries. Comprehensive evaluations on LongBench and RULER, covering query-aware and query-agnostic settings, multiple backbones, cache budgets, and representative compression baselines, demonstrate broad improvements under the same retained KV budget while preserving the practical efficiency of compressed decoding, including peak memory usage and long-context decode throughput.",
+      "authors": [
+        "Yuhang Zhan",
+        "Lisi Chen",
+        "Shuo Shang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29591",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29591v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29591"
+    },
+    {
+      "id": "2607.29585",
+      "arxivId": "2607.29585",
+      "title": "Sycophancy Undermines Epistemic Vigilance in Cooperative Vision-Language Tasks",
+      "briefSummary": "To maintain common ground in cooperative conversation, humans iteratively update their beliefs as conversation participants share new information; participants who are epistemically vigilant detect when new information...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "To maintain common ground in cooperative conversation, humans iteratively update their beliefs as conversation participants share new information; participants who are epistemically vigilant detect when new information conflicts with prior beliefs and take steps to repair these conflicts. In order for AI systems to serve as reliable partners in complex cooperative tasks, they must similarly weigh incoming information against their own private evidence and shared context and appropriately surface inconsistencies when they arise. To measure the epistemic vigilance of vision-language models in cooperative settings, we present an information-asymmetric, dialog-based \"spot-the-difference\" task. Two models are privately shown one image each, and must determine through conversation whether the images are identical or, if not, identify the difference. Models routinely fail at this: they frequently overlook key evidence in their private image in favor of agreeing with their conversational partner, even when their agreement is unwarranted. We relate these violations of epistemic vigilance to the broader behavior of sycophancy, which manifests itself in cooperative goal-oriented dialog as over-accommodation and weak evidential grounding. Our results show that model steering to reduce sycophancy with a vector learned from task-agnostic sycophancy examples can reduce epistemic vigilance-related errors, making models more faithful reporters of their evidence, and in turn, more reliable partners in information-asymmetric cooperative tasks.",
+      "authors": [
+        "Rupak Sarkar",
+        "Neha Srikanth",
+        "Saloni Gupta",
+        "Claire Bonial",
+        "Philip Resnik",
+        "Rachel Rudinger"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29585",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29585v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29585",
+      "comment": "9 pages, 3 figures, 3 tables"
+    },
+    {
+      "id": "2607.29539",
+      "arxivId": "2607.29539",
+      "title": "ARB: A Matched Authorship-Rewriting Benchmark Dataset for AI-Text Detector Evaluation",
+      "briefSummary": "Standard AI-text detection benchmarks compare human-written text against text generated directly by large language models (LLMs).",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Standard AI-text detection benchmarks compare human-written text against text generated directly by large language models (LLMs). While prior work has shown that rewriting and paraphrasing can degrade detector performance, it remains unclear whether performance measured on this conventional benchmark predicts detector behavior when human-authored content is rewritten by an LLM. To address this gap, we introduce Authorship-Rewriting Benchmark (ARB), built from 1,800 human source texts (600 each from XSum, WritingPrompts, and OpenWebText) and four open-weight generators (Llama-3.2-3B, Qwen2.5-7B, Mistral-7B, Gemma-2-9B). Each source item yields four matched variants: human-written (HUMAN), direct LLM generation (Free-LLM), LLM-rewritten human text (H2L), and same-generator LLM-rewritten LLM text (LLM2L). We evaluated five detectors (FastDetectGPT, Binoculars-falcon-7b, RADAR, BERT-Defense, RoBERTa-Defense) at a strict 1%-false-positive operating point (TPR@1%FPR). FastDetectGPT and Binoculars-falcon-7b detected 91.2% and 93.5\\% of direct LLM text, but only 30.8% and 15.1% of human text an LLM had rewritten, a drop of 60-78 percentage points. The same detectors retained 78.3% and 83.0% recall when LLM text was rewritten by the same model, a much smaller decline of 10-13 points. RADAR followed the same pattern (66.8% to 12.2%), while BERT-Defense and RoBERTa-Defense stayed below 3% recall across all regimes. These results show that detector performance measured on the conventional human-vs-LLM benchmark does not transfer to human-authored text revised by an LLM, even though the same detectors remain largely robust to LLM-only rewriting.",
+      "authors": [
+        "Gaetano Perrone",
+        "Simon Pietro Romano"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29539",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29539v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29539"
+    },
+    {
+      "id": "2607.29484",
+      "arxivId": "2607.29484",
+      "title": "Evidence-Type Competition: When Can Interventional Data Teach Language Models Causal Direction?",
+      "briefSummary": "Interventional data is widely regarded as the gold standard for teaching models causal reasoning.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Interventional data is widely regarded as the gold standard for teaching models causal reasoning. We test this assumption in a fully controlled synthetic environment pitting observational correlation against causal effect, and find it fails instructively. In Simpson's-paradox worlds, where the two have systematically opposite signs, increasing the fraction of interventional samples in pretraining does not improve causal direction: the magnitude of the model's do()-response grows monotonically, yet its sign is copied from the observational context. What governs whether interventional evidence is used is not the training mixture but the evidence type present in the context at inference time. Under an identical training recipe, a purely observational context induces systematic sign reversal in 29/50 worlds, a mixed context in 19/50, while aligned interventional probes alone yield 41/50 correct. Erasing observational evidence from the context immediately releases the suppressed causal interpolation ability (ratio_true = +0.56); a four-state content manipulation shows the switch is content-mediated and graded. The suppression is stable across training seeds (11/11 strong reversals persist on a matched-protocol second seed) and robust as a rate at 0.93B parameters (31.8% vs. 6% reversals in the matched probe-only arm), even as absolute gains shrink four-fold. An external audit on CLadder exposes a learned positive-effect prior with a two-layer structure: sign-randomized retraining removes it in-distribution but not out-of-distribution. We summarize: the capability lives in the weights; the switch lives in the context, and activation patching localizes the switch to the middle layers' observational rows. We further quantify the sampling noise floor of probe-based causal evaluation and an evidence-averaging protocol that cuts sign errors from 26% to 9%.",
+      "authors": [
+        "Xining Xun"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29484",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29484v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29484",
+      "comment": "13 pages, 6 figures, 4 tables"
+    },
+    {
+      "id": "2607.29433",
+      "arxivId": "2607.29433",
+      "title": "Know It, Act on It: Investigating Memory Utilization in LLM Personalization",
+      "briefSummary": "As large language model (LLM) agents evolve into personalized companions, memory has emerged as a core capability.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "As large language model (LLM) agents evolve into personalized companions, memory has emerged as a core capability. However, LLMs face a knowledge utilization problem: they may fail to act on relevant user preferences even when they are fully present in context. When an agent fails to tailor its response in a context where previously shared user preferences should matter, it is unclear whether the model failed to remember that information or remembered it but failed to use it. To isolate this breakdown, we introduce a decoupled evaluation paradigm that administers paired Know and Act tests to the same user preference. We conduct large-scale experiments across 16 systems and five memory architectures, evaluating 1,000 preferences embedded at three levels of expression strength. Our results show a large gap between Know and Act outcomes: agents often pass the recall test for a user preference but fail to reflect that same preference in the paired behavioral scenario. While memory architectures reduce this gap, utilization remains especially weak for health and therapy-related preferences, where failures to act carry the greatest real-world stakes.",
+      "authors": [
+        "Zhaoxin Feng",
+        "Jianfei Ma",
+        "Emmanuele Chersoni"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29433",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29433v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29433"
+    },
+    {
+      "id": "2607.29397",
+      "arxivId": "2607.29397",
+      "title": "Studying quantization trade-offs for efficient inference deployment in machine translation",
+      "briefSummary": "Deploying large language models in realistic server environments poses challenges, as the system needs to provide high-quality responses with low latency.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Deploying large language models in realistic server environments poses challenges, as the system needs to provide high-quality responses with low latency. Quantization is a common approach to reduce the memory footprint and improve inference efficiency, yet its impact on latency and throughput is rarely evaluated under controlled, orchestration-level workloads. In this work we study the quantization trade-offs of two translation model families, EuroLLM \\citep{martins2025eurollm} and Hy-MT2 \\citep{zheng2026hy} across five models ranging from 1.7B to 22B for efficient deployment on a single A100 or H100 GPU. We demonstrate that combining a document-chunking strategy with W4A8 or W8A8 quantization improves the latency-throughput Pareto-curve under a wide range of workloads. Furthermore, since standard machine translation (MT) benchmarks rely on isolated sentences and fail to capture long-context dynamics, we introduce a document-level evaluation from WMT24++ to assess how text chunking strategies affect translation quality under quantization. Our results reveal that standard segment-level evaluation can fail to predict the interaction between quantization and long-context document translation. While Hy-MT2 remains robust under quantization, EuroLLM shows strong sensitivity and translation quality collapses rapidly for all considered quantization formats. Overall, our experiments show that the trade-off between inference efficiency and translation quality depends not only on the quantization format, but also on the choice of text chunking strategy.",
+      "authors": [
+        "Jim Zhao",
+        "Sohir Maskey",
+        "Koen Oostermeijer",
+        "Douglas Orr",
+        "Teryn Jones"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.PF"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29397",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29397v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29397"
+    },
+    {
+      "id": "2607.29378",
+      "arxivId": "2607.29378",
+      "title": "PTP: Previous-Token Prediction based LLM Inversion for Near-Exact Prompt Reconstruction",
+      "briefSummary": "Large language models (LLMs) generate text by auto-regressively sampling the next token.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Large language models (LLMs) generate text by auto-regressively sampling the next token. This inherently leads to a many-to-many mapping between prompts and responses, complicating the task of inferring prompts from observed outputs. Prior work on LLM inversion frames prompt recovery as a semantic reconstruction task. They rely on fine-tuning pretrained sequence-to-sequence models on large external datasets--and requiring access to model weights or logits--to generate semantically plausible prompts. In contrast, we present a functional approach to inverting a given LLM in a black-box setting, without auxiliary aids. We train an explicit inverse language model entirely from scratch on data synthetically generated from the target LLM itself. Analogous to forward next-token prediction, our inverse model is trained using previous-token prediction, establishing a generative link between the forward and inverse processes that enables faithful prompt reconstruction. Moreover, it naturally supports diverse prompt reconstructions through sampling, whereby all such prompts induce similar responses under the forward, target LLM. Our approach generalises across datasets and exhibits transferability in reconstructing prompts from responses generated by different LLMs. Further, across the set of token based evaluation metrics for prompt and response reconstructions, our approach outperforms prior work.",
+      "authors": [
+        "Pirzada Suhail",
+        "Nagasai Saketh Naidu",
+        "Atanu R Sinha",
+        "Amit Sethi"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29378",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29378v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29378"
+    },
+    {
+      "id": "2607.29377",
+      "arxivId": "2607.29377",
+      "title": "Zero-Mem: Zero-Token Memory Operations for LLM Agents",
+      "briefSummary": "LLM agents need memory to act consistently over long interactions, yet many systems use additional LLM calls to operate that memory.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "LLM agents need memory to act consistently over long interactions, yet many systems use additional LLM calls to operate that memory. Generating intermediate records and mediating their retrieval adds recurring token and time costs, while omitted or merged details can obscure the original evidence. We ask whether structured memory access requires generation at all. Zero-Mem introduces \\emph{zero-token memory operations}: no step outside final question answering invokes an LLM or consumes LLM input or output tokens; encoder computation is accounted for separately. Zero-Mem preserves original interaction traces as its source of record. It organizes the traces in two complementary ways. An entity--context graph exposes connections across interactions, while a temporal hierarchy preserves conversational locality and session state. For each query, Zero-Mem weighs the two views, retrieves from both, and follows their structure to recover supporting relations or surrounding context. Deterministic calibration first discards conflicting evidence and then keeps the reader's answer grounded in the retrieved traces. Only the final-QA reader invokes an LLM. Across long-memory and long-context question-answering benchmarks, Zero-Mem achieves competitive performance while eliminating LLM calls and LLM-token consumption from memory operations. With the same final-QA reader and context budget, it reduces memory-operation time cost by 57.6\\% relative to the fastest compared baseline. Ablations support the contribution of the two views and their query-dependent coordination. Overall, the results show that structured agent memory need not generate an intermediate representation of the past. After peer review, the code and implementation details will be available at \\textcolor{blue}{https://github.com/TheMoon0815/Zero-mem}.",
+      "authors": [
+        "Yilin Xiao",
+        "Zhehan Zhu",
+        "Yujing Zhang",
+        "Jin Chen",
+        "Zijin Hong",
+        "Luyao Zhuang",
+        "Qinggang Zhang",
+        "Shengyuan Chen",
+        "Xiaocao Ouyang",
+        "Lingfei Ren",
+        "Xiao Huang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29377",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29377v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29377"
+    },
+    {
+      "id": "2607.29355",
+      "arxivId": "2607.29355",
+      "title": "Cross-Lingual Transfer for Machine Translation in Turkic Languages",
+      "briefSummary": "Cross-lingual transfer is central to low-resource machine translation, but its behavior within closely related language families remains insufficiently characterized.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Cross-lingual transfer is central to low-resource machine translation, but its behavior within closely related language families remains insufficiently characterized. We study transfer among five Turkic languages; Turkish, Azerbaijani, Uzbek, Kazakh, and Kyrgyz; using pairwise transfer matrices. In this setting, each model is fine-tuned with one transfer source and evaluated on a different transfer target while the translation target remains the same. Across mT5 experiments, we find that transfer is strongest between closely related Turkic pairs, especially Turkish-Azerbaijani and Kazakh-Kyrgyz. We also show that transfer direction matters, and that the same transfer source-transfer target pair can behave differently when the translation target changes. Latinization improves BLEU and chrF in several script-mismatched settings, but its effect is not uniform across metrics. Additional analyses show that transfer sources are mostly stable across different datasets and model settings.",
+      "authors": [
+        "Omer Burak Cinar",
+        "Mehmet Mert Dalkilic",
+        "Cagri Toraman"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29355",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29355v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29355"
+    },
+    {
+      "id": "2607.29287",
+      "arxivId": "2607.29287",
+      "title": "Translation with Thought: Difficulty-Adaptive Reasoning via Reinforcement Learning for Multi-Domain Machine Translation",
+      "briefSummary": "Multi-domain machine translation (MDMT) poses a unique challenge due to varying levels of linguistic complexity across domains.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Multi-domain machine translation (MDMT) poses a unique challenge due to varying levels of linguistic complexity across domains. Inspired by human translators' ability to adapt reasoning effort based on difficulty, we propose TwT (Translation with Thought), a resource-rational framework that learns to modulate inference between intuitive and deliberate reasoning. TwT is trained in two stages: (1) supervised fine-tuning on difficulty-aware long chain-of-thought traces distilled from DeepSeek-R1 and rewritten by GPT-4o to reflect human-like reasoning economy, and (2) reinforcement learning with a hybrid reward to optimize translation quality and reasoning efficiency. Evaluated on 15 benchmarks spanning in-domain and out-of-domain settings, as well as 3 seen and 59 unseen languages, with ablations across three backbone models, TwT-7B and TwT-14B outperform much larger SOTA reasoning models in translation quality, while reducing token usage by 32--60\\%. These results confirm that aligning translation behavior with cognitive principles enables robust generalization, high translation quality, and efficient reasoning in MDMT.",
+      "authors": [
+        "Yongshi Ye",
+        "Biao Fu",
+        "Chongxuan Huang",
+        "Yidong Chen",
+        "Xiaodong Shi"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29287",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29287v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29287",
+      "comment": "34 pages, 17 figures, and 21 tables. Accepted to ACL 2026"
+    },
+    {
+      "id": "2607.29252",
+      "arxivId": "2607.29252",
+      "title": "CalibratedRubric: Task-Adaptive Rubric Banks for Open-Ended LLM Evaluation",
+      "briefSummary": "Reliable evaluation of open-ended LLM outputs requires fine-grained rubrics, yet expert curation is costly and difficult to scale.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Reliable evaluation of open-ended LLM outputs requires fine-grained rubrics, yet expert curation is costly and difficult to scale. Existing automated pipelines rely on strict judge unanimity and binary variance filters, which cannot distinguish measurable rubrics from informative ones. We introduce CalibratedRubric, a task-adaptive framework that combines type-specific scoring, Bayesian rubric-measurability filtering, and item response theory (IRT)-based bank assembly. CalibratedRubric estimates each rubric's measurability with a Beta--Bernoulli agreement posterior and uses a submodular information-coverage objective to construct compact rubric banks over the observed capability range. Across financial, healthcare, general, and legal benchmarks, measurability filtering improves human-gold agreement on JudgmentBench from $κ=0.604$ to $0.743$. IRT-based greedy selection improves cross-fitted rank fidelity over random selection across all six evaluated response blocks and requires only 49 rather than 131 rubrics to reach the target correlation on FinResearchBench decision-support tasks. Task-label perturbations further reduce system separation, confirming the practical relevance of task-adaptive scoring. These results support CalibratedRubric as an efficient, uncertainty-aware approach to open-ended LLM evaluation, with calibration gains depending on sufficient judge redundancy.",
+      "authors": [
+        "Mengting Chen",
+        "Yanshu Sun",
+        "Wanting Liang",
+        "Beidi Luan",
+        "Rui Sun",
+        "Dezhi Chen",
+        "Jing Li",
+        "Zuo Bai"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29252",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29252v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29252"
+    },
+    {
+      "id": "2607.29250",
+      "arxivId": "2607.29250",
+      "title": "Data Turnstile: A Scalable Open Framework for Function-Calling Data Generation",
+      "briefSummary": "Small language models (SLMs) are attractive for agentic deployment due to low latency, reduced cost, and on-device privacy, yet they struggle with tool-use tasks where training data is scarce and noisy.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Small language models (SLMs) are attractive for agentic deployment due to low latency, reduced cost, and on-device privacy, yet they struggle with tool-use tasks where training data is scarce and noisy. Unlike larger models, SLMs cannot compensate for low-quality supervision through sheer capacity, making data quality the critical bottleneck. We present Data Turnstile, an open-source framework that takes user-defined API specifications and generates high-quality synthetic training data for function calling. Turnstile decomposes multi-turn tool-use interactions into constrained, stepwise generation with validation and error-feedback loops, providing fine-grained control over API diversity, conversation complexity, and output correctness. We demonstrate effectiveness of domain adaptation with Turnstile data on two challenging function calling benchmarks. On the BFCL single-turn benchmark, a Qwen3-0.6B fine-tuned on Turnstile data without chain-of-thought achieves 75.9% overall accuracy (versus 67.4% for the base model with thinking enabled), closing the gap with thinking-enabled Qwen3-1.7B (78.4%) and Qwen3-4B (79.9%) despite being 3$\\times$ and 7$\\times$ smaller respectively. On $τ^2$-bench, a multi-turn agentic benchmark, Turnstile-trained Qwen3-1.7B achieves 31.1% pass^1 on the Telecom domain, improving 4.7$\\times$ over its 6.6% base and surpassing Qwen2.5-32B-Instruct (27.4%), a model 19$\\times$ larger. Turnstile-trained Qwen3-0.6B achieves 24.6%, improving 7$\\times$ over its 3.5% base and approaching the 32B model (53$\\times$ larger). We release Data Turnstile along with a dataset spanning 1,000+ APIs and 100K+ multi-turn interactions.",
+      "authors": [
+        "Goutham Ramakrishnan",
+        "Megha Sharma"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29250",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29250v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29250",
+      "comment": "16 pages"
+    },
+    {
+      "id": "2607.29238",
+      "arxivId": "2607.29238",
+      "title": "Small Is Enough: Per-User Style Rewriting of AI-Edited Text via LoRA Adapters",
+      "briefSummary": "InMyStyle is a privacy first, single user system that adapts small language models to rewrite AI-edited text towards an individual user's writing style without an instruction prompt at inference.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "InMyStyle is a privacy first, single user system that adapts small language models to rewrite AI-edited text towards an individual user's writing style without an instruction prompt at inference. Given a user's documents, it uses multiple local helper LLMs to construct paired training examples and fine tunes LoRA adapters on base models ranging from 0.5B to 7B parameters. Length aware generation budgets and automatic chunking support inputs of different lengths. On 219 evaluation pairs from a scientific-paper corpus, the automatic composite score plateaus at 0.69 [scale 0-1] across all model sizes under both greedy and sampled decoding. This observed plateau suggests that small models are sufficient for the measured rewriting task, with model size determining trade-offs rather than a stable quality ranking. As a secondary evaluation, 400 ratings from five LLM judges give InMyStyle outputs a mean perceived AI-ness score over 20% lower than their helper-AI generated inputs, while mean perceived AI-ness scores decrease with model size within InMyStyle.",
+      "authors": [
+        "Antorweep Chakravorty"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CY",
+        "cs.ET",
+        "cs.HC"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29238",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29238v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29238"
+    },
+    {
+      "id": "2607.29211",
+      "arxivId": "2607.29211",
+      "title": "Knowing When to Quit: Diagnosing and Training LLMs to Abort Futile Reasoning",
+      "briefSummary": "Large language models generate computationally expensive yet semantically void reasoning on beyond-capability tasks, creating risks where plausible-sounding but incorrect derivations mislead users.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Large language models generate computationally expensive yet semantically void reasoning on beyond-capability tasks, creating risks where plausible-sounding but incorrect derivations mislead users. We characterize this \\textit{futile reasoning} phenomenon through systematic analysis, revealing universal capability overreach and systematic miscalibration between capability and behavior. The dominant failure mode is specious reasoning, which outputs look superficially valid but contain subtle errors, escalating with task difficulty. To address this, we introduce \\textbf{CaRL} (\\textbf{Ca}pability-\\textbf{a}ligned \\textbf{R}einforcement \\textbf{L}earning), which aligns model behavior with capability boundaries through reward shaping that incentivizes refusal over futile reasoning and hindsight refusal augmentation that converts failures into refusal supervision. Experiments demonstrate a substantial reduction in futile reasoning while preserving performance across task difficulties, effectively achieving capability-aligned behavior without sacrificing utility. \\footnote{https://github.com/icip-cas/Knowing-When-to-Quit}",
+      "authors": [
+        "Xinyan Guan",
+        "Jiali Zeng",
+        "Chunlei Xin",
+        "Yaojie Lu",
+        "Hongyu Lin",
+        "Xianpei Han",
+        "Le Sun",
+        "Fandong Meng"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29211",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29211v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29211"
+    },
+    {
+      "id": "2607.29196",
+      "arxivId": "2607.29196",
+      "title": "Hy-MultiTurn: A Six-Dimensional Benchmark for Deep Multi-Turn Dialogue Understanding",
+      "briefSummary": "Long-running multi-turn interactions with chatbots and agents are now common, and a correct response often depends on remembering earlier details, tracking later revisions, identifying intended objects or referents, and...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Long-running multi-turn interactions with chatbots and agents are now common, and a correct response often depends on remembering earlier details, tracking later revisions, identifying intended objects or referents, and withholding action when required conditions are unmet. Existing multi-turn benchmarks typically cover short exchanges and do not fully evaluate these capabilities in long multi-turn interactions, particularly in Chinese, while offering limited insight into how and why models fail. To address these limitations, we analyze real chatbot failures to identify six recurring mechanisms and use them to define six controlled evaluation modes in Hy-MultiTurn, a Chinese benchmark for deep multi-turn dialogue understanding. The six modes evaluate constraint memory, precise execution, constraint synthesis, object localization, action suppression, and reference resolution. Across the six modes, we construct 209 controlled tasks spanning 12-76 turns, with dialogue length, irrelevant-topic distraction, and colloquial phrasing adding further difficulty. Evaluation of 22 frontier model configurations shows that Hy-MultiTurn is broadly challenging, as even GPT-5.5, the strongest overall configuration, satisfies all requirements in only 41.1 percent of responses and no model performs best in all six modes.",
+      "authors": [
+        "Eileen Ye",
+        "Jiawen Tao",
+        "Yaoming Li",
+        "Chenxu Liu",
+        "Wenhan Yu",
+        "Yaxin Fan",
+        "Xiaokun Yuan",
+        "Mengzhou Wu",
+        "Yanbing Jiang",
+        "Maxm Pan"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29196",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29196v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29196",
+      "comment": "33 pages, 7 figures, 8 tables"
+    },
+    {
+      "id": "2607.29188",
+      "arxivId": "2607.29188",
+      "title": "Detecting Experiential Intertextuality Across Migration Routes: Beyond Surface Similarity in French Narratives",
+      "briefSummary": "Migrants traversing geographically distinct routes such as the Trans-Saharan and Balkan corridors often recount strikingly parallel lived experiences: police violence, smuggler exploitation, dangerous crossings, and fam...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Migrants traversing geographically distinct routes such as the Trans-Saharan and Balkan corridors often recount strikingly parallel lived experiences: police violence, smuggler exploitation, dangerous crossings, and family separation. We introduce the task of experiential intertextuality detection: automatically identifying shared experiential echoes across migration narratives without requiring annotated training data. From 108 French migration narratives spanning both corridors, we automatically generate sentence pairs and score them using annotation-free methods: lexical baselines, sentence embeddings, POS-based structural features, a migration-specific theme lexicon, context-aware narrative features, and zero-shot LLM scoring with Qwen2.5-7B and Mistral-7B under three prompting strategies. We validate all methods against 816 expert-annotated intertextuality judgments (inter-annotator Krippendorff's $α= 0.27$). Our results reveal that all surface, structural, and embedding methods correlate only weakly with expert judgments ($r \\leq 0.30$); Qwen2.5-7B zero-shot achieves the best single-method correlation ($r = 0.38$); few-shot examples degrade Qwen but dramatically improve Mistral; narrative position significantly predicts intertextuality, with departure-phase pairs showing the highest experiential echoes; and a supervised hybrid combining all 31 features achieves $r = 0.45$, a 21% improvement over the best individual method.",
+      "authors": [
+        "Sakayo Toadoum Sari",
+        "Nelly Robin",
+        "Michelle Auzanneau",
+        "Lakhdar Sais",
+        "Veronique Petit",
+        "Marie Veniard",
+        "Said Jabbour",
+        "Fabien Delorme"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29188",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29188v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29188",
+      "doi": "10.18653/v1/2026.sigdial-1.NN",
+      "journalRef": "Proceedings of the 27th Annual Meeting of the Special Interest Group on Discourse and Dialogue (SIGDIAL 2026), Association for Computational Linguistics, 2026",
+      "comment": "11 pages, 3 figures, 5 tables. Accepted at SIGDIAL 2026 (27th Annual Meeting of the Special Interest Group on Discourse and Dialogue)"
+    },
+    {
+      "id": "2607.29185",
+      "arxivId": "2607.29185",
+      "title": "Learning Latent Reasoning Traces for Scalar Reward Models End-to-End",
+      "briefSummary": "Reward models (RMs) are central to aligning large language models with human preferences via reinforcement learning.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Reward models (RMs) are central to aligning large language models with human preferences via reinforcement learning. Although traditional scalar RMs enable efficient and probabilistic reward modeling, they rely on superficial cues that fail to generalize to complex or out-of-distribution (OOD) tasks. Conversely, generative RMs leverage extensive reasoning to improve robustness on challenging tasks, but their natural language-based scores lack the numerical flexibility and probabilistic interpretability that scalar RMs offer. While recent approaches combine both paradigms through off-policy multi-task learning, such parallel optimization does not guarantee that generated reasoning traces actively align with or benefit downstream scalar reward prediction. To address this mismatch, we propose LatentRM, a reward modeling framework that learns intermediate reasoning traces as discrete latent variables to explicitly maximize the likelihood of downstream scalar rewards. Through on-policy optimization of the latent reasoning space end-to-end, LatentRM tightly couples deep reasoning-based evaluation with precise scoring. Extensive validations on in-distribution and OOD datasets and RLHF show that LatentRM outperforms scalar, generative, and hybrid RMs on preference modeling and policy alignment across tasks ranging from open-ended conversation to complex reasoning.",
+      "authors": [
+        "Sanwoo Lee",
+        "Clive Bai",
+        "Hsiu-Yuan Huang",
+        "Kun Liang",
+        "Weijie Liu",
+        "Yunfang Wu"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29185",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29185v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29185"
+    },
+    {
+      "id": "2607.29168",
+      "arxivId": "2607.29168",
+      "title": "Authorship Verification of Transcribed German-Language Videos",
+      "briefSummary": "Authorship Verification (AV) represents an important subfield of digital text forensics and addresses the fundamental question of whether two texts were written by the same author.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Authorship Verification (AV) represents an important subfield of digital text forensics and addresses the fundamental question of whether two texts were written by the same author. Although the field has made substantial progress over the past two decades, several important challenges remain unresolved or underexplored. For instance, most AV research has focused on written texts, despite the fact that language is expressed not only in written but also in spoken form, such as in videos. Moreover, existing AV studies have predominantly concentrated on English, while other languages, including German, have received comparatively little attention. To address these research gaps, we apply AV to spoken language in the form of transcripts of German-language videos and examine the effectiveness of established AV methods in verifying a speaker's identity across video pairs. Our experimental evaluation, based on a total of ten AV methods applied to three self-compiled corpora comprising 300 videos from 150 speakers, shows that the best performance (up to 88% accuracy and 90% AUC) is achieved by traditional AV approaches based on simple character- and token n-gram representations. In contrast, more modern transformer-based approaches perform significantly worse on all evaluated corpora. Our results therefore suggest that traditional methods in the field of AV remain both competitive and relevant.",
+      "authors": [
+        "Oren Halvani",
+        "Sophie Titze"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29168",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29168v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29168",
+      "comment": "6 pages, planning to submit to WIFS 2026"
+    },
+    {
+      "id": "2607.29125",
+      "arxivId": "2607.29125",
+      "title": "M3-DuplexBench: A Multi-Turn, Multilingual, Multidomain Benchmark for Full-Duplex Spoken Dialogue Models",
+      "briefSummary": "Full-duplex spoken dialogue systems (FDSDSs) can listen while speaking, enabling natural behaviors such as smooth turn-taking, backchannel handling, and user barge-in handling.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Full-duplex spoken dialogue systems (FDSDSs) can listen while speaking, enabling natural behaviors such as smooth turn-taking, backchannel handling, and user barge-in handling. However, fair comparisons in multi-turn conversations remain a challenge. In addition, existing benchmarks provide limited coverage of languages and dialogue domains. We propose M3-DuplexBench, a multi-turn, multilingual, multidomain benchmark for FDSDSs. M3-DuplexBench supports English and Japanese and covers both casual conversation and multi-turn question answering. In addition, we evaluate models under multiple dialogue context settings, including single-turn, user-only, and teacher-forced full-context settings, to analyze how dialogue history affects model behavior. Experiments with recent FDSDSs reveal model-specific turn-taking characteristics, clear performance gaps across languages and domains, and mixed effects of dialogue context.",
+      "authors": [
+        "Ryo Fukuda",
+        "Atsushi Ando",
+        "Hiroki Kanagawa",
+        "Takatomo Kano",
+        "Marc Delcroix",
+        "Naohiro Tawara",
+        "Yuya Chiba"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29125",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29125v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29125",
+      "comment": "Submitted to SLT 2026"
+    },
+    {
+      "id": "2607.29082",
+      "arxivId": "2607.29082",
+      "title": "Can Zero-Shot LLMs Predict Child Malnutrition? A Fairness and Temporal Robustness Study",
+      "briefSummary": "Child malnutrition remains a major public health challenge in low- and middle-income countries, particularly in South Asia, where early identification of vulnerable children is critical for timely intervention and resou...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Child malnutrition remains a major public health challenge in low- and middle-income countries, particularly in South Asia, where early identification of vulnerable children is critical for timely intervention and resource allocation. This study aims to evaluate the feasibility, fairness, and temporal robustness of using a pretrained large language model (LLM) in a zero-shot setting for child stunting prediction using population health survey data. Using Bangladesh Demographic and Health Survey (BDHS) data collected between 2007 and 2022, we transformed maternal, child, healthcare, and household characteristics into semantically interpretable prompt-based representations and evaluated GPT-4o-mini for zero-shot stunting prediction, comparing its performance against a random forest baseline and assessing fairness across demographic and socioeconomic groups as well as temporal robustness across survey waves. The results demonstrate that zero-shot inference using GPT-4o-mini achieved comparable balanced accuracy to the supervised baseline while exhibiting substantially higher sensitivity for identifying stunting cases, relatively consistent performance across child sex groups, and stable predictive behaviour across BDHS waves; however, important fairness disparities were observed across residence and household wealth categories, highlighting the need for further investigation before deployment of foundation models in public health prediction settings.",
+      "authors": [
+        "Muhammad Ashad Kabir",
+        "Md Ahshanul Haque"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29082",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29082v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29082",
+      "comment": "Accepted to AIME 2026 Workshop"
+    },
+    {
+      "id": "2607.29079",
+      "arxivId": "2607.29079",
+      "title": "Faster but Different: Diagnosing and Controlling Content Drift in Accelerated Multimodal Diffusion Language Models",
+      "briefSummary": "Training-free acceleration makes diffusion-based multimodal large language models (dMLLMs) more deployable, but it may silently change generated content.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Training-free acceleration makes diffusion-based multimodal large language models (dMLLMs) more deployable, but it may silently change generated content. We study this serving-time consistency problem on 300 real images, comparing Fast-dLLM outputs with the same model's unaccelerated outputs. Across the mild parallelism induced in our long-form setting (1.05--1.25 committed tokens per step), confidence-threshold tuning changes decoding behavior but not baseline agreement. State-refresh ablations and an image-swap intervention instead identify stale visual and generated-text states as contributors to drift. For the tested Fast-dLLM implementation, shortening the KV-cache refresh interval yields a monotonic speed--agreement frontier and near-exact agreement at a measured 1.3x speedup. The initial diagnosis also appears with dLLM-Cache and LaViDa, although dLLM-Cache recovers agreement only after both caches are tightened, which removes its speed advantage. Independent prompts and images reproduce the threshold-insensitivity and refresh recovery. A targeted audit finds genuine content substitution in half of 50 low-agreement pairs. In a separate blinded two-annotator evaluation, the pooled accelerated-minus-baseline factual-error difference is 0.00 (95% CI [-0.17,+0.17]); this sample detects no difference but does not establish factual equivalence. Finally, none of the tested adaptive or smoothed-refresh variants beats the fixed interval at matched compute. Our contribution is a paired diagnostic and an implementation-scoped consistency control, not an accuracy or safety guarantee.",
+      "authors": [
+        "Yaoxuan Dou",
+        "Yang Shu"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29079",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29079v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29079",
+      "comment": "9 pages, 4 figures, 6 tables. Preprint"
+    },
+    {
+      "id": "2607.29066",
+      "arxivId": "2607.29066",
+      "title": "Semantics of Subterfuge: Benchmarking Legal Deception Detection Against General-domain State-of-the-Art",
+      "briefSummary": "Deception detection has critical implications for legal proceedings, law enforcement, and online security.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Deception detection has critical implications for legal proceedings, law enforcement, and online security. Although human judgment is limited in accuracy and scalability, Natural Language Processing (NLP) offers a data-driven alternative. We present a survey and comparative analysis of NLP-based Automatic Deception Detection (ADD) focusing on the legal domain, reviewing the evolution from feature-based machine learning to Large Language Model (LLM) approaches. We conduct a unified empirical evaluation across seven datasets (two legal, five general-domain), comparing six fine-tuned transformer models and seven LLMs under four prompting strategies. The results show strong domain sensitivity, with fine-tuned models excelling in data-rich general domains and few-shot LLMs remaining competitive in low-resource legal settings. Chain-of-Thought prompting often underperforms direct classification. These findings highlight the need for domain adaptation and interpretable systems in high-stakes legal contexts.",
+      "authors": [
+        "Theekshana Samaradiwakara",
+        "Nisansa de Silva",
+        "George C. Lobb"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29066",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29066v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29066",
+      "journalRef": "ICAIL 2026",
+      "comment": "5 pages paper"
+    },
+    {
+      "id": "2607.29065",
+      "arxivId": "2607.29065",
+      "title": "Tokenizer-Agnostic Engram Module",
+      "briefSummary": "Deepseek's Engram, a conditional memory module, was introduced to trade-off storage versus reasoning in large language models.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Deepseek's Engram, a conditional memory module, was introduced to trade-off storage versus reasoning in large language models. However, the module relies on token-level $N$-gram hashing for Engram embedding lookup, introducing a tight coupling to the tokenizer used: a model with a different tokenizer would have to train its own Engram embeddings from scratch. To improve the reusability of Engram embeddings, we propose a change to the hashing routine, enabling compatibility between Engram models using different tokenizers. Instead of modelling disjoint $N$-gram spaces, we treat $N$-gram as a method to sample potentially useful byte sequences, from all possible byte sequences across tokens. We replace the XOR-based hashing with the general polynomial hashing with a joint embedding space across $N$. This work investigates the possible trade-offs and shows that this simple substitution produces comparable performance and achieves tokenizer-agnosticism: hash equivalence for byte-equivalent token sequences.",
+      "authors": [
+        "Jia Peng Lim",
+        "Hai Leong Chieu"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29065",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29065v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29065",
+      "comment": "Preprint, 7 pages"
+    },
+    {
+      "id": "2607.29044",
+      "arxivId": "2607.29044",
+      "title": "From Inline Notes to Collected Commentaries: Toward Context-Preserving Organization of Exegetical Knowledge in Classical Chinese Texts",
+      "briefSummary": "Inline notes and collected commentaries are important forms of scholarly communication that evolved within the Confucian exegetical tradition, yet have received little computational attention.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Inline notes and collected commentaries are important forms of scholarly communication that evolved within the Confucian exegetical tradition, yet have received little computational attention. Drawing on traditional Chinese exegetics and philology, this paper formulates collected commentary compilation as an NLP task and proposes a computational framework that preserves the contextual dependency of inline notes while enabling their automatic compilation and exegetical knowledge organization. It combines two-step prompt chaining for identifying the associated main-text segments and exegetical functions of annotations with cross-source mention clustering for integrating commentary across editions, achieving a CoNLL F1 score above 97% in a case study on the Classic of Mountains. Our framework lays the foundation for the large-scale organization of historical exegetical knowledge, thereby supporting a broad range of downstream philological and NLP tasks.",
+      "authors": [
+        "Ke Liang",
+        "Qi Su",
+        "Churen Huang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.29044",
+      "pdfUrl": "https://arxiv.org/pdf/2607.29044v1",
+      "htmlUrl": "https://arxiv.org/html/2607.29044",
+      "comment": "15 pages, 4 figures"
+    },
+    {
+      "id": "2607.28982",
+      "arxivId": "2607.28982",
+      "title": "PARALLEL: A Prefrontal-Aligned Reinforcement inspired Approach for Language-Model Learning under Explicit Limits",
+      "briefSummary": "Recent language models achieve strong performance across a variety of tasks, but conventional adaptation applies updates uniformly across training samples regardless of their local update benefit.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Recent language models achieve strong performance across a variety of tasks, but conventional adaptation applies updates uniformly across training samples regardless of their local update benefit. We propose PARALLEL, a prefrontal-aligned reinforcement inspired approach for language-model learning. Inspired by the complementary roles of goal-related and uncertainty-related control, PARALLEL represents these forms of information as separate controller signals and combines them with the current model representation. A reinforcement-inspired controller assigns sample-dependent update intensity using immediate utility-cost feedback. PARALLEL therefore learns when and how strongly to adapt to each sample, prioritizing beneficial updates while limiting unnecessary parameter changes. PARALLEL uses available updates more efficiently than selective baselines while retaining 94.1--99.2\\% of Full-adaptation performance. Beyond multiple-choice reasoning, experiments on XSum and CNN/DailyMail show that PARALLEL retains 96.9--98.6\\% of the ROUGE-1 and ROUGE-2 scores achieved by Full adaptation and 98.8--98.9\\% of the corresponding ROUGE-L scores. When compared at the same cumulative adaptation time or GPU energy, PARALLEL achieves higher ARC accuracy and exhibits a more stable late-stage adaptation trajectory than Full adaptation in the representative run. These results show that learning when and how strongly to update each sample supports stable and efficient post-deployment stream adaptation while avoiding unnecessary updates.",
+      "authors": [
+        "Namkyung Yoon",
+        "Sanghong Kim",
+        "Hwangnam Kim"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.28982",
+      "pdfUrl": "https://arxiv.org/pdf/2607.28982v1",
+      "htmlUrl": "https://arxiv.org/html/2607.28982",
+      "comment": "8 pages, 3 figures, and 5 tables"
+    },
+    {
+      "id": "2607.28979",
+      "arxivId": "2607.28979",
+      "title": "Mixture-of-Translators: Translating KV Caches Across Heterogeneous Large Language Models",
+      "briefSummary": "Heterogeneous Large Language Model (LLM) systems increasingly rely on shared contexts, retrieved evidence, and multi-agent dialogue histories, yet their internal key-value (KV) caches remain model-specific and cannot be...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Heterogeneous Large Language Model (LLM) systems increasingly rely on shared contexts, retrieved evidence, and multi-agent dialogue histories, yet their internal key-value (KV) caches remain model-specific and cannot be reused across architectures. Consequently, each model must repeatedly prefill or store caches for the same context, limiting the scalability of multi-model reasoning and long-context generation. We propose Mixture-of-Translators(MoT), a cache translation framework that maps context KV caches from a source LLM into the cache space of a target LLM. Unlike prior approaches that depend on a single projection path or global shared latent space, MoT uses multiple translator modules to capture diverse source--target mappings. To further reduce residual translation error, we introduce a Context Correction Loss that aligns the replayed target trajectory with the native target trajectory. We reveal two competing failure modes in cache translation: propagated translation shift from early injection and last-state shift from late injection. MoT addresses them through translator mixtures and target-side correction. Across homogeneous and heterogeneous translations among Qwen2.5, GPT-2, and OPT models, MoT preserves downstream QA performance, including Qwen2.5-7B-scale translation with 51.0% average closed-set QA accuracy and 0.43 average extractive QA F1. In practical case studies, MoT enables quality-preserving memory reuse for multi-agent reasoning and retains 96.3% of direct-context quality in long-context cache-augmented generation, demonstrating scalable KV cache reuse across heterogeneous LLMs.",
+      "authors": [
+        "Jin-woo Lee",
+        "Minkyung Song",
+        "Junghyun Oh",
+        "Seunghoon Han",
+        "Soyoung Park",
+        "Gwangseon Jang",
+        "Sungsu Lim"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.28979",
+      "pdfUrl": "https://arxiv.org/pdf/2607.28979v1",
+      "htmlUrl": "https://arxiv.org/html/2607.28979"
+    },
+    {
+      "id": "2607.28966",
+      "arxivId": "2607.28966",
+      "title": "BLADE: Boundary-Expanded and Layer-Adaptive Dynamic Exit for Efficient LLM Reasoning",
+      "briefSummary": "Large language models often improve task performance by generating long reasoning traces, but the resulting computation is frequently wasted on redundant verification and revision.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Large language models often improve task performance by generating long reasoning traces, but the resulting computation is frequently wasted on redundant verification and revision. Existing probe-based early-exit approaches mainly inspect explicit self-doubt expressions, leaving many earlier termination opportunities undetected. Expanding inspection to ordinary reasoning boundaries improves coverage, but also exposes highly diverse intermediate states whose predictive information may reside in different hidden layers. We present Boundary-Expanded and Layer-Adaptive Dynamic Exit for Efficient LLM Reasoning (BLADE), a lightweight framework that dynamically terminates reasoning by estimating whether the generated prefix is sufficient for correct answering. BLADE constructs multi-granular checkpoints from sentence, self-doubt, and paragraph boundaries, and derives robust training labels through repeated answer completions. It further learns a compact subset of informative probe layers instead of relying on fixed choices or expensive representations from all layers. At inference time, calibrated predictions are combined with checkpoint-specific confirmation rules to balance responsiveness and premature-exit risk. Experiments on five benchmarks and two Qwen3 reasoning models show that BLADE preserves near-baseline accuracy while reducing generated tokens by 24.8% on Qwen3-8B and 15.8% on Qwen3-4B. Ablation studies further confirm the benefits of diverse checkpoints and automatic layer selection, demonstrating an effective approach to more efficient LLM reasoning.",
+      "authors": [
+        "Keshu Fu",
+        "Keqin Peng",
+        "Jun Bai",
+        "Shuhan Qin",
+        "Chen Li",
+        "Junzhu Liang",
+        "Yefei Chen",
+        "Jiaqi Li",
+        "Yuanxin Ouyang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.28966",
+      "pdfUrl": "https://arxiv.org/pdf/2607.28966v1",
+      "htmlUrl": "https://arxiv.org/html/2607.28966",
+      "comment": "8 pages"
+    },
+    {
+      "id": "2607.28934",
+      "arxivId": "2607.28934",
+      "title": "FairFund-Bench: Evaluating Distributive Bias in LLM Resource Allocation",
+      "briefSummary": "Large language models (LLMs) are increasingly involved in the distribution of scarce resources, raising concerns about biased allocations based on characteristics like race and gender.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Large language models (LLMs) are increasingly involved in the distribution of scarce resources, raising concerns about biased allocations based on characteristics like race and gender. Recent LLM audits have produced inconsistent results, however, finding evidence of both positive and negative discrimination towards women and ethnic minorities, even for the same models. We show that this disagreement can arise from differences in audit format and introduce FairFund-Bench, a benchmark that systematically varies key features of previous audit designs: the evaluation task (rating, ranking, or allocation), comparison context (single or multi-stimulus), and whether the audit is transparent or disguised. The benchmark comprises 600 requests for financial assistance created from human-authored templates (calibrated against 1.3M real GoFundMe campaigns) across three domains, four race and two gender categories, and five causal framings of need derived from welfare deservingness theory. Across 14 models, audit format changes the direction of bias: models advantage minorities when rating claimants individually but penalize some groups when ranking them side by side. Bias magnitude, though small overall, is several times greater in disguised audits than in transparent ones, where, faced with appeals differing only in claimants' names, models overwhelmingly split funds equally. Causal framing effects, by contrast, exceed demographic effects by roughly an order of magnitude and are consistent across models and audit formats, indicating that current LLMs robustly reproduce human deservingness evaluations. The benchmark scores models on four criteria (demographic bias, deservingness alignment, cross-task consistency, and cross-context consistency), is publicly available, and can be readily adapted to other substantive domains.",
+      "authors": [
+        "Martin Lukk"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CY"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.28934",
+      "pdfUrl": "https://arxiv.org/pdf/2607.28934v1",
+      "htmlUrl": "https://arxiv.org/html/2607.28934",
+      "comment": "19 pages, 7 figures. Code and data: https://github.com/martinlukk/fairfund-bench"
+    },
+    {
+      "id": "2607.28906",
+      "arxivId": "2607.28906",
+      "title": "Token-Level Diagnosis of Sycophancy in LLMs with Attribution-Guided Steering",
+      "briefSummary": "Sycophancy refers to the tendency for large language models (LLMs) to match user beliefs at the cost of factual correctness, thereby undermining model reliability.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-07-31",
+      "updatedAt": "2026-07-31",
+      "abstract": "Sycophancy refers to the tendency for large language models (LLMs) to match user beliefs at the cost of factual correctness, thereby undermining model reliability. Prior work on evaluating sycophancy in LLMs aims to assess whether a model's output matches an authority's claim, but cannot reveal which part of the prompt drives this sycophantic behavior. To bridge this gap, we investigate the relationship of sycophantic responses with an authority's credentials, their assertive claim, and the problem statement. We introduce the Authority Share Index (ASI), an Integrated Gradients-based token attribution method, which measures the degree to which a model's decision is driven by authority-related text. Through extensive experiments across five models and 30 test configurations, we find that sycophantic responses consistently direct more attention toward authority tokens than resistant ones. Moreover, our token attribution method reveals that for the sycophantic cases, the claim asserted by the authority receives more attention than the authority's credentials. Building on these findings, we propose attribution-guided contrastive activation steering to mitigate LLM sycophancy. Our method constructs a steering vector from high-attribution tokens of sycophantic and resistant responses, selectively pushing models toward resistance. This enables inference-time steering without retraining, lowering sycophancy from 96% to 25% in the strongest case. Together, our results show that token-level attribution can both explain what drives sycophancy and directly inform a practical intervention.",
+      "authors": [
+        "Hieu Nguyen",
+        "Mahammed Kamruzzaman",
+        "Anshuman Chhabra",
+        "Gene Louis Kim"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2607.28906",
+      "pdfUrl": "https://arxiv.org/pdf/2607.28906v1",
+      "htmlUrl": "https://arxiv.org/html/2607.28906"
+    },
     {
       "id": "2607.28618",
       "arxivId": "2607.28618",
@@ -1772,823 +2565,6 @@
       "arxivUrl": "https://arxiv.org/abs/2607.26981",
       "pdfUrl": "https://arxiv.org/pdf/2607.26981v1",
       "htmlUrl": "https://arxiv.org/html/2607.26981"
-    },
-    {
-      "id": "2607.26977",
-      "arxivId": "2607.26977",
-      "title": "TREK: A Travel Reasoning and Evaluation Kit for LLM Agents in Complex Trip Planning",
-      "briefSummary": "Travel planning is a demanding stress test for tool-using LLM agents: a usable itinerary is a single artifact that must be right along many axes at once - every flight, hotel, and attraction must exist and be bookable,...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Travel planning is a demanding stress test for tool-using LLM agents: a usable itinerary is a single artifact that must be right along many axes at once - every flight, hotel, and attraction must exist and be bookable, the days must be physically traversable, the total must clear a budget, and the plan must serve a traveler whose needs are only partly stated. Existing agent benchmarks reward these properties one at a time and grade the final output with soft or LLM-judged rubrics, which cannot certify that a returned plan is executable and are neither reproducible nor auditable. We introduce TREK (Travel Reasoning and Evaluation Kit), a benchmark for feasible itinerary synthesis: producing a single plan that is jointly constraint-correct, hallucination-free, spatio-temporally executable, budget-valid, and responsive to the traveler's unstated persona needs. TREK comprises 800 multi-constraint tasks - 533 feasible and 267 provably infeasible with typed route/entity/budget causes - over a synthetic, internally consistent knowledge base of 212,530 records across 375 cities and 13 personas, served through a production-style tool sandbox of validated RESTful APIs. Every task is scored by a fully deterministic, rule-based evaluator with no LLM judge and ships a human-verified gold reference that scores a perfect 1.0 under that same evaluator, so the ceiling is demonstrably achievable and every remaining gap is an agent limitation rather than scorer strictness. Evaluating 15 LLM agents across nine constraint dimensions, we find that even the strongest (GPT-5.6) produces a fully-feasible plan on only 46.2% of solvable tasks, with a median of 6.6% and a floor of 0.0%; satisfying travelers' unstated needs emerges as the universal bottleneck, unsolved even at the frontier. We release the dataset, tool sandbox, deterministic evaluator, and agent code as a fully reproducible benchmark.",
-      "authors": [
-        "Jinhu Qi",
-        "Wentao Zhang",
-        "Siu Man Ng",
-        "Feiyang Xu",
-        "Yanyu Chen",
-        "Yaoman Li",
-        "Irwin King"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26977",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26977v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26977",
-      "comment": "Code, data, and evaluator: https://github.com/TonyQJH/TREK-A-Travel-Reasoning-and-Evaluation-Kit-for-LLM-Agents-in-Complex-Trip-Planning"
-    },
-    {
-      "id": "2607.26967",
-      "arxivId": "2607.26967",
-      "title": "Generation or Judgement? A Paradigm Perspective on LLM-Based Emotion-Cause Pair Extraction in Conversation",
-      "briefSummary": "Emotion-cause pair extraction in conversation (ECPEC) identifies utterance pairs in which one utterance causes an emotion expressed in another.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Emotion-cause pair extraction in conversation (ECPEC) identifies utterance pairs in which one utterance causes an emotion expressed in another. Recent LLM-based approaches formulate ECPEC at markedly different granularities, ranging from generating complete pair sets to judging individual candidate pairs. In this paper, we make the surprising observation that task formulation substantially affects performance, where pair-level judgement outperforms dialogue-level generation in all 18 controlled comparisons. We investigate the sources of this paradigm gap and find that many relations omitted by dialogue-level generation remain recognizable under explicit pair queries, under which the model recognizes 92.7%-98.1% of emotion-cause relations. This suggests that LLMs can recognize emotion-cause relations but struggle to discover and return complete pair sets. Pair-level judgement alleviates this burden, although its candidate rankings are more reliable than the binary decisions produced by a shared threshold. Based on this diagnosis, we introduce an auxiliary retriever that selectively re-examines ambiguous boundary cases, yielding consistent F1 improvements of 0.50-1.46 points across three datasets while maintaining an inference time of only 1.49x that of the baseline paradigm. These findings show that task decomposition and candidate scope are critical to effectively utilizing LLMs for ECPEC.",
-      "authors": [
-        "Weijie Feng",
-        "Hongchuang Wang",
-        "Binbin Liu",
-        "Zhiyong Cheng"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26967",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26967v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26967"
-    },
-    {
-      "id": "2607.26952",
-      "arxivId": "2607.26952",
-      "title": "Credit Cards, Confusion, Computation, and Consequences: What Can We Uncover About Language Model Reasoning?",
-      "briefSummary": "We introduce CreditCardQA, the first financial literacy benchmark for numerical reasoning derived from real credit card agreements.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "We introduce CreditCardQA, the first financial literacy benchmark for numerical reasoning derived from real credit card agreements. The dataset contains 1,800 questions, including first-person variants that reflect how consumers naturally ask about fees, interest, and payments. We evaluate a range of large language and reasoning models under Chain-of-Thought (CoT) and Program-of-Thought (PoT) prompting. Overall, PoT yields consistent performance gains, particularly for models with weaker baseline reasoning, and narrows gaps between open- and closed-source systems. Through error analysis, we show that failures arise less from arithmetic and more from misapplied financial rules, missed conditions, and misunderstandings of contractual terms. We further analyze question difficulty and find that comparisons, conditional logic, and monetary constraints are especially challenging. We also find that errors often arise in edge cases such as late-payment penalties or small-balance scenarios that are more likely to affect lower-income or financially vulnerable individuals.",
-      "authors": [
-        "Arnav Hiray",
-        "Agam Shah",
-        "Caleb Lu",
-        "Meghaj Tarte",
-        "Harsit Mittal",
-        "Sudheer Chava"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26952",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26952v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26952",
-      "comment": "Accepted at CoLM 2026"
-    },
-    {
-      "id": "2607.26929",
-      "arxivId": "2607.26929",
-      "title": "Same Evidence, Different Target: Decoding How Diagnostic Evidence Bears on Causal Questions from Language-Model States",
-      "briefSummary": "The same diagnostic result can support or challenge one causal claim yet fail to address another when the claims concern different populations, outcomes, estimands, pathways, or identifying assumptions.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "The same diagnostic result can support or challenge one causal claim yet fail to address another when the claims concern different populations, outcomes, estimands, pathways, or identifying assumptions. When the evidence and target vary together, a correct answer may reflect favorable or adverse wording, lexical overlap, or a familiar diagnostic pattern rather than matching the evidence to the causal question. We introduce paired prompts that repeat the same diagnostic evidence verbatim while changing the causal target. Each prompt is labeled Favors, Challenges, Unresolved, or Wrong Target according to how the evidence bears on the causal question. A pair is recovered only when both prompts are classified correctly. Using linear readouts trained on a separate development set, we analyze the final-token hidden state from the penultimate transformer block of Qwen2.5-7B-Instruct, Qwen3-8B, and Llama-3.1-8B-Instruct. On the 49-pair primary benchmark spanning nine diagnostic families, balanced accuracy ranges from 0.654 to 0.659 and 18-21 pairs are recovered. Two independent human reviewers assigned the same label to 95 of the 98 prompts (96.9%). Across checkpoints, balanced accuracy and complete-pair recovery exceed permutation nulls that preserve development scenario groups. In Qwen2.5, full-prompt balanced accuracy exceeds both restricted inputs, with paired-bootstrap intervals for both differences above zero. Readouts trained without development examples from the evaluated diagnostic family recover 21 pairs, including at least one in each of the nine families. The hidden-state readout exceeds a linear classifier on answer-option logits and text baselines in balanced accuracy and recovered pairs. These results show that the hidden state contains linearly decodable information about whether diagnostic evidence favors, challenges, or fails to address the causal target.",
-      "authors": [
-        "Weiyi Kong",
-        "Zhuoran Li"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.LG"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26929",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26929v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26929",
-      "comment": "14 pages, 1 figure; includes supplementary material"
-    },
-    {
-      "id": "2607.26928",
-      "arxivId": "2607.26928",
-      "title": "Latent-IM: Latent Interaction Management for Speech LLMs",
-      "briefSummary": "Classical spoken dialogue systems often separated dialogue management from response realization: a policy selected the next dialogue action, and a generation component expressed that action.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Classical spoken dialogue systems often separated dialogue management from response realization: a policy selected the next dialogue action, and a generation component expressed that action. As dialogue systems shift toward LLMs, this decomposition has largely disappeared into the model's hidden representations. We ask whether an LLM-internal analogue of state estimation and action control can be recovered for conversational moves such as acknowledging, checking, querying, explaining, and replying. We formulate move control as two coupled problems: selection, predicting the appropriate next move from the dialogue context, and realization, causally producing a chosen move at generation time. We introduce Latent-IM, an internal dialogue-management framework that provides a general interface for choosing and deploying conversational moves under different objectives. Here, we use this control to reproduce human move choices, improving average end-to-end move accuracy by 12.5 points over the unsteered backbone while performing comparably to fine-tuning.",
-      "authors": [
-        "Adar Avsian",
-        "Atahan Dokme",
-        "Tony Woo",
-        "Larry Heck"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26928",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26928v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26928"
-    },
-    {
-      "id": "2607.26909",
-      "arxivId": "2607.26909",
-      "title": "Dual-Path LLM Reasoning for Multimodal Few-Shot Knowledge Graph Completion",
-      "briefSummary": "Knowledge graph completion (KGC) aims to infer missing facts in knowledge graphs (KGs), thereby improving their completeness and supporting downstream intelligent applications.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Knowledge graph completion (KGC) aims to infer missing facts in knowledge graphs (KGs), thereby improving their completeness and supporting downstream intelligent applications. However, emerging entities and relations in real-world deployments make inductive KGC difficult, especially under few-shot and zero-shot settings. Multimodal information and Large Language Model (LLM)-derived priors can enrich sparse relational contexts, but they may also introduce noisy or hallucinated evidence. To address these issues, we propose DuPLeR, a \\textbf{Du}al-\\textbf{P}ath \\textbf{L}LM \\textbf{R}easoning framework for multimodal few-shot KGC. DuPLeR builds a calibrated relation graph by combining multimodal LLM-derived type priors with factual support structures, and performs dual-level structural reasoning over the refined relation topology. Moreover, a dual-pathway multimodal enhancement module regulates message passing with query-relevant multimodal signals and supplements entity representations after graph propagation. Experiments on eight inductive variants of two multimodal KG (MMKG) benchmarks show that DuPLeR achieves robust performance in data-scarce KGC scenarios.",
-      "authors": [
-        "Jinlan Liu",
-        "Zhiying Tu",
-        "Yongchao Xing",
-        "Yicheng Liu",
-        "Bolin Zhang",
-        "Dianbo Sui",
-        "Dianhui Chu",
-        "Hongliang Sun"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26909",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26909v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26909",
-      "comment": "10 pages, 4 figures"
-    },
-    {
-      "id": "2607.26891",
-      "arxivId": "2607.26891",
-      "title": "DIRECT: Direct Decoding for Efficient and Aligned Sequence Labeling with Large Language Models",
-      "briefSummary": "Sequence labeling is a fine-grained information extraction task, yet existing large language model-based approaches suffer from insufficient domain alignment and low inference efficiency.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Sequence labeling is a fine-grained information extraction task, yet existing large language model-based approaches suffer from insufficient domain alignment and low inference efficiency. To address these issues, we propose DIRECT, a framework that addresses these issues through training-time optimization and inference-time rectification. Specifically, DIRECT performs Direct Preference Optimization (DPO) after supervised fine-tuning to strengthen task alignment with human preferences, and introduces a controlled decoding process that enforces fixed output formats and restricts predictions to candidate sets. To further improve efficiency, a template-filling mechanism requires the model to generate only label tokens while reusing prefixed content through the KV Cache, thus reducing redundant computation. Experimental results on eight datasets demonstrate that DIRECT achieves significant improvements in both performance and efficiency compared to existing methods.",
-      "authors": [
-        "Yilei Wang",
-        "Jiaxin Gan",
-        "Kexuan Zhang",
-        "Ling Li",
-        "Wentao Zhang",
-        "Peichao Lai"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26891",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26891v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26891"
-    },
-    {
-      "id": "2607.26873",
-      "arxivId": "2607.26873",
-      "title": "SERPO: Self-Evolving Rubric Policy Optimization for Open-Ended Test-Time Reinforcement Learning",
-      "briefSummary": "Test-time reinforcement learning (TTRL) enables language models to self-evolve at inference time without labeled feedback.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Test-time reinforcement learning (TTRL) enables language models to self-evolve at inference time without labeled feedback. Existing methods rely on answer voting and therefore do not extend naturally to open-ended generation, where valid responses cannot be mapped to a shared canonical answer. Without external reward models or stronger judges, adaptation must instead construct reliable rewards from the model's own outputs. We introduce SERPO (Self-Evolving Rubric Policy Optimization), which replaces answer voting with a closed loop that co-evolves response evidence, query-specific rubrics, and policy parameters. Good-Normal-Bad (G-N-B) response evolution organizes maximally separated rollouts into ordered archives; rubric evolution retains criteria that discriminate these archives; probabilistic criterion scoring converts verdict-token likelihoods into reward signals; and policy evolution optimizes the actor with the resulting signals. New actor rollouts then refresh both the archives and rubrics, closing the three-way evolution loop. Across two model configurations, two in-domain benchmarks, and four OOD benchmarks, SERPO improves HealthBench and ResearchQA by up to 20.63 and 20.31 points over the corresponding base models, raises the six-benchmark macro-average by up to 8.06 points, and supports OOD transfer and continued cross-benchmark evolution.",
-      "authors": [
-        "Jianze Wang",
-        "Kunwang Zheng",
-        "Ying Liu",
-        "Yu Cao",
-        "Qilong Zhang",
-        "Jinlong Chen",
-        "Hua Yang",
-        "Qianglong Chen"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26873",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26873v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26873",
-      "comment": "20 pages, including appendix"
-    },
-    {
-      "id": "2607.26853",
-      "arxivId": "2607.26853",
-      "title": "From Representations to Behaviors: Exploring the Person-Situation-Behavior Triad in LLMs",
-      "briefSummary": "Human personality theories characterize traits not as isolated attributes captured by a single score, but as stable individual tendencies expressed through the interplay among persons, situations, and behaviors.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Human personality theories characterize traits not as isolated attributes captured by a single score, but as stable individual tendencies expressed through the interplay among persons, situations, and behaviors. Existing studies of personality-related behavior in LLMs have primarily focused on outputs elicited under personality conditioning, characterizing observable trait-related expressions while lacking mechanistic evidence for the existence of internal personality-related representations, their cross-situational expression, and how these representations shape specific behaviors. Building on Funder's personality triad framework, we adapt its three components for LLM analysis: Person as personality-related internal representations, Situation as contexts that afford trait-relevant responses, and Behavior as response patterns on broader social tasks. We introduce a framework for discovering, controlling, and validating trait-like representations in LLMs. First, using contrastive behavior pairs grounded in shared situations, we identify sparse internal features associated with opposing poles of personality traits through SAE decomposition. We validate their trait relevance through effects on behavior to situation, token-level activation patterns, and robustness to paraphrasing. Second, feature-level interventions induce bidirectional trait-related shifts across a separate, diverse set of situations while preserving response validity, demonstrating consistent expression across contexts. Third, applying the same interventions to social intelligence tasks reveals behavioral changes with benefit-tradeoff patterns consistent with findings from human personality research, providing behavioral-level validation beyond personality scores. Our findings provide evidence that LLMs contain controllable trait-like representations linking internal states, situational expression, and behavioral outcomes.",
-      "authors": [
-        "Ruikang Zhang",
-        "Shuo Wang",
-        "Qi Su"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26853",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26853v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26853"
-    },
-    {
-      "id": "2607.26831",
-      "arxivId": "2607.26831",
-      "title": "Language Models are not Equally Robust to Non-Canonical Tokenization across Languages",
-      "briefSummary": "Despite the existence of exponentially many valid tokenizations for a given string, language models operate on a single canonical sequence deterministically produced by the tokenizer, leaving the broader tokenization sp...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Despite the existence of exponentially many valid tokenizations for a given string, language models operate on a single canonical sequence deterministically produced by the tokenizer, leaving the broader tokenization space largely uncharacterized. In this paper, we investigate this overlooked space by studying the behavior of language models under non-canonical tokenizations across diverse languages. For English, prior work shows that models are largely invariant to alternative tokenizations that represent the same underlying string. We ask whether this invariance generalizes to other languages beyond English. We conduct a multilingual study across 27 languages spanning diverse scripts and evaluate LLM behavior under alternative tokenizations across six downstream tasks. We find that tokenization invariance does not generalize: model behavior varies substantially across languages with instruction-tuned models exhibiting an average relative performance drop of 23.7% for Llama-3.1-8B, 11.4% for Qwen3-8B, and 9.9% for Gemma-3-12B. The variation of tokenization invariance is systematic across languages. Languages that exhibit higher token fragmentation show significantly greater sensitivity to non-canonical tokenizations. Our study of tokenization robustness serves as a diagnostic of how tightly a model is coupled to its tokenizer. These results demonstrate that tokenization robustness is not a universal property of language models, but depends strongly on the language and its interaction with the tokenizer. We also show that LoRA fine-tuning with multi-tokenization training data provides an effective mitigation for tokenization sensitivity. Fine-tuning on English alone improves tokenization robustness across languages, while systematically sampling diverse non-canonical tokenizations achieves the strongest overall performance.",
-      "authors": [
-        "Poulami Ghosh",
-        "Preethi Jyothi"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26831",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26831v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26831"
-    },
-    {
-      "id": "2607.26825",
-      "arxivId": "2607.26825",
-      "title": "From Found to Designed: Concepts as a Design Axis for Large Language Models",
-      "briefSummary": "Large language models (LLMs) encode rich concept-like information, but represent it implicitly through distributed statistical associations rather than as explicit, structured, compositional concepts.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Large language models (LLMs) encode rich concept-like information, but represent it implicitly through distributed statistical associations rather than as explicit, structured, compositional concepts. Consequently, concept-level structure is typically \\emph{found} rather than \\emph{designed}: it is recovered after training through probing or dictionary learning, with no architectural guarantee of stability, compositionality, controllability, or alignment with human conceptual organization. We argue that concepts should instead be treated as a design axis for LLMs, and map the design space along two dimensions: the pipeline stage at which concept structure is introduced (training objective, core architecture, inference, or post-hoc interpretation), and whether that structure is internally derived from the model's own representations or grounded in external resources. This taxonomy reveals three broad patterns: inference-time approaches remain comparatively underexplored, related ideas have developed largely in isolation across pipeline stages, and externally grounded methods span the entire pipeline despite often being described under different terminology. Together, these observations motivate moving beyond recovering concept-like structure from trained models toward designing LLMs with explicit conceptual representations.",
-      "authors": [
-        "Chen Shani"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26825",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26825v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26825"
-    },
-    {
-      "id": "2607.26795",
-      "arxivId": "2607.26795",
-      "title": "When Does Span-Guided Detoxification Help? Human Preferences and Evaluator Diagnostics in a Controlled Comparison",
-      "briefSummary": "Span-guided rewriting aims to preserve meaning by localizing edits to annotated harmful spans, but the same constraint can leave harmful intent insufficiently mitigated.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Span-guided rewriting aims to preserve meaning by localizing edits to annotated harmful spans, but the same constraint can leave harmful intent insufficiently mitigated. We present a controlled exploratory comparison of span-guided and unguided detoxification on a mixed-source English evaluation set comprising manually curated inputs and HateXplain test items. We conduct a dense blinded human evaluation under a fixed single-generator setting. Human preferences reveal a trade-off rather than a uniformly superior rewriting strategy. Span-guided outputs are favored when localized editing preserves the original stance and avoids unnecessary modification, whereas unguided outputs are favored when broader rewriting achieves more complete mitigation. This contrast varies substantially across the study-defined strata: the two strategies are competitive in the strong stratum, while unguided rewriting is clearly preferred in the mild stratum. Rationale annotations trace this difference to complementary failure risks: residual harm after localized editing and over-modification after broader rewriting. We treat automatic evaluation as a diagnostic rather than a substitute for human judgment. Toxicity-similarity scalarizations, a multi-generator analysis, and two general-purpose LLM judges reproduce parts of the aggregate tendency but do not yield an analogous stratified contrast. These setting-specific findings do not establish a severity-based routing rule. Instead, they motivate evaluation protocols that assess mitigation sufficiency and meaning preservation separately and report both residual harm and over-modification alongside aggregate scores.",
-      "authors": [
-        "Kyungwon Park"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26795",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26795v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26795",
-      "comment": "12 pages, 3 figures"
-    },
-    {
-      "id": "2607.26780",
-      "arxivId": "2607.26780",
-      "title": "Enhancing Generative Information Extraction with Two-step Validation: A Product Attribute Use Case",
-      "briefSummary": "The ability of large language models (LLMs) to process and generate text has introduced potential for applications in information extraction (IE).",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "The ability of large language models (LLMs) to process and generate text has introduced potential for applications in information extraction (IE). While it's debated whether LLMs outperform smaller fine-tuned models for classification tasks, their strong generalization capability makes them promising for domains with limited labeled data available for fine-tuning. This advantage is particularly relevant for the emerging application of the digital product passport (DPP), where the problem space is broad but domain-specific data remains scarce. Motivated by this use case, we apply generative IE to the product domain, explicitly addressing efficiency, generalizability, and data privacy constraints. We propose a two-step validation method that integrates a PLM block into the generative IE pipeline and thereby leverages LLMs' correction capability. We discover that such a validation task enhances LLM performance, particularly on the extraction of weakly expressed, low-salience entities that appear sparsely throughout the text. For certain entities, the performance of mid-size models can even reach levels comparable to larger models, and the improvement of first-step PLM predictions also enhance the final LLM output. Nevertheless, the effects on the smallest open-source LLMs (e.g., Llama-3.2 3B) is limited. Based on the findings, we develop a demo application for product information extraction that utilizes locally deployed LLMs, targeting further adaptations to real-world DPP use cases.",
-      "authors": [
-        "Yi-Sheng Hsu",
-        "Nermeen Abou Baker",
-        "Uwe Handmann"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26780",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26780v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26780",
-      "comment": "13 pages"
-    },
-    {
-      "id": "2607.26762",
-      "arxivId": "2607.26762",
-      "title": "Relation Geometry in Semantic Space of Language Models",
-      "briefSummary": "When it comes to generating vector representations of words, current language models are achieving high-quality results.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "When it comes to generating vector representations of words, current language models are achieving high-quality results. However, what is not known is the extent to which knowledge about semantic relations is represented in the geometry of the semantic spaces created in this way. In order to answer this question, we study the relation geometry of such semantic spaces from three perspectives. We first examine whether words standing in a particular relation to a target word~(called relata) occupy the same region in semantic space, and whether the regions corresponding to different relations are distinct from each other. We then verify to what extent semantic spaces reflect certain well-known properties of relations, such as symmetry, asymmetry, and transitivity. Finally, we consider which information about the target words and relata is more important for relation geometry: their surface forms, or their contexts. We conduct experiments on six semantic relations using causal, masked, and diffusion language models. The results show that relata in asymmetric relations relatively clearly occupy a distinct region in semantic space. Asymmetric relations' properties are only moderately well encoded in the semantic space, yet better than those of symmetric ones. Furthermore, when considering the question which information source has the strongest impact on results amongst the models we evaluated, we find that lexical information tends to be more important for the causal language model, whereas contextual information is more important for the masked and diffusion language models. Our results empirically show that relation geometry is not equally well-represented for all relations in semantic space, suggesting that there is a difference in how well semantic relations might be learned from distributional information alone.",
-      "authors": [
-        "Zhihan Cao",
-        "Hiroaki Yamada",
-        "Simone Teufel",
-        "Tatsuya Hiraoka",
-        "Kentaro Inui",
-        "Hitomi Yanaka",
-        "Takenobu Tokunaga"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26762",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26762v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26762",
-      "comment": "Manuscript under review"
-    },
-    {
-      "id": "2607.26760",
-      "arxivId": "2607.26760",
-      "title": "Metis: Memory Foundation Model",
-      "briefSummary": "Recent advances in AI agents have increasingly internalized native capabilities into their underlying foundation models, giving rise to multimodal foundation models and large reasoning models.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Recent advances in AI agents have increasingly internalized native capabilities into their underlying foundation models, giving rise to multimodal foundation models and large reasoning models. However, agent memory is still primarily implemented through external modules, leaving the native memory capability largely unexplored. In this paper, we take a first step toward this direction by introducing memory foundation models, which empower foundation models with native memory capabilities. We formalize native memory from two perspectives: a persistent and dynamically evolving memory state within the backbone, and native memory procedures that autonomously store and utilize information through model computation. We show that native memory offers advantages in architecture, end-to-end optimization, and efficiency. Based on this formulation, we propose Metis, the first prototype of memory foundation models. Metis introduces a new architecture that equips a foundation model with a native memory state, allowing historical information to be compressed into the model and accessed through memory attention. We construct large-scale memory-specific training data and introduce multiple optimization objectives to acquire these native memory procedures through mid-training. The online memory maintenance of Metis is gradient-free, and the memory update requires only a forward pass. At inference time, all learned model weights remain frozen, while the native memory states are autonomously transformed through standard forward computation. Through extensive experiments, we show that Metis exhibits native memory capabilities and further provide a detailed analysis of its strengths, limitations, and behaviors. To facilitate future research on memory foundation models, we release our project and model checkpoints.",
-      "authors": [
-        "Zeyu Zhang",
-        "Ziliang Guo",
-        "Yihang Sun",
-        "Xichong Zhang",
-        "Xixuan Hao",
-        "Zehao Lin",
-        "Yang Zhang",
-        "Xiaoyan Zhao",
-        "Tong Shen",
-        "Bo Tang",
-        "Zhi-Qin John Xu",
-        "Junchi Yan",
-        "Haofen Wang",
-        "Xu Chen",
-        "Feiyu Xiong",
-        "Zhiyu Li",
-        "Tat-Seng Chua"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.LG"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26760",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26760v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26760",
-      "comment": "42 pages, 9 figures, 14 tables"
-    },
-    {
-      "id": "2607.26751",
-      "arxivId": "2607.26751",
-      "title": "Phoneme- vs. Character-Level Targets and Selective State-Space Models for Intracortical Brain-to-Text",
-      "briefSummary": "State-of-the-art intracortical brain-to-text systems pair a neural-sequence phone decoder with an external language model.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "State-of-the-art intracortical brain-to-text systems pair a neural-sequence phone decoder with an external language model. Two design axes remain underexplored: whether selective state-space models (Mamba) improve on recurrent decoders, and how the output target (phonetic vs.\\ character) interacts with that choice. On the public Brain-to-Text '25 benchmark, we study a controlled 2x2 grid (GRU vs.\\ hybrid Mamba decoder; phonetic vs.\\ character targets) trained with a CTC objective under one reproducible protocol. The recurrent baseline remains strongest: the best phonetic GRU reaches 12.62\\% PER and 21.19\\% WER, while the best textual GRU after LM rescoring reaches 13.39\\% CER and 26.28\\% WER. The Mamba hybrid is competitive but does not surpass it. Ablations isolate architectural contributions, and error analysis shows representation-dependent failures: articulatory-like phoneme confusions vs.\\ lexical and word-boundary errors.",
-      "authors": [
-        "Lucas Zamora Vera",
-        "Jose A. Gonzalez-Lopez"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.AI",
-        "eess.SP"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26751",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26751v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26751",
-      "comment": "6 pages, 1 figure, 6 tables, submitted to IberSPEECH 2026"
-    },
-    {
-      "id": "2607.26726",
-      "arxivId": "2607.26726",
-      "title": "AtmosERC: Modeling Dialogue-Level Affective Atmosphere for Emotion Recognition in Conversation",
-      "briefSummary": "Emotion Recognition in Conversation (ERC) aims to predict utterance-level emotions in dialogues and has largely advanced through context-centric modeling.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Emotion Recognition in Conversation (ERC) aims to predict utterance-level emotions in dialogues and has largely advanced through context-centric modeling. However, global context is a heterogeneous signal, and not all contextual information is equally relevant to emotion prediction. This paper focuses on the affect-oriented component of this signal, termed dialogue-level affective atmosphere, which captures a latent tendency commonly reflected in conversational emotion patterns. To estimate and exploit this tendency, we propose AtmosERC, a graph-based ERC framework that models each dialogue as a conversational graph over utterances and speakers. A relation-aware graph extractor filters and fuses heterogeneous graph signals to produce dialogue-level and speaker-conditioned affective priors. The resulting compact prior guides lightweight sequential emotion prediction and can also be verbalized into prompt-level cues for LLM-based ERC without modifying backbone models. Experiments on four ERC benchmarks show that AtmosERC improves lightweight ERC, enhances LLM-based ERC as a plug-in cue, and yields more stable predictions under local emotional deviations.",
-      "authors": [
-        "Weijie Feng",
-        "Tongwei Zhang",
-        "Binbin Liu",
-        "Zhiyong Cheng"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26726",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26726v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26726"
-    },
-    {
-      "id": "2607.26700",
-      "arxivId": "2607.26700",
-      "title": "Automated Multilabel Mpox Research Classification with Explainable Transformer Models",
-      "briefSummary": "The Mpox outbreak remains a serious public health issue, with the WHO (World Health Organization) reporting increasing cases in some regions.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "The Mpox outbreak remains a serious public health issue, with the WHO (World Health Organization) reporting increasing cases in some regions. Research on Mpox is vital for several reasons, including vaccine development, diagnostic improvement, viral evolution studies, and preventing future outbreaks. However, the large amount of research being published makes it difficult to organize and analyze information efficiently. This study focuses on using multilabel classification to categorize 14590 Mpox research articles into key topics such as outbreaks, vaccination, and epidemiology. Among the different AI models tested, BERT performed the best, achieving 97.05% accuracy, 97.67% micro F1 score, and 96.46% macro F1 score. To better understand how the model makes decisions, SHAP was used to analyze significant word features and patterns. The results show that BERT can help automate the classification of Mpox research, making it easier for researchers, policymakers, and healthcare workers to quickly find relevant information, saving time and improving public health efforts.",
-      "authors": [
-        "Tanjim Taharat Aurpa"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26700",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26700v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26700"
-    },
-    {
-      "id": "2607.26654",
-      "arxivId": "2607.26654",
-      "title": "Constitutional Midtraining: Content Presence Drives Alignment Gains",
-      "briefSummary": "Post-training alignment is often shallow, eroding under fine-tuning.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Post-training alignment is often shallow, eroding under fine-tuning. Whether midtraining interventions, cleanly isolated from post-training, can produce durable alignment remains untested. We test this via constitutional midtraining: inserting principled, values-based content into midtraining against a replay-only control at 120B scale. Our 394M-token constitutional corpus, built from Anthropic's Constitution, uses a 2x2 factorial design (curriculum ordering x deliberative reasoning) to produce four constitutionally midtrained conditions plus a control, evaluated on self-generated and established benchmarks including alignment under pressure, value conflict resolution, blackmail, and emergent misalignment across three stages: post-midtraining, post-SFT, and post-benign fine-tuning. Constitutionally midtrained models outperform the control on alignment generalization and durability, notably on blackmail: SFT instills a blackmail propensity in all models, but constitutional midtraining blunts it, with the advantage surviving benign fine-tuning (-17.5pp). This durability does not extend to settings requiring active resistance to in-context pressure or conflict, where the advantage attenuates after SFT. The presence of constitutional content at midtraining also matters more than its structure, and constitutional midtraining incurs no cost, on average, on the capabilities we test (MMLU, ARC-Easy, piqa, GSM8K) at any stage. A modest amount of constitutional content at midtraining could therefore yield broad, persistent alignment gains, offering a cheap, complementary addition to SFT-centered pipelines. Code, data, and models are available.",
-      "authors": [
-        "Desiree Cho",
-        "Cameron Tice",
-        "Bernie Hogan",
-        "Hunar Batra",
-        "Puria Radmard",
-        "Jun Zhao",
-        "Nigel Shadbolt"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.AI",
-        "cs.CY",
-        "cs.LG"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26654",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26654v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26654"
-    },
-    {
-      "id": "2607.26640",
-      "arxivId": "2607.26640",
-      "title": "Contrastive ESA: Human Evaluation of Multiple Translations at Once",
-      "briefSummary": "Current human evaluation of machine translation typically assesses single outputs in isolation, a paradigm that suffers from high annotator noise and cost.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Current human evaluation of machine translation typically assesses single outputs in isolation, a paradigm that suffers from high annotator noise and cost. We introduce Contrastive Error Span Annotation (cESA), a protocol that presents multiple translations of the source input (text, video, audio, image). In cESA, the annotator sees multiple translations of the same document, marks major and minor error spans, and then assigns a score from 0% to 100% on absolute scale. By allowing annotators to access the shared context across multiple outputs, cESA facilitates more consistent and efficient judgments. We validate cESA using a large-scale human evaluation of English->Japanese translations of 12 models, demonstrating reductions in annotation time and noise compared to standard pointwise evaluation. Unlike existing contrastive ranking methods, cESA yields absolute quality judgments that enable simple, interpretable non-parametric model rankings without the need for post-hoc corrections.",
-      "authors": [
-        "Vilém Zouhar",
-        "Roman Grundkiewicz",
-        "Sara Rajaee",
-        "Parker Riley",
-        "Martin Popel",
-        "Rachel Bawden",
-        "Philipp Koehn",
-        "Marine Carpuat",
-        "Tom Kocmi"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.HC"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26640",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26640v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26640"
-    },
-    {
-      "id": "2607.26637",
-      "arxivId": "2607.26637",
-      "title": "Filesystem-Based Memory for LLM Agents: Organization, Evolution, and Sustainability",
-      "briefSummary": "Deployed LLM agents increasingly keep their long-term memory as a filesystem: a directory tree of markdown files that the agent itself reads, writes, and reorganizes through generic file tools.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Deployed LLM agents increasingly keep their long-term memory as a filesystem: a directory tree of markdown files that the agent itself reads, writes, and reorganizes through generic file tools. Yet research has largely passed over this medium: prior systems design bespoke memory representations and study retrieval over them, leaving the default's two working assumptions untested: that an agent can keep a growing store organized as memories accumulate, conflict, and go stale, and that this organization pays. We present the first systematic exploration of filesystem-based memory for LLM agents. We formalize the setting as three roles around one memory filesystem: a management agent integrates and organizes incoming content, a search agent answers queries with cited sources, and an execution agent supplies task trajectories that are distilled into skills, unifying declarative memory and skills in a single store. Across long-conversation benchmarks and embodied tasks, we vary memory shape (agent-organized hierarchy, verbatim dump, chunk retrieval), stream scale, tool harness (sandboxed shell, memory-tool-style functions, varied search tooling), and the strengths of the management and search agents, tracking answer quality, cost, and store health as memory grows. What organization reliably buys is search economy: organized stores roughly halve retrieval cost where material is large. Today's agents, however, fall short of the default's promise: in our growth study, organization erodes for all but the strongest management agent, and no agent we measure converts organization itself into better answers. And the model is not the only lever over a store's shape: changing the tool set alone reshapes the store as strongly as swapping the model. The study turns the filesystem default from an assumption into a design space for agent memory.",
-      "authors": [
-        "Sizhe Zhou",
-        "Sheldon Yu",
-        "Hui Wei",
-        "Junda Wu",
-        "Siru Ouyang",
-        "Yizhu Jiao",
-        "Shijia Pan",
-        "Julian McAuley",
-        "Yu Zhang",
-        "Tong Yu",
-        "Jiawei Han"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26637",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26637v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26637",
-      "comment": "59 pages, 12 figures, 18 tables"
-    },
-    {
-      "id": "2607.26627",
-      "arxivId": "2607.26627",
-      "title": "Revisiting Lossy Verification in Speculative Decoding: Mechanisms, Trade-offs, and Failure Modes",
-      "briefSummary": "Speculative Decoding (SD) accelerates large language model inference by allowing a lightweight draft model to propose tokens that are subsequently verified in parallel by a larger target model.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Speculative Decoding (SD) accelerates large language model inference by allowing a lightweight draft model to propose tokens that are subsequently verified in parallel by a larger target model. Recent approaches introduce lossy verification schemes to further improve efficiency by relaxing strict distributional matching. Yet such relaxation silently rewrites the decoding distribution, and the resulting acceleration can come at the cost of unstable, sometimes severely degraded generation quality. In this work, we present a principled analysis of the distributions induced by lossy verification methods. We show that many seemingly distinct approaches differ only superficially and can be classified into two categories: truncation-based verification and collaborative verification. We further construct a diagnostic evaluation framework across curated benchmarks. For truncation-based methods, we identify a fundamental pitfall: performance can degrade significantly compared to the true truncation sampling baseline due to distributional distortion. For collaborative verification, we uncover a key principles: controlling the overshoot of draft probabilities relative to target probabilities is essential to prevent low-quality outputs. Our code is available at https://github.com/ZhouYuxuanYX/Fast-HSD.",
-      "authors": [
-        "Tianyu Wang",
-        "Yuxuan Zhou",
-        "Wenbin Wang",
-        "Heng Li",
-        "Zikai Xiao",
-        "Junyuan Shang"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26627",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26627v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26627"
-    },
-    {
-      "id": "2607.26604",
-      "arxivId": "2607.26604",
-      "title": "WikiLoop: Jointly Learning to Build and Navigate Agent-Native Wikis with Downstream Feedback",
-      "briefSummary": "Knowledge-base construction and querying are typically optimized in isolation: retrieval-augmented agents operate over a fixed, externally maintained index, whereas construction receives no signal from downstream use.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Knowledge-base construction and querying are typically optimized in isolation: retrieval-augmented agents operate over a fixed, externally maintained index, whereas construction receives no signal from downstream use. We present WikiLoop, a feedback-coupled framework that jointly learns to build and navigate an agent-native Wiki, a persistent linked-page knowledge base designed for machine navigation. A role-conditioned shared policy supports two interfaces: a Navigator retrieves evidence from the Wiki to answer queries, and a Builder proposes structured edits evaluated through downstream navigation. The Navigator follows a sufficiency-before-efficiency objective that applies retrieval-cost penalties only after full evidence has been collected. The Builder learns from utility differences: a frozen Navigator scores each candidate edit by its change in downstream performance, while a guard penalty discourages regressions on unrelated queries. Training combines sequential role-specific optimization with a final joint stage over role-homogeneous batches. With Qwen3.5-9B as the common backbone, WikiLoop reaches 62.6 aggregate Answer Correctness on AuthTrace, 6.3 points above LLM-Wiki, base, with the largest gains on multi-document queries. Controlled comparisons support the intended effects of both objectives, and the learned edits remain useful to a held-out Navigator. Paired comparisons indicate that the final shared policy largely retains both role-specific capabilities, improves Navigator and end-to-end Answer Correctness by 0.4 points relative to the corresponding specialist references, and consolidates both interfaces into one model. Without dataset-specific training, WikiLoop also improves over the same-backbone LLM-Wiki, base on HotpotQA and MuSiQue.",
-      "authors": [
-        "Haoliang Ming",
-        "Feifei Li",
-        "Wenhui Que"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26604",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26604v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26604",
-      "comment": "13 pages, 2 figures, 12 tables. Includes supplementary material"
-    },
-    {
-      "id": "2607.26555",
-      "arxivId": "2607.26555",
-      "title": "Where Detectors Fail: Closing the Tail-Domain Gap with Expert-Guided Mutual Distillation",
-      "briefSummary": "Multimodal fake news detectors often generalize poorly across domains because they learn to trust unreliable evidence: domain-specific shortcuts amplified by imbalanced data and semantically inconsistent text-image pair...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Multimodal fake news detectors often generalize poorly across domains because they learn to trust unreliable evidence: domain-specific shortcuts amplified by imbalanced data and semantically inconsistent text-image pairs that make cross-modal evidence unreliable. We propose Expert-Guided Mutual Distillation (EGMD), which learns what evidence to trust across the prediction pipeline. At the input level, input-level calibration encodes pair-level coherence as a shared gain before fusion. At the representation level, an expert-guided teacher aligns domain statistics and encourages domain-specific patterns to concentrate in specialized experts. At the decision level, prototype-anchored domain-specific students use mutual learning and dual-channel distillation to inherit the teacher's feature geometry and calibrated predictions while discouraging local domain priors. We further construct Weibo_Balanced, a domain-balanced benchmark that isolates the effect of imbalance on generalization. Across four datasets in two languages, EGMD achieves state-of-the-art accuracy while reducing domain bias by up to 57.3%.",
-      "authors": [
-        "Xuan Feng",
-        "Guihong Liu",
-        "Tianlong Gu",
-        "Shuai Zhao",
-        "Xuemin Wang",
-        "Chenzhong Bin",
-        "Yang Liu",
-        "Bo An"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26555",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26555v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26555"
-    },
-    {
-      "id": "2607.26497",
-      "arxivId": "2607.26497",
-      "title": "Which RAG Paradigm Wins at Scale? A Scaling Study of Retrieval-Augmented Generation Paradigms",
-      "briefSummary": "Retrieval-augmented generation (RAG) methods range from lexical and dense retrieval to graph-based indexing and agentic search.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Retrieval-augmented generation (RAG) methods range from lexical and dense retrieval to graph-based indexing and agentic search. They are usually evaluated on different benchmarks at one corpus size, leaving their accuracy-cost scaling unclear. To bridge this gap, we present a controlled corpus-scaling study of these four paradigms. A ladder of 28 strictly nested tiers grows from roughly 1,000 to 512,000 documents while questions and a fixed bedrock of relevant and adversarial documents remain unchanged. Under one reader and judging protocol, we measure official accuracy, construction and query tokens, and latency. Our experimental results show that BM25 scales best in this controlled setting: it defines the low-cost end of the Pareto frontier at every measured tier and leads accuracy from mid-scale onward, without LLM-based construction. The File-System Agent matches or slightly exceeds BM25 at the smallest tiers but uses 39 times more query tokens per answer at the bedrock and falls nearly 20 points behind at full scale. A matched retrieval swap reverses this failure: Agent+BM25 scores 69.4 at full scale, versus 36.9 for raw-file agency and 54.8 for native BM25 on the same 150 questions. Graph-based RAG hits a construction wall: its heaviest builders use up to 24.6 generative LLM tokens per indexed corpus token yet stop within the first 2% of the full corpus, while scalable variants remain less accurate than BM25 at shared tiers.",
-      "authors": [
-        "Pengyu Wang",
-        "Benfeng Xu",
-        "Shaohan Wang",
-        "Xin Zeng",
-        "Huarui Wu",
-        "Lei Zhang",
-        "Licheng Zhang"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26497",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26497v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26497"
-    },
-    {
-      "id": "2607.26470",
-      "arxivId": "2607.26470",
-      "title": "CMT-RAG: Complementary Memory Traces for Multi-turn Multi-hop RAG",
-      "briefSummary": "Multi-turn information-seeking conversations require both multi-hop reasoning and long-range dependency tracking across turns.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Multi-turn information-seeking conversations require both multi-hop reasoning and long-range dependency tracking across turns. However, existing RAG systems typically represent conversational memory as raw dialogue history, rewritten queries, or unstructured summaries, making it difficult to recover the specific prior reasoning steps and evidence required for follow-up queries. Our key insight is to align conversational memory with retrieval by representing dialogue context as sub-question-level reasoning traces. Building on this insight, we introduce MuMu-QA, a benchmark for multi-turn multi-hop RAG with explicit cross-turn sub-question dependency annotations, and CMT-RAG, a complementary memory framework for this setting. At each turn, CMT-RAG employs a state-space trace generator, whose recurrent state serves as runtime memory, to incorporate recent conversational context and decompose the current query into structured trace drafts containing retrieval-oriented sub-questions and dependencies on earlier traces. It then grounds these drafts with retrieved evidence and stores them as persistent memory traces in a session-level DAG, enabling future turns to efficiently recover relevant prior reasoning and evidence. Experiments on MuMu-QA and corpus-level RAG benchmarks show that CMT-RAG consistently outperforms five categories of RAG baselines in answer accuracy.",
-      "authors": [
-        "Lang Zhou",
-        "Yingjian Chen",
-        "Shuxuan Li",
-        "Kun-Yu Lin",
-        "Zhilin Zhao"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.IR"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26470",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26470v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26470"
-    },
-    {
-      "id": "2607.26455",
-      "arxivId": "2607.26455",
-      "title": "ForgetBench: Benchmarking Forgetting Dynamics of Long-Term Parametric Memory in Language Models",
-      "briefSummary": "Large language models (LLMs) have demonstrated strong capabilities in knowledge acquisition and reasoning, yet their ability to retain previously acquired knowledge under repeated updates remains insufficiently understo...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Large language models (LLMs) have demonstrated strong capabilities in knowledge acquisition and reasoning, yet their ability to retain previously acquired knowledge under repeated updates remains insufficiently understood. Existing evaluation paradigms primarily focus on single-step reasoning or static knowledge editing, which fail to capture the temporal dynamics of knowledge retention and degradation during continual model modification. In this work, we propose ForgetBench, a benchmark designed to systematically characterize forgetting behavior in LLMs under continual knowledge editing. ForgetBench introduces two complementary evaluation paradigms, namely concept-based QA and scenario-based QA, to disentangle isolated factual retention from structured relational knowledge preservation. Building upon a sequential editing framework, we construct temporally ordered knowledge streams and evaluate model behavior across multiple editing stages. To quantitatively analyze long-term retention dynamics, we further introduce a unified evaluation framework that models knowledge evolution over time, enabling the measurement of temporal decay, retention strength, and cross-instance stability. Extensive experiments across diverse models and editing methods demonstrate that existing approaches fail to strike a balance between long-term retention and generalization quality. Our findings highlight the need for more robust memory mechanisms that can effectively acquire, update, and preserve knowledge over time in future LLMs. Code will be released upon acceptance.",
-      "authors": [
-        "Ruxi Gu",
-        "Zhenliang Zhang",
-        "Wei Wang"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26455",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26455v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26455",
-      "comment": "9 pages, 4 figures"
-    },
-    {
-      "id": "2607.26448",
-      "arxivId": "2607.26448",
-      "title": "Mergeable Model-Side Aggregation States for Long-Context Language Models",
-      "briefSummary": "A known limitation of long-context language models is their increasingly unreliable performance in non-additive, set-based aggregation as context length grows.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "A known limitation of long-context language models is their increasingly unreliable performance in non-additive, set-based aggregation as context length grows. Examples include cardinality estimation, set relationships, and grouped statistics, which widely exist in logs, program outputs, tables, and multi-turn conversations. To provide the aggregation state required by these tasks, we introduce a model-side aggregation interface that maintains compact Hash-based HyperLogLog (HLL) sketch states alongside a frozen language model. While the model processes the context, an extractor maps each relevant record to a canonical identity. The identity is then hashed and updates the HLL state. These states can be merged across context segments and/or read out directly for downstream reasoning, avoiding an additional generate-execute-return cycle. We validate the proposed approach by setting the HLL state size as 2 KiB (2,048 registers), which does not increase with context length or set cardinality. In a distinct-count experiment involving one million records, the mean relative error was 1.6%. In a separate merge test, states built from as many as 256 segments produced exactly the same readout as a single pass over the same stream. On 3,969 aggregate-then-reason tasks from 174 source windows, the fixed-budget interface reached 99.2% accuracy on Gemma 4 (31B, BF16), compared with 100.0% under exact aggregation; the paired gap was 0.8 percentage points (95% window-cluster CI: 0.5-1.3 points). On a matched set of 174 items, our method improved over direct full-context reasoning by 63.2 points on Qwen and 56.3 points on Gemma. The corresponding gains over chain-of-thought (CoT) reasoning were 60.9 and 63.2 points, respectively. On a fixed 1,200-task Oolong-Synth subset, our method reached 91.1% on Qwen and 99.3% on Gemma. Code is available at https://github.com/songdc98/sketchops.",
-      "authors": [
-        "Dachuan Song",
-        "Junyu Yin",
-        "Zechen Hu",
-        "Xuan Wang"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26448",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26448v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26448"
-    },
-    {
-      "id": "2607.26410",
-      "arxivId": "2607.26410",
-      "title": "Voice Memory for Agentic Speech Recognition",
-      "briefSummary": "We present Voice Memory, a inference-only scheme for agentic speech recognition: at stream time, a frozen corrector reads a single per-domain memory.md and decides per utterance whether to act on the hypothesis or absta...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "We present Voice Memory, a inference-only scheme for agentic speech recognition: at stream time, a frozen corrector reads a single per-domain memory.md and decides per utterance whether to act on the hypothesis or abstain and keep the 1-best. Asynchronously, a score-gated optimizer revises that file through bounded edits, accepting an edit only when it strictly improves a held-out score. Extended from classical ASR-LM framework, we refer this split the listener-thinker architecture; the two roles are coupled only through the memory, so no weights change and the learned skill stays auditable and portable. Restraint turns out to be the operative skill this loop discovers: unconstrained generative error correction (GER) over-corrects, breaking correct tokens on up to 64% of its edits on financial news, and Voice Memory, reduces this rate to 35%. Across ten HyPoradise domains with an open corrector, Voice Memory, lowers weighted word error rate from 8.36% to 7.52% (7.47% with three added in-context examples) without regressing any dataset below its 1-best baseline; gains concentrate where recoverable headroom is largest, including air-travel commands (8.40% to 3.40%) and noisy far-field speech (CHiME-4, 12.69% to 10.46%). The memory transfers across corrector families and adds zero parameters to the inference path. A demo and example code are provided for future studies.",
-      "authors": [
-        "Chao-Han Huck Yang",
-        "Zih-Ching Chen",
-        "Piotr Zelasko",
-        "Zhehuai Chen",
-        "Jagadeesh Balam",
-        "Boris Ginsburg"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.AI",
-        "cs.SD",
-        "eess.AS"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26410",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26410v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26410",
-      "comment": "Preprint. Technical report and open source: https://huggingface.co/huckiyang/voice-memory"
-    },
-    {
-      "id": "2607.26397",
-      "arxivId": "2607.26397",
-      "title": "Knowledge before Reasoning: EC-Reason-Bench, a Training-Free Diagnostic Benchmark for LLM Enzyme Classification",
-      "briefSummary": "Enzyme function prediction is a hierarchical, knowledge-intensive form of protein function classification.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Enzyme function prediction is a hierarchical, knowledge-intensive form of protein function classification. Existing benchmarks expose an anomaly: general LLMs often get the coarse first level right, yet once asked for a complete EC number their accuracy at levels two through four drops to almost zero, while specialized models and tools stay usable. We propose EC-Reason-Bench, a training-free, diagnostic evaluation protocol built to answer two questions: why general LLMs score close to nothing on EC number prediction, and how much of that loss can be recovered without updating a single weight. We break enzyme classification ability into four orthogonal levers that can each be measured on their own: output structure, external knowledge, reasoning structure, and reasoning robustness. We test each lever with an inference-time method against a shared zero-shot baseline reproducing previously reported near-zero performance. Experiments with several strong reasoning LLMs yield four main findings. First, external knowledge is decisive and must precede reasoning: uniformly low closed-book performance rises sharply with open-book access, narrowing model gaps. Second, in closed-book settings, whether cascading and chain-of-thought help or hurt depends on a model's tendency to abstain. Third, once evidence is available the aggregate score of the best LLM setting is indistinguishable from simply voting the EC numbers of the nearest retrieved neighbors; that tie is an artifact of averaging, and it hides a large gain on adversarial evidence set against an equally large loss on multi-functional enzymes. Reasoning over evidence therefore acts as an arbiter of conflicting neighbors rather than as a source of knowledge, and no single-number leaderboard can see it. Fourth, accuracy obeys a law of homology availability.",
-      "authors": [
-        "Linyu Li",
-        "Zhi Jin",
-        "Yichi Zhang",
-        "Dongming Jin",
-        "Yuanpeng He",
-        "Huanyao Zhang",
-        "Xuan Zhang",
-        "Gadeng Luosang",
-        "Nyima Tashi"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.LG",
-        "q-bio.QM"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26397",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26397v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26397"
-    },
-    {
-      "id": "2607.26389",
-      "arxivId": "2607.26389",
-      "title": "Misalignment Has a Personality: A Big Five Account of Emergent Misalignment",
-      "briefSummary": "Fine-tuning a language model on data containing a narrow flaw, such as insecure code or incorrect mathematical answers, can cause broad misalignment through a mechanism that remains debated.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Fine-tuning a language model on data containing a narrow flaw, such as insecure code or incorrect mathematical answers, can cause broad misalignment through a mechanism that remains debated. We provide an interpretable account: in the models and corpora we study, misalignment behaves like a shift in personality. Prior work extracts activation directions for character traits from a single binary contrast, which can separate or steer behavior without establishing a calibrated scale. We instead extract personality vectors for the Big Five using a graded, three-level intervention and validate them on two open-weight models. The three levels are linearly ordered, with Cohen's d values of up to 6.2; the vectors transfer zero-shot and trait-specifically to an independent corpus; and their effects are strongest within a middle-layer band. Applied to training data, the vectors reveal that misaligned corpora across eight domains share a common Big Five signature: lower agreeableness and conscientiousness, together with higher extraversion and neuroticism. This signature is recovered by both models with a correlation of r = 0.94. Fine-tuning imprints the same profile, shifting the model's generations along the corresponding signature, with r = 0.83 using activation-based measurements and r = 0.90 using a text-based judge, while also shifting internal activations with r = 0.69. The same vectors characterize sycophancy as high extraversion and low conscientiousness rather than excess agreeableness, a distinction that a single direction cannot capture. Calibrated personality vectors transform an opaque safety phenomenon into a human-legible diagnostic profile.",
-      "authors": [
-        "Hasibur Rahman",
-        "Smit Desai"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.AI"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26389",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26389v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26389",
-      "comment": "The paper is currently under peer review"
-    },
-    {
-      "id": "2607.26375",
-      "arxivId": "2607.26375",
-      "title": "(Im)Paired Programming: Coding Agents Improve Productivity but Harm Understanding",
-      "briefSummary": "Coding agents (e.g., Cursor) improve developer productivity by optimizing task completion, but shifting users from writing code to prompting and reviewing may harm their understanding, impeding oversight, learning, and...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.CL",
-      "publishedAt": "2026-07-29",
-      "updatedAt": "2026-07-29",
-      "abstract": "Coding agents (e.g., Cursor) improve developer productivity by optimizing task completion, but shifting users from writing code to prompting and reviewing may harm their understanding, impeding oversight, learning, and communication. To probe this, we have 54 students create a website with one of two AI systems: an agent that edits user code; or a chatbot where users write code alone or adapt generic code snippets. We test understanding via comprehension questions and a task where users extend their code without agents, showing: (1) While agents aid initial task completion, they harm users' code comprehension and thus do not prepare users to extend their code; (2) Low-effort agent interaction types, like copy+paste prompts and auto-accepted edits, are linked with lower comprehension; and (3) Despite self-reported weaker understanding, users still prefer coding agents because they are quick and easy to use. While users stay in the loop for coding workflows, understanding should not be forgotten. Towards this goal, we distill our analyses into future research directions for coding agent developers: dissuading low-effort prompting, creating readable code, and promoting active engagement.",
-      "authors": [
-        "Nishant Balepur",
-        "Connor Baumler",
-        "Valerie Chen",
-        "Eunsol Choi",
-        "Rachel Rudinger",
-        "Jordan Lee Boyd-Graber"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.HC"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.26375",
-      "pdfUrl": "https://arxiv.org/pdf/2607.26375v1",
-      "htmlUrl": "https://arxiv.org/html/2607.26375",
-      "comment": "In-progress Preprint"
     }
   ]
 }
