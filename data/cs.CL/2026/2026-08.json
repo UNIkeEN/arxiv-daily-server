@@ -1,10 +1,470 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-16T03:26:48Z",
+  "generatedAt": "2026-08-17T03:27:17Z",
   "category": "cs.CL",
   "yearMonth": "2026-08",
-  "paperCount": 499,
+  "paperCount": 516,
   "papers": [
+    {
+      "id": "2608.14465",
+      "arxivId": "2608.14465",
+      "title": "You Only Pass Once: Answering and Abstaining Together in a Single Forward Pass of a Frozen Language Model",
+      "briefSummary": "A frozen language model on reasoning tasks has two coupled weaknesses: it under-uses evidence its own residual stream already encodes, and it fails to detect when the input is insufficient to answer, so it confabulates.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "A frozen language model on reasoning tasks has two coupled weaknesses: it under-uses evidence its own residual stream already encodes, and it fails to detect when the input is insufficient to answer, so it confabulates. This paper consolidates two research lines that address these on the same residual stream: a conditional steering probe writes the stream at mid-stack layers and recovers reasoning accuracy from a frozen backbone, and a zero-shot sufficiency direction reads the stream and abstains when information is insufficient. Deployed in one forward pass they interfere: the steering write shifts the state the direction reads, costing up to 8 AUROC points of cross-domain transfer on small models; a separate clean pass doubles inference cost. We keep the direction fixed and train a small network to reconstruct the pre-steering residual from the steered one -- mean-squared error on (steered, clean) pairs, no sufficiency labels -- and read the direction on the reconstruction. The resulting system, YOPO (You Only Pass Once), answers, steers, and abstains in one forward pass of a frozen Qwen2.5 backbone (1.5B/3B/7B). End to end, three-way accuracy more than doubles the frozen baseline (0.375->0.798 on 1.5B alphaNLI) and one pass beats the two-pass reference at every scale (0.798/0.830/0.893 vs 0.753/0.790/0.863) and on ten backbones across six model families. We chart the capacity-transfer frontier quantifying the principle that abstention should not be trained in; a source-side audit catches our own alphaNLI construction leaking a surface artifact, so architectural claims are anchored on native-label replications (SQuAD2, RepLiQA, MuSiQue); and on the standard four-domain suite we contribute, to our knowledge, the first answer-or-abstain benchmark, where our gate tops every in-domain dataset and the label-free direction is the only gate family to survive domain transfer.",
+      "authors": [
+        "Ziyang Luo",
+        "Zhongyao Chu",
+        "Xinjie He",
+        "Youting Wang",
+        "Xukui Qin",
+        "Runxiong Wu",
+        "Yan-Syuan Chen"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14465",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14465v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14465",
+      "comment": "24 pages. Ziyang Luo and Zhongyao Chu contributed equally"
+    },
+    {
+      "id": "2608.14457",
+      "arxivId": "2608.14457",
+      "title": "Information Satisfaction: A Reader-Centered Axis for Summarization Evaluation",
+      "briefSummary": "The majority of work on summarization evaluation focuses on general summary quality (e.g., ROUGE, BERTScore) or specific desired properties (e.g., readability, factuality).",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "The majority of work on summarization evaluation focuses on general summary quality (e.g., ROUGE, BERTScore) or specific desired properties (e.g., readability, factuality). However, these metrics fail to measure the utility of a summary to an individual user. For example, a biomedical researcher learning about the latest vaccine research will have different informational needs from a family doctor. Query-focused summarization captures part of this need, but in practice, users rarely state everything relevant in a query: a single short query is likely inadequate to distinguish the needs of a researcher from those of a physician. By contrast, a reader's background or persona (their role and expertise) is comparatively stable across queries and recovers much of this missing context, which makes it a practical signal for assessing whether a summary satisfies that reader's needs. In this work, we assess how sensitive popular summarization metrics are to both informational and persona differences, and find that many popular metrics, including strong LLM-as-judge metrics, fail basic perturbation tests of informational content. We additionally conduct an expert human evaluation, measuring summary preferences based on information satisfaction given a specific person's background and use case. We find that both traditional and LLM-based metrics are insufficient measures of information satisfaction and agree poorly with human judgment.",
+      "authors": [
+        "Isabel Cachola",
+        "William Walden",
+        "Reno Kriz",
+        "Mark Dredze"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14457",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14457v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14457",
+      "doi": "10.1145/3834580.3838749"
+    },
+    {
+      "id": "2608.14377",
+      "arxivId": "2608.14377",
+      "title": "A Survey of Large Models in Sports",
+      "briefSummary": "Sports have witnessed growing global enthusiasm in recent years, serving as a vital force for physical health, cultural exchange, social connection, and economic growth.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Sports have witnessed growing global enthusiasm in recent years, serving as a vital force for physical health, cultural exchange, social connection, and economic growth. The rapid advancement of large models, particularly (multimodal) large language models (M)LLMs, has demonstrated transformative potential to reshape sports understanding, analysis, and interaction across diverse domains. This paper presents a comprehensive survey of large models in sports, including (i) an overview of tasks and applications across different participant groups; (ii) a detailed analysis of sports-related datasets and benchmarks; and (iii) a critical discussion of current challenges and future directions. Our goal is to establish a foundation for advancing research and practical development of large-model-driven sports intelligence. An open-source GitHub repository is maintained at: https://github.com/Road2Redemption/Awesome_Large_Models_In_Sports1.",
+      "authors": [
+        "Yichen Xu",
+        "Jianzhe Ma",
+        "Chuhan Wang",
+        "Zhonghao Cao",
+        "Liangyu Chen",
+        "Wenxuan Wang",
+        "Qin Jin"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14377",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14377v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14377",
+      "doi": "10.18653/v1/2026.findings-acl.1851",
+      "comment": "36 pages, 4 figures, 6 tables. Accepted to Findings of ACL 2026"
+    },
+    {
+      "id": "2608.14361",
+      "arxivId": "2608.14361",
+      "title": "Local and Global Regimes of Geometric Complexity in Language Model Representations",
+      "briefSummary": "Intrinsic dimensionality (ID) is widely used to probe the representational complexity of language models, but it remains unclear whether ID differences reflect properties of language itself or artefacts of how the under...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Intrinsic dimensionality (ID) is widely used to probe the representational complexity of language models, but it remains unclear whether ID differences reflect properties of language itself or artefacts of how the underlying dataset was constructed. In this paper, we focus specifically on how lexical diversity, the number of unique last-token items present in a dataset, affects ID estimates of that dataset. We find a scale-dependent transition between two regimes: at low lexical diversity, conditions with fewer unique final words produce higher ID, while at high lexical diversity, this ordering reverses, and conditions with more unique words produce higher ID. We derive an exact, parameter-free formula for the point at which this reversal occurs, which matches the observed transition point at every scale tested. On the one hand, our results highlight how care must be taken when interpreting the intrinsic dimensionality of a set of representations as a straightforward cue of their complexity. On the other hand, our discovery of the two ID regimes reveals a general principle of organisation of linguistic data in LLMs that sheds new light on their inner manifold structures.",
+      "authors": [
+        "Arwa Osman",
+        "Marco Baroni",
+        "Iuri Macocco"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14361",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14361v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14361",
+      "comment": "12 pages, 9 figures"
+    },
+    {
+      "id": "2608.14312",
+      "arxivId": "2608.14312",
+      "title": "Envs-FORGE: Frontier-Optimized Reward-Grounded Environment Synthesis for Agent RL",
+      "briefSummary": "Reinforcement learning (RL) for terminal agents needs executable training environments with reliable rewards and useful difficulty.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Reinforcement learning (RL) for terminal agents needs executable training environments with reliable rewards and useful difficulty. Fixed recipes such as few-shot, Self-Instruct, and Evol-Instruct apply the same prompting policy to every seed, even when the current policy would benefit from a harder, easier, or simply different task. We present Envs-FORGE, a prompting policy that converts verifier rewards into per-seed environment-synthesis actions. Envs-FORGE estimates seed pass rates, scores six projection--direction actions around a target learning frontier, and solves a per-seed mixed-integer linear program (MILP) to choose the action that conditions generation. The selected action drives synchronized rewriting of the instruction, fixtures, oracle solution, tests, and Docker environment; only gold-verified bundles enter RL training. The indexed MILP form also supports optional soft skill coverage for portfolio planning. On Qwen 3.5 35B, Envs-FORGE improves Pass@1 over Base by 9.2 percentage points on tb-core (40.0% to 49.2%) and 6.4 points on tb-2.0 (23.0% to 29.4%), exceeding the strongest fixed-recipe baseline by 2.4 and 2.1 points. It reaches 77.1% on SWE-bench Verified versus 73.4% for Base, and improves tb-core by 6.8--9.2 points across the evaluated 4B--35B models. All synthesis methods export 100 verified environments and use 2.27M--2.88M synthesis tokens, placing the comparison at the same downstream training-set size and the same operational scale. The source code is available at https://github.com/DataArcTech/DataArc-SynData-Toolkit/.",
+      "authors": [
+        "Xiaojun Wu",
+        "Cehao Yang",
+        "Honghao Liu",
+        "Xueyuan Lin",
+        "Zhichao Shi",
+        "Hao Zhou",
+        "Xuhui Jiang",
+        "Chengjin Xu",
+        "Jia Li",
+        "Jian Guo"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14312",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14312v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14312",
+      "comment": "19 pages, 5 figures"
+    },
+    {
+      "id": "2608.14277",
+      "arxivId": "2608.14277",
+      "title": "SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning",
+      "briefSummary": "On-policy distillation (OPD) offers a promising way to transfer reasoning capabilities from stronger teacher models, but applying it to long-context reasoning teachers and short-context students introduces practical cha...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "On-policy distillation (OPD) offers a promising way to transfer reasoning capabilities from stronger teacher models, but applying it to long-context reasoning teachers and short-context students introduces practical challenges, including tokenizer mismatch, teacher-student distribution mismatch, response length explosion, and training instability. In this work, we study this setting by transferring proof-reasoning capabilities from the long-context reasoning model SU-01 to short-context student models. To handle tokenizer differences, we perform OPD in a shared text space and align only tokens that occupy identical text spans under the student and teacher tokenizers. To mitigate the problem of excessive generation length and frequent truncation, we introduce a student reference KL loss and mask the advantages of special termination tokens such as </think> and <|im_end|>. This strategy constrains the student from drifting excessively from its initial policy, thereby mitigating the teacher-student distribution mismatch problem and fostering steady length growth. Experiments on both same-family and different-family student models, including Qwen3, Qwen3.5, Intern-S2, GLM-4.7, Gemma-4, show consistent gains in mathematical reasoning, especially natural-language math proving. Notably, Intern-S2-Preview improves by 21.2 points on ProofBench, reaching 55.2 and surpassing Gemini-2.5-Pro. It also improves on science benchmarks such as HLE and HiPhO, suggesting that OPD transfers reasoning capabilities that generalize beyond the mathematical training domain.",
+      "authors": [
+        "Haonan He",
+        "Haodi Lei",
+        "Yun Luo",
+        "Haoran Zhang",
+        "Shunkai Zhang",
+        "Yizhuo Li",
+        "Shengji Tang",
+        "Zhilin Wang",
+        "Runzhe Zhan",
+        "Lei Bai",
+        "Ganqu Cui",
+        "Fangchen Yu",
+        "Yafu Li",
+        "Peng Ye",
+        "Ning Ding",
+        "Yu Cheng"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14277",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14277v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14277"
+    },
+    {
+      "id": "2608.14229",
+      "arxivId": "2608.14229",
+      "title": "The More Popular, The Harder to Forget: Adaptive Popularity for LLM Unlearning",
+      "briefSummary": "Popular facts are memorised more deeply during pretraining and resist removal longer than rare ones, yet existing LLM unlearning methods apply uniform gradient pressure regardless of training-data frequency.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Popular facts are memorised more deeply during pretraining and resist removal longer than rare ones, yet existing LLM unlearning methods apply uniform gradient pressure regardless of training-data frequency. We propose the AdaPop (Adaptive Popularity) method, which combines local token confidence with a per-fact popularity-dependent exponent derived from an external proxy (e.g., Wikidata sitelinks, LLM-as-Judge), and automates the forget-retain balance via a dual-ascent controller that adjusts the retain penalty each epoch. Across three model families and two benchmarks, AdaPop leaks ~5x less forgotten content than competing methods under paraphrased queries and ~1.6x less under adversarial reformulations. We support our analysis with internal metrics: under our method, forget-set hidden states move further from the pre-unlearning model's states than under other methods, while retain-set representations remain close.",
+      "authors": [
+        "Anna Borisiuk",
+        "Andrey Savchenko",
+        "Alexander Panchenko",
+        "Elena Tutubalina"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14229",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14229v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14229"
+    },
+    {
+      "id": "2608.14210",
+      "arxivId": "2608.14210",
+      "title": "How Much Do Legal RAG Systems Still Hallucinate?",
+      "briefSummary": "Hallucination is a major challenge for retrieval-augmented generation (RAG) systems in the legal domain, where ungrounded answers can lead to serious consequences.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Hallucination is a major challenge for retrieval-augmented generation (RAG) systems in the legal domain, where ungrounded answers can lead to serious consequences. To better understand this problem, we conduct a fine-grained analysis of hallucination behavior in eight legal RAG systems across two legal corpora, the GDPR (in English) and a national civil law (in French). Using claim-level and answer-level evaluation, we report on hallucination density and severity, analyze performance across question categories and user personas, and validate our findings on an independent set of 142 legal-expert-authored questions. Our results show that hallucinations remain pervasive, ranging from less than 10% of responses for the best-performing systems to nearly half in the worst case. We further find that false-premise questions, containing incorrect assumptions that must be rejected, produce high hallucination rates on the manually-drafted questions.",
+      "authors": [
+        "Souvick Das",
+        "Sallam Abualhaija",
+        "Domenico Bianculli"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14210",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14210v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14210"
+    },
+    {
+      "id": "2608.14150",
+      "arxivId": "2608.14150",
+      "title": "Leading-Silence Augmentation and Multi-Stage Synthetic Supervision for the Second MLC-SLM Challenge",
+      "briefSummary": "The second Multilingual Conversational Speech Language Model (MLC-SLM) Challenge evaluates two tasks over complete, unsegmented multilingual conversations: speaker diarization and recognition (Task 1) and conversational...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "The second Multilingual Conversational Speech Language Model (MLC-SLM) Challenge evaluates two tasks over complete, unsegmented multilingual conversations: speaker diarization and recognition (Task 1) and conversational speech understanding (Task 2). Neither task provides oracle utterance boundaries or speaker labels at evaluation, and Task 2 provides no question-answer training set. For Task 1, we fine-tune VibeVoice-ASR-7B with random leading-silence cropping, consistent timestamp correction, and an exponential moving average (EMA) training strategy. For Task 2, we construct synthetic question-answer pairs through multimodal candidate generation, silent-audio filtering, and distribution-matched augmentation, and fine-tune Qwen3-Omni-30B-A3B-Instruct for tagged direct answering. On the Task 1 evaluation set, cropping reduces tcpMER from 18.30% to 17.27%, and EMA further reduces it to 16.73%. On the Task 2 evaluation set, jointly applying distribution-matched augmentation and tagged direct answering raises accuracy from 83.0% to 86.0%.",
+      "authors": [
+        "Kexin Shi",
+        "Renhe Sun",
+        "Yuge Huang",
+        "Ximeng Wang",
+        "Jiayi Zhou",
+        "Jian Liu",
+        "Malu Zhang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14150",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14150v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14150"
+    },
+    {
+      "id": "2608.14079",
+      "arxivId": "2608.14079",
+      "title": "The conditional superiority of fast silicon sampling",
+      "briefSummary": "Silicon sampling can produce surprisingly good population estimates at times.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Silicon sampling can produce surprisingly good population estimates at times. Does doing it fast attenuate such fidelity? In this study, we extend and assess ongoing work in silicon sampling by comparing the algorithmic fidelity of \"fast\" and \"slow\" modes of silicon sampling among a nationally representative sample of Singaporean survey respondents. We find that silicon sampling with contemporary frontier models remains a method in early development to be used only with great caution. While silicon samples are able to produce moderately faithful estimates of population means, they continue to understate opinion variance and distort the latent contextual space behind human opinions. Conditional on such limitations, we find \"fast\" modes of silicon sampling to be relatively superior to traditional \"slow\" modes of silicon sampling. Fast silicon sampling is significantly more efficient in compute resources and run-time while being monotonically superior to slower modes of sampling in algorithmic fidelity.",
+      "authors": [
+        "Nickolas Hock Yuen Lam",
+        "Ji Xuan Voo",
+        "Xiangyu Ma"
+      ],
+      "categories": [
+        "cs.CL",
+        "cond-mat.mtrl-sci"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14079",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14079v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14079"
+    },
+    {
+      "id": "2608.14055",
+      "arxivId": "2608.14055",
+      "title": "HERMES: a multi-agent framework for structured knowledge extraction from ultra-long documents in geoscience",
+      "briefSummary": "Authoritative scientific knowledge in geoscience remains largely trapped in legacy monographs and historical literature, where unstructured text and complex layouts hinder computational access.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Authoritative scientific knowledge in geoscience remains largely trapped in legacy monographs and historical literature, where unstructured text and complex layouts hinder computational access. We introduce HERMES, a scalable multi-agent framework that extracts structured data from ultra-long scientific documents. Using a coordinating large language model, HERMES integrates domain constraints, validation rules and evidence tracing within a unified document-level extraction process that incorporates parsed text, tables, figures and captions. Applied to the 55-volume Treatise on Invertebrate Paleontology, the system produced a structured database of 32,277 fossil taxonomic entities and 451,878 attributes, released online at https://treatise.geolex.org. Extraction performance remained stable across fossil groups (average F1 scores of approximately 0.90 for entities and 0.91 for attributes), improving per-volume efficiency approximately sixfold relative to the tested fully manual baseline. Evaluation in palaeomagnetism and geochemistry, conducted without additional model training, demonstrated transfer across distinct geoscience domains. This work provides a practical pathway to transform historical scientific literature into FAIR-oriented structured data, offering a sustainable infrastructure for data-intensive disciplines and large-scale knowledge integration.",
+      "authors": [
+        "Ziqi Song",
+        "Zongyuan Xiang",
+        "James G. Ogg",
+        "Bruce S. Lieberman",
+        "Gabi Ogg",
+        "Natalia López Carranza",
+        "Wen Du",
+        "Yufei Ye",
+        "Shuan Li",
+        "Zhong Peng",
+        "Shaoqi Yu",
+        "Juye Wei",
+        "Ying Zhou",
+        "Jieping Ye",
+        "Jiang Yang"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14055",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14055v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14055",
+      "comment": "31-page main manuscript with 6 figures and 3 tables; supplementary information included"
+    },
+    {
+      "id": "2608.14029",
+      "arxivId": "2608.14029",
+      "title": "S2Dialog: Multimodal Dialogue Retrieval with Semantic and Acoustic-Style Modeling",
+      "briefSummary": "Multimodal dialogue retrieval aims to retrieve dialogues from multimodal dialogue banks that are similar to a target dialogue in terms of both textual semantics and acoustic conversational styles.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Multimodal dialogue retrieval aims to retrieve dialogues from multimodal dialogue banks that are similar to a target dialogue in terms of both textual semantics and acoustic conversational styles. Such dialogue-level retrieval is crucial for many dialogue-related tasks, including Emotion Recognition in Conversation, Spoken Dialogue Systems, and Conversational Speech Synthesis, where external dialogue examples can provide valuable semantic and stylistic references. However, existing retrieval methods are still largely limited to utterance-level or unimodal matching, and often fail to capture the global semantic coherence and stylistic consistency of an entire dialogue. To address this gap, we propose S2Dialog, a unified framework for dialogue-level semantic-style retrieval from multimodal dialogue banks. Specifically, S2Dialog consists of a Dialogue-level Textual Retriever and a Dialogue-level Acoustic Retriever, which encode the textual and acoustic modalities of a dialogue into dialogue-level representations, respectively. To further enhance multimodal retrieval, we introduce Dialogue-level Textual-Acoustic Contrastive Learning, which aligns semantically and stylistically similar dialogues while distinguishing unrelated ones. Extensive experiments on the multimodal dialogue dataset DailyTalk demonstrate that S2Dialog achieves outstanding retrieval performance.",
+      "authors": [
+        "Xueqi Wang",
+        "Zhigang Wang",
+        "Runqing Zhang",
+        "Zhenqi Jia",
+        "Junfeng Zhao"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14029",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14029v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14029"
+    },
+    {
+      "id": "2608.14003",
+      "arxivId": "2608.14003",
+      "title": "Batch-wise Adaptive Pruning: Periodic Neuron Activation-Aware Weight Pruning for Language Reasoning Model",
+      "briefSummary": "Large Reasoning Models (LRMs) achieve strong performance on complex tasks through extended chain-of-thought generation, but incur substantial computational costs during inference.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Large Reasoning Models (LRMs) achieve strong performance on complex tasks through extended chain-of-thought generation, but incur substantial computational costs during inference. In production settings, batched inference is essential for high throughput, yet the existing training-free adaptive pruning methods we evaluate severely degrade in this regime. Because a batch must share a single pruning mask, these methods aggregate activations across samples and then apply threshold-based selection; the threshold, calibrated offline on unaggregated activations, no longer matches the aggregated distribution, so the realized sparsity ratio drifts and accuracy on reasoning tasks collapses under batched inference. In this work, we propose a training-free adaptive pruning method designed specifically for batched inference in LRMs, built on two components. First, we replace threshold-based selection with periodic top-k selection over the aggregated importance scores, which is unaffected by the shift that aggregation induces in the activation distribution, and which runs selection once per update period rather than at every token, preserving the speedup. Second, based on the observation that important neurons re-fire periodically during long reasoning generation, we introduce an activation memory that accumulates importance across update phases so that recurring neurons are retained. Experiments on diverse reasoning benchmarks demonstrate that our method outperforms the previous state-of-the-art adaptive pruning method by 39.7 percentage points in average accuracy at batch size 4 with 50% target sparsity on DeepSeek-R1-Distill-Qwen-7B, and reaches 1.40x speedup over dense inference at 50% actual sparsity.",
+      "authors": [
+        "Yongmin Kim",
+        "Shota Takashiro",
+        "Yusuke Iwasawa",
+        "Takeshi Kojima",
+        "Yutaka Matsuo"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.14003",
+      "pdfUrl": "https://arxiv.org/pdf/2608.14003v1",
+      "htmlUrl": "https://arxiv.org/html/2608.14003",
+      "comment": "Accepted at COLM 2026. 28 pages, 12 figures, 18 tables. Code: https://github.com/matsuolab/batch-wise-prune"
+    },
+    {
+      "id": "2608.13959",
+      "arxivId": "2608.13959",
+      "title": "Repair, Not Improvement: Decomposing Constrained Decoding in Tool-Call Abstention",
+      "briefSummary": "Function calling is what the recent accounting of constrained generation explicitly sets aside: it finds the decoder's contribution small for format constraints, then warns in its Section 7 against extrapolating where a...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Function calling is what the recent accounting of constrained generation explicitly sets aside: it finds the decoder's contribution small for format constraints, then warns in its Section 7 against extrapolating where a constraint encodes a correctness requirement, and names function calling as one. Tool abstention is that case at its sharpest: an enum leaves the wording of an answer alone and narrows the set of answers there are, and declining to call anything is the first it drops. We measure the excluded case. Three conditions over one byte-identical prompt separate a grammar's two jobs: it fixes where generation stops as well as which tokens may be emitted. We evaluate open-weight models from 0.6B to 4B on matched English and Korean items, so the language comparison is made within item. Against an unconstrained decoder, prior work's contrast is negative on abstention in four of six cells with intervals excluding zero, worst -29.5 points, and positive with an interval excluding zero in none. The total is a sum with opposite signs: on the smallest model in Korean the stop token costs -20.0, the enum returns +19.5, and the two leave -0.5. What it recovers is form: of 698 abstentions repaired, 545 had no readable answer and 0 were judgements the scorer refused. On tool-needed items it is positive throughout; abstention leads because it is the preregistered measure, and the pooled number being kinder to the intervention makes moving to it worse rather than better. Both preregistered language claims fail.",
+      "authors": [
+        "Janghoon Lee"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.13959",
+      "pdfUrl": "https://arxiv.org/pdf/2608.13959v1",
+      "htmlUrl": "https://arxiv.org/html/2608.13959",
+      "comment": "24 pages, 4 figures, 17 tables"
+    },
+    {
+      "id": "2608.13947",
+      "arxivId": "2608.13947",
+      "title": "Scaling Creative Writing Beyond Story-Centric Data with Attribute-Guided Genre Expansion",
+      "briefSummary": "High-quality creative writing data for large language models (LLMs) remains dominated by story-centric data, limiting models' ability to follow the structural and functional conventions of diverse creative formats.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "High-quality creative writing data for large language models (LLMs) remains dominated by story-centric data, limiting models' ability to follow the structural and functional conventions of diverse creative formats. We propose an attribute-guided genre expansion framework for scaling creative writing data beyond story generation. By separating thematic breadth from genre-form control, our framework leverages human-authored story prompts as diverse creative seeds, while utilizing manually curated genre attributes to enforce distinct structural, stylistic, and formatting conventions. We combine these to prompt strong LLMs for genre-faithful query-response pairs, which are then quality-filtered. Applying this framework, we construct the Multi-Genre Collection, a 50K-example corpus spanning 13 creative genres, including story, rap, lyrics, scripts, game design, character design, and other creative formats. Experiments across out-of-distribution writing benchmarks and held-out genre diagnostics demonstrate that models fine-tuned on our data consistently surpass not only base models and writing-specialized baselines, but also models trained on existing writing corpora. Genre-count ablations further indicate that controlled genre expansion, rather than story-centric scaling alone, is a key driver of robust creative writing capability.",
+      "authors": [
+        "Hwan Chang",
+        "Yongil Kim",
+        "Heuiyeen Yeen",
+        "Yireun Kim",
+        "Jinsik Lee",
+        "Hwanhee Lee"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.13947",
+      "pdfUrl": "https://arxiv.org/pdf/2608.13947v1",
+      "htmlUrl": "https://arxiv.org/html/2608.13947",
+      "comment": "CIKM 2026"
+    },
+    {
+      "id": "2608.13854",
+      "arxivId": "2608.13854",
+      "title": "Bootstrapping Niche Multilingual Code Translation via Reinforcement Learning with Execution-Based Verifiable Supervision",
+      "briefSummary": "Code translation must preserve executable behavior across many programming languages, yet neural code translation has largely focused on a few popular languages such as C++, Java, and Python.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Code translation must preserve executable behavior across many programming languages, yet neural code translation has largely focused on a few popular languages such as C++, Java, and Python. This leaves a niche, many-to-many setting where parallel supervision is sparse, producing plausible but non-executable translations. We address this setting with preference-based reinforcement learning driven by execution-based supervision. Our pipeline firstly expands verifiable seed Python programs into a multilingual pool of execution-validated codes. Using the pool, a base LLM generates translation candidates across language pairs, which we label by their execution outcomes. The resulting preferences are used to train a reward model that scores cross-language translation quality. Finally, we optimize our base LLMs with GRPO over 600 directed language pairs (25 x 24) using the reward model as a signal. To evaluate the niche translation capability, we introduce HumanEval-X++, an execution-based benchmark that extends HumanEval-X to a broad many-to-many language space. We evaluate our approach using Qwen-3.5 4B and 9B models. On HumanEval-X++ and existing benchmarks, it yields consistent gains over the untrained baselines. In particular, the 4B model achieves an average improvement of 13% across all languages on HumanEval-X++, with a gain of 21% on mid-tier languages. Our study establishes a reliable approach of data generation, training, and benchmarking, paving the way toward further bootstrapping the quality of many-to-many translation for programming languages.",
+      "authors": [
+        "Kouki Yuki",
+        "Jie Zeng",
+        "Kyoko Ogawa",
+        "Ryunosuke Ikeda",
+        "Yohei Kobashi",
+        "Takeshi Kojima",
+        "Ikuya Yamada",
+        "Yusuke Iwasawa",
+        "Yutaka Matsuo"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.13854",
+      "pdfUrl": "https://arxiv.org/pdf/2608.13854v1",
+      "htmlUrl": "https://arxiv.org/html/2608.13854",
+      "comment": "11 pages, 3 figures, 5 tables. Preprint under review"
+    },
+    {
+      "id": "2608.13840",
+      "arxivId": "2608.13840",
+      "title": "ASSERT: A Measurement Pipeline for GenAI Audits",
+      "briefSummary": "Audits of generative AI (GenAI) systems often summarize behavior as a reported rate: how often the audited system complies with policy.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.CL",
+      "publishedAt": "2026-08-14",
+      "updatedAt": "2026-08-14",
+      "abstract": "Audits of generative AI (GenAI) systems often summarize behavior as a reported rate: how often the audited system complies with policy. Researchers and stakeholders use that rate to compare systems, track regressions, and gate deployment. A reported rate reflects both the system under audit and the measurement choices behind it, so a change in the rate can leave it unclear whether the system or those choices moved. We introduce ASSERT, a specification-driven measurement pipeline for GenAI audits that ties each reported rate to a written specification of the measurement choices used to produce it. ASSERT helps draft a behavioral rubric and test cases, then runs the audit against a GenAI system and returns a reported rate. In a case study on conversational deception, we observe that the reported rate moves substantially with the dialogue setup, the simulated user, the judge, and the evidence bar for non-compliance. These measurement choices substantially change the reported rate and can reorder GenAI system rankings. Because each reported rate is tied to an explicit specification, differences across audits are easier to attribute and interpret.",
+      "authors": [
+        "Riccardo Fogliato",
+        "Abhinav Palia",
+        "Xiawei Wang",
+        "Emily Sheng",
+        "Chad Atalla",
+        "Jean Garcia-Gathright",
+        "Nicholas Pangakis",
+        "Sharman Tan",
+        "Dan Vann",
+        "Hannah Washington",
+        "P. Alex Dow",
+        "Heba Elfardy",
+        "Hanna Wallach",
+        "Sandeep Atluri"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.CY"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.13840",
+      "pdfUrl": "https://arxiv.org/pdf/2608.13840v1",
+      "htmlUrl": "https://arxiv.org/html/2608.13840"
+    },
     {
       "id": "2608.13545",
       "arxivId": "2608.13545",
