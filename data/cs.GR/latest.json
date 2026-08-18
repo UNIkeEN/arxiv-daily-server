@@ -1,9 +1,159 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-17T03:34:26Z",
+  "generatedAt": "2026-08-18T03:22:44Z",
   "category": "cs.GR",
   "paperCount": 100,
   "papers": [
+    {
+      "id": "2608.16848",
+      "arxivId": "2608.16848",
+      "title": "Topology-Aware Differentiable Triangle-Soup Reconstruction via Persistent Homology",
+      "briefSummary": "Differentiable triangle-soup reconstruction inherits a limitation from its objective: photometric and geometric losses cannot measure topology, so a reconstruction with a collapsed loop or a punctured enclosed void can...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "abstract": "Differentiable triangle-soup reconstruction inherits a limitation from its objective: photometric and geometric losses cannot measure topology, so a reconstruction with a collapsed loop or a punctured enclosed void can score exactly as well as a correct one (on Chamfer-equal probes the diagrams differ 35-40x in bottleneck distance). The standard implicit remedy -- steer *where* the resampler spends its budget -- does not repair this: in a controlled study, a topology-informed prior is largely matched by an equally wide random one, and no prior shape repairs loops. We therefore move topology into the objective: a differentiable persistence term compares the evolving surface's diagram, measured on live surface samples, to a fixed target; gradients flow through a pair-frozen backward re-expressing matched birth/death simplices as closed-form circumradii, plus a recruitment term restoring the gradient optimal matching provably lacks when a feature is missing; one ratio knob calibrates the loss against the photometric gradient, no curriculum needed. Every claim passes a channel-controlled verdict: the loss must beat a norm-matched *non-topological* control through the identical gradient channel, at Chamfer parity. Under that rule the loss is topology-specific for enclosed voids (4.0-7.9x lower error) and -- the class every allocation prior failed -- for loops (2.3x, zero phantom handles, while the control collapses one); loss and prior compose; component counts (H0) are a null result. The verdicts replicate without per-shape tuning on eight external genus-known meshes in two pre-registered groups (group means: loops 1.52x, voids 4.87x; the one non-pass is a no-headroom null), degrading gracefully under noise. All evidence is synthetic and single-machine, with the target diagram known in advance; real scans are future work. Prescription: correct topology in the loss, allocate wide, combine.",
+      "authors": [
+        "Viritphon Chongpermwattanapol",
+        "Nattapat Damnernyut",
+        "Pizzanu Kanongchaiyos"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.16848",
+      "pdfUrl": "https://arxiv.org/pdf/2608.16848v1",
+      "htmlUrl": "https://arxiv.org/html/2608.16848",
+      "comment": "24 pages, 13 figures, 15 tables. Includes the supplementary material as Appendices A-H"
+    },
+    {
+      "id": "2608.16730",
+      "arxivId": "2608.16730",
+      "title": "A Stable Transport-Mechanism Descriptor for Per-Pixel Rendering Difficulty",
+      "briefSummary": "Per-pixel rendering difficulty is conventionally measured by the sample variance $\\hatσ^2(p)$ of a Monte Carlo estimator, yet this signal is least reliable exactly where difficulty concentrates: under heavy-tailed trans...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "abstract": "Per-pixel rendering difficulty is conventionally measured by the sample variance $\\hatσ^2(p)$ of a Monte Carlo estimator, yet this signal is least reliable exactly where difficulty concentrates: under heavy-tailed transport its relative error is governed by the integrand's kurtosis, and the split-half reliability of variance-derived evaluation targets reaches only 0.23-0.29 even at 40,000 samples per pixel. We propose a complementary discrete transport-mechanism descriptor: every contribution event is classified by its end-vertex BSDF lobe, the presence of a delta-specular event, and a single-/multi-bounce distinction, yielding seven mutually exclusive labels whose six named mechanisms receive all observed energy on tested scenes, with continuous side-channels retaining the mechanism mixture. Across seven scenes, the dominant label agrees 87-99.6% between 64 and 4096 samples per pixel -- where quantile-binned variance agrees as little as 21% -- and is robust to restoring the estimator's MIS half. The descriptor exposes cross-scene structure a scalar variance cannot represent, including a geometry-controlled sign reversal of the delta-mediated/glossy correlation. Using the label to correct a noisy pilot variance improves on pilot-variance sample allocation at equal budget on every test-matrix scene with heavy-tailed buckets, while reducing exactly to the incumbent where such buckets are absent, with gains surviving a random-partition placebo and persisting over a robust (median-of-means) pilot baseline. Pre-registered third-party sentinel tests confirm the account out of distribution: coverage and stability transfer, a structural finding survives a blind sign prediction, and on the ajar-door scene, where pilot-variance allocation fails 6.8 dB below uniform sampling, the label identifies from the pilot alone that the failure is not of the kind it repairs, and correctly abstains.",
+      "authors": [
+        "Po-Ting Lin"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.16730",
+      "pdfUrl": "https://arxiv.org/pdf/2608.16730v1",
+      "htmlUrl": "https://arxiv.org/html/2608.16730"
+    },
+    {
+      "id": "2608.16143",
+      "arxivId": "2608.16143",
+      "title": "AnyTalk: Speech Animation for Arbitrary Characters Leveraging a Video Generation Model",
+      "briefSummary": "We present AnyTalk, a novel method for generating 3D speech animations for arbitrary characters without requiring any animation data.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "abstract": "We present AnyTalk, a novel method for generating 3D speech animations for arbitrary characters without requiring any animation data. While existing audio-driven 3D speech animation methods rely on character-specific training data or laborious rigging/re-meshing, AnyTalk circumvents these limitations by leveraging recent video diffusion models trained on extensive video datasets. We first adapt a pre-trained video diffusion model to a target character through our Character-specific Fine-tuning (\\textit{CsF}) technique. By fine-tuning on rendered images of the 3D character paired with zeroed-out audio embeddings (representing \"no motion\"), we eliminate the need for animation data while preserving the motion prior of large-scale video diffusion model. We then uplift the resulting talking-head video into a 3D speech animation by estimating blendshape parameters through a proposed optimization process. AnyTalk enables lip-synced animations across diverse face meshes and blendshape configurations, significantly reducing manual effort and data requirements. We further enhance usability by distilling AnyTalk into a streamlined network, $\\text{AnyTalk}_{RT}$, thereby enabling real-time performance. By leveraging talking-head video generation, our method broadens access to audio-driven speech animation technology for arbitrary characters. The code is publicly available at https://serin-yoon.github.io/projects/anytalk/.",
+      "authors": [
+        "Kwan Yun",
+        "Serin Yoon",
+        "Sunjin Jung",
+        "Jung Eun Yoo",
+        "Inyup Lee",
+        "Junyong Noh"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV",
+        "cs.MM",
+        "cs.SD"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.16143",
+      "pdfUrl": "https://arxiv.org/pdf/2608.16143v1",
+      "htmlUrl": "https://arxiv.org/html/2608.16143",
+      "comment": "accepted to TVCG, Project page at https://serin-yoon.github.io/projects/anytalk/"
+    },
+    {
+      "id": "2608.15934",
+      "arxivId": "2608.15934",
+      "title": "Differentiable Voxelization of Surface Representations",
+      "briefSummary": "Different shape representations facilitate different computations.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-16",
+      "updatedAt": "2026-08-16",
+      "abstract": "Different shape representations facilitate different computations. Surface representations, in particular meshes, are often used for modeling, whereas volume representations are useful for spatial queries such as intersection or containment. Optimizing a surface representation based on a volumetric properties by gradient descent requires the derivatives of the volume relative to its bounding surface. We derive this gradient for winding numbers and show that it can be efficiently computed for volumetric values sampled on a regular grid (voxel representation) and surface parameters based on vertex sets (triangle meshes). This enables an efficient solution for a variety of optimization problems. We demonstrate the practical use of this approach at the examples of deforming meshes to resolve intersections, being manufacturable by cutting with a bandsaw from three directions, and creating shapes that are close to tiling 3D space.",
+      "authors": [
+        "Tobias Djuren",
+        "Ugo Finnendahl",
+        "Markus Worchel",
+        "Hendrik Meyer",
+        "Marc Alexa"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.15934",
+      "pdfUrl": "https://arxiv.org/pdf/2608.15934v1",
+      "htmlUrl": "https://arxiv.org/html/2608.15934",
+      "doi": "10.1145/3799902.3811203",
+      "journalRef": "SIGGRAPH Conference Papers 2026. Article No.: 22"
+    },
+    {
+      "id": "2608.15933",
+      "arxivId": "2608.15933",
+      "title": "As-Rigid-As-Possible Regularization for Implicit Surfaces",
+      "briefSummary": "Implicit surface representations have regained popularity because of their use in machine learning.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-16",
+      "updatedAt": "2026-08-16",
+      "abstract": "Implicit surface representations have regained popularity because of their use in machine learning. A common component in optimization is regularization, penalizing the deviation of the surface from its original shape. The popular as-rigid-aspossible (ARAP) energy strikes a good compromise between realistic deformation behavior and efficient computation, at least for piecewise linear meshes. We develop an approach for computing the ARAP energy of a deformation function based on point sampling of the surface. The implicit representation is exploited to provide differentials in each sample. The evaluation is efficient and exact in each sample (up to numerical precision). We demonstrate the general applicability of the method to neural shape processing in several applications and contrast its properties with alternatives from the literature.",
+      "authors": [
+        "Tobias Djuren",
+        "Markus Worchel",
+        "Ugo Finnendahl",
+        "Marc Alexa"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.15933",
+      "pdfUrl": "https://arxiv.org/pdf/2608.15933v1",
+      "htmlUrl": "https://arxiv.org/html/2608.15933",
+      "doi": "10.1111/cgf.70519",
+      "journalRef": "Computer Graphics forum, Volume 25 (2026), Number 5"
+    },
+    {
+      "id": "2608.15266",
+      "arxivId": "2608.15266",
+      "title": "BrainLinear: A Linear Model for Brain Network Analysis in Sparse Tangent Subspaces",
+      "briefSummary": "Functional connectome analysis examines brain-region interactions to understand and identify disorders such as autism spectrum disorder and Alzheimer's disease.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "abstract": "Functional connectome analysis examines brain-region interactions to understand and identify disorders such as autism spectrum disorder and Alzheimer's disease. Existing methods typically use GNNs and Transformers to model the full functional connectivity matrix. However, processing tens of thousands of connections introduces redundancy and noise, increases computational cost, and limits connection-level interpretability. This raises a central question: do we really need complex interaction modeling, or is identifying a small set of disease-relevant connectivity patterns sufficient? To answer this question, we propose BrainLinear, a lightweight geometry-aware framework for mining disease-discriminative connectome patterns. BrainLinear first maps each functional connectivity matrix to a shared tangent space centered at the Fréchet mean of the training set, capturing subject-specific deviations while respecting matrix geometry. It then scores each ROI-pair tangent direction by its classification contribution and disease--control difference, retaining Top-$K$ directions as a compact representation. Finally, a shallow multilayer perceptron performs classification on the selected representation. Experiments on ABIDE and ADNI show that BrainLinear matches or exceeds strong GNN and Transformer baselines at a fraction of their cost: it improves AUC and ACC over the best baseline for each metric by up to $3.54$ and $1.39$ percentage points, while reducing runtime and peak GPU memory by $84.0\\%$ and $68.4\\%$ relative to the closest baseline in AUC. The selected directions are directionally consistent with between-group displacements and organized across major functional systems, supporting connection-level interpretation.",
+      "authors": [
+        "Sijing Wu",
+        "Dongyuan Li",
+        "Miaoting Huang",
+        "Weiwei Ye",
+        "Ying Zhang",
+        "Feng Xia",
+        "Renhe Jiang"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.15266",
+      "pdfUrl": "https://arxiv.org/pdf/2608.15266v1",
+      "htmlUrl": "https://arxiv.org/html/2608.15266"
+    },
     {
       "id": "2608.14409",
       "arxivId": "2608.14409",
@@ -2398,152 +2548,6 @@
       "htmlUrl": "https://arxiv.org/html/2606.22481",
       "journalRef": "Computer Graphics Forum (EGSR) 2026",
       "comment": "Project page: https://repo-sam.inria.fr/nerphys/dot3d"
-    },
-    {
-      "id": "2606.21898",
-      "arxivId": "2606.21898",
-      "title": "Mesh2GS: White-Box 3DGS Construction via Plenoptic Sampling",
-      "briefSummary": "3D Gaussian Splatting (3DGS) has emerged as a promising method for high-quality, real-time 3D reconstruction.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-06-20",
-      "updatedAt": "2026-06-20",
-      "abstract": "3D Gaussian Splatting (3DGS) has emerged as a promising method for high-quality, real-time 3D reconstruction. To associate 3DGS with mesh representations, existing methods primarily focus on 3DGS-to-mesh reconstruction from multi-view images. In contrast, the problem of converting a mesh into 3DGS has received comparatively less attention. Instead of relying on heuristic strategies that bind 3D Gaussians to the mesh, we propose a novel white-box 3DGS construction framework, termed Mesh2GS, which generates 3DGS directly from mesh geometry based on plenoptic sampling theory, achieving Nyquist-level performance for high-quality global illumination rendering. Firstly, we propose a plenoptic sampling guided 3DGS construction strategy that theoretically derives the minimum sampling rate of the sampled views and the distribution of 3D Gaussians. Second, we propose a novel 3DGS update procedure with albedo--shading decomposition for efficient global-illumination capture. Finally, we introduce a neural illumination enhancement module to handle non-Lambertian effects. Experimental results demonstrate that our method surpasses state-of-the-art baselines and is practically effective for both real-time shared rendering and non-Lambertian effects capturing specular highlights. The project code will be released upon acceptance.",
-      "authors": [
-        "Haoran Zhu",
-        "Youcheng Cai",
-        "Huangsheng Du",
-        "Jingyang Meng",
-        "Ligang Liu"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CV"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2606.21898",
-      "pdfUrl": "https://arxiv.org/pdf/2606.21898v1",
-      "htmlUrl": "https://arxiv.org/html/2606.21898",
-      "comment": "16 pages, 7 figures"
-    },
-    {
-      "id": "2606.19169",
-      "arxivId": "2606.19169",
-      "title": "RespGeomLib: A Reproducible Parametric Engine for Generating Analysis-Ready Human Airway Lumen Geometry",
-      "briefSummary": "CT-derived airway models support pulmonary morphometry and airflow simulation, but are often limited by distal scan resolution and the need for substantial cleanup near bifurcations.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-06-17",
-      "updatedAt": "2026-06-17",
-      "abstract": "CT-derived airway models support pulmonary morphometry and airflow simulation, but are often limited by distal scan resolution and the need for substantial cleanup near bifurcations. Procedural alternatives are reproducible, yet many rely on stitched tubular primitives that introduce non-smooth junctions and poorly defined open boundaries. We present RespGeomLib, a reproducible parametric engine for generating analysis-ready human airway lumen surfaces from compact YAML specifications. The framework combines port-based assembly with implicit smooth-min junction blending to produce seamless junctions, while avoiding full-tree voxelization through analytic segments and local implicit extraction around bifurcations. Quantitatively, RespGeomLib yields cleaner junctions than a Boolean/stitch baseline and is substantially faster and more memory-efficient than whole-tree global implicit extraction. We further demonstrate morphometry-guided tree generation, controlled synthetic airway variants, and CFD-ready export with stable airflow simulation. RespGeomLib targets biomedical workflows requiring reproducible morphometry, controlled synthetic variants, and simulation-ready lumen geometry. The code is publicly available at https://nichula01.github.io/Respgeomlib/",
-      "authors": [
-        "Nichula Wasalathilaka",
-        "Parakrama Ekanayake",
-        "Roshan Godaliyadda"
-      ],
-      "categories": [
-        "cs.GR",
-        "eess.SY"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2606.19169",
-      "pdfUrl": "https://arxiv.org/pdf/2606.19169v1",
-      "htmlUrl": "https://arxiv.org/html/2606.19169",
-      "comment": "Accepted to Publication at 2026 IEEE Mercon"
-    },
-    {
-      "id": "2606.18486",
-      "arxivId": "2606.18486",
-      "title": "Rendering Separoid Information: Rate-Distortion Reconstruction of Convex Apartness Scenes",
-      "briefSummary": "A convex scene communicates more than shape: the pattern of which groups of objects are mutually apart and which cross is a discrete relational payload.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-06-16",
-      "updatedAt": "2026-06-16",
-      "abstract": "A convex scene communicates more than shape: the pattern of which groups of objects are mutually apart and which cross is a discrete relational payload. We treat the apartness table of a finite family of convex bodies, a separoid, as a source signal; a renderable convex scene as its encoder; and the rendered image as a noisy visual channel from which the apartness structure is decoded. For disjoint index sets $A,B$, the source bit records whether $\\operatorname{conv}(\\bigcup_{a\\in A} C_a)$ and $\\operatorname{conv}(\\bigcup_{b\\in B} C_b)$ are disjoint. Within this view, apartness-preserving rendering becomes a rate--distortion problem: the rate is a differentiable geometric code length for the carrier scene, while the distortion is closure-aware and weights maximal separations and minimal Radon partitions by the number of consequences they control. A differentiable support-function realization turns separability into a soft directional margin and represents each separation by a distribution over witnessing directions, yielding a variational lower bound on apartness mutual information $I(Σ;Y)$ and an information-theoretic account of view selection. Experiments on planar convex scenes show that scenes are recovered from the apartness table alone at 99.9% bit accuracy, with the certificate skeleton already determining the full table; coordinate quantization gives a clean operational rate--distortion frontier where certificate distortion is more stringent than Hamming error; and rendered $48\\times48$ images transmit about 0.72 of the apartness-graph entropy under mild noise. Increasing the viewpoint-robustness term widens separating cones with only a modest geometry-rate surcharge. The result is a certificate-aware rendering objective for scenes whose purpose is to make relational convex structure recoverable rather than merely pixel-faithful.",
-      "authors": [
-        "Faruk Alpay",
-        "Baris Basaran"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.IT"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2606.18486",
-      "pdfUrl": "https://arxiv.org/pdf/2606.18486v1",
-      "htmlUrl": "https://arxiv.org/html/2606.18486",
-      "comment": "14 pages, 7 figures, 1 table; ancillary files provided, including code, experiment drivers, fixed seeds, and result files"
-    },
-    {
-      "id": "2606.18069",
-      "arxivId": "2606.18069",
-      "title": "Blended Chart Surfaces: A Seamless Explicit Representation for Smooth Surface Fitting",
-      "briefSummary": "A surface representation suitable for geometry processing should be compact and explicit, provide global smoothness guarantees, support a wide range of surface topologies, and offer reliable access to differential quant...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-06-16",
-      "updatedAt": "2026-06-16",
-      "abstract": "A surface representation suitable for geometry processing should be compact and explicit, provide global smoothness guarantees, support a wide range of surface topologies, and offer reliable access to differential quantities such as normals and surface energies, while remaining compatible with modern differentiable optimization. Existing neural representations typically sacrifice one or more of these properties: implicit fields typically require iso-surfacing for downstream use, while explicit neural maps are constrained by canonical-domain parametrizations or exhibit seam artifacts between local charts. We introduce Blended Chart Surfaces, a compact, network-free, explicit representation that is smooth by construction and anchored to user-provided topology. Given a coarse proxy mesh encoding the intended surface topology and approximate geometry, Blended Chart Surfaces jointly optimize for a polynomial map at each proxy vertex using an off-the-shelf optimizer to fit to an implicit target shape, avoiding the need for an input parametrization. Neighboring maps are fused using a smooth 'one-ring coordinate' blending scheme, decoupling topology and coarse geometry (carried by the proxy) from geometric details (carried by the local patches). The surface is globally smooth, fully differentiable, and enables stable evaluation of derivatives, making differential quantities and surface energies directly accessible. Additionally, our construction is equivariant to rigid motions and scaling of the proxy mesh. We evaluate Blended Chart Surfaces on various topologies and geometric complexity, and compare against explicit alternatives including interpolating-function baselines and mesh-displacement MLPs. Across these, Blended Chart Surfaces achieve a favorable trade-off among compactness, simplicity, access to differential quantities, and expressivity while remaining smooth across patch boundaries.",
-      "authors": [
-        "Romy Williamson",
-        "Niloy Mitra"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CG",
-        "cs.CV"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2606.18069",
-      "pdfUrl": "https://arxiv.org/pdf/2606.18069v1",
-      "htmlUrl": "https://arxiv.org/html/2606.18069",
-      "comment": "17 pages, 16 figures"
-    },
-    {
-      "id": "2606.17432",
-      "arxivId": "2606.17432",
-      "title": "Edit3DGS: Unified Framework for Dynamic Head Editing via 2D Instruction-Guided Diffusion and 3D Gaussian Splatting",
-      "briefSummary": "We present Edit3DGS, a unified framework for dynamic 3D head editing that integrates 2D instruction-guided diffusion with 3D Gaussian splatting.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-06-16",
-      "updatedAt": "2026-06-16",
-      "abstract": "We present Edit3DGS, a unified framework for dynamic 3D head editing that integrates 2D instruction-guided diffusion with 3D Gaussian splatting. Unlike prior approaches that separately address frame-based edits or static 3D reconstruction, our method couples semantic controllability in the image domain with photorealistic, temporally consistent 3D representations. Given an input video, editable facial regions are masked and modified using a text-conditioned diffusion model to support fine-grained operations such as expression transformation, attribute modification, and appearance refinement. The edited frames are then aggregated through 3D Gaussian splatting to produce a coherent, high-fidelity avatar that preserves both identity and motion dynamics. To enforce consistency, Edit3DGS incorporates multi-view batch editing and lightweight inpainting strategies that recover lost expressions across timesteps. Experimental results demonstrate that our framework enables controllable, artifact-free head editing with smooth temporal transitions, offering practical applications in virtual avatars, immersive communication, film production, and interactive media.",
-      "authors": [
-        "Duy-Dat Tran",
-        "Trung-Nghia Le"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CV"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2606.17432",
-      "pdfUrl": "https://arxiv.org/pdf/2606.17432v1",
-      "htmlUrl": "https://arxiv.org/html/2606.17432",
-      "comment": "SOICT 2025"
-    },
-    {
-      "id": "2606.16797",
-      "arxivId": "2606.16797",
-      "title": "AI+CAD Data Representation Architecture: From DeepCAD Solid Modeling to WHUCAD Industrial-Grade Parametric Feature Modeling",
-      "briefSummary": "In July 2025, Study Times, sponsored by the Party School of the Central Committee of the CPC, pointed out that 95% of industrial software for R&D and design in China relies on imports, and that 90% of the high-end CAD/C...",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-06-15",
-      "updatedAt": "2026-06-16",
-      "abstract": "In July 2025, Study Times, sponsored by the Party School of the Central Committee of the CPC, pointed out that 95% of industrial software for R&D and design in China relies on imports, and that 90% of the high-end CAD/CAE/CAM software market is monopolized by European and American giants. This is a typical strategic bottleneck problem. Unlike the visually oriented goal of \"visual plausibility\" pursued by related sister disciplines such as CV and CG, CAD places greater emphasis on \"industrial usability\". In CAD, data representation architecture is more foundational than the optimization of network algorithms. This paper first starts from data representation in AI+CAD and reports a classification paradigm and research progress in AI+CAD. Then, using the open-source DeepCAD data representation as an example, it analyzes the pain points of representative AI+CAD work and the gap between such work and real industrial-grade parametric feature modeling. Next, by comparison with the open-source WHUCAD data representation, it discusses how its three-level architecture provides fundamental support for industrial-grade parametric feature modeling. Finally, in view of the rapid iteration of the AI wave, large models, and agents, this paper offers an outlook on AI+industrial-grade CAD.",
-      "authors": [
-        "Rubin Fan",
-        "Fazhi He",
-        "Yuxin Liu",
-        "Jing Lin",
-        "Ruibo Wan",
-        "Xuecheng Zhang",
-        "Qingchen Kong"
-      ],
-      "categories": [
-        "cs.GR"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2606.16797",
-      "pdfUrl": "https://arxiv.org/pdf/2606.16797v2",
-      "htmlUrl": "https://arxiv.org/html/2606.16797"
     }
   ]
 }

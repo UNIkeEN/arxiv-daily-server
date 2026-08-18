@@ -1,10 +1,160 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-17T03:27:17Z",
+  "generatedAt": "2026-08-18T03:22:44Z",
   "category": "cs.GR",
   "yearMonth": "2026-08",
-  "paperCount": 22,
+  "paperCount": 28,
   "papers": [
+    {
+      "id": "2608.16848",
+      "arxivId": "2608.16848",
+      "title": "Topology-Aware Differentiable Triangle-Soup Reconstruction via Persistent Homology",
+      "briefSummary": "Differentiable triangle-soup reconstruction inherits a limitation from its objective: photometric and geometric losses cannot measure topology, so a reconstruction with a collapsed loop or a punctured enclosed void can...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "abstract": "Differentiable triangle-soup reconstruction inherits a limitation from its objective: photometric and geometric losses cannot measure topology, so a reconstruction with a collapsed loop or a punctured enclosed void can score exactly as well as a correct one (on Chamfer-equal probes the diagrams differ 35-40x in bottleneck distance). The standard implicit remedy -- steer *where* the resampler spends its budget -- does not repair this: in a controlled study, a topology-informed prior is largely matched by an equally wide random one, and no prior shape repairs loops. We therefore move topology into the objective: a differentiable persistence term compares the evolving surface's diagram, measured on live surface samples, to a fixed target; gradients flow through a pair-frozen backward re-expressing matched birth/death simplices as closed-form circumradii, plus a recruitment term restoring the gradient optimal matching provably lacks when a feature is missing; one ratio knob calibrates the loss against the photometric gradient, no curriculum needed. Every claim passes a channel-controlled verdict: the loss must beat a norm-matched *non-topological* control through the identical gradient channel, at Chamfer parity. Under that rule the loss is topology-specific for enclosed voids (4.0-7.9x lower error) and -- the class every allocation prior failed -- for loops (2.3x, zero phantom handles, while the control collapses one); loss and prior compose; component counts (H0) are a null result. The verdicts replicate without per-shape tuning on eight external genus-known meshes in two pre-registered groups (group means: loops 1.52x, voids 4.87x; the one non-pass is a no-headroom null), degrading gracefully under noise. All evidence is synthetic and single-machine, with the target diagram known in advance; real scans are future work. Prescription: correct topology in the loss, allocate wide, combine.",
+      "authors": [
+        "Viritphon Chongpermwattanapol",
+        "Nattapat Damnernyut",
+        "Pizzanu Kanongchaiyos"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.16848",
+      "pdfUrl": "https://arxiv.org/pdf/2608.16848v1",
+      "htmlUrl": "https://arxiv.org/html/2608.16848",
+      "comment": "24 pages, 13 figures, 15 tables. Includes the supplementary material as Appendices A-H"
+    },
+    {
+      "id": "2608.16730",
+      "arxivId": "2608.16730",
+      "title": "A Stable Transport-Mechanism Descriptor for Per-Pixel Rendering Difficulty",
+      "briefSummary": "Per-pixel rendering difficulty is conventionally measured by the sample variance $\\hatσ^2(p)$ of a Monte Carlo estimator, yet this signal is least reliable exactly where difficulty concentrates: under heavy-tailed trans...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "abstract": "Per-pixel rendering difficulty is conventionally measured by the sample variance $\\hatσ^2(p)$ of a Monte Carlo estimator, yet this signal is least reliable exactly where difficulty concentrates: under heavy-tailed transport its relative error is governed by the integrand's kurtosis, and the split-half reliability of variance-derived evaluation targets reaches only 0.23-0.29 even at 40,000 samples per pixel. We propose a complementary discrete transport-mechanism descriptor: every contribution event is classified by its end-vertex BSDF lobe, the presence of a delta-specular event, and a single-/multi-bounce distinction, yielding seven mutually exclusive labels whose six named mechanisms receive all observed energy on tested scenes, with continuous side-channels retaining the mechanism mixture. Across seven scenes, the dominant label agrees 87-99.6% between 64 and 4096 samples per pixel -- where quantile-binned variance agrees as little as 21% -- and is robust to restoring the estimator's MIS half. The descriptor exposes cross-scene structure a scalar variance cannot represent, including a geometry-controlled sign reversal of the delta-mediated/glossy correlation. Using the label to correct a noisy pilot variance improves on pilot-variance sample allocation at equal budget on every test-matrix scene with heavy-tailed buckets, while reducing exactly to the incumbent where such buckets are absent, with gains surviving a random-partition placebo and persisting over a robust (median-of-means) pilot baseline. Pre-registered third-party sentinel tests confirm the account out of distribution: coverage and stability transfer, a structural finding survives a blind sign prediction, and on the ajar-door scene, where pilot-variance allocation fails 6.8 dB below uniform sampling, the label identifies from the pilot alone that the failure is not of the kind it repairs, and correctly abstains.",
+      "authors": [
+        "Po-Ting Lin"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.16730",
+      "pdfUrl": "https://arxiv.org/pdf/2608.16730v1",
+      "htmlUrl": "https://arxiv.org/html/2608.16730"
+    },
+    {
+      "id": "2608.16143",
+      "arxivId": "2608.16143",
+      "title": "AnyTalk: Speech Animation for Arbitrary Characters Leveraging a Video Generation Model",
+      "briefSummary": "We present AnyTalk, a novel method for generating 3D speech animations for arbitrary characters without requiring any animation data.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-17",
+      "updatedAt": "2026-08-17",
+      "abstract": "We present AnyTalk, a novel method for generating 3D speech animations for arbitrary characters without requiring any animation data. While existing audio-driven 3D speech animation methods rely on character-specific training data or laborious rigging/re-meshing, AnyTalk circumvents these limitations by leveraging recent video diffusion models trained on extensive video datasets. We first adapt a pre-trained video diffusion model to a target character through our Character-specific Fine-tuning (\\textit{CsF}) technique. By fine-tuning on rendered images of the 3D character paired with zeroed-out audio embeddings (representing \"no motion\"), we eliminate the need for animation data while preserving the motion prior of large-scale video diffusion model. We then uplift the resulting talking-head video into a 3D speech animation by estimating blendshape parameters through a proposed optimization process. AnyTalk enables lip-synced animations across diverse face meshes and blendshape configurations, significantly reducing manual effort and data requirements. We further enhance usability by distilling AnyTalk into a streamlined network, $\\text{AnyTalk}_{RT}$, thereby enabling real-time performance. By leveraging talking-head video generation, our method broadens access to audio-driven speech animation technology for arbitrary characters. The code is publicly available at https://serin-yoon.github.io/projects/anytalk/.",
+      "authors": [
+        "Kwan Yun",
+        "Serin Yoon",
+        "Sunjin Jung",
+        "Jung Eun Yoo",
+        "Inyup Lee",
+        "Junyong Noh"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV",
+        "cs.MM",
+        "cs.SD"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.16143",
+      "pdfUrl": "https://arxiv.org/pdf/2608.16143v1",
+      "htmlUrl": "https://arxiv.org/html/2608.16143",
+      "comment": "accepted to TVCG, Project page at https://serin-yoon.github.io/projects/anytalk/"
+    },
+    {
+      "id": "2608.15934",
+      "arxivId": "2608.15934",
+      "title": "Differentiable Voxelization of Surface Representations",
+      "briefSummary": "Different shape representations facilitate different computations.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-16",
+      "updatedAt": "2026-08-16",
+      "abstract": "Different shape representations facilitate different computations. Surface representations, in particular meshes, are often used for modeling, whereas volume representations are useful for spatial queries such as intersection or containment. Optimizing a surface representation based on a volumetric properties by gradient descent requires the derivatives of the volume relative to its bounding surface. We derive this gradient for winding numbers and show that it can be efficiently computed for volumetric values sampled on a regular grid (voxel representation) and surface parameters based on vertex sets (triangle meshes). This enables an efficient solution for a variety of optimization problems. We demonstrate the practical use of this approach at the examples of deforming meshes to resolve intersections, being manufacturable by cutting with a bandsaw from three directions, and creating shapes that are close to tiling 3D space.",
+      "authors": [
+        "Tobias Djuren",
+        "Ugo Finnendahl",
+        "Markus Worchel",
+        "Hendrik Meyer",
+        "Marc Alexa"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.15934",
+      "pdfUrl": "https://arxiv.org/pdf/2608.15934v1",
+      "htmlUrl": "https://arxiv.org/html/2608.15934",
+      "doi": "10.1145/3799902.3811203",
+      "journalRef": "SIGGRAPH Conference Papers 2026. Article No.: 22"
+    },
+    {
+      "id": "2608.15933",
+      "arxivId": "2608.15933",
+      "title": "As-Rigid-As-Possible Regularization for Implicit Surfaces",
+      "briefSummary": "Implicit surface representations have regained popularity because of their use in machine learning.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-16",
+      "updatedAt": "2026-08-16",
+      "abstract": "Implicit surface representations have regained popularity because of their use in machine learning. A common component in optimization is regularization, penalizing the deviation of the surface from its original shape. The popular as-rigid-aspossible (ARAP) energy strikes a good compromise between realistic deformation behavior and efficient computation, at least for piecewise linear meshes. We develop an approach for computing the ARAP energy of a deformation function based on point sampling of the surface. The implicit representation is exploited to provide differentials in each sample. The evaluation is efficient and exact in each sample (up to numerical precision). We demonstrate the general applicability of the method to neural shape processing in several applications and contrast its properties with alternatives from the literature.",
+      "authors": [
+        "Tobias Djuren",
+        "Markus Worchel",
+        "Ugo Finnendahl",
+        "Marc Alexa"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.15933",
+      "pdfUrl": "https://arxiv.org/pdf/2608.15933v1",
+      "htmlUrl": "https://arxiv.org/html/2608.15933",
+      "doi": "10.1111/cgf.70519",
+      "journalRef": "Computer Graphics forum, Volume 25 (2026), Number 5"
+    },
+    {
+      "id": "2608.15266",
+      "arxivId": "2608.15266",
+      "title": "BrainLinear: A Linear Model for Brain Network Analysis in Sparse Tangent Subspaces",
+      "briefSummary": "Functional connectome analysis examines brain-region interactions to understand and identify disorders such as autism spectrum disorder and Alzheimer's disease.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-15",
+      "updatedAt": "2026-08-15",
+      "abstract": "Functional connectome analysis examines brain-region interactions to understand and identify disorders such as autism spectrum disorder and Alzheimer's disease. Existing methods typically use GNNs and Transformers to model the full functional connectivity matrix. However, processing tens of thousands of connections introduces redundancy and noise, increases computational cost, and limits connection-level interpretability. This raises a central question: do we really need complex interaction modeling, or is identifying a small set of disease-relevant connectivity patterns sufficient? To answer this question, we propose BrainLinear, a lightweight geometry-aware framework for mining disease-discriminative connectome patterns. BrainLinear first maps each functional connectivity matrix to a shared tangent space centered at the Fréchet mean of the training set, capturing subject-specific deviations while respecting matrix geometry. It then scores each ROI-pair tangent direction by its classification contribution and disease--control difference, retaining Top-$K$ directions as a compact representation. Finally, a shallow multilayer perceptron performs classification on the selected representation. Experiments on ABIDE and ADNI show that BrainLinear matches or exceeds strong GNN and Transformer baselines at a fraction of their cost: it improves AUC and ACC over the best baseline for each metric by up to $3.54$ and $1.39$ percentage points, while reducing runtime and peak GPU memory by $84.0\\%$ and $68.4\\%$ relative to the closest baseline in AUC. The selected directions are directionally consistent with between-group displacements and organized across major functional systems, supporting connection-level interpretation.",
+      "authors": [
+        "Sijing Wu",
+        "Dongyuan Li",
+        "Miaoting Huang",
+        "Weiwei Ye",
+        "Ying Zhang",
+        "Feng Xia",
+        "Renhe Jiang"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.15266",
+      "pdfUrl": "https://arxiv.org/pdf/2608.15266v1",
+      "htmlUrl": "https://arxiv.org/html/2608.15266"
+    },
     {
       "id": "2608.14409",
       "arxivId": "2608.14409",
