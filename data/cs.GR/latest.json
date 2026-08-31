@@ -1,9 +1,58 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-30T08:34:47Z",
+  "generatedAt": "2026-08-31T08:48:23Z",
   "category": "cs.GR",
   "paperCount": 100,
   "papers": [
+    {
+      "id": "2608.28310",
+      "arxivId": "2608.28310",
+      "title": "Transparency Rendering in Computer-Aided Design: Methodologies, Trade-offs, and Challenges",
+      "briefSummary": "This paper surveys the state of transparency rendering in Computer-Aided Design (CAD), with a focus on both practical deployment in industrial systems and the underlying algorithms.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-28",
+      "updatedAt": "2026-08-28",
+      "abstract": "This paper surveys the state of transparency rendering in Computer-Aided Design (CAD), with a focus on both practical deployment in industrial systems and the underlying algorithms. We first review current approaches to transparency rendering in CAD environments and outline application scenarios in which accurate and performant transparency is critical for design inspection, communication, and decision-making. We then analyze the trade-offs between approximate and exact transparency techniques, comparing their performance-quality balance on desktop and mobile platforms and discussing criteria for selecting appropriate methods. The survey further identifies the need for robust benchmarks, quality metrics, and evaluation methodologies tailored to CAD-specific visualization tasks. We examine techniques for emphasizing important interior components such as importance-driven transparency, silhouette-based methods, and related approaches to support effective spatial understanding in complex assemblies. Finally, we discuss the unique challenges of rendering transparent constructive solid geometry (CSG) objects, including robustness, correctness, and integration with modern rendering pipelines. Collectively, these contributions characterize current capabilities, systematize open problems, and outline future research directions for transparency rendering in CAD visualization.",
+      "authors": [
+        "Grigoris Tsopouridis",
+        "Ioannis Fudos"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.28310",
+      "pdfUrl": "https://arxiv.org/pdf/2608.28310v1",
+      "htmlUrl": "https://arxiv.org/html/2608.28310",
+      "doi": "10.14733/cadaps.2027.133-151",
+      "journalRef": "Computer-Aided Design & Applications, 24(2), 2027, 133-151",
+      "comment": "Author Version. Published at Computer-Aided Design & Applications, DOI: https://doi.org/10.14733/cadaps.2027.133-151"
+    },
+    {
+      "id": "2608.28102",
+      "arxivId": "2608.28102",
+      "title": "What Will This Copper Look Like Later? Forecasting Surface Appearance and Rendering It as a PBR Material",
+      "briefSummary": "Digital design requires predicting how a metal surface will look later in its oxidation; this paper presents such a pipeline for copper.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-08-28",
+      "updatedAt": "2026-08-28",
+      "abstract": "Digital design requires predicting how a metal surface will look later in its oxidation; this paper presents such a pipeline for copper. Given a fixed-camera observation, the system forecasts appearance 10 accelerated units ahead and converts it into the albedo, normal, roughness and metallic maps a renderer consumes. Forecasting is evaluated as an authoring tool would use it, on a copper specimen the system has not observed: an entire recording is held out, so training and checkpoint selection use one specimen and the test set is the whole of a second, recorded on a different day and condition. Under this protocol a learned spatio-temporal model with a monotone oxidation state, the most accurate forecaster within a single recording, is less accurate than copying the last observed frame on an unseen specimen, in both directions, as are three further trained architectures. The only forecaster that transfers is a closed-form global color extrapolation with no trained parameters, improving on copy-last-frame by 13.4% and 50.6%, with a margin that increases with horizon to +16.7% and +55.5% at t+10. Two controls qualify this: correcting every frame for the photometric drift measured on a non-oxidizing reference region leaves both margins intact, ruling out uncontrolled exposure as their source, and a moving-block bootstrap over the 6 independent windows each recording contains separates the larger margin from zero but leaves the smaller one not individually significant. The mechanism is measured: a learned susceptibility map encodes where corrosion begins on the training specimen and misleads on a new one, whereas the global color trajectory is what specimens share. The pipeline therefore deploys the closed-form forecaster for unseen specimens and the learned model only for continuing one already observed. Code, splits, protocol and leakage audit are released.",
+      "authors": [
+        "Teejuta Sriwaranon",
+        "Borworntat Dendumrongkul",
+        "Tanapat Chamted",
+        "Pizzanu Kanongchaiyos"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2608.28102",
+      "pdfUrl": "https://arxiv.org/pdf/2608.28102v1",
+      "htmlUrl": "https://arxiv.org/html/2608.28102",
+      "comment": "10 pages, 5 figures, 3 tables. (Repository https://github.com/RuffLogix/kstep-copper-forecast)"
+    },
     {
       "id": "2608.27301",
       "arxivId": "2608.27301",
@@ -2502,57 +2551,6 @@
       "doi": "10.1145/3757377.3763971",
       "journalRef": "Proceedings of ACM SIGGRAPH Asia 2025 Conference Papers, Article 201, 12 pages, 2025",
       "comment": "12 pages plus supplementary material, 20 pages total; SIGGRAPH Asia 2025 Conference Papers"
-    },
-    {
-      "id": "2606.30380",
-      "arxivId": "2606.30380",
-      "title": "RenderFormer++: Scalable and Physically Grounded Feed-Forward Neural Rendering",
-      "briefSummary": "We present RenderFormer++, a scalable and physically grounded feed-forward neural rendering framework for global illumination in mesh scenes.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-06-29",
-      "updatedAt": "2026-06-29",
-      "abstract": "We present RenderFormer++, a scalable and physically grounded feed-forward neural rendering framework for global illumination in mesh scenes. Existing Transformer-based neural rendering methods such as RenderFormer achieve promising cross-scene generalization, but suffer from limited physical consistency and poor scalability due to the quadratic attention complexity of triangle-level tokenization. To address these issues, we introduce Physics-Informed Transport Guidance (PITG), which embeds rendering-equation inductive biases into the attention mechanism and enforces transport consistency loss, enabling physically consistent light transport modeling. We further propose Hierarchical Object-Centric Tokenization (HOCT), which aggregates triangle-level features into compact object-level tokens via cross-attention with learnable queries, substantially reducing computational and memory costs while preserving geometric and radiometric information. Extensive experiments demonstrate that RenderFormer++ achieves scalable, stable, and generalizable feed-forward global illumination rendering across complex large-scale scenes with improved physical accuracy and efficiency over prior neural rendering methods.",
-      "authors": [
-        "Huangsheng Du",
-        "Haoran Zhu",
-        "Youcheng Cai",
-        "Jinyang Meng",
-        "Ligang Liu"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CV",
-        "cs.LG"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2606.30380",
-      "pdfUrl": "https://arxiv.org/pdf/2606.30380v1",
-      "htmlUrl": "https://arxiv.org/html/2606.30380"
-    },
-    {
-      "id": "2606.29989",
-      "arxivId": "2606.29989",
-      "title": "Rendering Coherent Scattering via Quantum Collision Models",
-      "briefSummary": "Traditional light rendering techniques treat the optical properties of materials as static, yet this assumption breaks down in cases where these properties dynamically evolve in response to incident illumination.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-06-29",
-      "updatedAt": "2026-06-29",
-      "abstract": "Traditional light rendering techniques treat the optical properties of materials as static, yet this assumption breaks down in cases where these properties dynamically evolve in response to incident illumination. We present a novel shading framework that combines classical ray-tracing with a quantum collision model to explore the effect of coherent light-matter interactions in rendering. By treating incident light and material excitations as quantized modes, we model sub-surface scattering as a sequence of symmetry-constrained unitary collisions. This formulation allows for the incorporation of non-integrable dynamics and chaotic optical responses due to multi-layer interference effects. We demonstrate how these collision operators can be pre-computed using near-term quantum computers to generate standard BSDFs, enabling the rendering of new physics-inspired materials with distinct optical signatures.",
-      "authors": [
-        "João S. Ferreira",
-        "Spencer S. Topel",
-        "Pierre Fromholz",
-        "James R. Wootton"
-      ],
-      "categories": [
-        "cs.GR",
-        "physics.pop-ph",
-        "quant-ph"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2606.29989",
-      "pdfUrl": "https://arxiv.org/pdf/2606.29989v1",
-      "htmlUrl": "https://arxiv.org/html/2606.29989"
     }
   ]
 }
