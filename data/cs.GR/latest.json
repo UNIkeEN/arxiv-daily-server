@@ -1,9 +1,83 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T07:25:49Z",
+  "generatedAt": "2026-09-04T07:21:06Z",
   "category": "cs.GR",
   "paperCount": 100,
   "papers": [
+    {
+      "id": "2609.03897",
+      "arxivId": "2609.03897",
+      "title": "Reparametrizing 3D Gaussian Splatting for Real-Time Palette-based Color and Luminance Editing",
+      "briefSummary": "Professional color editing requires precise control over both color (hue and saturation) and lightness, ideally through separate, independent controls.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "abstract": "Professional color editing requires precise control over both color (hue and saturation) and lightness, ideally through separate, independent controls. We present a real-time interactive color editing framework for 3D Gaussian Splatting that supports palette-based recoloring, per-palette tone curves for color-aware luminance adjustment, and pixel-level color constraints. Rather than training a new representation from scratch, we reparameterize the spherical harmonics of a pretrained vanilla 3DGS to encode view-dependent palette weights. We simultaneously solve for weights and palette colors via a loss based on image-space sparsity. Luminance editing is realized as a per-pixel weight shift along the achromatic axis, which we show is equivalent to a per-pixel palette-aware luminance edit. This view-space formulation addresses a core limitation of prior primitive-space methods, where alpha-blending breaks per-Gaussian sparsity and causes edits to bleed into unintended regions. Our edits run in tens of milliseconds via an iteratively reweighted least squares and damped block-coordinate descent that couples tone curves and palette shifts under view-space sparsity. Our representation can be efficiently baked back into a vanilla 3DGS, preserving compatibility with standard viewers. We demonstrate sparser, more localized edits than prior palette-based 3DGS methods, while enabling independent luminance control per palette color and view-consistent pixel-level constraints, capabilities previously unavailable for 3DGS.",
+      "authors": [
+        "Cheng-Kang Ted Chao",
+        "Yotam Gingold"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.03897",
+      "pdfUrl": "https://arxiv.org/pdf/2609.03897v1",
+      "htmlUrl": "https://arxiv.org/html/2609.03897",
+      "doi": "10.1145/3829340.3842202",
+      "journalRef": "SIGGRAPH Asia 2026 Conference Papers",
+      "comment": "11 pages, 9 figures"
+    },
+    {
+      "id": "2609.03613",
+      "arxivId": "2609.03613",
+      "title": "TileGS: Tile-Local Depth Binning for Gaussian Splatting Rasterization",
+      "briefSummary": "Real-time 3D Gaussian Splatting (3DGS) achieves high rendering quality, but standard rasterization still traverses a globally sorted tile stream that creates long per-tile ranges and heavy geometry-attribute traffic.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "abstract": "Real-time 3D Gaussian Splatting (3DGS) achieves high rendering quality, but standard rasterization still traverses a globally sorted tile stream that creates long per-tile ranges and heavy geometry-attribute traffic. We present TileGS, a tile-local reorganization of Gaussian splatting. TileGS turns each long tile range into a sequence of shorter depth-local ranges, rasterizes those ranges in front-to-back order, and applies selective repair where coarse ordering is insufficient to match baseline compositing. Across a 9-scene benchmark on desktop and laptop Ada GPUs, our default No-GW (No Geometry-Write) variant delivers a mean 1.44x raster-kernel speedup on RTX 4090 and mean end-to-end frame speedups of 1.069x on RTX 4090 and 1.094x on RTX 1000 Ada over gsplat--a widely used optimized open-source 3DGS implementation--while matching the gsplat output up to numerical noise (|Delta PSNR| < 0.001 dB, |Delta SSIM| < 0.001, |Delta LPIPS| < 0.001). Full-suite RTX 4090 Nsight Compute profiling reveals TileGS is faster despite lower SM throughput, lower active-warp occupancy, and higher DRAM traffic, while total SASS thread instructions fall by 1.26x. Source-attributed profiling confirms that geometry attributes dominate the remaining memory pressure (85.8% of total raster traffic and 88.6% of excess sectors). Together, these counters support the interpretation that TileGS improves raster performance by reducing effective raster traversal work, rather than by reducing byte volume, improving coalescing, increasing occupancy, or directly reducing measured warp divergence.",
+      "authors": [
+        "Wei Tan",
+        "Matias Turkulainen",
+        "Lauri Ilola",
+        "Hamed Rezazadegan Tavakoli",
+        "Juho Kannala"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.03613",
+      "pdfUrl": "https://arxiv.org/pdf/2609.03613v1",
+      "htmlUrl": "https://arxiv.org/html/2609.03613"
+    },
+    {
+      "id": "2609.03596",
+      "arxivId": "2609.03596",
+      "title": "ReRoom: Blending Virtual and Physical Contexts for In Situ Room Planning in Mixed Reality",
+      "briefSummary": "Planning a real domestic space is an in situ authoring process: users evaluate candidate layouts at true scale, refine their intent, and carry accepted decisions into later iterations.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "abstract": "Planning a real domestic space is an in situ authoring process: users evaluate candidate layouts at true scale, refine their intent, and carry accepted decisions into later iterations. Existing approaches either separate layout editing from the physical room or provide limited support for evaluating and refining whole-room proposals in situ. We present ReRoom, a mixed-reality system for in situ room-layout authoring. ReRoom presents a shared layout state through a virtual room proxy spatially registered to the target room, allowing interaction and layout generation to remain grounded in the physical context. Users refine the current proposal through direct manipulation or language and preserve accepted placements, allowing each generated update to continue the same evolving design. To balance layout quality with generation efficiency, ReRoom uses a skill-guided layout agent whose room-layout design skill operationalizes three principles that we formulate by synthesizing established interior-design guidance for real-room layout generation. The skill grounds these principles in a normalized representation of the scanned room and reusable geometric checks. Evaluations show that ReRoom produces high-quality layouts for non-rectangular rooms, while its in situ workflow improves the room-planning experience over an otherwise equivalent off-site VR workflow. Code will be released upon acceptance of the paper.",
+      "authors": [
+        "Hongliang Yang",
+        "Yanjing Xu",
+        "Anhang Zhang",
+        "Hui Ye",
+        "Pengfei Xu"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.HC"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.03596",
+      "pdfUrl": "https://arxiv.org/pdf/2609.03596v1",
+      "htmlUrl": "https://arxiv.org/html/2609.03596",
+      "comment": "19 pages, 8 figures; supplementary materials included"
+    },
     {
       "id": "2609.02675",
       "arxivId": "2609.02675",
@@ -2465,92 +2539,6 @@
       "pdfUrl": "https://arxiv.org/pdf/2607.04612v1",
       "htmlUrl": "https://arxiv.org/html/2607.04612",
       "comment": "3 page poster short paper.2 Figures, 2 Tables. Planned to submit to SIGGRAPH Asia"
-    },
-    {
-      "id": "2607.04540",
-      "arxivId": "2607.04540",
-      "title": "SceneFrom3D: Geometry-Conditioned Outdoor 3D Scene Generation via View Scheduling with Object-Level Control",
-      "briefSummary": "Geometry-conditioned 3D scene generation enables the creation of 3D environments from user-provided geometry, offering direct control over scene structure and object layout.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-07-05",
-      "updatedAt": "2026-07-05",
-      "abstract": "Geometry-conditioned 3D scene generation enables the creation of 3D environments from user-provided geometry, offering direct control over scene structure and object layout. To generate such 3D scenes, current methods commonly adopt a three-stage design that first defines a view schedule, then synthesizes multi-view observations along the scheduled views, and finally reconstructs a 3D representation from the generated images. However, defining the view schedule becomes a major bottleneck for outdoor scenes, where large, unstructured, and unbounded geometry makes it difficult to obtain views that provide sufficient coverage while supporting stable generation. To address this bottleneck, we present SceneFrom3D, a framework that automatically schedules views from outdoor input geometries. SceneFrom3D constructs a directed generation graph whose nodes represent anchor views and whose edges represent interpolation trajectories, defining which views to synthesize, which view pairs to interpolate, and in which order generation should proceed. Beyond automatic view scheduling, SceneFrom3D further improves controllability through object-level conditioning, assigning each object an identity image for appearance guidance and a geometry-adherence parameter for region-wise control over the input geometry. Experiments demonstrate that SceneFrom3D achieves state-of-the-art geometry-conditioned outdoor 3D scene generation, producing high-quality scenes with controllable object appearance and geometry adherence.",
-      "authors": [
-        "Geonung Kim",
-        "Jeongeun Park",
-        "Nuri Ryu",
-        "Di Liu",
-        "Sunghyun Cho"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CV"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.04540",
-      "pdfUrl": "https://arxiv.org/pdf/2607.04540v1",
-      "htmlUrl": "https://arxiv.org/html/2607.04540",
-      "comment": "project page: https://kimgeonung.github.io/SceneFrom3D"
-    },
-    {
-      "id": "2607.04341",
-      "arxivId": "2607.04341",
-      "title": "How to Build Digital Humans? From Priors to Photorealistic Avatars",
-      "briefSummary": "This state-of-the-art report provides an overview of controllable 3D human avatar creation.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-07-05",
-      "updatedAt": "2026-07-05",
-      "abstract": "This state-of-the-art report provides an overview of controllable 3D human avatar creation. We describe current 3D avatar systems, which typically consist of three stages: (i) learning priors of human appearance and motion, (ii) creating a personalized avatar, and (iii) animating the avatar. To limit the scope, we focus on the prior learning and avatar creation stages. We define current avatar representations and introduce a taxonomy that categorizes existing work along multiple axes, including body regions and employed priors. We review methods for full-body and head avatars, as well as layered representations that decompose the body into components such as hands, hair, and garments. Finally, we outline common underlying principles, reference key literature for newcomers, and discuss open challenges and future research directions.",
-      "authors": [
-        "Wojciech Zielonka",
-        "Tobias Kirschstein",
-        "Timo Bolkart",
-        "Simon Giebenhain",
-        "Vanessa Sklyarova",
-        "Xiang Deng",
-        "Donglai Xiang",
-        "Shunsuke Saito",
-        "Yebin Liu",
-        "Matthias Niessner",
-        "Justus Thies"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.CL",
-        "cs.CV",
-        "eess.IV"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.04341",
-      "pdfUrl": "https://arxiv.org/pdf/2607.04341v1",
-      "htmlUrl": "https://arxiv.org/html/2607.04341",
-      "comment": "Eurographics 2026 State-of-the-Art Report (STAR). Project page: https://wojciechzielonka.com/how-to-build-digital-humans/"
-    },
-    {
-      "id": "2607.04230",
-      "arxivId": "2607.04230",
-      "title": "High-Performance Real-Time Implicit Strand-Based Hair Rendering via Software Rasterization",
-      "briefSummary": "In this work we propose an efficient deferred software rasterization pipeline for real-time rendering of strand-based hair using hair meshes.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-07-05",
-      "updatedAt": "2026-07-05",
-      "abstract": "In this work we propose an efficient deferred software rasterization pipeline for real-time rendering of strand-based hair using hair meshes. Hair plays a crucial role in creating expressive 3D characters, yet strand-based approaches are often restricted to high-end hardware and typically applied to only a small number of hero characters. Hair meshes have proven to be an efficient representation capable of handling a wide variety of groom styles, but existing mesh shader-based implementations still suffer from significant bottlenecks. In this work, we address these limitations with a software rasterization approach that improves performance and compatibility. Our method enables efficient far-field strand-based hair rendering-even at a single sample per pixel-by combining deferred shading with a strand filtering and reconstruction step, while requiring only minimal hardware support. To further enhance scalability, we introduce a level-of-detail (LOD) scheme that adapts hair representation and shading complexity based on viewing distance and screen-space coverage, reducing computational cost further while preserving visual fidelity. To the best of our knowledge, this is the first approach to achieve this combination of efficiency, flexibility, scalability, and broad hardware compatibility.",
-      "authors": [
-        "Lukas Lipp",
-        "Adrian Jarabo",
-        "Michael Wimmer",
-        "Lukas Bode"
-      ],
-      "categories": [
-        "cs.GR"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2607.04230",
-      "pdfUrl": "https://arxiv.org/pdf/2607.04230v1",
-      "htmlUrl": "https://arxiv.org/html/2607.04230",
-      "doi": "10.1145/3820015",
-      "journalRef": "Proc. ACM Comput. Graph. Interact. Tech. 9, 4, Article 58 (July 2026)",
-      "comment": "19 pages"
     }
   ]
 }

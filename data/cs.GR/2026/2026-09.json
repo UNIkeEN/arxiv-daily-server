@@ -1,10 +1,84 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T07:18:41Z",
+  "generatedAt": "2026-09-04T07:21:06Z",
   "category": "cs.GR",
   "yearMonth": "2026-09",
-  "paperCount": 8,
+  "paperCount": 11,
   "papers": [
+    {
+      "id": "2609.03897",
+      "arxivId": "2609.03897",
+      "title": "Reparametrizing 3D Gaussian Splatting for Real-Time Palette-based Color and Luminance Editing",
+      "briefSummary": "Professional color editing requires precise control over both color (hue and saturation) and lightness, ideally through separate, independent controls.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "abstract": "Professional color editing requires precise control over both color (hue and saturation) and lightness, ideally through separate, independent controls. We present a real-time interactive color editing framework for 3D Gaussian Splatting that supports palette-based recoloring, per-palette tone curves for color-aware luminance adjustment, and pixel-level color constraints. Rather than training a new representation from scratch, we reparameterize the spherical harmonics of a pretrained vanilla 3DGS to encode view-dependent palette weights. We simultaneously solve for weights and palette colors via a loss based on image-space sparsity. Luminance editing is realized as a per-pixel weight shift along the achromatic axis, which we show is equivalent to a per-pixel palette-aware luminance edit. This view-space formulation addresses a core limitation of prior primitive-space methods, where alpha-blending breaks per-Gaussian sparsity and causes edits to bleed into unintended regions. Our edits run in tens of milliseconds via an iteratively reweighted least squares and damped block-coordinate descent that couples tone curves and palette shifts under view-space sparsity. Our representation can be efficiently baked back into a vanilla 3DGS, preserving compatibility with standard viewers. We demonstrate sparser, more localized edits than prior palette-based 3DGS methods, while enabling independent luminance control per palette color and view-consistent pixel-level constraints, capabilities previously unavailable for 3DGS.",
+      "authors": [
+        "Cheng-Kang Ted Chao",
+        "Yotam Gingold"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.03897",
+      "pdfUrl": "https://arxiv.org/pdf/2609.03897v1",
+      "htmlUrl": "https://arxiv.org/html/2609.03897",
+      "doi": "10.1145/3829340.3842202",
+      "journalRef": "SIGGRAPH Asia 2026 Conference Papers",
+      "comment": "11 pages, 9 figures"
+    },
+    {
+      "id": "2609.03613",
+      "arxivId": "2609.03613",
+      "title": "TileGS: Tile-Local Depth Binning for Gaussian Splatting Rasterization",
+      "briefSummary": "Real-time 3D Gaussian Splatting (3DGS) achieves high rendering quality, but standard rasterization still traverses a globally sorted tile stream that creates long per-tile ranges and heavy geometry-attribute traffic.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "abstract": "Real-time 3D Gaussian Splatting (3DGS) achieves high rendering quality, but standard rasterization still traverses a globally sorted tile stream that creates long per-tile ranges and heavy geometry-attribute traffic. We present TileGS, a tile-local reorganization of Gaussian splatting. TileGS turns each long tile range into a sequence of shorter depth-local ranges, rasterizes those ranges in front-to-back order, and applies selective repair where coarse ordering is insufficient to match baseline compositing. Across a 9-scene benchmark on desktop and laptop Ada GPUs, our default No-GW (No Geometry-Write) variant delivers a mean 1.44x raster-kernel speedup on RTX 4090 and mean end-to-end frame speedups of 1.069x on RTX 4090 and 1.094x on RTX 1000 Ada over gsplat--a widely used optimized open-source 3DGS implementation--while matching the gsplat output up to numerical noise (|Delta PSNR| < 0.001 dB, |Delta SSIM| < 0.001, |Delta LPIPS| < 0.001). Full-suite RTX 4090 Nsight Compute profiling reveals TileGS is faster despite lower SM throughput, lower active-warp occupancy, and higher DRAM traffic, while total SASS thread instructions fall by 1.26x. Source-attributed profiling confirms that geometry attributes dominate the remaining memory pressure (85.8% of total raster traffic and 88.6% of excess sectors). Together, these counters support the interpretation that TileGS improves raster performance by reducing effective raster traversal work, rather than by reducing byte volume, improving coalescing, increasing occupancy, or directly reducing measured warp divergence.",
+      "authors": [
+        "Wei Tan",
+        "Matias Turkulainen",
+        "Lauri Ilola",
+        "Hamed Rezazadegan Tavakoli",
+        "Juho Kannala"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.03613",
+      "pdfUrl": "https://arxiv.org/pdf/2609.03613v1",
+      "htmlUrl": "https://arxiv.org/html/2609.03613"
+    },
+    {
+      "id": "2609.03596",
+      "arxivId": "2609.03596",
+      "title": "ReRoom: Blending Virtual and Physical Contexts for In Situ Room Planning in Mixed Reality",
+      "briefSummary": "Planning a real domestic space is an in situ authoring process: users evaluate candidate layouts at true scale, refine their intent, and carry accepted decisions into later iterations.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "abstract": "Planning a real domestic space is an in situ authoring process: users evaluate candidate layouts at true scale, refine their intent, and carry accepted decisions into later iterations. Existing approaches either separate layout editing from the physical room or provide limited support for evaluating and refining whole-room proposals in situ. We present ReRoom, a mixed-reality system for in situ room-layout authoring. ReRoom presents a shared layout state through a virtual room proxy spatially registered to the target room, allowing interaction and layout generation to remain grounded in the physical context. Users refine the current proposal through direct manipulation or language and preserve accepted placements, allowing each generated update to continue the same evolving design. To balance layout quality with generation efficiency, ReRoom uses a skill-guided layout agent whose room-layout design skill operationalizes three principles that we formulate by synthesizing established interior-design guidance for real-room layout generation. The skill grounds these principles in a normalized representation of the scanned room and reusable geometric checks. Evaluations show that ReRoom produces high-quality layouts for non-rectangular rooms, while its in situ workflow improves the room-planning experience over an otherwise equivalent off-site VR workflow. Code will be released upon acceptance of the paper.",
+      "authors": [
+        "Hongliang Yang",
+        "Yanjing Xu",
+        "Anhang Zhang",
+        "Hui Ye",
+        "Pengfei Xu"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.HC"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.03596",
+      "pdfUrl": "https://arxiv.org/pdf/2609.03596v1",
+      "htmlUrl": "https://arxiv.org/html/2609.03596",
+      "comment": "19 pages, 8 figures; supplementary materials included"
+    },
     {
       "id": "2609.02675",
       "arxivId": "2609.02675",
