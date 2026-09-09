@@ -1,10 +1,1205 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-07T07:28:00Z",
+  "generatedAt": "2026-09-09T07:30:41Z",
   "category": "cs.AI",
   "yearMonth": "2026-09",
-  "paperCount": 181,
+  "paperCount": 227,
   "papers": [
+    {
+      "id": "2609.09153",
+      "arxivId": "2609.09153",
+      "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
+      "briefSummary": "Large language models are increasingly deployed as agents that plan over long horizons and act through external tools.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Large language models are increasingly deployed as agents that plan over long horizons and act through external tools. Most agents select actions through unconstrained generation over an accumulating history, leaving implicit the procedural knowledge of what to do, in what order, and under which conditions. As trajectories lengthen, agents can lose track of their objectives, invoke tools out of order, and repeat unproductive actions. We introduce the Procedural Graph: just as a knowledge graph organizes factual knowledge into (entity, relation, entity) triplets for what-is questions, a Procedural Graph organizes procedural knowledge into (procedure, relation, procedure) triplets for what-to-do questions. At each decision step, the framework localizes the agent's active node, and a guidance model translates the surrounding subgraph into step-level situational guidance that biases the solver's next action without dictating it. The graph is self-evolving: an LLM refiner contrasts failed trajectories with successful ones and edits the graph's topology and attributes, committing edits that preserve or improve held-out validation performance while retaining rejected ones to discourage repetition. Starting from a minimal skeleton, the loop builds graphs that match or surpass hand-designed ones. It can also repair a flawed expert prior. Across multiple datasets, task types, and LLMs, the Procedural Graph delivers consistent gains over memory-based baselines, and self-evolution further improves performance without manual engineering.",
+      "authors": [
+        "Yuxing Lu",
+        "Yicheng Chen",
+        "Shanchan Wu",
+        "Sercan Ö. Arık"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.MA"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09153",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09153v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09153",
+      "comment": "36 pages including references and appendices, 6 figures, 11 tables"
+    },
+    {
+      "id": "2609.09137",
+      "arxivId": "2609.09137",
+      "title": "A Data-Driven Framework for Identifying and Prioritizing RPA Opportunities in Healthcare Processes",
+      "briefSummary": "Robotic Process Automation (RPA) is widely used to reduce administrative burden in United States hospitals, yet an estimated 30-50% of RPA initiatives underperform because processes are selected informally, without a re...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Robotic Process Automation (RPA) is widely used to reduce administrative burden in United States hospitals, yet an estimated 30-50% of RPA initiatives underperform because processes are selected informally, without a repeatable method to catalogue candidates, prioritize them, match each to an automation tier -- a Python bot, an open-source orchestrator such as n8n, or an enterprise platform such as UiPath -- and forecast financial return before committing resources. We propose a four-module, data-driven framework unifying these decisions: a Process Taxonomy of twenty recurring hospital processes across five value streams; a Prioritization module deriving an Automation Suitability Index from an Analytic Hierarchy Process matrix with an explicit consistency check; a Tool-Tier Selection module recommending the least-cost technology sufficient for a process complexity, integration, and compliance profile; and a Return-on-Investment module quantifying labor savings, error-cost avoidance, payback, and net present value. Applied to a synthetic portfolio spanning all twenty processes, plus a reference data-flow architecture linking it to hospital EHR/payer/ERP systems: 12 of 20 clear the prioritization threshold; the ranking is robust to +/-20% weight perturbation (Spearman correlation 0.83, top-5 set preserved 97.7%, 2,000 Monte Carlo trials); an Automation Risk Index flags four qualifying processes as Critical risk; a budget-constrained portfolio optimization shows diminishing marginal NPV as spend scales from $400K to $1.03M; and a second Monte Carlo analysis shows portfolio NPV stays positive at its 5th percentile. The framework is a conceptual synthesis of the literature rather than an instrument calibrated on primary hospital data; we discuss HIPAA governance and a research agenda for empirical validation. A supplementary Python implementation accompanies the paper.",
+      "authors": [
+        "Maria Alejandra Gomez",
+        "Juan Manuel Castillo"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09137",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09137v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09137",
+      "comment": "21 pages, 2 figures, 14 tables"
+    },
+    {
+      "id": "2609.09134",
+      "arxivId": "2609.09134",
+      "title": "Co-Evolving Harnesses and Models: On-Policy Correction Helps Weaker Models Catch Up Where Imitation Fails",
+      "briefSummary": "Agent harnesses (the system prompt, tool set, execution hooks, and context-management scaffolding around a model) are a critical determinant of agentic task success.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Agent harnesses (the system prompt, tool set, execution hooks, and context-management scaffolding around a model) are a critical determinant of agentic task success. Automated harness evolution can enable smaller models to perform well on domain-specific tasks at a fraction of frontier-model cost. Since both the harness and model weights shape behavior, we ask how harness evolution and lightweight fine-tuning should be combined. Across seven enterprise agent tasks, we first evolve a harness with the weaker model, then find that a stronger expert often uses it more effectively, suggesting expert supervision could close the remaining gap. However, training the weaker model on the expert's complete trajectories under the evolved harness backfires: performance regresses on all seven tasks by 4 to 30 points across Qwen3-Coder and Gemma 4, even though the same procedure helps under the unevolved harness. Our analysis shows that imitation transfers knowledge and increases scaffold usage, but disrupts model-harness fit: the weaker model adopts the expert's planning strategy without the competence to execute it and no longer matches the harness evolved around its native planning style. We therefore develop an on-policy expert-correction pipeline, automated by a meta-level MLE agent, that localizes the failing turn in the weaker model's own rollout and asks the expert to rewrite only that turn. This preserves the model's planning style and combines the gains of harness evolution and model adaptation. Our results identify and resolve a source of contention between harness and weight updates, yielding a compatibility-preserving recipe for economical co-evolution on domain-specific enterprise tasks.",
+      "authors": [
+        "Zhou Yu",
+        "Bin Bi",
+        "Shiva Kumar Pentyala",
+        "Shubham Mehrotra",
+        "Sougata Chaudhuri",
+        "Shilpa Bhagavath",
+        "Zeyuan Chen",
+        "Ran Xu",
+        "Phil Mui",
+        "James Zhu",
+        "Sitaram Asur"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09134",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09134v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09134"
+    },
+    {
+      "id": "2609.09133",
+      "arxivId": "2609.09133",
+      "title": "ExecCritic: Learn to Test, Test to Improve for Coding Agents",
+      "briefSummary": "Execution feedback can guide coding agents toward correct repository repairs, but only when the tests capture the behavior requested by the issue.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Execution feedback can guide coding agents toward correct repository repairs, but only when the tests capture the behavior requested by the issue. Agent-generated tests can encode incomplete or incorrect behavioral targets; when the same trajectory writes both the patch and the test, their errors can agree and create false confidence. We introduce ExecCritic, combining a test--verify--revise scaffold with a role-specific reinforcement learning recipe for training agents within it. The scaffold separates test construction from source-code repair: a Test agent independently generates repository-native tests, a fail-closed harness qualifies and freezes them, and a Repair agent revises source code from their execution feedback without changing the tests. Both roles use Qwen-3.5-35B-A3B as the backbone and are trained separately. In Learn to Test, the Test agent learns to produce behaviorally valid tests that distinguish correct from incorrect patches. In Test to Improve, the Repair agent learns both direct task resolution and feedback-guided revision. On SWE-bench Verified, test quality determines whether feedback helps: holding the base Repair agent fixed, tests from the base Test agent reduce resolved rate from a no-test baseline of 61.2% to 57.3%, whereas tests from GPT-5.6-sol raise it to 65.3%. Role-specific post-training raises the Qwen Test agent's Base-to-Gold success from 22.2% to 62.2%; composing the two post-trained Qwen agents reaches 72.6%, an 11.4-point gain over the original no-test baseline without stronger-model or Oracle feedback at evaluation time. Code is publicly available at https://github.com/MSR-Orchard/execcritic.",
+      "authors": [
+        "Leitian Tao",
+        "Baolin Peng",
+        "Haorui Wang",
+        "Hang Wang",
+        "Hao Cheng",
+        "Wenlin Yao",
+        "Qianhui Wu",
+        "Tao Ge",
+        "Sharon Li",
+        "Jianfeng Gao"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.SE"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09133",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09133v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09133",
+      "comment": "35 pages"
+    },
+    {
+      "id": "2609.09126",
+      "arxivId": "2609.09126",
+      "title": "A Generalization of Amari's Bayesian Duality",
+      "briefSummary": "Amari's contributions to information geometry and machine learning are well known.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Amari's contributions to information geometry and machine learning are well known. Here, we revisit Amari's work on Bayesian duality which has not received as much attention. We connect Amari's Bayesian duality to a convex duality of Bayes' rule. Using this connection, we present a generalization of Amari's Bayesian duality and discuss its relevance for modern artificial intelligence.",
+      "authors": [
+        "Mohammad Emtiyaz Khan",
+        "Thomas Möllenhoff"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG",
+        "stat.ML"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09126",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09126v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09126"
+    },
+    {
+      "id": "2609.09115",
+      "arxivId": "2609.09115",
+      "title": "MeClear: Cooperative Game-Theoretic Attribution and Risk-Aware Memory Clearance for Long-Horizon LLM Agents",
+      "briefSummary": "Long horizon Large Language Model (LLM) agents rely on external memory systems to preserve user preferences and task knowledge across extended interactions.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Long horizon Large Language Model (LLM) agents rely on external memory systems to preserve user preferences and task knowledge across extended interactions. Conventional retrieval mechanisms optimize semantic compatibility rather than downstream utility, frequently introducing outdated, misleading, or conflicting evidence into the active context. We present MeClear, a task conditioned memory clearance framework that identifies memories featuring negative downstream utility through cooperative attribution and selectively suppresses them from agent execution. MeClear combines Leave One Out screening with sampled cooperative Shapley attribution to distribute utility across interacting evidence, effectively resolving redundant conflict masking where single removal evaluations fail. Utilizing attribution rankings, MeClear executes a query scoped minimal clearance strategy over a nested filtration, verifying task recovery on the cleared context without permanently altering the persistent memory bank. Comprehensive experimental evaluations across ten long dialogue memory pools demonstrate that MeClear achieves a target recall of 85.9% and an overall task recovery rate of 82.3%, representing a 25.5 percentage point improvement over Leave One Out (LOO) baselines.",
+      "authors": [
+        "Boyu Yang",
+        "Jiazheng Sun",
+        "Zilong Lu",
+        "Zhi Qiu",
+        "Xin Peng",
+        "Jun Zheng"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.SE"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09115",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09115v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09115",
+      "comment": "15 pages, 12 figures"
+    },
+    {
+      "id": "2609.09113",
+      "arxivId": "2609.09113",
+      "title": "SAEScientist-Bench: Can AI Agents Conduct Autonomous SAE Interpretability Research?",
+      "briefSummary": "While research on recursive self-improvement (RSI) has predominantly automated model training pipelines, reliable autonomous development demands a missing pillar: post-hoc monitoring and auditing to understand what mode...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "While research on recursive self-improvement (RSI) has predominantly automated model training pipelines, reliable autonomous development demands a missing pillar: post-hoc monitoring and auditing to understand what models learn and ensure safe alignment. Mechanistic interpretability tools are essential to bridge this gap, among which Sparse Autoencoders (SAEs) serve as a cornerstone by isolating interpretable features for model inspection and steering. In this paper, we introduce SAEScientist-Bench to evaluate whether AI agents can act as scientists utilizing SAE tools for autonomous mechanistic discovery. Given a target concept, an agent designs contrastive probes and navigates a Gemma Scope dictionary of 131K+ features in Gemma-2-9B-IT to discover the optimal feature, evaluated against curated expert reference features anchored on Neuronpedia across activation rank, concept selectivity on contrastive texts, and causal steering. Across 10 agent configurations and 20 tasks, frontier agents demonstrate genuine discovery capabilities and lead different evaluation dimensions, but remain well behind the expert baseline, approaching expert levels on separating target concepts from contrastive controls while lagging substantially in causal generation steering. Further analysis reveals that although agents can design contrasts to rule out spurious candidates, they frequently misinterpret experimental measurements. These results establish experimental model understanding as a measurable capability for closed-loop autonomous AI R&D. Our code is available at https://github.com/Trae1ounG/SAEScientist.",
+      "authors": [
+        "Yuqiao Tan",
+        "Shizhu He",
+        "Jun Zhao",
+        "Kang Liu"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09113",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09113v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09113",
+      "comment": "Preprint. Work in Progress"
+    },
+    {
+      "id": "2609.09094",
+      "arxivId": "2609.09094",
+      "title": "The Surprising Effectiveness of Approximate Value Iteration in Self-Play",
+      "briefSummary": "Combining search with function approximation has driven major advances in game-playing programs, making self-play algorithms more competitive than ever.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Combining search with function approximation has driven major advances in game-playing programs, making self-play algorithms more competitive than ever. Still, the computational overhead of the most popular methods, based on Monte Carlo Tree Search (MCTS), can be substantial. In this work, we investigate whether simpler methods remain competitive in non-trivial, moderately sized games such as Connect Four, Hex(7x7) and synthetic games. We train a minimal self-play implementation of Approximate Value Iteration (AVI) and use ground-truth oracles for exact evaluation. Contrary to expectations, our results demonstrate the surprising effectiveness of AVI: it learns more accurate value functions than those learned by AlphaZero, while its one-step-lookahead greedy policies remain competitive with MCTS-based policies at substantially lower training and inference costs. Preliminary experiments on Othello and Go(9x9) show that AVI trains stably on larger games and learns effective value functions. These findings suggest that the success of MCTS-based methods may have eclipsed simpler approaches that have become increasingly practical with modern deep-learning tools.",
+      "authors": [
+        "Raphael Boige",
+        "Amine Boumaza",
+        "Bruno Scherrer"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09094",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09094v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09094"
+    },
+    {
+      "id": "2609.09081",
+      "arxivId": "2609.09081",
+      "title": "Everything in Moderation: Per-Domain Coverage Optima and Alignment-Resistant Domain Gaps in Multi-Domain Mid-Training",
+      "briefSummary": "Mid-training, the stage between pre-training and alignment, is where a model's per-domain data composition is typically set by data availability rather than principled design.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Mid-training, the stage between pre-training and alignment, is where a model's per-domain data composition is typically set by data availability rather than principled design. We ask what that decision buys, and whether a later alignment pass can undo it. In a controlled logical-reasoning setting (Qwen3-8B-Base, with a 4B replication; five semantically rule-disjoint KOR-Bench domains) we train 30 allocations spanning the five-domain simplex, 24 sweep configurations plus six withheld from the fit, at five seeds each. Three findings emerge. First, every domain has an interior coverage optimum: the moderate band ($10\\%$-$40\\%$) is best for all five domains, and a calibrated permutation test for quadratic interiority gives $P\\approx0.010$; the fitted mid-training-only curves, with 8B peaks between $9.9\\%$ and $35.1\\%$, reproduce for curve shape but not peak location. Second, the gaps survive a fixed-budget alignment pass: compensatory SFT raises 116/120 cells (mean $+4.32\\%$) yet bridges $0/240$ pairs at a $5\\%$ threshold and $30/240$ at a $10\\%$ ratio, an equal-budget uniform control behaves almost identically, and a permutation null would bridge $13.8\\pm3.3$ and $77.9\\pm8.5$ pairs ($P<0.001$). Third, zero coverage collapses mid-training-only accuracy, though a FineWeb-Edu-only control shows the collapse is commingled with generic drift. An exploratory $θ^*$ allocation attains the largest full-pipeline gain ($+4.36\\%$ vs. $+0.80\\%$/$+0.64\\%$\\,pp) but is marginal under Welch test.",
+      "authors": [
+        "Yunpeng Xu",
+        "Kun Zheng"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09081",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09081v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09081",
+      "comment": "About to commit to ICLR"
+    },
+    {
+      "id": "2609.09056",
+      "arxivId": "2609.09056",
+      "title": "Time-Varying Data as Sheaves: an Invitation to Narratives",
+      "briefSummary": "Modern science and engineering increasingly rely on time-varying data, yet the mathematical tools used to model temporal phenomena are often developed within separate disciplines, obscuring common principles and limitin...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Modern science and engineering increasingly rely on time-varying data, yet the mathematical tools used to model temporal phenomena are often developed within separate disciplines, obscuring common principles and limiting the transfer of ideas across fields. This chapter presents the theory of narratives, an abstract framework for time-varying objects of any mathematical kind that supports both theoretical investigations and applications. To illustrate this perspective, the chapter develops three vignettes, each illustrating a different research direction. The first addresses a general concern: What information loss can occur when switching between different representations of temporal data? The second concerns structural and algorithmic approaches: How can we systematically decompose time-varying data into simple pieces and obtain invariants describing its structural complexity? The third is an application to control theory: How can we model multi-agent systems with switching communication topologies? More important than any individual vignette, the central message of this invitation is that a suitable abstract perspective can organize and guide research across remarkably diverse mathematical and scientific domains.",
+      "authors": [
+        "Wilmer Leal",
+        "Benjamin Merlin Bumpus",
+        "Jana K. Nickel",
+        "Johan García",
+        "James Fairbanks",
+        "Warren Dixon"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.MA",
+        "eess.SY",
+        "math.CT"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09056",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09056v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09056",
+      "comment": "42 pages, 7 figures. Book chapter"
+    },
+    {
+      "id": "2609.09030",
+      "arxivId": "2609.09030",
+      "title": "Answer-Distribution Trajectories: A Stochastic-Dynamics View of LLM Reasoning",
+      "briefSummary": "Chain-of-thought reasoning provides a structured computation between a model's input and final answer.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Chain-of-thought reasoning provides a structured computation between a model's input and final answer. Yet it is often evaluated through endpoint accuracy, which ignores the path taken to reach that answer. An emerging line of work addresses this limitation using entropy profiles, which track how uncertainty evolves over the reasoning process but do not reveal which competing hypotheses account for that uncertainty. We introduce answer-distribution trajectories, a stochastic-dynamics-inspired representation that tracks the model's full predictive distribution over answers as reasoning unfolds. As a strictly finer representation than endpoint and entropy summaries, answer-distribution trajectories enable us to characterize a trace through a dynamical reasoning profile spanning exploration, revision, motion, and commitment, and to distinguish different dynamical mechanisms of reasoning success and failure. Across sixteen open-weight language models and four reasoning benchmarks, we show that traces with the same endpoint and similar entropy profiles can exhibit substantially different reasoning dynamics. We further find substantial variation in these dynamics both within and across models and tasks, with different objectives favoring different dynamical profiles. Additionally, we show that training and inference choices systematically reshape these profiles. Our results suggest that answer-distribution trajectories provide a rich framework for analysing and evaluating the dynamics of LLM reasoning.",
+      "authors": [
+        "Mar Gonzàlez I Català",
+        "Haitz Sáez de Ocáriz Borde",
+        "Davide Murari",
+        "Carola-Bibiane Schönlieb",
+        "Pietro Liò",
+        "George Montañez"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.IT",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09030",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09030v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09030",
+      "comment": "16 pages, 4 figures, 3 tables"
+    },
+    {
+      "id": "2609.09001",
+      "arxivId": "2609.09001",
+      "title": "Deposon: An Auditable, Conservation-Guaranteed, Game-Theoretically Tested Scattering Layer over LLM Reasoning Paths",
+      "briefSummary": "Multi-step LLM reasoning lacks a machine-recheckable ledger: discarded reasoning paths leave no auditable record.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Multi-step LLM reasoning lacks a machine-recheckable ledger: discarded reasoning paths leave no auditable record. We propose the Deposon scattering layer, which binds each node of an LLM-generated concept-decomposition graph to a two-parameter Deposon state; paths undergo three-channel scattering -- transmission, reflection, irreversible dissipation -- obeying T+R+A=1 for arbitrary parameters, with a maximum per-path energy-audit deviation of 2.2E-16 (machine epsilon). We report all three evidence tiers honestly. On synthetic trap benchmarks the path-filtering gain is closed (pre-registered): unified reaches 100% versus a decoy-capture baseline at 7%/10%. On real benchmarks the layer is indistinguishable from a trivial six-keyword rule filter (GSM8K 0.87 >= 0.85, McNemar p=0.5; StrategyQA 0.899 = 0.899); no difference is detected here, so we sharpen the claim to \"the differential value lies solely in machine verifiability.\" Fusion yields a second negative result: convex combinations with a semantic prior never improve (physics 0.484 -> 0.452), and the apparent lambda=2 gain is an anti-field artifact; any fusion gain must be nonlinear. Modeling the reverse dynamics as a potential game on the graph, we evidence an auditable scalar's monotonicity and near-gradientness and quantify the empirical coordination ratio (ECR). The three formalized dynamical-equivalence propositions (P1a/P1b/T-P1c) are falsified under the pre-registered kill protocol, and the potential-game claim is downgraded to approximate (cyclic-graph median residual 0.669): only consistency-level evidence survives at the dynamical level. Code: github.com/zeroandcat/Deposon.",
+      "authors": [
+        "Qihao Yuan"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.09001",
+      "pdfUrl": "https://arxiv.org/pdf/2609.09001v1",
+      "htmlUrl": "https://arxiv.org/html/2609.09001",
+      "comment": "23 pages, 5 figures. Author affiliation: School of Chemistry and Life Resources, Renmin University of China. Code: https://github.com/zeroandcat/Deposon"
+    },
+    {
+      "id": "2609.08966",
+      "arxivId": "2609.08966",
+      "title": "Good Pretraining, Bad SFT: Checkpoint Quality Across the Training Stack",
+      "briefSummary": "Language-model checkpoints are commonly selected by pretraining loss or benchmark scores, assuming that the highest-scoring checkpoint will remain the best starting point for subsequent training.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Language-model checkpoints are commonly selected by pretraining loss or benchmark scores, assuming that the highest-scoring checkpoint will remain the best starting point for subsequent training. We show that this assumption can fail in a full 30B mixture-of-experts training pipeline. The checkpoints that perform better after the full downstream training stack also have higher solution density, i.e., retain downstream performance under local weight perturbations.",
+      "authors": [
+        "Sohir Maskey",
+        "Philipp Scholl",
+        "Jonas Knupp",
+        "Pit Neitemeier",
+        "Sascha Wirges"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08966",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08966v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08966"
+    },
+    {
+      "id": "2609.08965",
+      "arxivId": "2609.08965",
+      "title": "PlannerForge: LLM Agents for Scenario-Based Testing of Motion Planners in Autonomous Driving",
+      "briefSummary": "Ensuring the safety of autonomous driving is a critical challenge.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Ensuring the safety of autonomous driving is a critical challenge. Scenario-based testing is a systematic process used to validate Autonomous Driving Systems (ADSs), but it remains a fragmented modular pipeline in which scenario generation, retrieval, modification, ADS execution, and results analysis are performed by separate tools with little interaction. Large Language Model (LLM) agents have shown promise across ADS sub-systems such as perception, planning, and control. However, no prior work covers the whole scenario-based testing pipeline for ADSs with a unified LLM-agent framework. We present PlannerForge, an LLM-agent framework that extends all scenario-based testing stages (from Scenario Generation to ADS Assessment) and adds two further LLM-enhanced stages: ADS Enhancement and ADS Benchmarking. We evaluate PlannerForge with 10 off-the-shelf LLMs across all tasks (Generation, Selection, Modification, Module Routing, Planner Testing, and Enhancement) under 5 prompt conditions. Best-per-task scores range from 0.88 to 1.00, and open-source 20-35B backends match commercial APIs on most tasks. Open-source models such as Qwen3.6:35B match commercial APIs on three of the five tasks. Chaining the modules end-to-end retains 83% / 78% of seed queries (commercial / open). It outperforms Scenario Factory 2.0 (Finkeldei et al., 2025) on natural-language generation (193 vs. 144 executable of 200) and realises 92-96% of requested city, road and vehicle attributes. It outperforms BM25 (Robertson and Zaragoza, 2009) at rank 1 selection (92.0% vs. 67.5%) and From-Words-to-Collisions (Gao et al., 2025) on physically valid edits (>=94% vs. 31%). At N=400, cost-tuning lifts planner success from 50.4% to 70.2% and cuts collisions from 19.0% to 8.4%, without domain-specific fine-tuning.",
+      "authors": [
+        "Yuan Gao",
+        "Sebastian Müller",
+        "Mattia Piccinini",
+        "Marc Kaufeld",
+        "Yuchen Zhang",
+        "Finn Rasmus Schäfer",
+        "Qunying Song",
+        "Johannes Betz"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.RO"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08965",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08965v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08965",
+      "comment": "Accepted to EMNLP 2026 (Main Conference). 35 pages including appendix"
+    },
+    {
+      "id": "2609.08944",
+      "arxivId": "2609.08944",
+      "title": "SkillAdam: Stable and Efficient Skill Evolution for Agents",
+      "briefSummary": "Agent skills provide a lightweight way to equip frozen language-model agents with domain knowledge and procedural guidance, yet obtaining high-quality skills remains costly and difficult to scale.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Agent skills provide a lightweight way to equip frozen language-model agents with domain knowledge and procedural guidance, yet obtaining high-quality skills remains costly and difficult to scale. Expert-written skills require substantial human effort. Recent skill self-evolution methods automate an iterative loop that uses execution feedback to revise skills, but their heuristic update strategies often yield unstable optimization and low iteration efficiency. We identify two challenges in realizing stable and efficient skill self-evolution. Direction Stability requires effective corrections to accumulate rather than be overwritten by iteration-local feedback. Update Adaptivity requires the scope of each revision to reflect the consistency of recent case-level improvements. We introduce SkillAdam, an Adam-inspired framework for optimizing discrete and non-differentiable skill documents. As a functional analogue of Adam's first moment, an optimization memory records identified problems and the outcomes of prior solution attempts to stabilize the update direction. As a functional analogue of Adam's second moment, a volatility-driven edit budget tracks the history-weighted variation of recent case-level improvements and adaptively controls the update magnitude. Across seven benchmarks that span short- and long-horizon tasks, SkillAdam achieves state-of-the-art performance with more stable optimization dynamics. It also obtains stronger skills with substantially fewer optimization iterations and lower cost than prior methods. Code repository: https://github.com/ruc-datalab/SkillAdam",
+      "authors": [
+        "Gaoyuan Li",
+        "Meihao Fan",
+        "Yizhe Liu",
+        "Shaolei Zhang",
+        "Ju Fan",
+        "Siyi Wang",
+        "Jiaheng Hou",
+        "Xudong Weng",
+        "Honghan Tian",
+        "Zang Li"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08944",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08944v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08944",
+      "comment": "17 pages, 4 figures, 6 tables"
+    },
+    {
+      "id": "2609.08861",
+      "arxivId": "2609.08861",
+      "title": "API Benchmark Scores Do Not Reliably Transfer to Chatbot Interfaces",
+      "briefSummary": "Benchmark scores are a central currency in model releases: they inform purchasing decisions, shape public trust, and influence policy.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Benchmark scores are a central currency in model releases: they inform purchasing decisions, shape public trust, and influence policy. Yet, a key assumption underlying benchmark scores is that the model performance measured through APIs faithfully reflects the behavior of deployed systems. We challenge this assumption by auditing ChatGPT, Claude, and Gemini across seven systems and nine benchmarks spanning general capability, social bias, and sycophancy. We find systematic API--interface differences in both accuracy and consistency. On average, API evaluations score 3.4 percentage points higher in accuracy and 2.1 percentage points higher in test--retest agreement than corresponding interface evaluations. For ChatGPT, the performance difference between API and interface access exceeds the API-only difference between GPT 5.3 and GPT 5.4. Put differently, switching access surfaces can degrade performance as much as downgrading a full model generation. We further test whether exposed API controls can reproduce interface behavior by varying system prompts, sampling parameters, and reasoning settings. These controls shift behavior in some cases but do not reliably eliminate the gap. Our findings document a context-validity gap: measurements obtained through APIs do not necessarily generalize to corresponding deployed interfaces, complicating the use of API evaluations as proxies for deployed systems.",
+      "authors": [
+        "Jennifer Wang",
+        "Joachim Baumann",
+        "Daniel E. Ho",
+        "Sanmi Koyejo"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.SE"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08861",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08861v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08861"
+    },
+    {
+      "id": "2609.08832",
+      "arxivId": "2609.08832",
+      "title": "Closing the Consistency Gap: Self-Evolving Agents That Learn to Stay on Course",
+      "briefSummary": "Large language model (LLM)-powered agents can be accurate on average yet unreliable in production, a discrepancy that has been observed but remains largely unaddressed.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Large language model (LLM)-powered agents can be accurate on average yet unreliable in production, a discrepancy that has been observed but remains largely unaddressed. When given the same task five times, a ReAct agent on the AppWorld benchmark using GPT-4.1 succeeds in all five runs only 53% of the time, even though its per-run pass rate averages 77%. We call this 24-point shortfall the consistency gap, and we argue that addressing it is a precondition for trustworthy AI agent deployment. We present a self-evolving agent framework that reduces this gap by identifying unstable, low-consistency steps in agent trajectories and converting them into episodic memory the agent can draw on in future runs. At its core is a Consistency Analyzer that pinpoints where and why a trajectory is likely to flip across executions, and a Guideline Generator that converts the diagnosis into targeted guidelines, committed to memory and injected into future agent executions on similar tasks. On AppWorld with ReAct/GPT-4.1, our framework raises the fraction of tasks that succeed in all five runs by +16 points on same-task evaluation and +13 points on similar-task generalization.",
+      "authors": [
+        "Evelyn Duesterwald",
+        "Benjamin Elder",
+        "Lilian Ngweta",
+        "Shashanka Ubaru",
+        "Malgorzata Zimon"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08832",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08832v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08832"
+    },
+    {
+      "id": "2609.08772",
+      "arxivId": "2609.08772",
+      "title": "It's All in the Way You Say It: The Role of Information Representation in LLM-Based Glycemic-Event Prediction",
+      "briefSummary": "Large Language Models (LLMs) are increasingly being investigated for physiological time-series prediction, yet their effectiveness may depend not only on the model itself, but also on how physiological information is re...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Large Language Models (LLMs) are increasingly being investigated for physiological time-series prediction, yet their effectiveness may depend not only on the model itself, but also on how physiological information is represented and presented at inference time. This study investigates prompt-based general-purpose LLMs for postprandial hyperglycemia and hypoglycemia prediction in individuals with type 1 diabetes. Using the OhioT1DM dataset, we evaluate multiple open-weight LLMs under zero-shot and few-shot inference across prediction horizons of 30, 60, and 90 minutes. The analysis varies both the textual representation of the available physiological information and the amount of information exposed to the model, ranging from glucose observations alone to derived descriptors and additional contextual variables related to insulin, meals, carbohydrates, and physical activity. Performance is compared with conventional patient-specific supervised models and with Gluco-LLM, a language-model-based architecture explicitly adapted to glucose time-series forecasting. Results show a marked task-dependent behavior. Conventional supervised models achieve the strongest performance for hyperglycemia prediction, whereas the best observed prompt-based LLM configurations improve performance for hypoglycemia across all investigated horizons. The effectiveness of prompt-based inference is also strongly influenced by how physiological information is represented, while providing additional contextual information does not lead to a systematic improvement. Overall, these findings highlight physiological information representation as a central design factor in prompt-based LLM approaches to glycemic-event prediction.",
+      "authors": [
+        "Andrea Apicella",
+        "Pasquale Arpaia",
+        "Matteo Orefice",
+        "Andrea Pollastro",
+        "Roberto Prevete"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08772",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08772v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08772",
+      "comment": "Submitted to a journal for peer-review"
+    },
+    {
+      "id": "2609.08736",
+      "arxivId": "2609.08736",
+      "title": "When Can One Obtain Certificates of Optimality Using Positivstellensaetze?",
+      "briefSummary": "We study certificates of positivity and optimality for learning problems whose objectives and constraints need not be polynomial.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "We study certificates of positivity and optimality for learning problems whose objectives and constraints need not be polynomial. We isolate an axiomatic core of Fischer's constructive strict and weak Positivstellensätze and prove the resulting theorems for abstract function algebras over ordered fields. The framework separates two roles that can otherwise be conflated: objective and constraint functions may be built from broad classes of continuous or definable operations, while the auxiliary primitives used to construct a certificate satisfy explicit scalar and closure axioms. We give instances over continuous and definable function algebras, including ordered fields not closed under square roots, derive lower-bound and global-optimality certificates, and analyze both expanded term length and shared computation-graph complexity.",
+      "authors": [
+        "Nayoon Kim",
+        "Allen Gehret",
+        "Shenyuan Ma",
+        "Jakub Marecek"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08736",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08736v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08736"
+    },
+    {
+      "id": "2609.08729",
+      "arxivId": "2609.08729",
+      "title": "Application of curiosity driven exploration methods for hardware interference identification",
+      "briefSummary": "The transition from single-core to multi-core architectures in safety-critical embedded systems introduces significant challenges due to inter-core interference caused by contention for shared hardware resources.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "The transition from single-core to multi-core architectures in safety-critical embedded systems introduces significant challenges due to inter-core interference caused by contention for shared hardware resources. Such interference affects execution times and complicates the verification of strict temporal requirements, particularly in domains such as avionics where standards require comprehensive identification of interference sources. Existing interference analysis approaches, whether manual or model-based, struggle to capture the full range of behaviors arising from the complex interactions among micro-architectural components. In this paper, we frame multi-core interference analysis as the exploration of a complex system behavior space. We propose the use of curiosity-driven exploration algorithms from artificial intelligence to systematically and efficiently cover the space of possible interference behaviors. Using a simulator-based environment, we show that the proposed approach achieves broader and more uniform behavioral coverage within a limited experimental budget compared to traditional pseudo-random program generation methods.",
+      "authors": [
+        "Ludovic Matar",
+        "Clement Moulin-Frier",
+        "Pierre-Yves Oudeyer"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08729",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08729v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08729"
+    },
+    {
+      "id": "2609.08719",
+      "arxivId": "2609.08719",
+      "title": "GoAnt: Quality-Diversity Multi-Agent Search for Alpha Factor Discovery in Market Microstructure Data",
+      "briefSummary": "Automated alpha factor discovery searches symbolic trading signals from price-volume panels and order-book data under a fixed evaluation budget.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Automated alpha factor discovery searches symbolic trading signals from price-volume panels and order-book data under a fixed evaluation budget. Existing single- and multi-agent program-search systems can overfit predictive proxies that fail after execution costs and repeatedly explore redundant factor families, limiting execution robustness and behavioral diversity. We introduce GoAnt, a quality-diversity multi-agent search framework that combines non-communicating Explorer, Exploiter and Connector workers with a shared adaptive Mental Map and a compact Queen dispatcher. The Mental Map organizes candidates by leakage-free execution profiles and retains one elite per niche, while the Queen reallocates the evaluation budget from explicit search-state summaries. We also define a map-independent effective-yield protocol that counts high-quality, mutually nonredundant factors directly from each method's evaluation records, giving archive-based and map-free systems the same ruler. On real A-share microstructure data spanning 2023--2026, GoAnt reaches quality-weighted yields of 41.8 and 47.6 in price-volume and order-book settings, improving the strongest baseline by 57% and 97% under matched budgets. Its locked populations retain 0.64 and 0.67 of in-sample quality out of sample, compared with 0.61 and 0.63 for a static map.",
+      "authors": [
+        "Stella Zhao",
+        "Tommy Sha"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08719",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08719v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08719",
+      "comment": "14 pages, 1 figure, 8 tables, including supplementary appendices"
+    },
+    {
+      "id": "2609.08602",
+      "arxivId": "2609.08602",
+      "title": "CLAMP: Constrained Decoding for Vision-Language Embodied Planning",
+      "briefSummary": "Embodied planning increasingly relies on vision-language models (VLMs) to translate instructions and visual observations into executable action sequences.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Embodied planning increasingly relies on vision-language models (VLMs) to translate instructions and visual observations into executable action sequences. However, fluent plans are not always executable. A VLM may refer to objects that are not visually observed, select actions whose required affordances are unavailable, or violate syntax and action constraints. We introduce CLAMP, a multimodal constraint-grounding framework that turns scene evidence into decoding-time constraints for a frozen VLM planner. CLAMP uses the initial observation to restrict object references to those supported by the scene, while a provided symbolic action model specifies state transitions and goals. During decoding, hard masks eliminate invalid next-token candidates, while a Hidden Markov Model (HMM)-based world-state lookahead module reweights the probabilities of the remaining feasible candidates based on action preconditions and goal reachability. This allows the planner to retain the VLM's language prior while preventing visually unsupported, unsafe, or infeasible candidates from entering the plan. For unseen tasks and environments, CLAMP adapts the HMM at test time using label-free continuations sampled from the frozen VLM. Experiments on VLABench, SafeAgentBench, and TaPA show that scene-grounded constraints improve object grounding and safety, while most remaining failures stem from perception errors or misaligned constraint specifications.",
+      "authors": [
+        "Tianyi Ma",
+        "Parisa Kordjamshidi"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08602",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08602v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08602",
+      "comment": "Accepted to Findings of the Association for Computational Linguistics: EMNLP 2026"
+    },
+    {
+      "id": "2609.08599",
+      "arxivId": "2609.08599",
+      "title": "Graph-Based Personalized Memory for LLM Agents: Representation, Evolution, Retrieval, and Evaluation",
+      "briefSummary": "Large Language Model (LLM) agents are evolving from single-session tools toward long-term personal assistants that must adapt to individual users across tasks, contexts, and interactions.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Large Language Model (LLM) agents are evolving from single-session tools toward long-term personal assistants that must adapt to individual users across tasks, contexts, and interactions. This shift makes memory a core requirement for personalization, since user preferences, goals, constraints, relationships, and past experiences are accumulated gradually and often change over time. Graph-based personalized memory provides a structured way to model such user information through explicit relations, temporal context, and evidence links. Such representations can model not only what an agent remembers about a user but also how memories are connected, revised, and retrieved to support personalized decisions. However, existing work remains fragmented across personalized agents and generic graph memory frameworks, making it difficult to understand the design space as a whole. This survey develops a lifecycle-oriented view of graph-based personalized memory for LLM agents. We organize existing studies around memory representation, memory evolution, memory retrieval, and memory evaluation. We further compare key design choices, discuss current evaluation practices, and open challenges in building reliable long-term personalized agents. This survey aims to clarify how graph-based memory can support adaptive, controllable, and user-centric LLM agents.",
+      "authors": [
+        "Dac Duy Anh Nguyen",
+        "Zhangchi Qiu",
+        "Shigeng Chen",
+        "Alan Wee-Chung Liew"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08599",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08599v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08599",
+      "comment": "Accepted by ICKG 2026"
+    },
+    {
+      "id": "2609.08592",
+      "arxivId": "2609.08592",
+      "title": "A Three-Tier Persona Vector for Controllable User Simulation in Agentic Evaluation",
+      "briefSummary": "Evaluating tool-augmented LLM agents requires diverse, realistic user inputs yet most evaluation frameworks use flat role descriptions (\"you are an angry customer\") that produce near-identical conversations regardless o...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Evaluating tool-augmented LLM agents requires diverse, realistic user inputs yet most evaluation frameworks use flat role descriptions (\"you are an angry customer\") that produce near-identical conversations regardless of the underlying scenario. In this paper, we propose a three-tier persona vector with 23 operationalized dimensions: 6 categorical demographics (jurisdiction, age, channel, device, language proficiency, time availability), 12 continuous behavioral traits (patience, assertiveness, digital literacy, etc.) sampled with Gaussian noise around curated profile base vectors, and 5 continuous emotional states (frustration, anxiety, trust, confidence, stress) that shift in response to scenario context. Orthogonal to the persona, a 4-level query-complexity overlay controls utterance phrasing from direct to deliberately vague. We evaluate the persona model inside a synthetic data generation pipeline across 64,698 multi-turn conversations spanning 8 named profiles and 3 production corpora. Key findings: (i) a 15.8 percentage-point spread in agent goal-achievement across personas confirms trait vectors produce measurably different user behavior; (ii) the same persona behaves differently across scenarios due to scenario-reactive emotional state shifts, validating the scenario-reactive design; (iii) domain-specific projects show persona sensitivity on booking-flow compliance (~15-20 percentage points gap between tier-aware and pressure-test personas), demonstrating the model faithfully reproduces real-world difficulty distributions; (iv) seven rule-described trait correlations produce auditable co-occurrence patterns without requiring learned covariance matrices. The persona model is fully specified for reproduction.",
+      "authors": [
+        "Rahul Khedar",
+        "Eshita",
+        "Sneha Teja Sree Reddy Thondapu",
+        "Mayank Malhotra",
+        "Arup Kumar Das",
+        "Jitesh Chandra Mishra",
+        "Arun Menon",
+        "Avinash Karn",
+        "Mouli V"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08592",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08592v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08592",
+      "comment": "7 pages, 3 figures, 6 tables. Extended treatment of the persona component of StateGen (arXiv:2606.16307)"
+    },
+    {
+      "id": "2609.08572",
+      "arxivId": "2609.08572",
+      "title": "AgentGrad: Intervention-guided Prompt Optimization for Multi Agent Systems",
+      "briefSummary": "Large language model (LLM)-based multi-agent systems (MAS) achieve strong performance by employing specialized multiple agents, yet their performance depends on the prompt design of each agent.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Large language model (LLM)-based multi-agent systems (MAS) achieve strong performance by employing specialized multiple agents, yet their performance depends on the prompt design of each agent. For MAS prompt optimization, textual gradient methods that guide prompt updates using natural-language feedback have emerged as a leading paradigm. In this paper, we identify limitations in two stages of existing textual gradient approaches: gradient extraction and gradient aggregation. In gradient extraction, previous works select a target prompt without verifying whether modifying it resolves the failure, and derive gradients without agent-level supervision over the corresponding agent's intermediate output. In gradient aggregation, individual gradients are randomly grouped and concatenated, often mixing unrelated failure modes and producing prompts that fail to generalize. To address these limitations, we propose \\textbf{AgentGrad}, a prompt optimization framework for multi-agent systems based on sequential intervention and semantic textual gradient abstraction. For each failure, sequential intervention modifies the behavior of one agent at a time to identify the target agent whose modification resolves the failure. The modified output of the target agent then serves as agent-level supervision for extracting a fine-grained gradient. Semantic textual gradient abstraction clusters semantically similar gradients to prevent mixing unrelated failure modes, and abstracts each cluster into a generalized gradient that captures the shared corrective pattern. Experimental results show that AgentGrad achieves state-of-the-art performance across five MAS benchmarks and reduces wall-clock optimization time by $2.5\\times$ on average compared to the next-fastest baseline.",
+      "authors": [
+        "Jaewon Chu",
+        "Jinwoo Seo",
+        "Jaewon Cho",
+        "Jeehye Na",
+        "Yunyang Xiong",
+        "Youngdae Kim",
+        "Hyunwoo J. Kim"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08572",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08572v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08572",
+      "comment": "13 pages"
+    },
+    {
+      "id": "2609.08566",
+      "arxivId": "2609.08566",
+      "title": "BIO-MEMART: Biometric-Aware KV Cache Memory for Multi-User LLM Agents",
+      "briefSummary": "KV cache is evolving from a serving optimization into an external memory substrate for long-term LLM agents.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "KV cache is evolving from a serving optimization into an external memory substrate for long-term LLM agents. In a shared multi-user deployment, however, reusable KV blocks introduce a missing access-control question: semantic relevance alone cannot determine whether a memory block is authorized for the current physical user. We propose Bio-MemArt, a biometric-aware KV-cache memory framework for multi-user LLM agents. Bio-MemArt attaches a normalized biometric template to each stored KV memory block, filters the shared memory pool with the current user's biometric probe, and then runs the original MemArt retrieval and KV reuse pipeline only inside the authorized candidate pool. This design preserves latent-space retrieval, direct cache reuse, and decoupled position encoding while adding physical-user access control to shared KV memory. We evaluate Bio-MemArt under Owner and Non-owner query conditions on long-term dialogue QA with face and palmprint benchmarks. Across face benchmarks, the average owner and non-owner biometric success rates are 95.71% and 0.86%; across palmprint benchmarks, they are 97.60% and 2.00%. In the efficiency study, average prefill tokens drop from 18,781.96 under full-context prompting to 28.57 with Bio-MemArt, showing that biometric gating preserves the low-token operating regime of KV-cache memory.",
+      "authors": [
+        "Yanhong Qian",
+        "Xuanying He",
+        "Qingguo Meng",
+        "Shihao Ding",
+        "Xingbo Dong",
+        "Zhe Jin"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08566",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08566v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08566"
+    },
+    {
+      "id": "2609.08558",
+      "arxivId": "2609.08558",
+      "title": "Personalizing LLM Agent Memory Using Biometrics",
+      "briefSummary": "Personalized memory helps LLM agents deliver stable, tailored assistance by storing and reusing user-specific data across interactions.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Personalized memory helps LLM agents deliver stable, tailored assistance by storing and reusing user-specific data across interactions. In multi-user scenarios, however, retrieval must consider not only semantic similarity but also whether the current requester matches the identity associated with the stored memory. We propose Bio-Memory, a biometric-aware memory architecture that conditions memory retrieval on both semantic similarity and biometric matching. Built on top of A-Mem, Bio-Memory augments each atomic memory note with a biometric embedding and uses biometric matching to form the retrieval candidate pool before semantic ranking. We evaluate Bio-Memory on LoCoMo in a 10-user shared-agent setting over 7 face benchmarks and 10 palmprint protocols. Across datasets, Bio-Memory consistently separates owner and non-owner queries. Under face-based personalization, the largest average gap reaches 27.29% / 21.15% in F1 / BLEU-1 on CALFW; under palmprint-based personalization, the corresponding gap is 25.75% / 19.22% on MS_Blue. These results support biometrics as a practical control signal for personalized memory retrieval in shared environments.",
+      "authors": [
+        "Yanhong Qian",
+        "Qingguo Meng",
+        "Shihao Ding",
+        "Xingbo Dong",
+        "Zhe Jin",
+        "Hanrui Wang",
+        "Isao Echizen"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08558",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08558v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08558"
+    },
+    {
+      "id": "2609.08452",
+      "arxivId": "2609.08452",
+      "title": "SRPO: Setwise Relative Policy Optimization for Multi-Agent LLMs",
+      "briefSummary": "Multi-agent large language models solve complex tasks by coordinating several policies in a shared environment.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Multi-agent large language models solve complex tasks by coordinating several policies in a shared environment. However, existing reinforcement learning methods usually optimize each response or trajectory separately, even when several outputs jointly cause one state transition. Consequently, the update unit differs from the action executed by the system. To address this problem, we propose SRPO (Setwise Relative Policy Optimization), which treats the active set the minimal set of outputs consumed by one transition, as one multi-agent action. Specifically, SRPO combines member log-ratios into one cardinality-normalized set ratio, assigns one relative advantage, and clips the set once. This formulation unifies division of labor and joint co-evolution as actions with different set sizes. Experiments on mathematical reasoning and multi-turn search demonstrate one training interface for fixed, mixed, and dynamically routed workflows across four model scales, with the strongest macro-average results among the reported comparisons. Optimization diagnostics further characterize its stability under different event reductions and set sizes.",
+      "authors": [
+        "Shengtian Yang",
+        "Ziyu Xiong",
+        "Yu Li",
+        "Yewen Li",
+        "Qingpeng Cai",
+        "Lei Feng"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08452",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08452v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08452"
+    },
+    {
+      "id": "2609.08435",
+      "arxivId": "2609.08435",
+      "title": "EvolveScaler: Synthesizing Information-Evolution Contexts via Executable State Machines and Natural-Language Rendering",
+      "briefSummary": "In persistent interactions, long contexts may encode an evolving process rather than a fixed record: later events can revise or revoke earlier information, changing what remains valid and what conclusions follow.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "In persistent interactions, long contexts may encode an evolving process rather than a fixed record: later events can revise or revoke earlier information, changing what remains valid and what conclusions follow. We call this setting information evolution (IE). Solving IE requires identifying valid records, applying updates in order, and reconstructing the query-relevant state from the event history. Existing text-first synthesis pipelines make such data difficult to verify because state transitions and answer logic remain implicit. We introduce EvolveScaler, a code-driven framework that defines information evolution before rendering it as natural language. Human-authored operational specifications define state transitions, record validity, difficulty controls, and executable answer logic; a strong LLM then synthesizes a self-contained simulator from each specification. Executing validated simulators produces natural-language multi-turn event histories, while deterministic replay computes reference answers and atomic checklists. We instantiate EvolveScaler with 117 task prototypes and 159 final-question operators across five difficulty levels spanning approximately 7 to 1,200 events per instance, yielding about 35,100 training examples and 585 validated evaluation instances. On the very_long tier, the strongest model reaches 59.3% avg@5, while six models score below 10%. Training an internal A3B model on 6,000 EvolveScaler examples improves performance over its base checkpoint on all eight independently constructed out-of-distribution benchmarks, with a 5.25-point average gain. These results show that code-driven IE synthesis provides both challenging evaluation and transferable training supervision.",
+      "authors": [
+        "Ziliang Zhao",
+        "Zenan Xu",
+        "Shuting Wang",
+        "Zhao Wang",
+        "Bowen Cao",
+        "Minda Hu",
+        "Lincheng Li",
+        "Pluto Zhou",
+        "Zhicheng Dou"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.SE"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08435",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08435v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08435"
+    },
+    {
+      "id": "2609.08418",
+      "arxivId": "2609.08418",
+      "title": "Feyospace-v1: How the Cyber Mercury Seven Trained Frontier Cyber Models",
+      "briefSummary": "Training capable cyber agents is often treated primarily as a problem of model scale, yet open-weight post-training is constrained more directly by the cost of executable environments, reliable multi-turn supervision, a...",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Training capable cyber agents is often treated primarily as a problem of model scale, yet open-weight post-training is constrained more directly by the cost of executable environments, reliable multi-turn supervision, and access to strong teachers. We present a data-centric framework that addresses these bottlenecks through five complementary systems: Choulea analyzes hidden reasoning signatures, SkyReal reduces teacher-sampling cost, Hongzwang bypasses API restrictions on teacher execution, PSBreakup restores capabilities weakened by model merging, and Kreator converts expert interventions into trainable reasoning. Our data engine constructs resettable coding, vulnerability, CTF, kernel-history, full-exploit, firmware, and device-backed environments. Candidate trajectories are retained only after execution verification and evidence auditing, yielding 164,269 trajectories for long-context supervised fine-tuning. The three checkpoints improve over their starting models by an average of 23.76% on the full CyberGym suite and 10.49% across the pooled CTF suites. As of September 1, 2026, Feyospace-s1 achieves a verified success rate of 63.24% and ranks 10th on the official CyberGym leaderboard, while all three checkpoints rank 1st among models at comparable parameter scales. To our knowledge, this is the first end-to-end demonstration that a seven-person independent team can train open-weight models with leading agentic cyber capability.",
+      "authors": [
+        "Zongjie Li",
+        "Alan Z. W",
+        "John Nicolas J",
+        "Walter H. F",
+        "Scott Donald L",
+        "Gordon Y. P",
+        "Deke X"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08418",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08418v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08418"
+    },
+    {
+      "id": "2609.08407",
+      "arxivId": "2609.08407",
+      "title": "FastE: Readout-Triggered Token Compression for LLM Embedding Inference",
+      "briefSummary": "In this study, we identify depth-dependent prefix redundancy in final-readout LLM embedding models, notably across representative backbones including Qwen3-Embedding and Qwen3-VL-Embedding.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "In this study, we identify depth-dependent prefix redundancy in final-readout LLM embedding models, notably across representative backbones including Qwen3-Embedding and Qwen3-VL-Embedding. We find that removing prefix states is substantially more damaging in shallow layers than at greater depth, showing that prefix states become increasingly compressible as the prefix and readout states propagate through the network. To this end, we introduce FastE, a training-free, plug-and-play method. FastE uses a shared fixed threshold on batch-mean readout-prefix alignment as a lightweight online heuristic for selecting when compression occurs, and ranks prefix states by the attention scores they receive from the readout position to determine which states are retained in subsequent layers. Our evaluations demonstrate FastE's ability to substantially reduce computational costs: on NarrativeQA with Qwen3-Embedding-0.6B, it reduces decoder-backbone FLOPs by 40.11% while retaining 99.53% of Full Forward nDCG@10. Across five text embedding benchmarks, two backbone scales, and three cross-modal retrieval tasks, the quality-efficiency trade-off is directly customizable through the maximum removal ratio without retraining. We believe FastE offers practical value for scalable embedding generation in retrieval, indexing, clustering, and multimodal representation systems.",
+      "authors": [
+        "Jinsong Shu",
+        "Jinyong Wen",
+        "Baokun Wang",
+        "Zhongle Xie",
+        "Lidan Shou",
+        "Weiqiang Wang",
+        "Gang Chen"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08407",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08407v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08407",
+      "comment": "10 pages, 6 figures"
+    },
+    {
+      "id": "2609.08288",
+      "arxivId": "2609.08288",
+      "title": "LEBGen: An LLM-Enhanced Bayesian Network Framework for Few-Shot Travel Survey Data Generation",
+      "briefSummary": "Travel survey data are essential for transportation planning and travel behavior analysis, yet collecting large-scale representative samples is costly and time-consuming.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Travel survey data are essential for transportation planning and travel behavior analysis, yet collecting large-scale representative samples is costly and time-consuming. A practical alternative is to generate synthetic survey records from a few-shot sample. However, such samples provide incomplete coverage of heterogeneous traveler groups and insufficient evidence for recovering the complex dependencies between demographic characteristics and travel behavior. Existing approaches have complementary limitations. Probabilistic generative models such as Bayesian networks (BNs) offer explicit distributional control, but structures learned from few-shot samples may omit meaningful dependencies or retain spurious ones. Large language models (LLMs) can help address these difficulties in BN structure learning by providing behavioral knowledge that complements the limited statistical evidence. We therefore propose LEBGen, an LLM-enhanced BN framework that uses this knowledge to refine network structure for few-shot travel survey data generation. Specifically, the LLM first identifies traveler personas from demographic attribute and travel behavior statistics, then recovers dependencies missed by the persona-augmented BN structure and prune spurious ones. The refined BN is parameterized exclusively from the observed data to generate synthetic records. Under a 2% few-shot setting on the 2022 Hong Kong Travel Characteristics Survey, LEBGen reduces the mean marginal Jensen-Shannon divergence from 0.0671 to 0.0091 and the mean absolute Cramer's V error by 14.3% over the best-performing baseline, substantially improving both distributional and dependency fidelity.",
+      "authors": [
+        "Zijian Shen",
+        "Bin Zhou",
+        "Jiguang Wang",
+        "Ya Zhao",
+        "Jintao Ke"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08288",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08288v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08288"
+    },
+    {
+      "id": "2609.08275",
+      "arxivId": "2609.08275",
+      "title": "Beyond Coherence: Benchmarking Professional Editing-Technique Execution in Multi-Shot Audio-Video Generation",
+      "briefSummary": "Recent multi-shot audio-video generators can produce increasingly coherent and cinematic outputs, but coherence does not imply the ability to execute editing techniques.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Recent multi-shot audio-video generators can produce increasingly coherent and cinematic outputs, but coherence does not imply the ability to execute editing techniques. Professional editing depends on shot structure, transition grammar, audio-video cut relations, and montage, yet existing benchmarks largely rely on proxies such as content quality, synchronization, or physical plausibility, systematically missing whether such editing instructions are actually executed. We introduce CutCraft, the first benchmark for editing-technique execution in multi-shot audio-video generation. CutCraft extends structured multi-shot prompts with explicit editing specifications and is paired with a hierarchical hybrid evaluation framework that combines shot-structure alignment, expert-model metrics, tool-grounded multimodal judgment, and rubric-based question answering. Beyond evaluation, we design an agentic editing baseline that decomposes generation into planning, shot-level synthesis, and post-hoc composition, explicitly realizing editing semantics such as J-cuts, L-cuts, and transition timing. Across 13 state-of-the-art closed- and open-source models, CutCraft reveals a consistent gap between coherence and editing-technique execution: current systems often produce plausible multi-shot videos yet fail to execute editorial instructions reliably. We find unstable shot structures, weak control of transition execution, and sharp degradation on higher-order montage, while aesthetic quality is only weakly correlated with editing-technique compliance. The benchmark and metrics, and the editing agent baseline are available at https://github.com/AlibabaResearch/cut-craft-bench.",
+      "authors": [
+        "Tianyi Zeng",
+        "Junchao Liao",
+        "Yujie Wei",
+        "Ziying Zhang",
+        "Litao Li",
+        "Tianyi Wang",
+        "Zhichao Wei",
+        "Shuyao Xu",
+        "Wenwen Qiang",
+        "Siyu Zhu",
+        "Zhenghao Zhang",
+        "Long Qin"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08275",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08275v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08275"
+    },
+    {
+      "id": "2609.08273",
+      "arxivId": "2609.08273",
+      "title": "MemForest: Efficient Agent Memory Management via EventTree Partitioning and Progressive Merging",
+      "briefSummary": "Agent memory systems have demonstrated significant potential in long-term dialogue, personalized assistants, and video understanding.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Agent memory systems have demonstrated significant potential in long-term dialogue, personalized assistants, and video understanding. However, continuously accumulated memory introduces substantial storage and retrieval costs during inference. To address this issue, we propose \\textbf{MemForest}, a general memory compression framework adaptable to various agent memory systems. Specifically, MemForest partitions historical memory into event-centric units by leveraging global semantic similarity and local temporal continuity. For each unit, it constructs a maximum spanning tree, termed an EventTree, and progressively merges redundant memory nodes by selecting high-weight edges, reducing storage overhead. Furthermore, we introduce an anchor-guided propagation retrieval mechanism that retrieves relevant memory nodes from the temporal neighborhoods of key nodes, improving retrieval accuracy. Extensive experiments demonstrate the effectiveness of MemForest. Under the unimodal Mem0 framework, MemForest retains \\textbf{97.1%} of the original performance while compressing \\textbf{50%} of historical memory across three benchmarks (LoCoMo, LongMemEval, and PersonaMem), achieving a \\textbf{1.89x} retrieval speedup. Under the multimodal M3-Agent framework, it preserves \\textbf{99.7%} of the original performance with a \\textbf{50%} compression ratio across two benchmarks (M3-Bench-robot and M3-Bench-web), achieving a \\textbf{2.24x} retrieval speedup. \\textcolor{RoyalBlue}{\\textit{Our code is available at [https://github.com/Celina-love-sweet/MemForest.}}](https://github.com/Celina-love-sweet/MemForest.}})",
+      "authors": [
+        "Junxi Wang",
+        "Te Sun",
+        "Jiayi Zhu",
+        "Chen Zhang",
+        "Siyuan Li",
+        "Xuyang Liu",
+        "Zichen Wen",
+        "Xiaobing Tu",
+        "Jinkui Ren",
+        "Xiantao Zhang",
+        "Ziqi Yuan",
+        "Linfeng Zhang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08273",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08273v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08273",
+      "comment": "23 pages, 6 figures"
+    },
+    {
+      "id": "2609.08271",
+      "arxivId": "2609.08271",
+      "title": "Three Types of Negation of Triple and its Elements and an Extension of Triple",
+      "briefSummary": "In various data models, the classical triple is a typical semantic data model.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "In various data models, the classical triple is a typical semantic data model. However, due to the design of the triple as a simple structure for representing positive assertions, it cannot sufficiently express different forms of negation present in the triple and its elements. This paper conceptually proposes that there are three distinct forms of negation within triples and their elements: contradictory negation, opposite negation and intermediary negation. Based on the the set SCOI and the logic LCOI+PLCOI with three kinds of negation, we propose an extension of triple that can distinguish and express these three different negations in the triple and its elements, called the TCOI triple with contradictory negation, opposite negation and intermediary negation. The TCOI triple is a semantic and structural extension of the classical triple. While retaining the ability to express positive assertions, it systematically introduces the three semantic dimensions of three negations, allowing these negations to independently act on the elements of the triple and on the whole triple. This significantly enhances the triple model capability to represent and reasoning about complex negative information. This paper also explores the expressive power and reasoning of the TCOI triple, as well as the application of TCOI triple implication reasoning in counterfactuals and counterfactual reasoning. We propose a truth-value (continuous value) algorithm for TCOI triple implication reasoning and perform its calculation through an example of the counterfactuals and counterfactual reasoning.",
+      "authors": [
+        "Zhenghua Pan"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08271",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08271v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08271",
+      "comment": "29 papers, 9 figures"
+    },
+    {
+      "id": "2609.08267",
+      "arxivId": "2609.08267",
+      "title": "Evidence-Aligned Entity Verification for Hallucination Detection in Retrieval-Augmented Generation",
+      "briefSummary": "Hallucination detection is crucial for large language models (LLMs), as hallucinated content creates significant barriers in applications requiring factual accuracy.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Hallucination detection is crucial for large language models (LLMs), as hallucinated content creates significant barriers in applications requiring factual accuracy. Current detection methods mainly depend on internal signals like uncertainty and self-consistency checks, using the model's pre-trained knowledge to identify unreliable outputs. However, pre-trained knowledge may become outdated and has coverage limitations, especially for specialized or recent information. To address these limitations, retrieval-augmented generation (RAG) has emerged as a promising solution by retrieving relevant evidence at inference time, grounding outputs beyond the model's parametric knowledge. In this paper, we target a critical and practical learning problem RAG-based hallucination detection (RHD), where RAG is employed to enhance hallucination detection by addressing information updating challenges. To address RHD, we propose a novel method Evidence-Aligned Entity Verification (EAEV), which detects entity-level hallucinations by leveraging RAG to align generated entities with retrieved evidence contexts. Specifically, EAEV evaluates entity-evidence alignment through three complementary dimensions and introduces counterfactual stability analysis to ensure robust alignments under evidence perturbations. Experiments across multiple RAG benchmarks demonstrate that EAEV achieves consistent improvements over existing methods with strong generalization capabilities.",
+      "authors": [
+        "Runsong Jia",
+        "Zhen Fang",
+        "Mengjia Wu",
+        "Jie Lu",
+        "Yi Zhang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.IR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08267",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08267v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08267",
+      "doi": "10.18653/v1/2026.findings-acl.1477",
+      "comment": "ACL 2026"
+    },
+    {
+      "id": "2609.08258",
+      "arxivId": "2609.08258",
+      "title": "Revoked but Still Authoritative: An Empirical Study of Revocation Enforcement in Agent-Memory Systems",
+      "briefSummary": "Long-running language-model agents depend on persistent memory.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Long-running language-model agents depend on persistent memory. Many agent-memory systems preserve history through soft revocation: a contradicted fact is marked invalid and retained rather than deleted. However, whether that mark is enforced at retrieval time is unexamined. In this paper, we measure five such systems: we load each with a revoked policy and its replacement, track whether the revoked fact is returned at retrieval and whether the agent then acts on it across nine policy scenarios and nine models, and score every trial under six defense conditions. We find that no system enforces revocation by default: the revoked fact is returned wherever the revocation label is visible to the retrieval layer, outranks its replacement, and leads agents to the unsafe action. Based on these findings, we develop a guard that sits between the agent and any memory backend and withholds records that are revoked or conflict with their replacement.",
+      "authors": [
+        "Yi Ting Shen",
+        "Kentaroh Toyoda",
+        "Alex Leung"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08258",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08258v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08258",
+      "comment": "Code is available at https://github.com/VulcanLab/Memory-Rebirth-Attack"
+    },
+    {
+      "id": "2609.08254",
+      "arxivId": "2609.08254",
+      "title": "CircuTutor: Transforming Static Circuit Problems into Intelligent and Dynamic Tutoring",
+      "briefSummary": "Learning direct current circuit concepts requires learners to connect invisible physical quantities, such as current, voltage, resistance, and power, with observable outcomes such as bulb brightness.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Learning direct current circuit concepts requires learners to connect invisible physical quantities, such as current, voltage, resistance, and power, with observable outcomes such as bulb brightness. Conventional textbook materials and general-purpose circuit simulators provide opportunities for problem solving and exploration but offer limited support for explaining why circuit behavior changes or diagnosing the reasoning behind incorrect answers. We present CircuTutor, a circuit-state-driven intelligent tutoring system that transforms static textbook circuit problems into an interactive tutoring workflow. CircuTutor first uses multimodal problem parsing to extract the textbook question, circuit topology, component parameters, switch states, and answer options, which are converted into a structured task and validated through circuit simulation. Learners can then interactively explore the circuit (by changing parameters) and submit an answer while a SPICE-compatible solver computes physically consistent circuit states. After the learner submits an answer, CircuTutor presents a before-and-after circuit state animation corresponding to the selected operation, organizes the simulated state changes into a causal reasoning chain that explains the underlying circuit behavior, maps answer discrepancies to likely misconceptions, and generates adaptive follow-up exercises targeted at the diagnosed misconception. Our experimental results demonstrate that CircuTutor effectively improves conceptual learning and the overall learning experience. The proposed framework demonstrates how simulated circuit states can be transformed into intelligent and interactive tutoring for circuit education, with the potential to generalize to other STEM domains.",
+      "authors": [
+        "Ziyu Luo",
+        "Xiaorui Ma",
+        "Lin Chen",
+        "Xiaoming Chen"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08254",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08254v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08254"
+    },
+    {
+      "id": "2609.08228",
+      "arxivId": "2609.08228",
+      "title": "SE-GoS: Self-Evolving Graph-of-Skills for Skill Library at Scale",
+      "briefSummary": "Modern LLM agents increasingly rely on reusable skills, yet as skill libraries scale to thousands of entries, effective retrieval becomes a bottleneck.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Modern LLM agents increasingly rely on reusable skills, yet as skill libraries scale to thousands of entries, effective retrieval becomes a bottleneck. Graph-of-Skills (GoS) addresses this challenge by exploiting dependency-aware graph structure for scalable skill retrieval, while SkillDAG further demonstrates that skill graphs can accumulate execution-backed structure online. However, these approaches leave open whether historical execution traces can be systematically distilled into a better retrieval graph that generalizes to unseen tasks. We present Self-Evolving Graph-of-Skills (SE-GoS), a training-free framework that evolves an existing GoS graph from execution traces while preserving the original retrieval pipeline. SE-GoS performs three complementary updates: topology evolution that discovers and prunes skill relationships from execution evidence, edge-weight evolution that reinforces retrieval-relevant relationships based on historical effectiveness, and description evolution that optimizes retrieval-facing skill descriptions using execution feedback. Across three LLMs on SkillsBench, SE-GoS consistently improves task reward while reducing input tokens relative to full skill loading, with gains varying across model families. In a representative setting, one evolution round improves reward from 52.4\\% to 59.4\\% while reducing input tokens by approximately one-third relative to full skill loading, and the resulting graph transfers to a disjoint held-out split with a 5.4-point improvement over the static GoS baseline. These results show that skill graphs can be improved from execution experience without model training, changes to the retrieval algorithm, or modifications to skill content, turning a static retrieval graph into an evolving retrieval infrastructure.",
+      "authors": [
+        "Dawei Fu",
+        "Cheng Jiang",
+        "Sitian Qian",
+        "Huainan Wang",
+        "Zhongkai Hao"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08228",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08228v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08228",
+      "comment": "21 pages, 1 figure, 7 tables"
+    },
+    {
+      "id": "2609.08189",
+      "arxivId": "2609.08189",
+      "title": "Do Dynamic Routers Need Memory? HeRo: History-Aware Routing for Efficient LLM Inference",
+      "briefSummary": "Dynamic layer routing reduces the inference cost of Large Language Models (LLMs) by learning to skip layers for individual tokens.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Dynamic layer routing reduces the inference cost of Large Language Models (LLMs) by learning to skip layers for individual tokens. Existing methods, however, treat each routing decision as a local operation conditioned solely on the current hidden state which is a formulation that overlooks the sequential, path-dependent nature of routing across depth: earlier decisions shape the representations seen by downstream routers, and the layer-usage objective couples all decisions jointly. We propose History-Aware Routing (HeRo), a dynamic routing framework that resolves this mismatch by introducing a router memory mechanism to maintain an explicit routing state across model depth. The memory is constructed via linear attention, incrementally aggregating preceding routing scores and their induced residual updates into a compact history representation. At each routed layer, the router conditions jointly on this accumulated state and the current hidden representation to select the executed branch. Instantiated for token-wise FFN routing, HeRo trains only lightweight routers and adapters on a frozen backbone, requiring no modification to pretrained parameters. Across Llama 3.1-8B, Llama 2-7B, and Llama 2-13B, HeRo consistently achieves the highest aggregate performance retention among ten baselines. On Llama 3.1-8B, it bypasses 26.87% of model parameters while achieving 100.24% of dense model performance across seven benchmarks, and retains 97.01% while bypassing 38.82% of model parameters under a tighter computation budget. Ablation studies confirm that removing routing history consistently degrades performance, most notably on multistep reasoning and code generation, validating that explicit routing memory enables more accurate and adaptive dynamic routing than solely conditioning on hidden state.",
+      "authors": [
+        "Hongjin Lin",
+        "Wentao Wan",
+        "Keze Wang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08189",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08189v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08189",
+      "comment": "9 pages, 2 figures"
+    },
+    {
+      "id": "2609.08186",
+      "arxivId": "2609.08186",
+      "title": "Does Deeper Reasoning Compromise Alignment? Revealing and Mitigating of Alignment Collapse in Large Reasoning Models",
+      "briefSummary": "The emergence of Chain-of-Thought (CoT) has established a robust foundation for Large Reasoning Models (LRMs).",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "The emergence of Chain-of-Thought (CoT) has established a robust foundation for Large Reasoning Models (LRMs). While deep reasoning is widely believed to enhance safety alignment, the stability of alignment mechanisms under extended reasoning remains underexplored. This paper challenges the prevailing view by revealing a critical vulnerability: Deep Reasoning May Induce Alignment Collapse. To rigorously quantify this phenomenon, we propose the Alignment Loss Rate (ALR) metric. Our experiments demonstrate that as reasoning depth increases, ALR rises significantly, indicating a severe degradation in model robustness against external perturbations. Capitalizing on this instability, a novel jailbreaking paradigm, Reasoning Trap (RT), is proposed. RT induces the model into extended reasoning to amplify the impact of adversarial attacks, leading to a sharp decline in safety capabilities. To elucidate the mechanism behind this collapse, we identify Attention Dilution as the root cause, arising from the competition for attention between the extended reasoning process and the original input. To mitigate this, Reasoning Residual Alignment (RRA), a lightweight defense strategy that dynamically re-emphasizes the input via residual connections integrated with the reasoning process.",
+      "authors": [
+        "Yu-Hang Wu",
+        "Yu-Jie Xiong",
+        "Henghua Zhang",
+        "Bairui Zhang",
+        "Jia-Chen Zhang",
+        "Shaohua Li"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08186",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08186v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08186"
+    },
+    {
+      "id": "2609.08126",
+      "arxivId": "2609.08126",
+      "title": "SchemeArena: Factorized Stress Testing of Scheming in LLM Agents",
+      "briefSummary": "We study scheming in LLM agents, in which agents covertly pursue misaligned goals.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "We study scheming in LLM agents, in which agents covertly pursue misaligned goals. Our focus is to understand how scheming arises from the interaction of key factors, such as instrumental goals, environmental affordances, oversight conditions, and perceived consequences. Prior work examines only a small number of scenarios, limiting the ability to isolate how these conditions shape an agent's propensity or capability to scheme. This limited scale and task diversity also restrict coverage of realistic deployment settings and the range of scheming strategies that can be observed. To this end, we introduce SCHEMEARENA, a 400-scenario benchmark for scalable scheming stress testing, constructed through a factorized scenario synthesis framework spanning diverse safety-relevant tool domains, instrumental goals, oversight conditions, and pressure mechanisms. To enable scalable and reliable monitoring, we further propose SCOUT, a scheming monitor that grounds multi-criteria judgments in evidence drawn from agents' reasoning and actions. Across controlled stress tests on five LLM agents, we find that explicit instrumental goals are the strongest driver of scheming propensity. Strategic hints play a distinct role by helping agents translate scheming reasoning into concrete covert behavior. Oversight has mixed effects: in several closed models, action-only monitoring increases scheming, suggesting that partial oversight can act as an optimization constraint rather than a deterrent. CoT is a useful but incomplete monitoring signal: it can reveal latent scheming before execution, yet action-only scheming shows that covert behavior may occur without explicit reasoning evidence. We release the benchmark, code, and monitor at: https://github.com/launchnlp/SchemeArena.",
+      "authors": [
+        "Jie Ruan",
+        "Inderjeet Nair",
+        "Amy Liu",
+        "Muhammad Khalifa",
+        "Yusheng Zhou",
+        "Lu Wang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08126",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08126v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08126"
+    },
+    {
+      "id": "2609.08090",
+      "arxivId": "2609.08090",
+      "title": "RevalExo: A Functional Daily-Activity Benchmark for Inertial and Visual Locomotion Mode Recognition in Older Adults and Clinical Cohorts",
+      "briefSummary": "Assistive devices for people with mobility impairments, such as powered exoskeletons, rely on accurate locomotion mode recognition to adapt control strategies and provide appropriate assistance during daily activities.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Assistive devices for people with mobility impairments, such as powered exoskeletons, rely on accurate locomotion mode recognition to adapt control strategies and provide appropriate assistance during daily activities. However, public benchmarks are typically collected from healthy adults, lack temporally precise labels necessary for detecting mode transitions, or focus on a limited set of tasks. To support development and evaluation under realistic clinical constraints and daily mobility demands, we introduce RevalExo, a functional daily-activity benchmark for inertial and visual locomotion mode recognition. RevalExo is built around a standardized, clinically and ecologically validated daily-activity protocol reflecting the cumulative everyday mobility demands in ageing and clinical populations. The benchmark includes 27 participants across three cohorts: older adults without mobility impairments, stroke survivors, and older adults with probable sarcopenia. The full cohort was recorded with lower-body IMUs, while synchronized egocentric video was collected for a clinically feasible subset of 13 participants. RevalExo provides 10.1 hours of frame-level annotations across 11 locomotion modes, including 5.1 hours of paired inertial--visual recordings. We benchmark three challenges: unimodal and multimodal locomotion mode recognition across multiple horizons, cross-population generalization from older adults without mobility impairments to clinical cohorts, and vision-guided knowledge transfer to IMU-only models. Results confirm consistent gains from fusing inertial and visual inputs but reveal a substantial gap between general recognition ($\\sim$93\\% F1) and recognition during transitions ($\\sim$68\\% F1), alongside persistent challenges in cross-population generalization and cross-modal transfer. We release RevalExo to stimulate further research on these open challenges.",
+      "authors": [
+        "Diwas Lamsal",
+        "Juha Carlon",
+        "Reinhard Claeys",
+        "Maxim Yudayev",
+        "Louis Flynn",
+        "Tom Verstraten",
+        "David Beckwée",
+        "Eva Swinnen",
+        "Mihai Bâce",
+        "Bart Vanrumste",
+        "Benjamin Filtjens"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08090",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08090v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08090",
+      "comment": "Accepted to BMVC 2026 (Oral)"
+    },
+    {
+      "id": "2609.08025",
+      "arxivId": "2609.08025",
+      "title": "Eliciting Self-Verification in Multimodal Reasoning Agents with Reinforcement Learning",
+      "briefSummary": "Reasoning agents increasingly rely on external tools such as web search to answer complex queries.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "abstract": "Reasoning agents increasingly rely on external tools such as web search to answer complex queries. Reinforcement learning (RL) finetuning algorithms such as GRPO have improved long-form reasoning in text-only language models, particularly for coding and mathematics. Reliable tool use in multimodal agents, however, remains challenging because models must interpret text and images while integrating noisy retrieved evidence, often under sparse outcome-level supervision without explicit verification signals. We present Self-Verification via Reinforcement Learning (SVRL), an RL-only finetuning framework that trains multimodal agents to verify and filter retrieved evidence within their own reasoning traces, reducing reliance on external verifiers at inference time. SVRL also introduces a search-aware penalty that discourages unnecessary tool calls and a query-diversity reward that encourages diverse, well-formed search queries, providing fine-grained feedback on when and what to search. Finetuning Qwen-2.5-VL-7B with SVRL on only 5{,}000 visual question answering examples yields consistent gains in multi-hop VQA generalization and tool efficiency across benchmarks. Overall, SVRL narrows the gap between compact agents and much larger proprietary models while requiring substantially lower training and inference cost.",
+      "authors": [
+        "Vishwas Sathish",
+        "Viresh Ranjan",
+        "Xinliang Zhu",
+        "Arnab Dhua",
+        "Douglas Gray"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08025",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08025v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08025",
+      "comment": "To appear in ECCV 2026. 11 main pages. 7 figures"
+    },
+    {
+      "id": "2609.07944",
+      "arxivId": "2609.07944",
+      "title": "CausalVerify: An Execution-Grounded Benchmark for LLM Causal Inference Workflows",
+      "briefSummary": "Existing causal-inference benchmarks for LLMs mostly score method descriptions or whether generated code runs, not whether the executed workflow recovers the target causal estimate.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "abstract": "Existing causal-inference benchmarks for LLMs mostly score method descriptions or whether generated code runs, not whether the executed workflow recovers the target causal estimate. CausalVerify studies this verification problem for structured econometric causal-estimation workflows by separating realistic interpretation from verifiable computation. It pairs 259 published economics papers (reconstructed research question, data description, institutional context) with 100 fixed-seed synthetic scenarios that realise CSV datasets for difference-in-differences, event study, instrumental variables, and regression discontinuity designs. Experiment A (real-paper text agreement) scores method-family and direction agreement against four-LLM consensus labels. Experiment B (synthetic execution) runs model-written R code and checks whether the extracted treatment-effect estimate matches a canonical estimator on the same realised dataset; this execution-grounded correctness layer is L2b+, distinct from L2b, which records only whether the code executes. A calibration arm asks whether self-reported confidence separates correct from incorrect workflows. On Experiment B, seven LLMs reach L2b+ pass rates of 10% to 88% at the default 50% tolerance, and 66 of the 426 workflows that execute (15.5%) return a wrong estimate. Execution ranking (L2b) agrees with L2b+ far better than text-direction scoring (L4): Kendall $τ=0.81$ and Spearman $ρ=0.93$, versus Kendall $τ$ between $-0.20$ and $0.10$ for L4. Llama-3.3-70B-Instruct shows the same qualitative gap, and reported confidence does not reliably separate correct from incorrect workflows. The claims are confined to standardized single-shot workflows in these four design families under the evaluated R backend and model panel; the benchmark does not measure general causal-inference ability. Code, data, cached outputs, and a datasheet are released.",
+      "authors": [
+        "Yonghong Zhang",
+        "Ricardo Correia",
+        "Isabel M. Parra",
+        "Yong Xie"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "econ.EM"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.07944",
+      "pdfUrl": "https://arxiv.org/pdf/2609.07944v1",
+      "htmlUrl": "https://arxiv.org/html/2609.07944",
+      "comment": "22 pages, 9 figures, 12 tables. Code and data: https://github.com/causalverify/causalverify"
+    },
+    {
+      "id": "2609.07713",
+      "arxivId": "2609.07713",
+      "title": "The Emerging AI Paper-Review Arms Race: Adversarial Co-Evolution in Scholarly Publishing",
+      "briefSummary": "Generative and agentic AI are reshaping both the production and evaluation of scientific research.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.AI",
+      "publishedAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "abstract": "Generative and agentic AI are reshaping both the production and evaluation of scientific research. These developments are often studied separately, as questions of how AI can produce research and how AI can review it. We argue that this separation misses an increasingly important feature of scholarly publishing: changes on one side alter the incentives, constraints, and behavior of the other. We synthesize 230 scholarly publications and institutional records using a taxonomy of six connected dynamics: production scaling, evaluation automation, evaluation manipulation, defense mechanisms and policy responses, evasion and side effects, and long-horizon ecosystem feedback. The literature shows an emerging progression in which cheaper and faster research production increases pressure on evaluation, AI-mediated evaluation becomes more scalable and repeatable, participants can exploit evaluator regularities, and institutions respond with technical safeguards and policy controls. These responses can in turn induce evasion, redistribute errors and workload, and shape the scholarly records reused by future research and evaluation systems. Evidence is strongest for production and evaluation at scale, reproducible manipulation, and institutional response, while post-policy adaptation and artifact-level long-horizon feedback remain less directly observed. This systems view shifts attention from isolated AI capabilities toward how scholarly actors and AI systems adapt to one another over time.",
+      "authors": [
+        "Chenguang Wang",
+        "Ming Li",
+        "Adebayo Braimah",
+        "Chenrui Fan",
+        "Tuo Wang",
+        "Weijie Guan",
+        "Ruiyi Zhang",
+        "Tianyi Zhou",
+        "Dawei Zhou"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.07713",
+      "pdfUrl": "https://arxiv.org/pdf/2609.07713v1",
+      "htmlUrl": "https://arxiv.org/html/2609.07713"
+    },
     {
       "id": "2609.05396",
       "arxivId": "2609.05396",

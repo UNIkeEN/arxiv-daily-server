@@ -1,10 +1,107 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-07T07:28:00Z",
+  "generatedAt": "2026-09-09T07:30:41Z",
   "category": "cs.GR",
   "yearMonth": "2026-09",
-  "paperCount": 12,
+  "paperCount": 16,
   "papers": [
+    {
+      "id": "2609.08722",
+      "arxivId": "2609.08722",
+      "title": "Inverse Digital Marbling: Recovering Gesture Programs with a Replay Adjoint",
+      "briefSummary": "Pigment deposition in paper marbling displaces the pattern already present, coupling the appearance of each gesture to later actions.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Pigment deposition in paper marbling displaces the pattern already present, coupling the appearance of each gesture to later actions. We recover executable programs for a deposition-based digital marbling model: given a target image, we optimise an ordered program of capsule insertions whose replay approximates it. The capsule primitive continuously joins circular drops to elongated deposits. Its transport is exactly area-preserving and has a closed-form inverse on the exterior of the deposited region. A replay adjoint reconstructs intermediate states, retaining coordinates lost inside deposits and periodic position checkpoints. At 2000 gestures and 1024^2 pixels, the PyTorch replay implementation uses 8.7x less memory than the tested checkpointed-autograd configuration at comparable step time; the fused implementation fits a program in about four minutes on one workstation GPU. We evaluate image reconstruction on five marbled sheets, compare against transport-disabled fitting, one-pass geometric compensation and a published stroke-based fitter at matched stroke count, and measure sensitivity to an alternative ordered-drop transport. Recovered programs replay across a 4x range of linear resolution. Edits specified in program order or in palette space -- inserting a gesture, recolouring a stage, translating a stage -- replay correctly under the same model; edits specified by image content, such as moving a motif, do not. On synthetic targets with known generating programs, the recovered programs match the images but not the generating gestures under a positional matching statistic. The output is an editable program in the specified digital medium.",
+      "authors": [
+        "Tianqi Liu",
+        "Yushan Han",
+        "Hang Liu"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.CV"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08722",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08722v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08722"
+    },
+    {
+      "id": "2609.08497",
+      "arxivId": "2609.08497",
+      "title": "Neural Centroidal Voronoi Tessellations",
+      "briefSummary": "Centroidal Voronoi tessellation (CVT) is a fundamental primitive for high-quality surface sampling and isotropic remeshing in computer graphics.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-09-08",
+      "updatedAt": "2026-09-08",
+      "abstract": "Centroidal Voronoi tessellation (CVT) is a fundamental primitive for high-quality surface sampling and isotropic remeshing in computer graphics. However, computing surface CVTs with classical solvers remains expensive: each optimization step repeatedly constructs restricted Voronoi diagrams (RVDs) and integrates quantities over their surface cells. We introduce Neural CVT, a learning-based surface-CVT solver that replaces these costly geometric computations with a recurrent neural optimizer, accelerating CVT optimization by one to two orders of magnitude in our benchmarks while preserving geometric fidelity. Given an input surface, we sample a dense point cloud and extract multi-scale geometric descriptors with a graph neural encoder. A lightweight recurrent optimizer then refines seed positions over a small number of iterations, aggregating interpolated surface features and optimization history to predict per-seed displacements. The framework is trained self-supervised using CVT objectives that promote uniform distributions and, when desired, feature alignment. Across diverse organic and CAD-like shapes, Neural CVT generalizes to unseen geometry, initialization strategies, and seed densities, producing isotropic, feature-preserving remeshes comparable to state-of-the-art offline optimization methods at a fraction of the computational cost. Code and trained models will be released.",
+      "authors": [
+        "Jiacheng Xu",
+        "Bo Pang",
+        "Rui Xu",
+        "Xiaocheng Zhang",
+        "Yang Liu",
+        "Fei Zhu",
+        "Guoping Wang",
+        "Peng-Shuai Wang"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.08497",
+      "pdfUrl": "https://arxiv.org/pdf/2609.08497v1",
+      "htmlUrl": "https://arxiv.org/html/2609.08497"
+    },
+    {
+      "id": "2609.06950",
+      "arxivId": "2609.06950",
+      "title": "CT2Yarn: Yarn-Level Reconstruction of Crochet from Computed Tomography",
+      "briefSummary": "We introduce CT2Yarn, a human-in-the-loop framework for recovering a single continuous yarn path from micro-computed tomography (micro-CT) scans of real crochet objects.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-09-07",
+      "updatedAt": "2026-09-07",
+      "abstract": "We introduce CT2Yarn, a human-in-the-loop framework for recovering a single continuous yarn path from micro-computed tomography (micro-CT) scans of real crochet objects. Crochet is a craft that creates complex three-dimensional shapes by interlocking loops formed from a single yarn. Recovering the underlying yarn path from external observations is challenging because of severe self-occlusion. While micro-CT reveals the full internal structure of a crochet object, the volumetric scan alone does not explicitly encode how the yarn traverses the object. This challenge stems from the hierarchical structure of yarn: a yarn consists of multiple twisted plies, and each ply itself consists of twisted fibers. Consequently, local fiber orientations observed in micro-CT scans are not aligned with the overall yarn direction. To recover yarn-level orientations from ply-level fiber orientations, we first estimate local fiber directions using Gabor filtering and convert the volume into an oriented point cloud. We then introduce an anisotropic mean-shift procedure that aggregates local fiber orientations within a neighborhood of the yarn radius into yarn-level orientation estimates. Combined with an automatic topology skeletonization strategy, our method extracts yarn-path fragments. Subsequent fragment linking, junction cleaning, and loop detection merge these trees into a small number of long curves. Where the automatic reconstruction remains ambiguous, a sketch-based user interface enables users to interactively complete the single continuous yarn path. The recovered yarn path enables downstream applications including physically based simulation, ply-level rendering, and stitch-pattern extraction.",
+      "authors": [
+        "Chang Luo",
+        "Nobuyuki Umetani"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.06950",
+      "pdfUrl": "https://arxiv.org/pdf/2609.06950v1",
+      "htmlUrl": "https://arxiv.org/html/2609.06950",
+      "comment": "Accepted to the Conference Track of Pacific Graphics 2026"
+    },
+    {
+      "id": "2609.06517",
+      "arxivId": "2609.06517",
+      "title": "Skinned Motion Retargeting via Artifact-driven Kinematic Prior Refinement",
+      "briefSummary": "Motion retargeting aims to transfer a source motion to target characters with different skeletal structures, proportions, and body shapes.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-09-06",
+      "updatedAt": "2026-09-06",
+      "abstract": "Motion retargeting aims to transfer a source motion to target characters with different skeletal structures, proportions, and body shapes. Although recent neural retargeting methods have improved flexibility across diverse skeletons, target-side geometric artifacts such as self-penetration remain difficult to resolve. Specifically, existing geometry-aware approaches often rely on fixed skeleton templates or implicit geometry-conditioned prediction, requiring a single network to account for target geometry deformation, detect target-side artifacts, and predict the corresponding correction from target geometry alone, which limits their ability to generalize across diverse skeleton structures and body shapes. In this paper, we present a geometry-aware motion retargeting framework that explicitly connects artifacts observed in the posed character geometry to motion refinement while preserving the flexibility of skeleton-agnostic neural retargeting. Our method first learns a motion embedding shared across different skeletons using a transformer-based retargeting autoencoder that transfers motion across arbitrary source--target skeleton pairs. Building on this kinematic motion prior, we introduce an artifact-driven refinement module that observes self-penetration on the posed target mesh and converts it into a corrective cue through a motion-to-vertex Jacobian. We further condition motion decoding on target geometry using skinning weight-based joint-aligned geometry features derived from the rest pose mesh. This design combines explicit target-side artifact reasoning with flexible geometry-aware decoding in a unified framework. Experiments on both fixed and arbitrary skeleton structure settings show that our method improves kinematic retargeting accuracy and reduces geometric artifacts, producing plausible motions across seen and unseen target characters.",
+      "authors": [
+        "Seokhyeon Hong",
+        "Chaelin Kim",
+        "Inseo Jang",
+        "Soojin Choi",
+        "Junyong Noh"
+      ],
+      "categories": [
+        "cs.GR"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2609.06517",
+      "pdfUrl": "https://arxiv.org/pdf/2609.06517v1",
+      "htmlUrl": "https://arxiv.org/html/2609.06517",
+      "comment": "Accepted SIGGRAPH Asia 2026 (Journal Track); Project page https://seokhyeonhong.github.io/projects/kinematic-refinement/"
+    },
     {
       "id": "2609.05127",
       "arxivId": "2609.05127",
