@@ -1,9 +1,35 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-14T08:00:23Z",
+  "generatedAt": "2026-10-15T07:38:18Z",
   "category": "cs.GR",
   "paperCount": 100,
   "papers": [
+    {
+      "id": "2610.19091",
+      "arxivId": "2610.19091",
+      "title": "DiffGIPC: Differentiable Mixed-Coordinate Contact Dynamics on GPU",
+      "briefSummary": "Contact-rich inverse problems require efficient gradients and reliable enforcement of non-penetration.",
+      "coverImageUrl": "",
+      "primaryCategory": "cs.GR",
+      "publishedAt": "2026-10-13",
+      "updatedAt": "2026-10-13",
+      "abstract": "Contact-rich inverse problems require efficient gradients and reliable enforcement of non-penetration. Existing differentiable methods provide fast simulation and rigid-deformable coupling, but contact treatments based on penalties or velocity-level constraints can permit penetration or positional drift. Incremental Potential Contact (IPC) maintains non-penetration through geometric barriers and {continuous collision detection (CCD)}. However, repeated forward and backward evaluations remain costly in full-space finite-element (FEM) implementations, particularly when nearly rigid components retain many vertex {degrees of freedom (DoFs)}. We present DiffGIPC, a GPU-accelerated differentiable IPC framework for optimizing interacting deformable and nearly rigid bodies. Our affine-body derivatives enable {rest-shape} design, initial-state optimization, and articulated control while retaining only twelve motion DoFs per affine body. These gradients account for how changes in geometry, placement, and actuation affect other objects through collision and friction. We preserve these interactions in one coupled FEM-affine adjoint system per frame, reducing the backward-system size without discarding the dependencies that drive the inverse problem. GPU-optimized backward computation further reduces the cost of repeated gradient evaluations. A reusable PyTorch interface connects supported physical parameters to user-defined parameter maps and losses across design, identification, motion, placement, and articulated control. Experiments demonstrate peak speedups over DiffIPC of approximately 150.0x with full-space FEM and 4133.3x with affine bodies for combined forward simulation and backward differentiation.",
+      "authors": [
+        "Kemeng Huang",
+        "Bowen Ren",
+        "Xinyu Lu",
+        "Minchen Li",
+        "Taku komura"
+      ],
+      "categories": [
+        "cs.GR",
+        "cs.RO",
+        "eess.SY"
+      ],
+      "arxivUrl": "https://arxiv.org/abs/2610.19091",
+      "pdfUrl": "https://arxiv.org/pdf/2610.19091v1",
+      "htmlUrl": "https://arxiv.org/html/2610.19091"
+    },
     {
       "id": "2610.17905",
       "arxivId": "2610.17905",
@@ -2480,33 +2506,6 @@
       "htmlUrl": "https://arxiv.org/html/2608.15933",
       "doi": "10.1111/cgf.70519",
       "journalRef": "Computer Graphics forum, Volume 25 (2026), Number 5"
-    },
-    {
-      "id": "2608.15266",
-      "arxivId": "2608.15266",
-      "title": "BrainLinear: A Linear Model for Brain Network Analysis in Sparse Tangent Subspaces",
-      "briefSummary": "Functional connectome analysis examines brain-region interactions to understand and identify disorders such as autism spectrum disorder and Alzheimer's disease.",
-      "coverImageUrl": "",
-      "primaryCategory": "cs.GR",
-      "publishedAt": "2026-08-15",
-      "updatedAt": "2026-08-15",
-      "abstract": "Functional connectome analysis examines brain-region interactions to understand and identify disorders such as autism spectrum disorder and Alzheimer's disease. Existing methods typically use GNNs and Transformers to model the full functional connectivity matrix. However, processing tens of thousands of connections introduces redundancy and noise, increases computational cost, and limits connection-level interpretability. This raises a central question: do we really need complex interaction modeling, or is identifying a small set of disease-relevant connectivity patterns sufficient? To answer this question, we propose BrainLinear, a lightweight geometry-aware framework for mining disease-discriminative connectome patterns. BrainLinear first maps each functional connectivity matrix to a shared tangent space centered at the Fréchet mean of the training set, capturing subject-specific deviations while respecting matrix geometry. It then scores each ROI-pair tangent direction by its classification contribution and disease--control difference, retaining Top-$K$ directions as a compact representation. Finally, a shallow multilayer perceptron performs classification on the selected representation. Experiments on ABIDE and ADNI show that BrainLinear matches or exceeds strong GNN and Transformer baselines at a fraction of their cost: it improves AUC and ACC over the best baseline for each metric by up to $3.54$ and $1.39$ percentage points, while reducing runtime and peak GPU memory by $84.0\\%$ and $68.4\\%$ relative to the closest baseline in AUC. The selected directions are directionally consistent with between-group displacements and organized across major functional systems, supporting connection-level interpretation.",
-      "authors": [
-        "Sijing Wu",
-        "Dongyuan Li",
-        "Miaoting Huang",
-        "Weiwei Ye",
-        "Ying Zhang",
-        "Feng Xia",
-        "Renhe Jiang"
-      ],
-      "categories": [
-        "cs.GR",
-        "cs.LG"
-      ],
-      "arxivUrl": "https://arxiv.org/abs/2608.15266",
-      "pdfUrl": "https://arxiv.org/pdf/2608.15266v1",
-      "htmlUrl": "https://arxiv.org/html/2608.15266"
     }
   ]
 }
